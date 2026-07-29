@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Laughing Dragons Productions — kids show, free learning tools, Shopify and Etsy shop, 3D prints, apps, and maker gear from the workroom." />
+    <title>Laughing Dragons Productions</title>
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="canonical" href="https://laughing-dragons.com/" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7048606415692002"
+     crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/site.js"></script>
+    <script>
+      initPage({
+        title: "Laughing Dragons Productions",
+        description: "Laughing Dragons Productions — kids show, free learning tools, Shopify and Etsy shop, 3D prints, apps, and maker gear from the workroom.",
+        activePath: "/",
+        hero: true,
+        adSlots: false,
+        content: `
+          <div class="pillars" id="explore">
+            ${renderPillar({
+              id: "kids",
+              eyebrow: "Kids Show",
+              title: "ABCs with Fruit Friends",
+              body: "The Laughing Dragons Kids Show teaches letters through colorful fruit characters. Watch episodes on YouTube, meet the full A–Z cast, and download 3D printable files as they drop.",
+              href: "/kids/",
+              cta: "Go to Kids",
+            })}
+            ${renderPillar({
+              id: "tools",
+              eyebrow: "Free Tools",
+              title: "Online tools for learning",
+              body: "Browser-based utilities you can use for free — converters, formatters, and everyday helpers. No signup, no uploads. Built for learning and practical use.",
+              href: "/tools/",
+              cta: "Browse free tools",
+              reverse: true,
+            })}
+            ${renderPillar({
+              id: "shop",
+              eyebrow: "Shop",
+              title: "Apparel, prints, and maker gear",
+              body: "From the workroom floor to your door — shop our Shopify store and Etsy shop for apparel, 3D prints, and maker gear. Printful-backed shipping on merch.",
+              href: "/shop/",
+              cta: "Visit the shop",
+            })}
+            ${renderPillar({
+              id: "prints",
+              eyebrow: "3D & Shipping",
+              title: "Prints, files, and fulfillment",
+              body: "Custom 3D prints from our bench, digital files where offered, and reliable shipping through our POD partners. Made in the Laughing Dragons workroom.",
+              href: "/shop/",
+              cta: "See how we ship",
+              reverse: true,
+            })}
+          </div>
+        `,
+      });
+    </script>
+  </body>
+</html>
