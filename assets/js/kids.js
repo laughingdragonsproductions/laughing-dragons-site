@@ -65,6 +65,14 @@ window.KIDS_DATA = {
   ],
 };
 
+function characterImageSrc(letter) {
+  return `/assets/kids/characters/${letter.toLowerCase()}.png`;
+}
+
+function renderCharacterImage(ch, className = "character-image") {
+  return `<img src="${characterImageSrc(ch.letter)}" alt="${ch.name}" class="${className}" loading="lazy" width="400" height="400" />`;
+}
+
 function renderKidsSubnav(active) {
   const items = [
     { id: "episodes", label: "Episodes" },
@@ -123,22 +131,35 @@ function renderKidsEpisodes() {
 
 function renderKidsCharacters() {
   const characters = window.KIDS_DATA?.characters || [];
+  const firstHalf = characters.filter((ch) => ch.letter <= "M");
+  const secondHalf = characters.filter((ch) => ch.letter > "M");
+
+  function renderCharacterCards(list) {
+    return list
+      .map(
+        (ch) => `<article class="character-card" id="character-${ch.letter.toLowerCase()}">
+            ${renderCharacterImage(ch)}
+            <span class="character-letter">${ch.letter}</span>
+            <h3>${ch.name}</h3>
+            <p>${ch.bio}</p>
+          </article>`
+      )
+      .join("");
+  }
+
   return `<section class="kids-section" id="characters">
     <div class="kids-section-head reveal">
       <p class="pillar-eyebrow">Meet the cast</p>
       <h2>Fruit Friends A–Z</h2>
       <p>Twenty-six characters — one for every letter of the alphabet.</p>
     </div>
-    <div class="character-grid reveal">
-      ${characters
-        .map(
-          (ch) => `<article class="character-card" id="character-${ch.letter.toLowerCase()}">
-            <span class="character-letter">${ch.letter}</span>
-            <h3>${ch.name}</h3>
-            <p>${ch.bio}</p>
-          </article>`
-        )
-        .join("")}
+    <div class="character-range reveal">
+      <h3 class="character-range-title">A – M</h3>
+      <div class="character-grid">${renderCharacterCards(firstHalf)}</div>
+    </div>
+    <div class="character-range reveal">
+      <h3 class="character-range-title">N – Z</h3>
+      <div class="character-grid">${renderCharacterCards(secondHalf)}</div>
     </div>
   </section>`;
 }
@@ -155,6 +176,7 @@ function renderKidsPrintables() {
       ${characters
         .map(
           (ch) => `<article class="printable-card">
+            ${renderCharacterImage(ch, "printable-image")}
             <span class="character-letter">${ch.letter}</span>
             <h3>${ch.name}</h3>
             <span class="status-tag status-coming-soon">STL coming soon</span>

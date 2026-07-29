@@ -609,11 +609,65 @@ a:hover {
 .episode-card,
 .character-card,
 .printable-card {
-  padding: 1.25rem;
+  padding: 0;
   border: 1px solid var(--border);
   background: var(--surface);
   text-decoration: none;
   color: inherit;
+  overflow: hidden;
+}
+
+.character-image,
+.printable-image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border);
+  background: #1a1a1a;
+}
+
+.character-card .character-letter,
+.character-card h3,
+.character-card p,
+.printable-card .character-letter,
+.printable-card h3,
+.printable-card .status-tag {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
+
+.character-card .character-letter {
+  margin-top: 1rem;
+}
+
+.character-card p,
+.printable-card .status-tag {
+  margin-bottom: 1.25rem;
+}
+
+.character-range {
+  margin-bottom: 2.5rem;
+}
+
+.character-range-title {
+  margin: 0 0 1rem;
+  font: 600 1.35rem var(--font-display);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.printable-card {
+  padding-bottom: 0;
+}
+
+.printable-card .character-letter {
+  margin-top: 0.85rem;
+}
+
+.printable-card .status-tag {
+  display: inline-block;
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .episode-card:hover {
