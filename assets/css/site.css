@@ -877,3 +877,204 @@ a:hover {
   font-weight: 400;
   color: var(--silver);
 }
+
+/* 3D Prints catalog */
+.print-back {
+  margin: 0 0 1.25rem;
+}
+
+.print-back a {
+  font: 600 0.82rem var(--font-accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.prints-category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.prints-category-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.prints-category-card:hover {
+  border-color: rgba(57, 255, 20, 0.45);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.prints-category-cover {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border);
+  background: #1a1a1a;
+}
+
+.prints-category-cover-all {
+  display: grid;
+  place-items: center;
+  font: 700 2.5rem var(--font-display);
+  color: var(--neon);
+  background:
+    linear-gradient(135deg, rgba(57, 255, 20, 0.12), transparent 55%),
+    #141414;
+}
+
+.prints-category-copy {
+  padding: 1.25rem;
+}
+
+.prints-category-copy h2 {
+  margin: 0 0 0.5rem;
+  font: 600 1.25rem var(--font-display);
+  text-transform: uppercase;
+}
+
+.prints-category-copy p {
+  margin: 0;
+  color: var(--silver);
+  font-size: 0.95rem;
+}
+
+.print-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.print-tile {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: inherit;
+  cursor: pointer;
+  overflow: hidden;
+  text-align: left;
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.print-tile:hover,
+.print-tile:focus-visible {
+  border-color: rgba(57, 255, 20, 0.45);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.print-tile-image {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border);
+  background: #1a1a1a;
+}
+
+.print-tile-name {
+  padding: 0.85rem 1rem 1rem;
+  font: 600 0.92rem var(--font-display);
+  text-transform: uppercase;
+  line-height: 1.25;
+}
+
+.print-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 2rem;
+}
+
+.print-pagination-link {
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--border);
+  color: var(--silver);
+  font: 600 0.78rem var(--font-accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.print-pagination-link:hover,
+.print-pagination-link.active {
+  border-color: rgba(57, 255, 20, 0.45);
+  color: var(--neon);
+  text-decoration: none;
+}
+
+body.print-lightbox-open {
+  overflow: hidden;
+}
+
+.print-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background: rgba(0, 0, 0, 0.88);
+}
+
+.print-lightbox[hidden] {
+  display: none;
+}
+
+.print-lightbox-dialog {
+  position: relative;
+  width: min(920px, 100%);
+  max-height: calc(100vh - 2.5rem);
+  overflow: auto;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.print-lightbox-close {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.75rem;
+  z-index: 2;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.print-lightbox-image {
+  display: block;
+  width: 100%;
+  max-height: min(70vh, 720px);
+  object-fit: contain;
+  background: #111;
+}
+
+.print-lightbox-actions {
+  padding: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.print-lightbox-title {
+  margin: 0 0 1rem;
+  font: 600 1.35rem var(--font-display);
+  text-transform: uppercase;
+}
+
+.print-lightbox-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}

@@ -33,6 +33,8 @@ git push origin main
 
 Or run `.\scripts\push-update.ps1 "Describe what you changed"`
 
+`push-update.ps1` runs `check-site-size.ps1` first (warns at **800 MB / 80%** of the 1 GB budget, blocks at **950 MB / 95%** unless you pass `-Force`).
+
 ### 3. Confirm deploy
 
 1. Cloudflare Dashboard → **Workers & Pages** → **laughing-dragons-site** → **Deployments**
@@ -53,6 +55,9 @@ Or run `.\scripts\push-update.ps1 "Describe what you changed"`
 | **Blog post** | New HTML under `blog/posts/`, link from `blog/index.html`, add to `sitemap.xml` |
 | **Shop / Etsy / Shopify URL** | `assets/js/config.js` → `links` |
 | **New top-level page** | Create `section/index.html`, add to `assets/js/site.js` `NAV`, add to `sitemap.xml` |
+| **New sellable 3D print (cooler)** | Add `.3mf` to source folder, run `python scripts/extract-cooler-images.py`, push |
+| **Store goes live (Buy buttons)** | Change `buyHref` in `assets/js/prints.js` to Shopify URL |
+| **Site size check before push** | `.\scripts\check-site-size.ps1` (warns at 80% of 1 GB) |
 | **New brand images** | `assets/brand/` |
 | **AdSense slot IDs** | `assets/js/config.js` → `adsense.slots` |
 | **Home hero / pillar copy** | `index.html` |
@@ -84,6 +89,22 @@ Commit + push. `/kids/#episodes` shows a **Watch on YouTube** card automatically
 3. Add entry to `TOOLS` in `assets/js/tools.js`
 4. Add `<url>` to `sitemap.xml`
 5. Commit + push → live at `https://laughing-dragons.com/tools/my-tool.html`
+
+---
+
+## Add a new cooler to the print catalog
+
+1. Drop the `.3mf` in `G:\Laughing Dragons\3d Models\Ready To Sell Coolers`
+2. Regenerate images + catalog:
+
+```powershell
+cd G:\LocalAIagent\laughing-dragons-site
+python scripts/extract-cooler-images.py
+```
+
+3. Preview, then commit + push
+
+If a new category needs its own hub tile later, add a folder under `assets/prints/` and extend `PRINTS_DATA.categories` in `prints.js`.
 
 ---
 

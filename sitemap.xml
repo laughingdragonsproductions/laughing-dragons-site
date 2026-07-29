@@ -13,6 +13,12 @@
   <url><loc>https://laughing-dragons.com/tools/json-formatter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://laughing-dragons.com/tools/uuid-generator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://laughing-dragons.com/media/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://laughing-dragons.com/prints/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://laughing-dragons.com/prints/coolers/</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://laughing-dragons.com/prints/coolers/page-2/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://laughing-dragons.com/prints/all/</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://laughing-dragons.com/prints/all/page-2/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://laughing-dragons.com/shop/coming-soon/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://laughing-dragons.com/kids/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://laughing-dragons.com/about/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://laughing-dragons.com/contact/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>

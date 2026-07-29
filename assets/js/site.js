@@ -2,6 +2,7 @@ const NAV = [
   { href: "/kids/", label: "Kids" },
   { href: "/tools/", label: "Tools" },
   { href: "/shop/", label: "Shop" },
+  { href: "/prints/", label: "Prints" },
   { href: "/apps/", label: "Apps" },
   { href: "/media/", label: "Media" },
   { href: "/about/", label: "About" },
@@ -20,7 +21,8 @@ function renderHeader(activePath) {
           (item) => {
             const active =
               activePath === item.href ||
-              (item.href === "/tools/" && (activePath === "/tools/" || (activePath && activePath.startsWith("/tools/"))));
+              (item.href === "/tools/" && (activePath === "/tools/" || (activePath && activePath.startsWith("/tools/")))) ||
+              (item.href === "/prints/" && (activePath === "/prints/" || (activePath && activePath.startsWith("/prints/"))));
             return `<a href="${item.href}" class="nav-link${active ? " active" : ""}">${item.label}</a>`;
           }
         ).join("")}
