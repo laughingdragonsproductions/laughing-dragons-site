@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Free online learning tools from Laughing Dragons Productions — browser utilities for everyday use." />
+    <meta name="description" content="Free online learning tools at laughing-dragons.com — converters, calculators, formatters, and generators in your browser." />
     <title>Free Tools</title>
     <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
     <link rel="stylesheet" href="/assets/css/site.css" />
@@ -14,30 +14,22 @@
   <body>
     <div id="app"></div>
     <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/tools.js"></script>
     <script src="/assets/js/site.js"></script>
     <script>
       initPage({
         title: "Free Tools",
-        description: "Free online learning tools from Laughing Dragons Productions — browser utilities for everyday use.",
+        description: "Free online learning tools at laughing-dragons.com — converters, calculators, formatters, and generators in your browser.",
         activePath: "/tools/",
         content: `
           <header class="page-header reveal">
             <p class="pillar-eyebrow">Free &amp; browser-based</p>
             <h1>Learning tools</h1>
-            <p>Everyday utilities that run entirely in your browser. No signup, no uploads — free for learning and practical use.</p>
+            <p>Everyday utilities that run entirely in your browser on laughing-dragons.com. No signup, no uploads — free for learning and practical use.</p>
           </header>
-          <section class="link-grid reveal">
-            <div class="link-card">
-              <h2>QuickUtil</h2>
-              <p>Converters, calculators, formatters, and generators — free tools that stay on your device.</p>
-            </div>
-            <div class="link-card">
-              <h2>TextFixer</h2>
-              <p>Text cleanup and formatting helpers for writers, students, and everyday editing tasks.</p>
-            </div>
-          </section>
+          ${renderToolGrid()}
           <div class="prose reveal">
-            <p>Tool sites link back to Laughing Dragons as their publisher. Domains for individual tool properties will be added here as they go live on Cloudflare Pages.</p>
+            <p>All tools stay on this site under <strong>/tools/</strong>. Nothing is uploaded to our servers — everything runs locally in your browser.</p>
           </div>
         `,
       });

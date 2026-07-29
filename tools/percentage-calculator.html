@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Calculate percentages, increases, decreases, and discounts." />
+    <title>Percentage Calculator</title>
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="canonical" href="https://laughing-dragons.com/tools/percentage-calculator.html" />
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7048606415692002"
+     crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/tools.js"></script>
+    <script src="/assets/js/site.js"></script>
+    <script>
+      initToolPage({
+        title: "Percentage Calculator",
+        description: "Calculate percentages, increases, decreases, and discounts.",
+        content: `
+          <section class="tool-panel">
+            <h1>Percentage Calculator</h1>
+            <p class="lede">What is X% of Y? What percent is A of B? Increase or decrease by a percent.</p>
+            <div class="field-grid">
+              <div>
+                <label for="mode">Mode</label>
+                <select id="mode">
+                  <option value="of">What is X% of Y?</option>
+                  <option value="percent">X is what % of Y?</option>
+                  <option value="change">Change Y by X%</option>
+                </select>
+              </div>
+              <div class="field-grid two">
+                <div>
+                  <label for="x">Value X</label>
+                  <input id="x" type="number" value="15" step="any" />
+                </div>
+                <div>
+                  <label for="y">Value Y</label>
+                  <input id="y" type="number" value="200" step="any" />
+                </div>
+              </div>
+              <div id="changeDir" hidden>
+                <label for="direction">Direction</label>
+                <select id="direction">
+                  <option value="up">Increase</option>
+                  <option value="down">Decrease</option>
+                </select>
+              </div>
+              <button type="button" id="calc">Calculate</button>
+              <div id="result" class="result" aria-live="polite"></div>
+            </div>
+          </section>
+        `,
+      });
+
+      const modeEl = document.getElementById("mode");
+      const changeDir = document.getElementById("changeDir");
+      const resultEl = document.getElementById("result");
+
+      function calc() {
+        const mode = modeEl.value;
+        const x = Number(document.getElementById("x").value);
+        const y = Number(document.getElementById("y").value);
+        if ([x, y].some(Number.isNaN)) {
+          resultEl.textContent = "Enter valid numbers.";
+          resultEl.classList.add("error");
+          return;
+        }
+        resultEl.classList.remove("error");
+        if (mode === "of") {
+          resultEl.textContent = `${x}% of ${y} = ${((x / 100) * y).toFixed(4).replace(/\.?0+$/, "")}`;
+        } else if (mode === "percent") {
+          if (y === 0) {
+            resultEl.textContent = "Y cannot be zero.";
+            resultEl.classList.add("error");
+            return;
+          }
+          resultEl.textContent = `${x} is ${((x / y) * 100).toFixed(4).replace(/\.?0+$/, "")}% of ${y}`;
+        } else {
+          const dir = document.getElementById("direction").value;
+          const factor = dir === "up" ? 1 + x / 100 : 1 - x / 100;
+          resultEl.textContent = `${y} ${dir === "up" ? "increased" : "decreased"} by ${x}% = ${(y * factor).toFixed(4).replace(/\.?0+$/, "")}`;
+        }
+      }
+
+      modeEl.addEventListener("change", () => {
+        changeDir.hidden = modeEl.value !== "change";
+        calc();
+      });
+      document.getElementById("calc").addEventListener("click", calc);
+      ["x", "y", "direction"].forEach((id) =>
+        document.getElementById(id).addEventListener("input", calc)
+      );
+      calc();
+    </script>
+  </body>
+</html>

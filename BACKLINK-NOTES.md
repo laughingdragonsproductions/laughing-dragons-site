@@ -24,11 +24,7 @@ Also update theme settings copy so the storefront header/footer brand links to t
 
 ## QuickUtil / tool-site
 
-**File:** `G:\LocalAIagent\tool-site\assets\js\site.js` — footer
-
-Add: **Laughing Dragons Productions** → `https://laughing-dragons.com`
-
-Update `assets/js/config.js` with the live QuickUtil domain when deployed.
+Tools now live as subpages on the hub at `https://laughing-dragons.com/tools/` (unit converter, word counter, JSON formatter, etc.). The standalone `tool-site` repo is optional legacy — point any remaining QuickUtil links to `/tools/` on the hub instead.
 
 ## TextFixer / ditto.site output
 

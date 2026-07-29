@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Calculate restaurant tips and split bills between people." />
+    <title>Tip Calculator</title>
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="canonical" href="https://laughing-dragons.com/tools/tip-calculator.html" />
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7048606415692002"
+     crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/tools.js"></script>
+    <script src="/assets/js/site.js"></script>
+    <script>
+      initToolPage({
+        title: "Tip Calculator",
+        description: "Calculate restaurant tips and split bills between people.",
+        content: `
+          <section class="tool-panel">
+            <h1>Tip Calculator</h1>
+            <p class="lede">Add a tip and split the total evenly.</p>
+            <div class="field-grid two">
+              <div>
+                <label for="bill">Bill amount ($)</label>
+                <input id="bill" type="number" value="48" min="0" step="0.01" />
+              </div>
+              <div>
+                <label for="tip">Tip (%)</label>
+                <input id="tip" type="number" value="18" min="0" step="0.1" />
+              </div>
+              <div>
+                <label for="people">People</label>
+                <input id="people" type="number" value="2" min="1" step="1" />
+              </div>
+            </div>
+            <button type="button" id="calc" style="margin-top:1rem">Calculate</button>
+            <div id="result" class="result" aria-live="polite"></div>
+          </section>
+        `,
+      });
+
+      function money(n) {
+        return `$${n.toFixed(2)}`;
+      }
+
+      function calc() {
+        const bill = Number(document.getElementById("bill").value);
+        const tipPct = Number(document.getElementById("tip").value);
+        const people = Number(document.getElementById("people").value);
+        const resultEl = document.getElementById("result");
+        if ([bill, tipPct, people].some(Number.isNaN) || people < 1) {
+          resultEl.textContent = "Enter valid values (people must be at least 1).";
+          resultEl.classList.add("error");
+          return;
+        }
+        const tipAmount = bill * (tipPct / 100);
+        const total = bill + tipAmount;
+        const perPerson = total / people;
+        resultEl.classList.remove("error");
+        resultEl.textContent = `Tip: ${money(tipAmount)}\nTotal: ${money(total)}\nPer person (${people}): ${money(perPerson)}`;
+      }
+
+      document.getElementById("calc").addEventListener("click", calc);
+      ["bill", "tip", "people"].forEach((id) =>
+        document.getElementById(id).addEventListener("input", calc)
+      );
+      calc();
+    </script>
+  </body>
+</html>

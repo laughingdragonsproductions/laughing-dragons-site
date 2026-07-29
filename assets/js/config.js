@@ -10,8 +10,7 @@ window.SITE_CONFIG = {
     shopify: "https://laughing-dragons.myshopify.com",
     shopifyFuture: "https://laughingdragonsproductions.com",
     privacyLegacy: "https://sparkster1010.github.io/LDPPP/privacy.html",
-    quickutil: "https://yourdomain.com",
-    textfixer: "https://yourdomain.com",
+    tools: "https://laughing-dragons.com/tools/",
   },
   adsense: {
     publisherId: "ca-pub-7048606415692002",

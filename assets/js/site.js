@@ -17,8 +17,12 @@ function renderHeader(activePath) {
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav id="site-nav" class="site-nav" aria-label="Primary">
         ${NAV.map(
-          (item) =>
-            `<a href="${item.href}" class="nav-link${activePath === item.href ? " active" : ""}">${item.label}</a>`
+          (item) => {
+            const active =
+              activePath === item.href ||
+              (item.href === "/tools/" && (activePath === "/tools/" || (activePath && activePath.startsWith("/tools/"))));
+            return `<a href="${item.href}" class="nav-link${active ? " active" : ""}">${item.label}</a>`;
+          }
         ).join("")}
       </nav>
     </div>

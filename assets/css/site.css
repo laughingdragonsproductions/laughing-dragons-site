@@ -694,3 +694,132 @@ a:hover {
     top: calc(var(--header-h) - 1px);
   }
 }
+
+/* Tools subpages */
+.tool-back {
+  margin: 0 0 1.25rem;
+}
+
+.tool-back a {
+  font: 600 0.82rem var(--font-accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tool-card h2 {
+  margin: 0 0 0.5rem;
+}
+
+.tool-panel {
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.tool-panel h1 {
+  margin: 0 0 0.35rem;
+  font: 600 clamp(1.6rem, 4vw, 2.2rem) var(--font-display);
+  text-transform: uppercase;
+}
+
+.tool-panel .lede {
+  margin: 0 0 1.25rem;
+  color: var(--silver);
+}
+
+.field-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.field-grid.two {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.tool-panel label {
+  display: block;
+  font: 600 0.85rem var(--font-body);
+  margin-bottom: 0.35rem;
+  color: var(--text);
+}
+
+.tool-panel input,
+.tool-panel select,
+.tool-panel textarea,
+.tool-panel button {
+  font: inherit;
+}
+
+.tool-panel input,
+.tool-panel select,
+.tool-panel textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.tool-panel textarea {
+  min-height: 140px;
+  resize: vertical;
+  font-family: var(--font-accent);
+  font-size: 0.9rem;
+}
+
+.tool-panel button,
+.tool-panel .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1rem;
+  border: none;
+  border-radius: 0;
+  background: var(--neon);
+  color: #081108;
+  cursor: pointer;
+  font: 600 0.85rem var(--font-accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tool-panel button.secondary {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.tool-panel .result {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  font-family: var(--font-accent);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.tool-panel .result.error {
+  color: #ff6b6b;
+}
+
+.tool-panel fieldset {
+  border: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.tool-panel fieldset label {
+  display: inline;
+  font-weight: 400;
+  color: var(--silver);
+}
