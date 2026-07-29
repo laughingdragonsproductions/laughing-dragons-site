@@ -707,7 +707,7 @@ function renderPrintPagination({ basePath, page, totalPages }) {
       `<a class="print-pagination-link${i === page ? " active" : ""}" href="${href}">Page ${i}</a>`
     );
   }
-  return `<nav class="print-pagination reveal" aria-label="Print catalog pages">${pages.join("")}</nav>`;
+  return `<nav class="print-pagination" aria-label="Print catalog pages">${pages.join("")}</nav>`;
 }
 
 function renderPrintTile(item) {
@@ -728,10 +728,10 @@ function renderPrintGrid({ category = null, page = 1, perPage = null, basePath =
       <h1>${categoryLabel}</h1>
       <p>${result.totalItems} design${result.totalItems === 1 ? "" : "s"} — click a tile for a larger preview, then buy when our store opens.</p>
     </header>
-    <div class="print-grid reveal" role="list">
+    <div class="print-grid" role="list">
       ${result.items.map(renderPrintTile).join("")}
     </div>
-    ${renderPrintPagination({ basePath, page: result.page, totalPages: result.totalPages })}`;
+    ${renderPrintPagination({ basePath, page: result.page, totalPages: result.totalPages }})}`;
 }
 
 function renderPrintsHub() {
@@ -841,5 +841,8 @@ function initPrintLightbox() {
 
 function initPrintsPage({ title, description, activePath, content, adSlots = true }) {
   initPage({ title, description, activePath, content, adSlots });
+  document.querySelectorAll(".print-grid, .print-pagination").forEach((node) => {
+    node.classList.add("is-visible");
+  });
   initPrintLightbox();
 }
