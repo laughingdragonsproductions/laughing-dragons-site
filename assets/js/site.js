@@ -22,7 +22,8 @@ function renderHeader(activePath) {
             const active =
               activePath === item.href ||
               (item.href === "/tools/" && (activePath === "/tools/" || (activePath && activePath.startsWith("/tools/")))) ||
-              (item.href === "/prints/" && (activePath === "/prints/" || (activePath && activePath.startsWith("/prints/"))));
+              (item.href === "/prints/" && (activePath === "/prints/" || (activePath && activePath.startsWith("/prints/")))) ||
+              (item.href === "/kids/" && (activePath === "/kids/" || (activePath && activePath.startsWith("/kids/"))));
             return `<a href="${item.href}" class="nav-link${active ? " active" : ""}">${item.label}</a>`;
           }
         ).join("")}
@@ -104,7 +105,9 @@ function renderHero() {
   </section>`;
 }
 
-function renderPillar({ id, eyebrow, title, body, href, cta, reverse = false }) {
+function renderPillar({ id, eyebrow, title, body, href, cta, reverse = false, image = null }) {
+  const frameClass = image ? "pillar-frame pillar-frame-photo" : "pillar-frame";
+  const frameStyle = image ? ` style="background-image:url('${image}')"` : "";
   return `<section class="pillar${reverse ? " pillar-reverse" : ""}" id="${id}">
     <div class="container pillar-inner">
       <div class="pillar-copy reveal">
@@ -114,7 +117,7 @@ function renderPillar({ id, eyebrow, title, body, href, cta, reverse = false }) 
         <a class="text-link" href="${href}">${cta} &rarr;</a>
       </div>
       <div class="pillar-visual reveal" aria-hidden="true">
-        <div class="pillar-frame"></div>
+        <div class="${frameClass}"${frameStyle}></div>
       </div>
     </div>
   </section>`;

@@ -8,6 +8,8 @@
   <url><loc>https://laughing-dragons.com/tools/percentage-calculator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://laughing-dragons.com/tools/tip-calculator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://laughing-dragons.com/tools/word-counter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://laughing-dragons.com/tools/syllable-counter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://laughing-dragons.com/tools/coming-soon.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://laughing-dragons.com/tools/password-generator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://laughing-dragons.com/tools/base64.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://laughing-dragons.com/tools/json-formatter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -20,6 +22,33 @@
   <url><loc>https://laughing-dragons.com/prints/all/page-2/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://laughing-dragons.com/shop/coming-soon/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://laughing-dragons.com/kids/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/games/coming-soon/</loc><changefreq>monthly</changefreq><priority>0.55</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/a/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/b/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/c/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/d/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/e/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/f/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/g/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/h/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/i/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/j/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/k/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/l/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/m/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/n/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/o/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/p/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/q/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/r/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/s/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/t/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/u/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/v/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/w/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/x/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/y/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://laughing-dragons.com/kids/characters/z/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
   <url><loc>https://laughing-dragons.com/about/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://laughing-dragons.com/contact/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://laughing-dragons.com/privacy/</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>

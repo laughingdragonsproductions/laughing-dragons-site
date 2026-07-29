@@ -61,6 +61,10 @@ Or run `.\scripts\push-update.ps1 "Describe what you changed"`
 | **New brand images** | `assets/brand/` |
 | **AdSense slot IDs** | `assets/js/config.js` → `adsense.slots` |
 | **Home hero / pillar copy** | `index.html` |
+| **Home pillar photos (Kids / Tools)** | `assets/kids/best-shot.png`, `assets/tools/tools-pillar.png`; pass `image` in `index.html` `renderPillar()` |
+| **Kids game (coming soon)** | Add to `games[]` in `assets/js/kids.js`; link to `/kids/games/coming-soon/` until live |
+| **Character detail pages** | Run `python scripts/generate-character-pages.py` after template changes |
+| **Tool coming soon stub** | Add to `TOOLS_COMING_SOON` in `assets/js/tools.js` → links to `tools/coming-soon.html` |
 
 ---
 
@@ -79,6 +83,14 @@ Edit `assets/js/kids.js`:
 ```
 
 Commit + push. `/kids/#episodes` shows a **Watch on YouTube** card automatically.
+
+---
+
+## Kids — games and characters
+
+- **Games:** edit `games[]` in `assets/js/kids.js`. Until a game is built, set `href: "/kids/games/coming-soon/"`.
+- **Character sheets:** grid tiles link to `/kids/characters/{letter}/`. Regenerate pages with `python scripts/generate-character-pages.py` if the HTML template changes.
+- **Pillar art sources:** Kids → `G:\Laughing Dragons\Kids Show\assets\Random Images\best shot.png`; Tools → `G:\Laughing Dragons\Images and videos\tools.png`
 
 ---
 

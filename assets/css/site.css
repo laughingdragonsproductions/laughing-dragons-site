@@ -299,17 +299,10 @@ a:hover {
     url("/assets/brand/ldp-workroom-banner.png") center / cover no-repeat;
 }
 
-.pillar:nth-child(1) .pillar-frame {
-  background:
-    linear-gradient(135deg, rgba(255, 140, 0, 0.12), transparent 55%),
-    radial-gradient(circle at 30% 30%, rgba(57, 255, 20, 0.15), transparent 50%),
-    var(--surface);
-}
-
-.pillar:nth-child(2) .pillar-frame {
-  background:
-    linear-gradient(135deg, rgba(57, 255, 20, 0.12), transparent 55%),
-    var(--surface-2);
+.pillar-frame-photo {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .pillar:nth-child(3) .pillar-frame {
@@ -626,6 +619,41 @@ a:hover {
   background: #1a1a1a;
 }
 
+.character-grid .character-image {
+  object-position: left center;
+}
+
+.character-card:hover {
+  border-color: rgba(57, 255, 20, 0.45);
+  text-decoration: none;
+}
+
+.character-detail-image {
+  display: block;
+  width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  background: #111;
+  border: 1px solid var(--border);
+}
+
+.character-detail-head {
+  margin: 1.25rem 0 0.75rem;
+}
+
+.character-detail-head h1 {
+  margin: 0.75rem 0 0.5rem;
+  font: 600 clamp(1.8rem, 4vw, 2.6rem) / 1.05 var(--font-display);
+  text-transform: uppercase;
+}
+
+.character-detail-bio {
+  max-width: 40rem;
+  margin: 0;
+  color: var(--silver);
+  font-size: 1.05rem;
+}
+
 .character-card .character-letter,
 .character-card h3,
 .character-card p,
@@ -770,6 +798,17 @@ a:hover {
 
 .tool-card h2 {
   margin: 0 0 0.5rem;
+}
+
+.tools-section-title {
+  margin: 0 0 1rem;
+  font: 600 1.35rem var(--font-display);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.tool-card-soon .status-tag {
+  margin-top: 0.75rem;
 }
 
 .tool-panel {

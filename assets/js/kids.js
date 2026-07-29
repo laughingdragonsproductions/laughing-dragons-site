@@ -67,6 +67,26 @@ window.KIDS_DATA = {
     { letter: "Y", name: "Yevette the Yam", bio: "Grounded, warm, and deeply caring." },
     { letter: "Z", name: "Zackary the Zucchini", bio: "Fun-loving, flexible, and ready for anything." },
   ],
+  games: [
+    {
+      id: "memory-matching",
+      title: "Memory Matching Game",
+      description: "Flip cards and match Fruit Friends pairs.",
+      href: "/kids/games/coming-soon/",
+    },
+    {
+      id: "word-search",
+      title: "Word Search Generator",
+      description: "Printable word searches themed around the alphabet cast.",
+      href: "/kids/games/coming-soon/",
+    },
+    {
+      id: "maze-generator",
+      title: "Maze Generator",
+      description: "Mazes for kids to solve on screen or on paper.",
+      href: "/kids/games/coming-soon/",
+    },
+  ],
 };
 
 function characterImageSrc(letter) {
@@ -77,10 +97,16 @@ function renderCharacterImage(ch, className = "character-image") {
   return `<img src="${characterImageSrc(ch.letter)}" alt="${ch.name}" class="${className}" loading="lazy" width="400" height="400" />`;
 }
 
+function getCharacterByLetter(letter) {
+  const key = String(letter || "").toUpperCase();
+  return (window.KIDS_DATA?.characters || []).find((ch) => ch.letter === key) || null;
+}
+
 function renderKidsSubnav(active) {
   const items = [
     { id: "episodes", label: "Episodes" },
     { id: "characters", label: "Characters" },
+    { id: "games", label: "Games" },
     { id: "printables", label: "3D Print Files" },
   ];
   return `<nav class="kids-subnav reveal" aria-label="Kids sections">
@@ -141,12 +167,12 @@ function renderKidsCharacters() {
   function renderCharacterCards(list) {
     return list
       .map(
-        (ch) => `<article class="character-card" id="character-${ch.letter.toLowerCase()}">
+        (ch) => `<a class="character-card" href="/kids/characters/${ch.letter.toLowerCase()}/" id="character-${ch.letter.toLowerCase()}">
             ${renderCharacterImage(ch)}
             <span class="character-letter">${ch.letter}</span>
             <h3>${ch.name}</h3>
             <p>${ch.bio}</p>
-          </article>`
+          </a>`
       )
       .join("");
   }
@@ -155,7 +181,7 @@ function renderKidsCharacters() {
     <div class="kids-section-head reveal">
       <p class="pillar-eyebrow">Meet the cast</p>
       <h2>Fruit Friends A–Z</h2>
-      <p>Twenty-six characters — one for every letter of the alphabet.</p>
+      <p>Twenty-six characters — one for every letter of the alphabet. Click a tile for the full character sheet.</p>
     </div>
     <div class="character-range reveal">
       <h3 class="character-range-title">A – M</h3>
@@ -166,6 +192,54 @@ function renderKidsCharacters() {
       <div class="character-grid">${renderCharacterCards(secondHalf)}</div>
     </div>
   </section>`;
+}
+
+function renderKidsGames() {
+  const games = window.KIDS_DATA?.games || [];
+  return `<section class="kids-section" id="games">
+    <div class="kids-section-head reveal">
+      <p class="pillar-eyebrow">Play</p>
+      <h2>Games</h2>
+      <p>Browser games for Fruit Friends fans — matching, word search, mazes, and more as we build them.</p>
+    </div>
+    <div class="episode-grid reveal">
+      ${games
+        .map(
+          (game) => `<a class="episode-card" href="${game.href}">
+            <h3>${game.title}</h3>
+            <p>${game.description}</p>
+            <span class="status-tag status-coming-soon">Coming soon</span>
+          </a>`
+        )
+        .join("")}
+    </div>
+  </section>`;
+}
+
+function renderCharacterDetail(letter) {
+  const ch = getCharacterByLetter(letter);
+  if (!ch) {
+    return `<p class="reveal">Character not found. <a href="/kids/#characters">Back to characters</a>.</p>`;
+  }
+  return `<p class="print-back reveal"><a href="/kids/#characters">&larr; All characters</a></p>
+    <article class="character-detail reveal">
+      <img src="${characterImageSrc(ch.letter)}" alt="${ch.name} character sheet" class="character-detail-image" width="1247" height="1254" />
+      <div class="character-detail-head">
+        <span class="character-letter">${ch.letter}</span>
+        <h1>${ch.name}</h1>
+        <p class="character-detail-bio">${ch.bio}</p>
+      </div>
+    </article>`;
+}
+
+function initCharacterPage(letter) {
+  const ch = getCharacterByLetter(letter);
+  initPage({
+    title: ch ? ch.name : "Character",
+    description: ch ? `${ch.name} — Fruit Friends character from the Laughing Dragons Kids Show.` : "Fruit Friends character",
+    activePath: "/kids/",
+    content: renderCharacterDetail(letter),
+  });
 }
 
 function renderKidsPrintables() {
@@ -198,11 +272,12 @@ function renderKidsHub() {
     <header class="kids-hero reveal">
       <p class="pillar-eyebrow">${data.tagline || "Kids Show"}</p>
       <h1>${data.showTitle || "Kids Show"}</h1>
-      <p>Episodes, characters, and 3D printable files — the home for everything Fruit Friends.</p>
+      <p>Episodes, characters, games, and 3D printable files — the home for everything Fruit Friends.</p>
     </header>
     ${renderKidsSubnav("episodes")}
     ${renderKidsEpisodes()}
     ${renderKidsCharacters()}
+    ${renderKidsGames()}
     ${renderKidsPrintables()}
     <div class="prose reveal kids-credits">
       <p>Created by Brandon Sparks. Voice character and principal photography by Vinny Vincent.</p>
