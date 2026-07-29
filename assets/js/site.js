@@ -165,6 +165,7 @@ function bindReveal() {
     nodes.forEach((n) => n.classList.add("is-visible"));
     return;
   }
+  const viewportH = window.innerHeight || document.documentElement.clientHeight || 800;
   const io = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -174,9 +175,19 @@ function bindReveal() {
         }
       });
     },
-    { threshold: 0.15 }
+    { threshold: 0, rootMargin: "0px 0px -5% 0px" }
   );
-  nodes.forEach((n) => io.observe(n));
+  nodes.forEach((n) => {
+    if (n.classList.contains("print-grid") || n.classList.contains("print-pagination")) {
+      n.classList.add("is-visible");
+      return;
+    }
+    if (n.scrollHeight > viewportH * 1.15) {
+      n.classList.add("is-visible");
+      return;
+    }
+    io.observe(n);
+  });
 }
 
 function bindReducedMotionVideo() {

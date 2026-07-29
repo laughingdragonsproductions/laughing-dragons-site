@@ -695,7 +695,7 @@ function getPrintPageItems({ category = null, page = 1, perPage = null } = {}) {
 }
 
 function renderPrintsBackLink(href, label) {
-  return `<p class="print-back reveal"><a href="${href}">&larr; ${label}</a></p>`;
+  return `<p class="print-back"><a href="${href}">&larr; ${label}</a></p>`;
 }
 
 function renderPrintPagination({ basePath, page, totalPages }) {
@@ -723,7 +723,7 @@ function renderPrintGrid({ category = null, page = 1, perPage = null, basePath =
     ? (window.PRINTS_DATA.categories || []).find((c) => c.id === category)?.title || "Prints"
     : "All files";
   return `${renderPrintsBackLink("/prints/", "All print categories")}
-    <header class="page-header reveal">
+    <header class="page-header">
       <p class="pillar-eyebrow">3D prints</p>
       <h1>${categoryLabel}</h1>
       <p>${result.totalItems} design${result.totalItems === 1 ? "" : "s"} — click a tile for a larger preview, then buy when our store opens.</p>
@@ -841,7 +841,7 @@ function initPrintLightbox() {
 
 function initPrintsPage({ title, description, activePath, content, adSlots = true }) {
   initPage({ title, description, activePath, content, adSlots });
-  document.querySelectorAll(".print-grid, .print-pagination").forEach((node) => {
+  document.querySelectorAll(".page-main .reveal, .print-grid, .print-pagination").forEach((node) => {
     node.classList.add("is-visible");
   });
   initPrintLightbox();

@@ -992,6 +992,14 @@ a:hover {
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
   margin-bottom: 1.5rem;
+  opacity: 1;
+  transform: none;
+}
+
+.print-grid.reveal,
+.print-pagination.reveal {
+  opacity: 1;
+  transform: none;
 }
 
 .print-tile {
@@ -1034,6 +1042,8 @@ a:hover {
   flex-wrap: wrap;
   gap: 0.65rem;
   margin-bottom: 2rem;
+  opacity: 1;
+  transform: none;
 }
 
 .print-pagination-link {
