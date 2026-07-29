@@ -65,6 +65,10 @@ After the domain is live:
 
 See [BACKLINK-NOTES.md](BACKLINK-NOTES.md) for DRI privacy, Shopify footer, QuickUtil, and infrastructure-map updates.
 
+## 8. Ongoing updates
+
+After the site is live, use [UPDATE.md](UPDATE.md) for every content change (Kids episodes, tools, blog, images). Push to `main` — Cloudflare redeploys automatically.
+
 ## Troubleshooting
 
 | Issue | Fix |

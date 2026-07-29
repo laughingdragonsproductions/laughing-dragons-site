@@ -5,24 +5,25 @@ Static marketing site for **laughing-dragons.com** — the home base for the kid
 ## Stack
 
 - Static HTML + CSS + JS (no build step)
-- GitHub → Cloudflare Pages
+- GitHub → Cloudflare Pages (auto-deploy on push to `main`)
 - Google AdSense (`ca-pub-7048606415692002`)
 
-## Local preview
+## Add content and push updates
 
-Serve the repo root with any static server, e.g.:
+See **[UPDATE.md](UPDATE.md)** — the day-to-day workflow for episodes, tools, blog posts, and images.
+
+Quick commands:
 
 ```powershell
 cd G:\LocalAIagent\laughing-dragons-site
-python -m http.server 8080
+.\scripts\preview.ps1          # local preview on :8080
+.\scripts\push-update.ps1 "Your commit message"
 ```
 
-Open `http://localhost:8080/`
-
-## Deploy
+## Initial deploy
 
 See [DEPLOY.md](DEPLOY.md).
 
-## Post-launch
+## Post-launch back-links
 
 See [BACKLINK-NOTES.md](BACKLINK-NOTES.md).

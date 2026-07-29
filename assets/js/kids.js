@@ -1,6 +1,10 @@
 /** Laughing Dragons Kids Show — episodes, characters, printable files
- *  When a YouTube episode goes live: set youtubeUrl + status: "published"
- *  When an STL is ready: add printUrl + status: "available" on the character row
+ *
+ * UPDATE WORKFLOW (see UPDATE.md):
+ * - YouTube episode live: set youtubeUrl + status: "published" on the episode row
+ * - New episode: add object to episodes[]
+ * - STL ready: add printUrl to character row and update renderKidsPrintables when wired
+ * - Character images: assets/kids/characters/{letter}.png (a.png through z.png)
  */
 window.KIDS_DATA = {
   showTitle: "Laughing Dragons Kids Show",
