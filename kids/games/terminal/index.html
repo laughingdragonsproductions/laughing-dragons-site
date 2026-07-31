@@ -9,30 +9,16 @@
     />
     <title>Terminal Trainer</title>
     <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
-    <link rel="stylesheet" href="/assets/css/terminal-game.css?v=20260731" />
+    <link rel="stylesheet" href="/assets/css/terminal-game.css?v=20260731b" />
     <link rel="canonical" href="https://laughing-dragons.com/kids/games/terminal/" />
   </head>
   <body class="terminal-page">
     <a class="terminal-back-link" href="/kids/#games">&larr; Kids games</a>
     <button type="button" class="replay-intro-link" id="replay-intro" hidden>Replay intro</button>
+    <button type="button" class="intro-skip-btn" id="intro-skip" hidden>Skip intro</button>
+    <button type="button" class="intro-fallback-btn" id="intro-fallback" hidden>Tap to play intro</button>
 
-    <div id="intro-stage" class="intro-stage">
-      <video
-        id="intro-video"
-        class="intro-video"
-        src="/assets/kids/games/terminal/sitting-at-pc.mp4"
-        muted
-        playsinline
-        preload="auto"
-      ></video>
-      <div class="intro-overlay">
-        <p class="intro-title">Terminal Trainer</p>
-        <button type="button" class="intro-btn" id="intro-start">Tap to start</button>
-        <button type="button" class="intro-btn intro-btn-ghost" id="intro-skip">Skip</button>
-      </div>
-    </div>
-
-    <div class="game-layout" id="game-layout" hidden>
+    <div class="game-layout" id="game-layout">
       <div id="desk-stage" class="desk-stage">
         <div class="desk-canvas">
           <img
@@ -42,80 +28,88 @@
             width="1024"
             height="576"
           />
-          <div id="monitor-viewport" class="monitor-viewport">
-          <div id="terminal-win-banner" class="terminal-win-banner" hidden aria-live="polite">
-            <div class="terminal-win-banner-inner">
-              <p class="terminal-win-stars" aria-hidden="true">***** YOU WIN *****</p>
-              <h2 class="terminal-win-title">Terminal Trainer Complete</h2>
-              <p class="terminal-win-lede">You hacked every level. Here are your rewards:</p>
+          <video
+            id="intro-video"
+            class="intro-video"
+            src="/assets/kids/games/terminal/sitting-at-pc.mp4"
+            muted
+            playsinline
+            preload="auto"
+          ></video>
+          <div id="monitor-viewport" class="monitor-viewport monitor-viewport--hidden">
+            <div id="terminal-win-banner" class="terminal-win-banner" hidden aria-live="polite">
+              <div class="terminal-win-banner-inner">
+                <p class="terminal-win-stars" aria-hidden="true">***** YOU WIN *****</p>
+                <h2 class="terminal-win-title">Terminal Trainer Complete</h2>
+                <p class="terminal-win-lede">You hacked every level. Here are your rewards:</p>
 
-              <section class="terminal-win-reward">
-                <h3 class="terminal-win-reward-title">Game unlock</h3>
-                <p class="terminal-win-reward-text">
-                  <strong id="win-unlock-game-name">Memory Matching Game</strong> is unlocked on the Kids games page.
-                </p>
-                <p class="terminal-win-reward-label">Unlock code</p>
-                <div class="terminal-win-code-row">
-                  <code class="terminal-win-code" id="win-game-code">FORGE-GATE-7</code>
-                  <button type="button" class="terminal-win-copy" data-copy-target="win-game-code">Copy</button>
+                <section class="terminal-win-reward">
+                  <h3 class="terminal-win-reward-title">Game unlock</h3>
+                  <p class="terminal-win-reward-text">
+                    <strong id="win-unlock-game-name">Memory Matching Game</strong> is unlocked on the Kids games page.
+                  </p>
+                  <p class="terminal-win-reward-label">Unlock code</p>
+                  <div class="terminal-win-code-row">
+                    <code class="terminal-win-code" id="win-game-code">FORGE-GATE-7</code>
+                    <button type="button" class="terminal-win-copy" data-copy-target="win-game-code">Copy</button>
+                  </div>
+                </section>
+
+                <section class="terminal-win-reward">
+                  <h3 class="terminal-win-reward-title">Store coupon</h3>
+                  <p class="terminal-win-reward-text" id="win-coupon-label">15% off anything in-store</p>
+                  <p class="terminal-win-reward-label">Coupon code</p>
+                  <div class="terminal-win-code-row">
+                    <code class="terminal-win-code" id="win-coupon-code">DragonForge15</code>
+                    <button type="button" class="terminal-win-copy" data-copy-target="win-coupon-code">Copy</button>
+                  </div>
+                </section>
+
+                <div class="terminal-win-actions">
+                  <a class="terminal-win-btn" id="win-shop-link" href="/shop/">Visit the shop</a>
+                  <a class="terminal-win-btn terminal-win-btn-ghost" id="win-game-link" href="/kids/games/memory-matching/">Unlocked game</a>
+                  <button type="button" class="terminal-win-btn terminal-win-btn-ghost" id="win-play-again">Play again</button>
                 </div>
-              </section>
-
-              <section class="terminal-win-reward">
-                <h3 class="terminal-win-reward-title">Store coupon</h3>
-                <p class="terminal-win-reward-text" id="win-coupon-label">15% off anything in-store</p>
-                <p class="terminal-win-reward-label">Coupon code</p>
-                <div class="terminal-win-code-row">
-                  <code class="terminal-win-code" id="win-coupon-code">DragonForge15</code>
-                  <button type="button" class="terminal-win-copy" data-copy-target="win-coupon-code">Copy</button>
-                </div>
-              </section>
-
-              <div class="terminal-win-actions">
-                <a class="terminal-win-btn" id="win-shop-link" href="/shop/">Visit the shop</a>
-                <a class="terminal-win-btn terminal-win-btn-ghost" id="win-game-link" href="/kids/games/memory-matching/">Unlocked game</a>
-                <button type="button" class="terminal-win-btn terminal-win-btn-ghost" id="win-play-again">Play again</button>
               </div>
             </div>
-          </div>
-          <header class="monitor-hud">
-            <span class="terminal-status" id="terminal-status">Level 1: First Contact</span>
-          </header>
-          <main class="terminal-shell" id="terminal-game">
-            <section
-              class="terminal-screen"
-              id="terminal-screen"
-              aria-live="polite"
-              aria-label="Terminal output"
-            ></section>
+            <header class="monitor-hud">
+              <span class="terminal-status" id="terminal-status">Level 1: First Contact</span>
+            </header>
+            <main class="terminal-shell" id="terminal-game">
+              <section
+                class="terminal-screen"
+                id="terminal-screen"
+                aria-live="polite"
+                aria-label="Terminal output"
+              ></section>
 
-            <div class="terminal-input-row">
-              <label class="terminal-prompt-label" id="terminal-prompt-label" for="terminal-input">A:\></label>
-              <input
-                class="terminal-input"
-                id="terminal-input"
-                type="text"
-                autocomplete="off"
-                autocapitalize="characters"
-                spellcheck="false"
-                aria-label="Terminal command input"
-              />
-            </div>
+              <div class="terminal-input-row">
+                <label class="terminal-prompt-label" id="terminal-prompt-label" for="terminal-input">A:\></label>
+                <input
+                  class="terminal-input"
+                  id="terminal-input"
+                  type="text"
+                  autocomplete="off"
+                  autocapitalize="characters"
+                  spellcheck="false"
+                  aria-label="Terminal command input"
+                />
+              </div>
 
-            <aside class="terminal-panel">
-              <h2 class="terminal-panel-title">Command list</h2>
-              <div class="command-list" id="command-list"></div>
-            </aside>
+              <aside class="terminal-panel">
+                <h2 class="terminal-panel-title">Command list</h2>
+                <div class="command-list" id="command-list"></div>
+              </aside>
 
-            <div class="terminal-restart" id="terminal-restart" hidden>
-              <button type="button">Restart terminal</button>
-            </div>
-          </main>
+              <div class="terminal-restart" id="terminal-restart" hidden>
+                <button type="button">Restart terminal</button>
+              </div>
+            </main>
           </div>
         </div>
       </div>
 
-      <aside class="terminal-hints" id="terminal-hints">
+      <aside class="terminal-hints terminal-hints--hidden" id="terminal-hints">
         <h2 class="terminal-hints-title">Hints</h2>
         <p class="terminal-hint" id="hint-walkthrough"></p>
         <p class="terminal-hint terminal-hint-tip">
@@ -127,8 +121,8 @@
       </aside>
     </div>
 
-    <script src="/assets/js/config.js?v=20260731"></script>
-    <script src="/assets/js/kids-unlocks.js?v=20260731"></script>
-    <script src="/assets/js/terminal-game.js?v=20260731"></script>
+    <script src="/assets/js/config.js?v=20260731b"></script>
+    <script src="/assets/js/kids-unlocks.js?v=20260731b"></script>
+    <script src="/assets/js/terminal-game.js?v=20260731b"></script>
   </body>
 </html>

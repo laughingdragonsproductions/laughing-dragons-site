@@ -386,58 +386,83 @@
   }
 
   function initIntro(onReady) {
-    const introStage = document.getElementById("intro-stage");
     const gameLayout = document.getElementById("game-layout");
     const video = document.getElementById("intro-video");
-    const startBtn = document.getElementById("intro-start");
     const skipBtn = document.getElementById("intro-skip");
+    const fallbackBtn = document.getElementById("intro-fallback");
     const replayBtn = document.getElementById("replay-intro");
+    const monitorViewport = document.getElementById("monitor-viewport");
+    const terminalHints = document.getElementById("terminal-hints");
+    let gameStarted = false;
+
+    if (!gameLayout || !video || !monitorViewport) {
+      onReady();
+      return;
+    }
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    function showIntroMode() {
+      gameLayout.classList.add("is-intro");
+      gameLayout.classList.remove("is-playing");
+      video.classList.remove("is-hidden");
+      monitorViewport.classList.remove("is-revealed");
+      monitorViewport.classList.add("monitor-viewport--hidden");
+      if (terminalHints) terminalHints.classList.add("terminal-hints--hidden");
+      skipBtn.hidden = false;
+      fallbackBtn.hidden = true;
+      replayBtn.hidden = true;
+    }
 
     function showGame() {
-      introStage.hidden = true;
-      gameLayout.hidden = false;
+      video.pause();
+      video.classList.add("is-hidden");
+      gameLayout.classList.remove("is-intro");
+      gameLayout.classList.add("is-playing");
+      monitorViewport.classList.remove("monitor-viewport--hidden");
+      monitorViewport.classList.add("is-revealed");
+      if (terminalHints) terminalHints.classList.remove("terminal-hints--hidden");
+      skipBtn.hidden = true;
+      fallbackBtn.hidden = true;
       replayBtn.hidden = false;
       localStorage.setItem(INTRO_KEY, "1");
-      onReady();
+      if (!gameStarted) {
+        gameStarted = true;
+        onReady();
+      }
     }
 
-    function playIntro() {
-      introStage.hidden = false;
-      gameLayout.hidden = true;
+    function startAutoplay() {
       video.currentTime = 0;
-      video.play().catch(() => {});
+      video.play().catch(() => {
+        fallbackBtn.hidden = false;
+      });
     }
 
-    function finishIntro() {
-      video.pause();
+    function onIntroEnded() {
       showGame();
     }
 
-    if (localStorage.getItem(INTRO_KEY)) {
-      showGame();
-    } else {
-      introStage.hidden = false;
-      gameLayout.hidden = true;
-    }
-
-    startBtn.addEventListener("click", () => {
-      video.play().then(finishIntro).catch(finishIntro);
+    skipBtn.addEventListener("click", showGame);
+    fallbackBtn.addEventListener("click", () => {
+      fallbackBtn.hidden = true;
+      startAutoplay();
     });
-
-    skipBtn.addEventListener("click", finishIntro);
-    video.addEventListener("ended", finishIntro);
+    video.addEventListener("ended", onIntroEnded);
 
     replayBtn.addEventListener("click", () => {
-      gameLayout.hidden = true;
-      introStage.hidden = false;
-      video.currentTime = 0;
-      video.play().catch(() => showGame());
-      video.addEventListener("ended", () => showGame(), { once: true });
-      skipBtn.onclick = () => {
-        video.pause();
-        showGame();
-      };
+      showIntroMode();
+      startAutoplay();
     });
+
+    if (reduceMotion.matches || localStorage.getItem(INTRO_KEY)) {
+      video.classList.add("is-hidden");
+      showGame();
+      return;
+    }
+
+    showIntroMode();
+    startAutoplay();
   }
 
   function createTerminalGame(root) {

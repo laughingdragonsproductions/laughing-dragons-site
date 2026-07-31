@@ -52,62 +52,84 @@
   text-shadow: 0 0 8px var(--term-green-glow);
 }
 
-/* Intro video */
-.intro-stage {
-  position: fixed;
-  inset: 0;
-  z-index: 30;
-  background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.intro-stage[hidden] {
-  display: none;
-}
-
+/* Intro video — stacked on desk frame inside shared 16:9 canvas */
 .intro-video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  z-index: 2;
+  display: block;
+  pointer-events: none;
+  transition: opacity 280ms ease;
 }
 
-.intro-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  background: rgba(0, 0, 0, 0.35);
+.intro-video.is-hidden {
+  opacity: 0;
+  visibility: hidden;
 }
 
-.intro-title {
-  margin: 0;
-  font-size: 1.4rem;
-  letter-spacing: 0.06em;
-  text-shadow: 0 0 12px var(--term-green-glow);
-}
-
-.intro-btn {
-  border: 1px solid var(--term-green);
-  background: rgba(57, 255, 20, 0.12);
+.intro-skip-btn,
+.intro-fallback-btn {
+  position: fixed;
+  z-index: 40;
   color: var(--term-green);
   font: inherit;
-  padding: 0.55rem 1.2rem;
+  font-size: 0.82rem;
+  background: rgba(10, 10, 10, 0.72);
+  border: 1px solid var(--term-green-dim);
+  padding: 0.35rem 0.65rem;
   cursor: pointer;
 }
 
-.intro-btn-ghost {
-  background: transparent;
-  opacity: 0.85;
-  font-size: 0.85rem;
+.intro-skip-btn {
+  right: 0.75rem;
+  bottom: 0.75rem;
+  opacity: 0.75;
 }
 
-.intro-btn:hover {
-  background: rgba(57, 255, 20, 0.22);
+.intro-fallback-btn {
+  left: 50%;
+  bottom: 2rem;
+  transform: translateX(-50%);
+}
+
+.intro-skip-btn:hover,
+.intro-fallback-btn:hover {
+  opacity: 1;
+  text-shadow: 0 0 8px var(--term-green-glow);
+}
+
+.intro-skip-btn[hidden],
+.intro-fallback-btn[hidden] {
+  display: none;
+}
+
+.monitor-viewport--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.monitor-viewport.is-revealed {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 280ms ease;
+}
+
+.terminal-hints--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.game-layout.is-playing .terminal-hints {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 280ms ease 120ms;
 }
 
 /* Layout */
@@ -118,6 +140,10 @@
 }
 
 .game-layout[hidden] {
+  display: none;
+}
+
+.game-layout.is-intro .replay-intro-link {
   display: none;
 }
 
