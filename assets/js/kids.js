@@ -13,28 +13,28 @@ window.KIDS_DATA = {
     {
       letter: "A",
       title: "Letter A — Adam the Apple",
-      status: "in-production",
+      status: "premiere-soon",
       youtubeUrl: "",
       description: "Meet Adam — sweet, happy, and full of energy!",
     },
     {
       letter: "B",
       title: "Letter B — Benjamin the Banana",
-      status: "coming-soon",
+      status: "premiere-soon",
       youtubeUrl: "",
       description: "Benjamin is funny, energetic, and always optimistic.",
     },
     {
       letter: "C",
       title: "Letter C — Cheri the Cherry",
-      status: "coming-soon",
+      status: "in-production",
       youtubeUrl: "",
       description: "Twin cherries who finish each other's sentences.",
     },
     {
       letter: "D",
       title: "Letter D — Drago the Dragon Fruit",
-      status: "coming-soon",
+      status: "in-production",
       youtubeUrl: "",
       description: "Wise adventurer who guides friends on every journey.",
     },
@@ -69,10 +69,21 @@ window.KIDS_DATA = {
   ],
   games: [
     {
+      id: "terminal-trainer",
+      title: "Terminal Trainer",
+      description: "Retro DOS-style terminal — type HELP, DIR, and more to learn basic commands.",
+      href: "/kids/games/terminal/",
+      status: "live",
+    },
+    {
       id: "memory-matching",
       title: "Memory Matching Game",
       description: "Flip cards and match Fruit Friends pairs.",
-      href: "/kids/games/coming-soon/",
+      href: "/kids/games/memory-matching/",
+      status: "unlocked",
+      requiresUnlock: "memory-matching-unlocked",
+      lockedDescription: "Beat Terminal Trainer to unlock this game.",
+      unlockHint: "Finish all three levels in Terminal Trainer.",
     },
     {
       id: "word-search",
@@ -121,6 +132,7 @@ function renderKidsSubnav(active) {
 
 function episodeStatusLabel(status) {
   if (status === "published") return "Watch on YouTube";
+  if (status === "premiere-soon") return "Premiering soon";
   if (status === "in-production") return "In production";
   return "Coming soon";
 }
@@ -194,6 +206,11 @@ function renderKidsCharacters() {
   </section>`;
 }
 
+function isKidsGameUnlocked(game) {
+  if (!game.requiresUnlock) return true;
+  return window.KIDS_UNLOCKS?.has?.(game.requiresUnlock) === true;
+}
+
 function renderKidsGames() {
   const games = window.KIDS_DATA?.games || [];
   return `<section class="kids-section" id="games">
@@ -204,13 +221,33 @@ function renderKidsGames() {
     </div>
     <div class="episode-grid reveal">
       ${games
-        .map(
-          (game) => `<a class="episode-card" href="${game.href}">
+        .map((game) => {
+          const live = game.status === "live";
+          const unlocked = game.status === "unlocked" && isKidsGameUnlocked(game);
+          const locked = Boolean(game.requiresUnlock) && !isKidsGameUnlocked(game);
+
+          if (locked) {
+            return `<article class="episode-card episode-card-locked">
+              <h3>${game.title}</h3>
+              <p>${game.lockedDescription || game.description}</p>
+              <span class="status-tag status-locked">Locked</span>
+              <p class="game-unlock-hint">${game.unlockHint || "Complete Terminal Trainer to unlock."}</p>
+              <a class="btn btn-sm" href="/kids/games/terminal/">Play Terminal Trainer</a>
+            </article>`;
+          }
+
+          const tag = live
+            ? `<span class="status-tag status-published">Play now</span>`
+            : unlocked
+              ? `<span class="status-tag status-unlocked">Unlocked</span>`
+              : `<span class="status-tag status-coming-soon">Coming soon</span>`;
+          const cardClass = live ? "" : unlocked ? " episode-card-unlocked" : " episode-card-soon";
+          return `<a class="episode-card${cardClass}" href="${game.href}">
             <h3>${game.title}</h3>
             <p>${game.description}</p>
-            <span class="status-tag status-coming-soon">Coming soon</span>
-          </a>`
-        )
+            ${tag}
+          </a>`;
+        })
         .join("")}
     </div>
   </section>`;

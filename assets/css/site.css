@@ -754,9 +754,47 @@ a:hover {
   color: #ffb400;
 }
 
+.status-premiere-soon {
+  border-color: rgba(120, 220, 100, 0.35);
+  color: #9be07a;
+}
+
 .status-coming-soon,
 .status-coming-soon.status-tag {
   color: var(--silver);
+}
+
+.status-unlocked {
+  border-color: rgba(57, 255, 20, 0.45);
+  color: var(--neon);
+}
+
+.status-locked {
+  border-color: rgba(255, 90, 90, 0.35);
+  color: #ff9a9a;
+}
+
+.episode-card-locked {
+  display: block;
+  padding: 1.25rem 1.35rem;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+  text-decoration: none;
+  color: inherit;
+}
+
+.episode-card-locked .game-unlock-hint {
+  margin: 0.65rem 0 0.85rem;
+  font-size: 0.88rem;
+  color: var(--silver);
+}
+
+.episode-card-unlocked {
+  border-color: rgba(57, 255, 20, 0.25);
+}
+
+.episode-card-locked .btn {
+  display: inline-block;
 }
 
 .kids-note {
@@ -934,6 +972,13 @@ a:hover {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1rem;
   margin-bottom: 2rem;
+  opacity: 1;
+  transform: none;
+}
+
+.prints-category-grid.reveal {
+  opacity: 1;
+  transform: none;
 }
 
 .prints-category-card {

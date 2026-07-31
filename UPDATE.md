@@ -48,6 +48,7 @@ Or run `.\scripts\push-update.ps1 "Describe what you changed"`
 | What you want to add | File(s) to edit |
 |---------------------|-----------------|
 | **Kids Show episode on YouTube** | `assets/js/kids.js` — set `youtubeUrl` + `status: "published"` |
+| **Episode finished, premiere pending** | `assets/js/kids.js` — set `status: "premiere-soon"` (shows **Premiering soon** tag) |
 | **New Kids episode row** | `assets/js/kids.js` — add object to `episodes[]` |
 | **3D printable STL for a character** | `assets/js/kids.js` — add `printUrl` when ready (see comments in file) |
 | **Character images** | PNGs in `assets/kids/characters/` as `{letter}.png` (a.png–z.png) |
@@ -88,7 +89,14 @@ Commit + push. `/kids/#episodes` shows a **Watch on YouTube** card automatically
 
 ## Kids — games and characters
 
-- **Games:** edit `games[]` in `assets/js/kids.js`. Until a game is built, set `href: "/kids/games/coming-soon/"`.
+- **Games:** edit `games[]` in `assets/js/kids.js`. Until a game is built, set `href: "/kids/games/coming-soon/"`. Live games use `status: "live"` and a real path (e.g. `/kids/games/terminal/`).
+- **Terminal Trainer (local test):** `.\scripts\play-terminal.ps1` or double-click `scripts\play-terminal.bat` → opens `http://localhost:8080/kids/games/terminal/`. Game code: `assets/js/terminal-game.js`, `assets/css/terminal-game.css`, page at `kids/games/terminal/index.html`.
+- **Terminal Trainer media sync:** `.\scripts\copy-terminal-assets.ps1` copies intro video from `G:\Laughing Dragons\Laughing-Dragons.com\Sitting at PC.mp4` into `assets/kids/games/terminal/`. Desk frame lives at `assets/kids/games/terminal/desk-monitor-frame.png`.
+- **Terminal Trainer game tree map:** [`docs/terminal-trainer-game-tree.png`](docs/terminal-trainer-game-tree.png) — visual step-by-step path (steps 1–19).
+- **Terminal Trainer walkthrough & content map:** [`docs/terminal-trainer-walkthrough.md`](docs/terminal-trainer-walkthrough.md) — site pages, repo files, A:\ tree, full command walkthrough, where to add levels.
+- **Monitor overlay tuning:** edit CSS variables `--monitor-top`, `--monitor-left`, `--monitor-width`, `--monitor-height` in `assets/css/terminal-game.css` if the terminal drifts off the PC screen in the desk image.
+- **Terminal Trainer win rewards:** codes and unlock logic live in `assets/js/kids-unlocks.js`. Win banner in `kids/games/terminal/index.html` + `terminal-game.js`. Full deploy checklist: [`docs/terminal-trainer-integration.md`](docs/terminal-trainer-integration.md) (create **DragonForge15** in Shopify admin before go-live).
+- **Kids game unlocks:** `assets/js/kids-unlocks.js` must load on `/kids/` and any gated game page. Hub locked/unlocked cards rendered in `renderKidsGames()` in `kids.js`.
 - **Character sheets:** grid tiles link to `/kids/characters/{letter}/`. Regenerate pages with `python scripts/generate-character-pages.py` if the HTML template changes.
 - **Pillar art sources:** Kids → `G:\Laughing Dragons\Kids Show\assets\Random Images\best shot.png`; Tools → `G:\Laughing Dragons\Images and videos\tools.png`
 

@@ -180,7 +180,7 @@ function renderPrintsHub() {{
   const total = (window.PRINTS_DATA.items || []).length;
   const tiles = categories
     .map(
-      (cat) => `<a class="prints-category-card reveal" href="${{cat.href}}">
+      (cat) => `<a class="prints-category-card" href="${{cat.href}}">
         <img src="${{cat.cover}}" alt="" class="prints-category-cover" loading="lazy" width="480" height="360" />
         <div class="prints-category-copy">
           <h2>${{cat.title}}</h2>
@@ -190,12 +190,12 @@ function renderPrintsHub() {{
     )
     .join("");
 
-  return `<header class="page-header reveal">
+  return `<header class="page-header">
       <p class="pillar-eyebrow">From the workroom</p>
       <h1>3D print files</h1>
       <p>Browse our sellable prints — coolers, coozies, and more as we add categories. Click any design for a closer look.</p>
     </header>
-    <section class="prints-category-grid reveal">
+    <section class="prints-category-grid">
       ${{tiles}}
       <a class="prints-category-card" href="/prints/all/">
         <div class="prints-category-cover prints-category-cover-all" aria-hidden="true">
