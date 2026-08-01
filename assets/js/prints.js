@@ -731,7 +731,7 @@ function renderPrintGrid({ category = null, page = 1, perPage = null, basePath =
     <div class="print-grid" role="list">
       ${result.items.map(renderPrintTile).join("")}
     </div>
-    ${renderPrintPagination({ basePath, page: result.page, totalPages: result.totalPages }})}`;
+    ${renderPrintPagination({ basePath, page: result.page, totalPages: result.totalPages })}`;
 }
 
 function renderPrintsHub() {
