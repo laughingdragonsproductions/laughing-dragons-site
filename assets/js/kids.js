@@ -78,9 +78,9 @@ window.KIDS_DATA = {
     {
       id: "memory-matching",
       title: "Memory Matching Game",
-      description: "Flip cards and match Fruit Friends pairs.",
+      description: "Flip tiles and match laughing dragon pairs on scenic maps.",
       href: "/kids/games/memory-matching/",
-      status: "unlocked",
+      status: "live",
       requiresUnlock: "memory-matching-unlocked",
       lockedDescription: "Beat Terminal Trainer to unlock this game.",
       unlockHint: "Finish all three levels in Terminal Trainer.",
@@ -301,6 +301,24 @@ function renderKidsPrintables() {
     </div>
     <p class="kids-note reveal">Physical prints and finished models are available in our <a href="/prints/">3D print catalog</a> and through the <a href="/shop/">shop</a> when listed.</p>
   </section>`;
+}
+
+function refreshKidsGamesSection() {
+  const section = document.getElementById("games");
+  if (!section) return;
+  const replacement = document.createElement("div");
+  replacement.innerHTML = renderKidsGames();
+  section.replaceWith(replacement.firstElementChild);
+}
+
+function initKidsUnlockListeners() {
+  const refresh = () => refreshKidsGamesSection();
+  window.addEventListener("storage", (e) => {
+    if (e.key === "ldp-kids-unlock-memory-matching-unlocked") refresh();
+  });
+  window.addEventListener("ldp-kids-unlock-changed", (e) => {
+    if (e.detail?.unlockId === "memory-matching-unlocked") refresh();
+  });
 }
 
 function renderKidsHub() {

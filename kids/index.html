@@ -13,9 +13,9 @@
   </head>
   <body>
     <div id="app"></div>
-    <script src="/assets/js/config.js"></script>
-    <script src="/assets/js/kids-unlocks.js"></script>
-    <script src="/assets/js/kids.js"></script>
+    <script src="/assets/js/config.js?v=20260801e"></script>
+    <script src="/assets/js/kids-unlocks.js?v=20260801e"></script>
+    <script src="/assets/js/kids.js?v=20260801e"></script>
     <script src="/assets/js/site.js"></script>
     <script>
       initPage({
@@ -24,6 +24,7 @@
         activePath: "/kids/",
         content: renderKidsHub(),
       });
+      initKidsUnlockListeners();
     </script>
   </body>
 </html>

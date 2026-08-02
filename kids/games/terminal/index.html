@@ -9,11 +9,21 @@
     />
     <title>Terminal Trainer</title>
     <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
-    <link rel="stylesheet" href="/assets/css/terminal-game.css?v=20260731b" />
+    <link rel="stylesheet" href="/assets/css/terminal-game.css?v=20260801d" />
     <link rel="canonical" href="https://laughing-dragons.com/kids/games/terminal/" />
   </head>
   <body class="terminal-page">
     <a class="terminal-back-link" href="/kids/#games">&larr; Kids games</a>
+    <button
+      type="button"
+      class="hints-panel-toggle"
+      id="hints-panel-toggle"
+      hidden
+      aria-expanded="false"
+      aria-controls="terminal-hints"
+    >
+      HELP
+    </button>
     <button type="button" class="replay-intro-link" id="replay-intro" hidden>Replay intro</button>
     <button type="button" class="intro-skip-btn" id="intro-skip" hidden>Skip intro</button>
     <button type="button" class="intro-fallback-btn" id="intro-fallback" hidden>Tap to play intro</button>
@@ -31,7 +41,7 @@
           <video
             id="intro-video"
             class="intro-video"
-            src="/assets/kids/games/terminal/sitting-at-pc.mp4"
+            src="/assets/kids/games/terminal/newterminalvideo.mp4?v=20260801"
             muted
             playsinline
             preload="auto"
@@ -109,7 +119,7 @@
         </div>
       </div>
 
-      <aside class="terminal-hints terminal-hints--hidden" id="terminal-hints">
+      <aside class="terminal-hints" id="terminal-hints" hidden>
         <h2 class="terminal-hints-title">Hints</h2>
         <p class="terminal-hint" id="hint-walkthrough"></p>
         <p class="terminal-hint terminal-hint-tip">
@@ -121,8 +131,8 @@
       </aside>
     </div>
 
-    <script src="/assets/js/config.js?v=20260731b"></script>
-    <script src="/assets/js/kids-unlocks.js?v=20260731b"></script>
-    <script src="/assets/js/terminal-game.js?v=20260731b"></script>
+    <script src="/assets/js/config.js?v=20260801e"></script>
+    <script src="/assets/js/kids-unlocks.js?v=20260801e"></script>
+    <script src="/assets/js/terminal-game.js?v=20260801e"></script>
   </body>
 </html>

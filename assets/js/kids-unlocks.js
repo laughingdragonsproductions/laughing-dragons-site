@@ -24,10 +24,18 @@
     grant(unlockId) {
       try {
         localStorage.setItem(STORAGE_PREFIX + unlockId, "1");
+        window.dispatchEvent(
+          new CustomEvent("ldp-kids-unlock-changed", { detail: { unlockId } })
+        );
         return true;
       } catch {
         return false;
       }
+    },
+
+    /** Hidden dev backdoor — Terminal Trainer CD A:\\Dev\\unlockmatch */
+    grantMemoryMatchingDevUnlock() {
+      return this.grant(KEYS.memoryMatching);
     },
 
     /** Called when Terminal Trainer level 3 is beaten. */

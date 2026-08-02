@@ -6,11 +6,16 @@ $SourceDir = "G:\Laughing Dragons\Laughing-Dragons.com"
 
 New-Item -ItemType Directory -Force -Path $Dest | Out-Null
 
-$VideoSource = Join-Path $SourceDir "Sitting at PC.mp4"
-$VideoDest = Join-Path $Dest "sitting-at-pc.mp4"
+$VideoSource = Join-Path $SourceDir "Newterminalvideo.mp4"
+$VideoDest = Join-Path $Dest "newterminalvideo.mp4"
 if (Test-Path $VideoSource) {
   Copy-Item $VideoSource $VideoDest -Force
   Write-Host "Copied video -> $VideoDest"
+  $LegacyVideo = Join-Path $Dest "sitting-at-pc.mp4"
+  if (Test-Path $LegacyVideo) {
+    Remove-Item $LegacyVideo -Force
+    Write-Host "Removed legacy video -> $LegacyVideo"
+  }
 } else {
   Write-Warning "Video not found: $VideoSource"
 }

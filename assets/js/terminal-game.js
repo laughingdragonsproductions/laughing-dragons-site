@@ -23,12 +23,46 @@
   };
 
   const WALKTHROUGH = [
-    { after: "boot", sidebar: "Step 1: Type HELP and press Enter.", terminal: ">> Try typing HELP to see what this system can do." },
-    { after: "HELP", sidebar: "Step 2: Type DIR and press Enter.", terminal: ">> Now try DIR to list files on the drive." },
-    { after: "DIR", sidebar: "Good start. Use every basic tool to finish Level 1 (see sidebar checklist).", terminal: ">> Explore with CD, TYPE, CLS, ECHO, and REBOOT." },
+    { after: "boot", sidebar: "Step 1: Type HELP and press Enter.", terminal: ">> Type HELP for commands, or CD MISSIONS to start your first mission." },
+    { after: "HELP", sidebar: "Step 2: Type DIR and press Enter.", terminal: ">> Now try DIR to see folders on Drive A — including MISSIONS." },
+    { after: "DIR", sidebar: "Try DIR A:\\MISSIONS or CD MISSIONS to start the mission.", terminal: ">> Explore A:\\MISSIONS\\ for your first mission." },
   ];
 
   const LEVEL1_COMMANDS = ["HELP", "DIR", "CLS", "CD", "TYPE", "ECHO", "REBOOT"];
+
+  const HIDDEN_DEV_UNLOCK = "A:\\DEV\\UNLOCKMATCH\\";
+
+  function normalizePath(path) {
+    let p = path.trim().toUpperCase().replace(/\//g, "\\");
+    if (/^[A-Z]:[^\\]/.test(p)) {
+      p = p.replace(/^([A-Z]):/, "$1:\\");
+    }
+    if (!p.endsWith("\\") && !p.includes(".")) {
+      if (p.endsWith(":")) p += "\\";
+    }
+    return p;
+  }
+
+  function isHiddenUnlockPath(path) {
+    const norm = normalizePath(path).replace(/\\+$/, "");
+    return norm === "A:\\DEV\\UNLOCKMATCH";
+  }
+
+  function grantHiddenMemoryMatchingUnlock() {
+    if (window.KIDS_UNLOCKS?.grantMemoryMatchingDevUnlock) {
+      window.KIDS_UNLOCKS.grantMemoryMatchingDevUnlock();
+      return;
+    }
+    if (window.KIDS_UNLOCKS?.grant) {
+      window.KIDS_UNLOCKS.grant(window.KIDS_UNLOCKS.keys.memoryMatching);
+      return;
+    }
+    try {
+      localStorage.setItem("ldp-kids-unlock-memory-matching-unlocked", "1");
+    } catch {
+      /* ignore */
+    }
+  }
 
   const MISSIONS = {
     1: {
@@ -110,13 +144,18 @@
                 content: [
                   "WELCOME TO THE TERMINAL TRAINER",
                   "",
-                  "There are no directions — just clues.",
-                  "Type HELP to see what this system can do.",
-                  "Use DIR to explore drives and folders.",
-                  "Try CD NOTES, then TYPE WELCOME.TXT",
+                  "Laughing Dragons workroom terminal — online.",
                   "",
-                  "When you have used every basic tool,",
-                  "something special will unlock.",
+                  "Your mission folder is open:",
+                  "  A:\\MISSIONS\\",
+                  "",
+                  "Quick start:",
+                  "  HELP   — list commands",
+                  "  DIR    — list files and folders",
+                  "  CD MISSIONS — enter the mission folder",
+                  "  TYPE LEVEL2.TXT — read your first clue",
+                  "",
+                  "Good luck, operator.",
                 ],
               },
             },
@@ -179,7 +218,7 @@
         level1Complete: Boolean(data.level1Complete),
         level2Complete: Boolean(data.level2Complete),
         level3Complete: Boolean(data.level3Complete),
-        secretUnlocked: Boolean(data.secretUnlocked),
+        secretUnlocked: true,
         fakeEndShown: Boolean(data.fakeEndShown),
         walkthroughComplete: Boolean(data.walkthroughComplete),
         walkthroughStep: data.walkthroughStep || 0,
@@ -198,12 +237,12 @@
       level1Complete: false,
       level2Complete: false,
       level3Complete: false,
-      secretUnlocked: false,
+      secretUnlocked: true,
       fakeEndShown: false,
       walkthroughComplete: false,
       walkthroughStep: 0,
       commandsUsed: new Set(),
-      discoveredCommands: new Set(["HELP", "DIR", "EXIT"]),
+      discoveredCommands: new Set(["HELP", "DIR", "CD", "TYPE", "READ", "CLS", "ECHO", "REBOOT", "LOGIN", "EXIT"]),
       sessionEnded: false,
     };
   }
@@ -226,14 +265,6 @@
     );
   }
 
-  function normalizePath(path) {
-    let p = path.trim().toUpperCase().replace(/\//g, "\\");
-    if (!p.endsWith("\\") && !p.includes(".")) {
-      if (p.endsWith(":")) p += "\\";
-    }
-    return p;
-  }
-
   function splitPath(path) {
     return normalizePath(path).split("\\").filter(Boolean);
   }
@@ -247,6 +278,10 @@
   }
 
   function resolveNode(path, fs = FILESYSTEM) {
+    if (isHiddenUnlockPath(path)) {
+      return { node: { type: "dir", children: {} }, path: HIDDEN_DEV_UNLOCK };
+    }
+
     const parts = splitPath(path);
     if (parts.length === 0) return null;
 
@@ -376,9 +411,6 @@
     if (!resolved || resolved.node.type !== "dir") return [];
 
     let entries = Object.entries(resolved.node.children || {});
-    if (!st.secretUnlocked && normalizePath(resolved.path) === "A:\\") {
-      entries = entries.filter(([name]) => name !== "MISSIONS");
-    }
     if (dirsOnly) {
       entries = entries.filter(([, node]) => node.type === "dir");
     }
@@ -391,9 +423,25 @@
     const skipBtn = document.getElementById("intro-skip");
     const fallbackBtn = document.getElementById("intro-fallback");
     const replayBtn = document.getElementById("replay-intro");
+    const hintsToggleBtn = document.getElementById("hints-panel-toggle");
     const monitorViewport = document.getElementById("monitor-viewport");
     const terminalHints = document.getElementById("terminal-hints");
     let gameStarted = false;
+
+    function setHintsPanelOpen(open) {
+      if (!terminalHints || !hintsToggleBtn) return;
+      terminalHints.hidden = !open;
+      hintsToggleBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+
+    function closeHintsPanel() {
+      setHintsPanelOpen(false);
+    }
+
+    function toggleHintsPanel() {
+      if (!terminalHints) return;
+      setHintsPanelOpen(terminalHints.hidden);
+    }
 
     if (!gameLayout || !video || !monitorViewport) {
       onReady();
@@ -408,10 +456,11 @@
       video.classList.remove("is-hidden");
       monitorViewport.classList.remove("is-revealed");
       monitorViewport.classList.add("monitor-viewport--hidden");
-      if (terminalHints) terminalHints.classList.add("terminal-hints--hidden");
+      if (terminalHints) closeHintsPanel();
       skipBtn.hidden = false;
       fallbackBtn.hidden = true;
       replayBtn.hidden = true;
+      if (hintsToggleBtn) hintsToggleBtn.hidden = true;
     }
 
     function showGame() {
@@ -421,10 +470,11 @@
       gameLayout.classList.add("is-playing");
       monitorViewport.classList.remove("monitor-viewport--hidden");
       monitorViewport.classList.add("is-revealed");
-      if (terminalHints) terminalHints.classList.remove("terminal-hints--hidden");
+      if (terminalHints) closeHintsPanel();
       skipBtn.hidden = true;
       fallbackBtn.hidden = true;
       replayBtn.hidden = false;
+      if (hintsToggleBtn) hintsToggleBtn.hidden = false;
       localStorage.setItem(INTRO_KEY, "1");
       if (!gameStarted) {
         gameStarted = true;
@@ -454,6 +504,10 @@
       showIntroMode();
       startAutoplay();
     });
+
+    if (hintsToggleBtn) {
+      hintsToggleBtn.addEventListener("click", toggleHintsPanel);
+    }
 
     if (reduceMotion.matches || localStorage.getItem(INTRO_KEY)) {
       video.classList.add("is-hidden");
@@ -487,7 +541,6 @@
     let cwd = "A:\\";
     let state = loadProgress();
     let rebooting = false;
-    let fakeEndPending = false;
     let commandHistory = [];
     let historyIndex = -1;
     let draftInput = "";
@@ -495,11 +548,12 @@
     let tabMatchIndex = 0;
     let tabLastPrefix = "";
 
+    function ensureMissionsOpen() {
+      state.secretUnlocked = true;
+      discoverCommand(state, "LOGIN");
+    }
+
     function updateStatus() {
-      if (fakeEndPending && !state.secretUnlocked) {
-        statusEl.textContent = "";
-        return;
-      }
       if (state.level3Complete) {
         statusEl.textContent = "Complete";
         return;
@@ -509,10 +563,6 @@
       statusEl.textContent = `Level ${lvl}: ${mission.title}`;
     }
 
-    function getMissingLevel1Commands(st) {
-      return LEVEL1_COMMANDS.filter((c) => !st.commandsUsed.has(c));
-    }
-
     function getGuideHint() {
       if (state.level3Complete) {
         return "You won! Collect your game unlock and store coupon on the reward screen.";
@@ -520,24 +570,14 @@
       if (state.level2Complete) {
         return "Level 3: CD FINAL → TYPE CLUE.TXT → ECHO LAUGHING-DRAGONS";
       }
-      if (state.secretUnlocked && !state.level2Complete) {
-        return "Level 2: CD MISSIONS → TYPE LEVEL2.TXT → CD VAULT → TYPE HINT.TXT → LOGIN FRUIT-42";
-      }
-      if (state.level1Complete && fakeEndPending && !state.secretUnlocked) {
-        return "Wait... did the game just end? Keep watching the screen.";
-      }
-      if (state.level1Complete && state.secretUnlocked) {
-        return "Level 2: CD MISSIONS and read LEVEL2.TXT for your next clue.";
-      }
       if (!state.walkthroughComplete) {
         const step = WALKTHROUGH[state.walkthroughStep];
         return step ? step.sidebar : "";
       }
-      const missing = getMissingLevel1Commands(state);
-      if (missing.length > 0) {
-        return `Level 1 — still try: ${missing.join(", ")}`;
+      if (!state.level2Complete) {
+        return "Level 2: CD MISSIONS → TYPE LEVEL2.TXT → CD VAULT → TYPE HINT.TXT → LOGIN FRUIT-42";
       }
-      return "Level 1 — use every basic command once to finish.";
+      return "Type HELP to see commands. A:\\MISSIONS\\ is open — start there.";
     }
 
     function populateWinBanner() {
@@ -652,49 +692,6 @@
       promptLabel.textContent = getPrompt(cwd);
     }
 
-    function showFakeEnding() {
-      fakeEndPending = true;
-      state.fakeEndShown = true;
-      saveProgress(state);
-      updateStatus();
-      printLines(MISSIONS[1].fakeEndMessage, "success");
-
-      function revealSecret() {
-        if (state.secretUnlocked) return;
-        state.secretUnlocked = true;
-        state.level = 2;
-        fakeEndPending = false;
-        saveProgress(state);
-        printLines(MISSIONS[1].secretUnlockMessage, "dim");
-        discoverCommand(state, "LOGIN");
-        saveProgress(state);
-        renderCommandList();
-        updateStatus();
-        updateWalkthroughHint();
-        document.removeEventListener("keydown", onSecretKey);
-      }
-
-      function onSecretKey() {
-        revealSecret();
-      }
-
-      setTimeout(revealSecret, 4000);
-      document.addEventListener("keydown", onSecretKey, { once: true });
-    }
-
-    function checkLevel1Complete() {
-      if (state.level1Complete) return false;
-      const required = LEVEL1_COMMANDS;
-      const done = required.every((c) => state.commandsUsed.has(c));
-      if (done) {
-        state.level1Complete = true;
-        saveProgress(state);
-        showFakeEnding();
-        return true;
-      }
-      return false;
-    }
-
     function bootSequence(skipDelay) {
       clearScreen();
       rebooting = false;
@@ -708,16 +705,15 @@
       updateWalkthroughHint();
 
       const lines = [
-        "System Clean.",
-        "Type 'HELP' for help.",
-        "Logging into Drive A:",
+        "Laughing Dragons Terminal Trainer v2.0",
+        "Welcome, operator.",
+        "",
+        "Logging into Drive A: .............. OK",
+        "Mission channel: A:\\MISSIONS\\ .... LIVE",
+        "",
+        "Type HELP for commands — or CD MISSIONS to begin.",
         "",
       ];
-
-      if (state.secretUnlocked) {
-        lines.push("Hidden channel open. Explore A:\\MISSIONS\\");
-        lines.push("");
-      }
 
       const finishBoot = () => {
         if (!state.walkthroughComplete && WALKTHROUGH[0].terminal) {
@@ -794,7 +790,7 @@
     }
 
     function missionsVisible() {
-      return state.secretUnlocked;
+      return true;
     }
 
     function cmdHelp(args) {
@@ -871,6 +867,9 @@
         return;
       }
       cwd = resolved.path.endsWith("\\") ? resolved.path : resolved.path + "\\";
+      if (isHiddenUnlockPath(cwd)) {
+        grantHiddenMemoryMatchingUnlock();
+      }
       updatePrompt();
       onProgressEvent();
     }
@@ -886,7 +885,7 @@
         printLine("Access denied. Hidden folder not yet unlocked.", "error");
         return;
       }
-      if (filePath.includes("VAULT\\HINT.TXT") && !state.secretUnlocked) {
+      if (filePath.includes("VAULT\\HINT.TXT") && !state.level2Complete && !state.secretUnlocked) {
         printLine("[LOCKED — FIND MISSIONS FIRST]", "dim");
         return;
       }
@@ -940,7 +939,6 @@
     function cmdReboot() {
       saveProgress(state);
       renderCommandList();
-      checkLevel1Complete();
       rebooting = true;
       printLine("");
       printLine("Rebooting...", "dim");
@@ -949,10 +947,6 @@
     }
 
     function cmdLogin(args) {
-      if (!state.level1Complete) {
-        printLine("LOGIN locked. Complete Level 1 first.", "error");
-        return;
-      }
       if (!args) {
         printLine("Usage: LOGIN <password>", "error");
         return;
@@ -1008,7 +1002,6 @@
       }
 
       if (cmd !== "REBOOT" && cmd !== "CLS") {
-        checkLevel1Complete();
         saveProgress(state);
         renderCommandList();
         updateStatus();
@@ -1034,6 +1027,7 @@
 
       if (cmd === "RESTART") {
         state = loadProgress();
+        ensureMissionsOpen();
         bootSequence(true);
         return;
       }
@@ -1246,6 +1240,8 @@
     }
 
     syncWinRewardsFromSave();
+    ensureMissionsOpen();
+    saveProgress(state);
     populateWinBanner();
     bootSequence(false);
   }
