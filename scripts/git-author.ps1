@@ -15,6 +15,6 @@ function Invoke-GitCommitWithAuthor {
     [string]$Message
   )
   Set-GitAuthorEnv
-  git commit -m $Message
+  git commit -m $Message | Out-Null
   return $LASTEXITCODE
 }

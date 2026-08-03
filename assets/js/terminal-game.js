@@ -854,6 +854,9 @@
       const next = resolveKidPath(args, cwd);
       if (isHiddenUnlockPath(next)) {
         grantHiddenDevUnlock();
+        printLine("");
+        printLine("UNLOCK OK — Memory Matching is live on the Kids games page.", "success");
+        printLine("");
         return;
       }
       const resolved = resolveNode(next, FILESYSTEM);
