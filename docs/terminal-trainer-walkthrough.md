@@ -21,7 +21,7 @@ Dev reference for [Terminal Trainer](/kids/games/terminal/). Use this to see eve
 
 | What you want to change | File |
 |-------------------------|------|
-| Intro video | [assets/kids/games/terminal/sitting-at-pc.mp4](../assets/kids/games/terminal/sitting-at-pc.mp4) |
+| Intro video | [assets/kids/games/terminal/newterminalvideo.mp4](../assets/kids/games/terminal/newterminalvideo.mp4) |
 | Desk / monitor frame | [assets/kids/games/terminal/desk-monitor-frame.png](../assets/kids/games/terminal/desk-monitor-frame.png) |
 | Monitor position on desk | [assets/css/terminal-game.css](../assets/css/terminal-game.css) — `--monitor-top/left/width/height` |
 | All game logic, levels, filesystem | [assets/js/terminal-game.js](../assets/js/terminal-game.js) |

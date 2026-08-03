@@ -51,10 +51,9 @@ Jarvis HUD store links can include the hub under a "Brand" or "Home" entry.
 
 ## Social profiles
 
-When YouTube / TikTok channel URLs are finalized, add them to:
-
-- `assets/js/config.js` → `links.youtube`, `links.tiktok`
-- `/media/` page link cards
+- YouTube: `https://www.youtube.com/@laughingdragons3800` → `assets/js/config.js` → `links.youtube`
+- TikTok: `https://www.tiktok.com/@laughingdragonsprints` → `assets/js/config.js` → `links.tiktok`
+- `/media/` page link cards use these URLs
 
 ## Optional: shop subdomain
 

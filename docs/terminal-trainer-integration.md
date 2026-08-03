@@ -101,14 +101,13 @@ Optional: add the same code on **Etsy** if you want parity for Etsy shoppers.
 5. Open `/kids/games/memory-matching/` — unlocked landing (not redirect to terminal)
 6. Click **Visit the shop** — correct Shopify/Etsy URL
 
-### 5. Future: ship Memory Matching for real
+### 5. Memory Matching (live)
 
-When the game is playable:
+Playable at `/kids/games/memory-matching/` when unlocked:
 
-1. Build `assets/js/memory-matching-game.js` + page shell (mirror Terminal Trainer pattern)
-2. In `kids.js`, set `status: "live"` on memory-matching
-3. Replace placeholder content in `kids/games/memory-matching/index.html` with the game
-4. Keep `requiresUnlock` so only Terminal winners get access
+1. `assets/js/memory-game.js` + `assets/css/memory-game.css`
+2. `kids.js` → `status: "live"` with `requiresUnlock: "memory-matching-unlocked"`
+3. Art under `assets/kids/games/memory-matching/` (sync: `scripts/copy-matching-assets.ps1`)
 
 ### 6. Optional enhancements
 

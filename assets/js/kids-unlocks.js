@@ -34,8 +34,8 @@
     },
 
     /** Hidden dev backdoor — Terminal Trainer CD A:\\Dev\\unlockmatch */
-    grantMemoryMatchingDevUnlock() {
-      return this.grant(KEYS.memoryMatching);
+    grantHiddenDevUnlock() {
+      return this.grantTerminalWin();
     },
 
     /** Called when Terminal Trainer level 3 is beaten. */

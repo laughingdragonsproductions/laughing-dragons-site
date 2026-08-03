@@ -9,6 +9,8 @@ window.SITE_CONFIG = {
     etsy: "https://www.etsy.com/shop/LaughingDragonsForge",
     shopify: "https://laughing-dragons.myshopify.com",
     shopifyFuture: "https://laughingdragonsproductions.com",
+    youtube: "https://www.youtube.com/@laughingdragons3800",
+    tiktok: "https://www.tiktok.com/@laughingdragonsprints",
     privacyLegacy: "https://sparkster1010.github.io/LDPPP/privacy.html",
     tools: "https://laughing-dragons.com/tools/",
   },

@@ -30,8 +30,6 @@
 
   const LEVEL1_COMMANDS = ["HELP", "DIR", "CLS", "CD", "TYPE", "ECHO", "REBOOT"];
 
-  const HIDDEN_DEV_UNLOCK = "A:\\DEV\\UNLOCKMATCH\\";
-
   function normalizePath(path) {
     let p = path.trim().toUpperCase().replace(/\//g, "\\");
     if (/^[A-Z]:[^\\]/.test(p)) {
@@ -48,16 +46,17 @@
     return norm === "A:\\DEV\\UNLOCKMATCH";
   }
 
-  function grantHiddenMemoryMatchingUnlock() {
-    if (window.KIDS_UNLOCKS?.grantMemoryMatchingDevUnlock) {
-      window.KIDS_UNLOCKS.grantMemoryMatchingDevUnlock();
+  function grantHiddenDevUnlock() {
+    if (window.KIDS_UNLOCKS?.grantHiddenDevUnlock) {
+      window.KIDS_UNLOCKS.grantHiddenDevUnlock();
       return;
     }
-    if (window.KIDS_UNLOCKS?.grant) {
-      window.KIDS_UNLOCKS.grant(window.KIDS_UNLOCKS.keys.memoryMatching);
+    if (window.KIDS_UNLOCKS?.grantTerminalWin) {
+      window.KIDS_UNLOCKS.grantTerminalWin();
       return;
     }
     try {
+      localStorage.setItem("ldp-kids-unlock-terminal-trainer-complete", "1");
       localStorage.setItem("ldp-kids-unlock-memory-matching-unlocked", "1");
     } catch {
       /* ignore */
@@ -278,10 +277,6 @@
   }
 
   function resolveNode(path, fs = FILESYSTEM) {
-    if (isHiddenUnlockPath(path)) {
-      return { node: { type: "dir", children: {} }, path: HIDDEN_DEV_UNLOCK };
-    }
-
     const parts = splitPath(path);
     if (parts.length === 0) return null;
 
@@ -857,6 +852,10 @@
         return;
       }
       const next = resolveKidPath(args, cwd);
+      if (isHiddenUnlockPath(next)) {
+        grantHiddenDevUnlock();
+        return;
+      }
       const resolved = resolveNode(next, FILESYSTEM);
       if (!resolved || resolved.node.type !== "dir") {
         printLine("Invalid directory", "error");
@@ -867,9 +866,6 @@
         return;
       }
       cwd = resolved.path.endsWith("\\") ? resolved.path : resolved.path + "\\";
-      if (isHiddenUnlockPath(cwd)) {
-        grantHiddenMemoryMatchingUnlock();
-      }
       updatePrompt();
       onProgressEvent();
     }

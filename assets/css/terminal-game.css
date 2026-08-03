@@ -26,12 +26,12 @@
 }
 
 .terminal-back-link,
-.replay-intro-link {
+.replay-intro-link,
+.hints-panel-toggle {
   position: fixed;
   z-index: 40;
-  top: 0.75rem;
   color: var(--term-green);
-  text-decoration: none;
+  font: inherit;
   font-size: 0.85rem;
   background: rgba(10, 10, 10, 0.75);
   border: 1px solid var(--term-green-dim);
@@ -39,17 +39,39 @@
 }
 
 .terminal-back-link {
+  top: 0.75rem;
   left: 0.75rem;
+  text-decoration: none;
+}
+
+.hints-panel-toggle {
+  top: 0.75rem;
+  right: 0.75rem;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+}
+
+.hints-panel-toggle[aria-expanded="true"] {
+  background: rgba(57, 255, 20, 0.18);
+  border-color: var(--term-green);
+  text-shadow: 0 0 8px var(--term-green-glow);
 }
 
 .replay-intro-link {
+  top: 2.85rem;
   right: 0.75rem;
   cursor: pointer;
 }
 
 .terminal-back-link:hover,
-.replay-intro-link:hover {
+.replay-intro-link:hover,
+.hints-panel-toggle:hover {
   text-shadow: 0 0 8px var(--term-green-glow);
+}
+
+.hints-panel-toggle[hidden],
+.replay-intro-link[hidden] {
+  display: none;
 }
 
 /* Intro video — stacked on desk frame inside shared 16:9 canvas */
@@ -119,20 +141,21 @@
   transition: opacity 280ms ease;
 }
 
-.terminal-hints--hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+/* Hints sidebar — hidden until HELP toggle opens it */
+.terminal-hints {
+  width: min(240px, 28vw);
+  flex-shrink: 0;
+  padding: 1rem 0.85rem;
+  border-left: 1px solid var(--term-green-dim);
+  background: rgba(57, 255, 20, 0.03);
+  font-size: 0.82rem;
+  line-height: 1.45;
 }
 
-.game-layout.is-playing .terminal-hints {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transition: opacity 280ms ease 120ms;
+.terminal-hints[hidden] {
+  display: none;
 }
 
-/* Layout */
 .game-layout {
   display: flex;
   min-height: 100vh;
@@ -143,7 +166,8 @@
   display: none;
 }
 
-.game-layout.is-intro .replay-intro-link {
+.game-layout.is-intro .replay-intro-link,
+.game-layout.is-intro .hints-panel-toggle {
   display: none;
 }
 
@@ -334,17 +358,7 @@
   display: none;
 }
 
-/* Hints sidebar */
-.terminal-hints {
-  width: min(240px, 28vw);
-  flex-shrink: 0;
-  padding: 1rem 0.85rem;
-  border-left: 1px solid var(--term-green-dim);
-  background: rgba(57, 255, 20, 0.03);
-  font-size: 0.82rem;
-  line-height: 1.45;
-}
-
+/* Hints sidebar content */
 .terminal-hints-title {
   margin: 0 0 0.65rem;
   font-size: 0.75rem;

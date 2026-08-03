@@ -16,6 +16,7 @@
     <script src="/assets/js/config.js"></script>
     <script src="/assets/js/site.js"></script>
     <script>
+      const links = window.SITE_CONFIG?.links || {};
       initPage({
         title: "Media",
         description: "Laughing Dragons media — YouTube, TikTok, and studio video.",
@@ -31,14 +32,14 @@
               <h2>Kids Show episodes</h2>
               <p>Full letter episodes live on the <strong>Kids</strong> hub — YouTube links appear there as each episode publishes.</p>
             </a>
-            <div class="link-card">
+            <a class="link-card" href="${links.youtube || "#"}" target="_blank" rel="noopener noreferrer">
               <h2>YouTube</h2>
               <p>Laughing Dragons Productions channel — uploads from our social pipeline as episodes and clips go live.</p>
-            </div>
-            <div class="link-card">
+            </a>
+            <a class="link-card" href="${links.tiktok || "#"}" target="_blank" rel="noopener noreferrer">
               <h2>TikTok</h2>
               <p>Short clips and behind-the-workroom moments tagged #LaughingDragons.</p>
-            </div>
+            </a>
           </section>
         `,
       });
