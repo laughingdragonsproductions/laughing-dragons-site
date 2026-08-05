@@ -49,13 +49,13 @@ function renderFooter() {
         <strong>Explore</strong>
         ${NAV.map((item) => `<a href="${item.href}">${item.label}</a>`).join("")}
         <a href="/blog/">Blog</a>
-        <a href="/contact/">Contact</a>
       </nav>
       <nav class="footer-nav" aria-label="Legal">
         <strong>Legal</strong>
         <a href="/privacy/">Privacy</a>
         <a href="/terms/">Terms</a>
         <a href="/about/">About</a>
+        <a href="/contact/">Contact Us</a>
       </nav>
     </div>
     <div class="container footer-bottom">
@@ -209,4 +209,92 @@ function bindReducedMotionVideo() {
   };
   apply();
   reduce.addEventListener("change", apply);
+}
+
+function renderContactForm({ intro = "" } = {}) {
+  return `
+    <div class="prose reveal">
+      ${intro ? `<p>${intro}</p>` : ""}
+      <form class="contact-form" id="contact-form" novalidate>
+        <input type="checkbox" name="botcheck" class="contact-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="form-field">
+          <label for="contact-name">Name</label>
+          <input type="text" id="contact-name" name="name" required autocomplete="name" maxlength="80" />
+        </div>
+        <div class="form-field">
+          <label for="contact-email">Email</label>
+          <input type="email" id="contact-email" name="email" required autocomplete="email" />
+        </div>
+        <div class="form-field">
+          <label for="contact-subject">Subject <span class="optional">(optional)</span></label>
+          <input type="text" id="contact-subject" name="subject" maxlength="120" />
+        </div>
+        <div class="form-field">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" required rows="6" maxlength="5000"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send message</button>
+        <p class="form-status" id="contact-form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>`;
+}
+
+function bindContactForm(options = {}) {
+  const form = document.getElementById("contact-form");
+  if (!form) return;
+
+  const statusEl = document.getElementById("contact-form-status");
+  const cfg = window.SITE_CONFIG || {};
+  const accessKey = cfg.web3formsAccessKey;
+  const subjectPrefix = options.subjectPrefix || cfg.legalName || cfg.name || "Website";
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    if (!accessKey) {
+      if (statusEl) {
+        statusEl.textContent = "Contact form is not configured yet. Please try again later.";
+        statusEl.className = "form-status form-status-error";
+      }
+      return;
+    }
+
+    if (submitBtn) submitBtn.disabled = true;
+    if (statusEl) {
+      statusEl.textContent = "Sending…";
+      statusEl.className = "form-status form-status-pending";
+    }
+
+    const fd = new FormData(form);
+    fd.append("access_key", accessKey);
+    fd.append("from_name", subjectPrefix);
+    const subject = fd.get("subject");
+    fd.set("subject", subject ? `${subjectPrefix}: ${subject}` : `${subjectPrefix} — Contact form`);
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: fd,
+        headers: { Accept: "application/json" },
+      });
+      const data = await res.json();
+      if (data.success) {
+        form.reset();
+        if (statusEl) {
+          statusEl.textContent = "Thanks — your message was sent. We'll get back to you soon.";
+          statusEl.className = "form-status form-status-success";
+        }
+      } else {
+        throw new Error(data.message || "Something went wrong.");
+      }
+    } catch (err) {
+      if (statusEl) {
+        statusEl.textContent = err.message || "Could not send your message. Please try again.";
+        statusEl.className = "form-status form-status-error";
+      }
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
+  });
 }
