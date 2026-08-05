@@ -280,11 +280,9 @@ function bindContactForm(options = {}) {
       });
       const data = await res.json();
       if (data.success) {
-        form.reset();
-        if (statusEl) {
-          statusEl.textContent = "Thanks — your message was sent. We'll get back to you soon.";
-          statusEl.className = "form-status form-status-success";
-        }
+        const redirectUrl = `${cfg.domain || "https://laughing-dragons.com"}/submissionsent/`;
+        window.location.href = redirectUrl;
+        return;
       } else {
         throw new Error(data.message || "Something went wrong.");
       }
