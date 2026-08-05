@@ -4,7 +4,7 @@ window.SITE_CONFIG = {
   legalName: "Laughing Dragons Productions",
   tagline: "Inside the workroom — media, tools, prints, and maker gear.",
   domain: "https://laughing-dragons.com",
-  web3formsAccessKey: "",
+  web3formsAccessKey: "0235bcac-35ff-4f1c-b17b-e08aaf3866e1",
   links: {
     etsy: "https://www.etsy.com/shop/LaughingDragonsForge",
     shopify: "https://laughing-dragons.myshopify.com",
