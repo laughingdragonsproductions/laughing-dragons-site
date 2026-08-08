@@ -614,6 +614,32 @@ body.memory-page {
   font-weight: 600;
 }
 
+.win-unlock {
+  margin: 0 0 1rem;
+  padding: 0.85rem 0.9rem;
+  border-radius: 12px;
+  background: rgba(61, 154, 106, 0.15);
+  border: 1px solid rgba(109, 212, 160, 0.45);
+  text-align: center;
+}
+
+.win-unlock-title {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  color: #6dd4a0;
+}
+
+.win-unlock-text {
+  margin: 0 0 0.75rem;
+  font-size: 0.92rem;
+  color: rgba(247, 241, 228, 0.88);
+}
+
+.win-unlock .btn {
+  text-decoration: none;
+  display: inline-flex;
+}
+
 .win-lede {
   margin: 0 0 0.5rem;
   color: rgba(247, 241, 228, 0.85);

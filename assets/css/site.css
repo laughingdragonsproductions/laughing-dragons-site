@@ -352,6 +352,46 @@ a:hover {
   font-size: 0.95rem;
 }
 
+.laser-body {
+  padding: 3.5rem 0 4.5rem;
+}
+
+.laser-body .page-header h2 {
+  margin: 0 0 0.75rem;
+  font: 700 clamp(2rem, 5vw, 3.2rem) / 1 var(--font-display);
+  text-transform: uppercase;
+}
+
+.laser-grid {
+  margin-bottom: 3rem;
+}
+
+.laser-card {
+  cursor: default;
+}
+
+.laser-card:hover {
+  transform: none;
+}
+
+.laser-store {
+  margin-bottom: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.laser-store h2 {
+  margin: 0 0 0.75rem;
+  font: 700 clamp(1.6rem, 4vw, 2.4rem) / 1 var(--font-display);
+  text-transform: uppercase;
+}
+
+.laser-store p {
+  max-width: 42rem;
+  margin: 0 0 1.25rem;
+  color: var(--silver);
+}
+
 .prose {
   max-width: 46rem;
 }

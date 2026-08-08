@@ -88,6 +88,9 @@
   const winParEl = document.getElementById("win-par");
   const winRatingEl = document.getElementById("win-rating");
   const winBestNoteEl = document.getElementById("win-best-note");
+  const winUnlockEl = document.getElementById("win-unlock");
+  const winUnlockGameNameEl = document.getElementById("win-unlock-game-name");
+  const winUnlockLinkEl = document.getElementById("win-unlock-link");
   const playAgainBtn = document.getElementById("play-again");
   const srAnnounceEl = document.getElementById("sr-announce");
 
@@ -357,12 +360,26 @@
     setStatus("Not a match — try again!");
   }
 
+  function beatPar(moves, difficulty) {
+    const par = DIFFICULTY_CONFIG[difficulty]?.par ?? DIFFICULTY_CONFIG.hard.par;
+    return moves <= par;
+  }
+
   function showWin() {
     const config = getDifficultyConfig();
     const rating = getRating(state.moves, prefs.difficulty);
     const bestKey = BEST_KEYS[prefs.difficulty];
     const previousBest = Number(localStorage.getItem(bestKey) || "0");
     const isNewBest = !previousBest || state.moves < previousBest;
+    const atOrUnderPar = beatPar(state.moves, prefs.difficulty);
+    const rewards = window.KIDS_REWARDS?.memoryMatching || {};
+    const wasFruitSearchUnlocked = window.KIDS_UNLOCKS?.isFruitSearchUnlocked?.() === true;
+    let newlyUnlockedFruitSearch = false;
+
+    if (atOrUnderPar && window.KIDS_UNLOCKS?.grantFruitSearchUnlock) {
+      window.KIDS_UNLOCKS.grantFruitSearchUnlock();
+      newlyUnlockedFruitSearch = !wasFruitSearchUnlocked;
+    }
 
     winMovesEl.textContent = String(state.moves);
     winParEl.textContent = String(config.par);
@@ -370,19 +387,33 @@
     winRatingEl.dataset.tier = rating.label.toLowerCase().replace(/\s+/g, "-");
     winBestNoteEl.hidden = !isNewBest;
 
+    if (winUnlockEl) {
+      winUnlockEl.hidden = !newlyUnlockedFruitSearch;
+    }
+    if (winUnlockGameNameEl) {
+      winUnlockGameNameEl.textContent = rewards.unlocksGameTitle || "Fruit Search";
+    }
+    if (winUnlockLinkEl) {
+      winUnlockLinkEl.href = rewards.unlocksGameHref || "/kids/games/fruit-search/";
+    }
+
     if (isNewBest) {
       localStorage.setItem(bestKey, String(state.moves));
     }
 
     winEl.hidden = false;
-    announce(`You matched them all in ${state.moves} moves. Rating: ${rating.label}`);
-    setStatus("Board cleared!");
+    const unlockMsg = newlyUnlockedFruitSearch
+      ? ` Fruit Search unlocked!`
+      : "";
+    announce(`You matched them all in ${state.moves} moves. Rating: ${rating.label}.${unlockMsg}`);
+    setStatus(newlyUnlockedFruitSearch ? "Board cleared — new game unlocked!" : "Board cleared!");
     updateBestScoresDisplay();
   }
 
   function hideWin() {
     winEl.hidden = true;
     winBestNoteEl.hidden = true;
+    if (winUnlockEl) winUnlockEl.hidden = true;
   }
 
   function newGame() {

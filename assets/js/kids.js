@@ -84,12 +84,20 @@ window.KIDS_DATA = {
       requiresUnlock: "memory-matching-unlocked",
       lockedDescription: "Beat Terminal Trainer to unlock this game.",
       unlockHint: "Finish all three levels in Terminal Trainer.",
+      unlockHref: "/kids/games/terminal/",
+      unlockButtonLabel: "Play Terminal Trainer",
     },
     {
-      id: "word-search",
-      title: "Word Search Generator",
-      description: "Printable word searches themed around the alphabet cast.",
-      href: "/kids/games/coming-soon/",
+      id: "fruit-search",
+      title: "Fruit Search",
+      description: "I-Spy style — scan busy maps and find the Fruit Friend you're looking for.",
+      href: "/kids/games/fruit-search/",
+      status: "unlocked",
+      requiresUnlock: "fruit-search-unlocked",
+      lockedDescription: "Beat par on Memory Matching to unlock this game.",
+      unlockHint: "Clear the board at or under par — Standard rating or better.",
+      unlockHref: "/kids/games/memory-matching/",
+      unlockButtonLabel: "Play Memory Matching",
     },
     {
       id: "maze-generator",
@@ -217,7 +225,7 @@ function renderKidsGames() {
     <div class="kids-section-head reveal">
       <p class="pillar-eyebrow">Play</p>
       <h2>Games</h2>
-      <p>Browser games for Fruit Friends fans — matching, word search, mazes, and more as we build them.</p>
+      <p>Browser games for Fruit Friends fans — matching, I-Spy search, mazes, and more as we build them.</p>
     </div>
     <div class="episode-grid reveal">
       ${games
@@ -232,7 +240,7 @@ function renderKidsGames() {
               <p>${game.lockedDescription || game.description}</p>
               <span class="status-tag status-locked">Locked</span>
               <p class="game-unlock-hint">${game.unlockHint || "Complete Terminal Trainer to unlock."}</p>
-              <a class="btn btn-sm" href="/kids/games/terminal/">Play Terminal Trainer</a>
+              <a class="btn btn-sm" href="${game.unlockHref || "/kids/games/terminal/"}">${game.unlockButtonLabel || "Play Terminal Trainer"}</a>
             </article>`;
           }
 
@@ -314,10 +322,22 @@ function refreshKidsGamesSection() {
 function initKidsUnlockListeners() {
   const refresh = () => refreshKidsGamesSection();
   window.addEventListener("storage", (e) => {
-    if (e.key === "ldp-kids-unlock-memory-matching-unlocked") refresh();
+    if (
+      e.key === "ldp-kids-unlock-memory-matching-unlocked" ||
+      e.key === "ldp-kids-unlock-fruit-search-unlocked" ||
+      e.key === "ldp-kids-unlock-word-search-unlocked"
+    ) {
+      refresh();
+    }
   });
   window.addEventListener("ldp-kids-unlock-changed", (e) => {
-    if (e.detail?.unlockId === "memory-matching-unlocked") refresh();
+    if (
+      e.detail?.unlockId === "memory-matching-unlocked" ||
+      e.detail?.unlockId === "fruit-search-unlocked" ||
+      e.detail?.unlockId === "word-search-unlocked"
+    ) {
+      refresh();
+    }
   });
 }
 

@@ -4,6 +4,7 @@ param(
   [switch]$Force,
   [switch]$HubOnly,
   [switch]$ChittinOnly,
+  [switch]$ReptoolsOnly,
   [switch]$DryRun
 )
 
@@ -24,6 +25,13 @@ $Sites = @(
     Path = "G:\Laughing Dragons\Chittinnchattin.com"
     Branch = "main"
     LiveUrl = "https://chittinnchattin.com"
+  },
+  @{
+    Id = "reptools"
+    Name = "Reptools"
+    Path = "G:\LocalAIagent\reptools-site"
+    Branch = "main"
+    LiveUrl = "https://reptools.pages.dev"
   }
 )
 
@@ -114,6 +122,9 @@ if ($HubOnly) {
 }
 elseif ($ChittinOnly) {
   $selected = @($Sites | Where-Object { $_.Id -eq "chittin" })
+}
+elseif ($ReptoolsOnly) {
+  $selected = @($Sites | Where-Object { $_.Id -eq "reptools" })
 }
 
 Write-Host "Push all sites - $Message"

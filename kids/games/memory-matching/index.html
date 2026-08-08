@@ -9,7 +9,7 @@
     />
     <title>Memory Matching Game</title>
     <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
-    <link rel="stylesheet" href="/assets/css/memory-game.css?v=20260801b" />
+    <link rel="stylesheet" href="/assets/css/memory-game.css?v=20260803" />
     <link rel="canonical" href="https://laughing-dragons.com/kids/games/memory-matching/" />
     <script
       async
@@ -19,7 +19,7 @@
   </head>
   <body class="memory-page">
     <script src="/assets/js/config.js?v=20260801d"></script>
-    <script src="/assets/js/kids-unlocks.js?v=20260801d"></script>
+    <script src="/assets/js/kids-unlocks.js?v=20260803"></script>
     <script>
       if (!window.KIDS_UNLOCKS?.isMemoryMatchingUnlocked?.()) {
         window.location.replace("/kids/games/terminal/");
@@ -138,6 +138,13 @@
         <p class="win-rating" id="win-rating">Standard</p>
         <p class="win-lede">Cleared in <strong id="win-moves">0</strong> moves · Par <strong id="win-par">16</strong></p>
         <p class="win-best-note" id="win-best-note" hidden>New best score!</p>
+        <section class="win-unlock" id="win-unlock" hidden>
+          <h3 class="win-unlock-title">Game unlocked!</h3>
+          <p class="win-unlock-text">
+            You beat par — <strong id="win-unlock-game-name">Fruit Search</strong> is on the Kids games page.
+          </p>
+          <a class="btn btn-primary" id="win-unlock-link" href="/kids/games/fruit-search/">Go to unlocked game</a>
+        </section>
         <div class="win-actions">
           <button type="button" class="btn btn-primary" id="play-again">Play again</button>
           <button type="button" class="btn" id="win-menu">Main menu</button>
@@ -147,6 +154,6 @@
 
     <div class="sr-announce" id="sr-announce" aria-live="assertive"></div>
 
-    <script src="/assets/js/memory-game.js?v=20260801b"></script>
+    <script src="/assets/js/memory-game.js?v=20260803"></script>
   </body>
 </html>

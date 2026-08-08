@@ -4,6 +4,7 @@ const NAV = [
   { href: "/tools/", label: "Tools" },
   { href: "/shop/", label: "Shop" },
   { href: "/prints/", label: "Prints" },
+  { href: "/laser/", label: "Laser" },
   { href: "/apps/", label: "Apps" },
   { href: "/media/", label: "Media" },
   { href: "/about/", label: "About" },
@@ -24,6 +25,7 @@ function renderHeader(activePath) {
               activePath === item.href ||
               (item.href === "/tools/" && (activePath === "/tools/" || (activePath && activePath.startsWith("/tools/")))) ||
               (item.href === "/prints/" && (activePath === "/prints/" || (activePath && activePath.startsWith("/prints/")))) ||
+              (item.href === "/laser/" && (activePath === "/laser/" || (activePath && activePath.startsWith("/laser/")))) ||
               (item.href === "/kids/" &&
                 (activePath === "/kids/" ||
                   (activePath && activePath.startsWith("/kids/") && !activePath.startsWith("/kids/games/")))) ||
@@ -87,24 +89,42 @@ function pushAds() {
 }
 
 function renderHero() {
-  return `<section class="hero" aria-label="Welcome">
+  return renderMediaHero({
+    ariaLabel: "Welcome",
+    videoSrc: "/assets/brand/ldp-hero.mp4",
+    posterSrc: "/assets/brand/ldp-workroom-banner.png",
+    eyebrow: "PRODUCTIONS",
+    title: "Laughing Dragons",
+    subline: "Kids show, free learning tools, maker gear, 3D prints, and everything we build from the workroom floor.",
+    ctas: [
+      { href: "/kids/", label: "Kids Show", primary: true },
+      { href: "/shop/", label: "Shop the floor", primary: true },
+      { href: "#explore", label: "Explore everything", ghost: true },
+    ],
+  });
+}
+
+function renderMediaHero({ ariaLabel, videoSrc, posterSrc, eyebrow, title, subline, ctas = [] }) {
+  const ctaHtml = ctas
+    .map((c) => {
+      const cls = c.ghost ? "btn btn-ghost" : "btn btn-primary";
+      return `<a class="${cls}" href="${c.href}">${c.label}</a>`;
+    })
+    .join("");
+  return `<section class="hero" aria-label="${ariaLabel}">
     <div class="hero-media">
       <video class="hero-video" autoplay muted loop playsinline preload="metadata"
-        poster="/assets/brand/ldp-workroom-banner.png">
-        <source src="/assets/brand/ldp-hero.mp4" type="video/mp4" />
+        poster="${posterSrc}">
+        <source src="${videoSrc}" type="video/mp4" />
       </video>
-      <img class="hero-fallback" src="/assets/brand/ldp-workroom-banner.png" alt="" />
+      <img class="hero-fallback" src="${posterSrc}" alt="" />
       <div class="hero-scrim"></div>
     </div>
     <div class="hero-content container">
-      <p class="hero-eyebrow">PRODUCTIONS</p>
-      <h1 class="hero-title">Laughing Dragons</h1>
-      <p class="hero-subline">Kids show, free learning tools, maker gear, 3D prints, and everything we build from the workroom floor.</p>
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="/kids/">Kids Show</a>
-        <a class="btn btn-primary" href="/shop/">Shop the floor</a>
-        <a class="btn btn-ghost" href="#explore">Explore everything</a>
-      </div>
+      <p class="hero-eyebrow">${eyebrow}</p>
+      <h1 class="hero-title">${title}</h1>
+      <p class="hero-subline">${subline}</p>
+      ${ctaHtml ? `<div class="hero-cta">${ctaHtml}</div>` : ""}
     </div>
   </section>`;
 }
@@ -127,7 +147,7 @@ function renderPillar({ id, eyebrow, title, body, href, cta, reverse = false, im
   </section>`;
 }
 
-function initPage({ title, description, activePath, content, hero = false, adSlots = true }) {
+function initPage({ title, description, activePath, content, hero = false, mediaHero = null, adSlots = true }) {
   const cfg = window.SITE_CONFIG || {};
   document.title = title ? `${title} | ${cfg.name}` : cfg.name;
   const meta = document.querySelector('meta[name="description"]');
@@ -136,10 +156,11 @@ function initPage({ title, description, activePath, content, hero = false, adSlo
   const root = document.getElementById("app");
   if (!root) return;
 
+  const hasFullBleedHero = hero || mediaHero;
   root.innerHTML = `
     ${renderHeader(activePath)}
-    ${hero ? renderHero() : ""}
-    <main class="${hero ? "page-main" : "container page-main page-inner"}">
+    ${mediaHero || (hero ? renderHero() : "")}
+    <main class="${hasFullBleedHero ? "page-main" : "container page-main page-inner"}">
       ${!hero && adSlots ? `<div class="ad-slot ad-top">${renderAdSlot("header", "ad-unit")}</div>` : ""}
       ${content}
       ${adSlots ? `<div class="ad-slot ad-bottom">${renderAdSlot("footer", "ad-unit")}</div>` : ""}

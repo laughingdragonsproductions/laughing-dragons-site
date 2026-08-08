@@ -63,6 +63,7 @@ Options: `-HubOnly`, `-ChittinOnly`, `-Force` (skip size block), `-DryRun` (prev
 | **New free tool** | Copy a file in `tools/`, add to `assets/js/tools.js` `TOOLS`, add URL to `sitemap.xml` |
 | **Blog post** | New HTML under `blog/posts/`, link from `blog/index.html`, add to `sitemap.xml` |
 | **Shop / Etsy / Shopify URL** | `assets/js/config.js` → `links` |
+| **Contact form / Web3Forms key** | `assets/js/config.js` → `web3formsAccessKey`; page copy in `contact/index.html`; thank-you page at `submissionsent/index.html`. Contact stays in footer Legal (not `NAV`) by design. |
 | **New top-level page** | Create `section/index.html`, add to `assets/js/site.js` `NAV`, add to `sitemap.xml` |
 | **New sellable 3D print (cooler)** | Add `.3mf` to source folder, run `python scripts/extract-cooler-images.py`, push |
 | **Store goes live (Buy buttons)** | Change `buyHref` in `assets/js/prints.js` to Shopify URL |

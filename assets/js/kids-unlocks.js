@@ -8,7 +8,19 @@
   const KEYS = {
     terminalComplete: "terminal-trainer-complete",
     memoryMatching: "memory-matching-unlocked",
+    fruitSearch: "fruit-search-unlocked",
   };
+
+  function migrateUnlockKeys() {
+    try {
+      if (localStorage.getItem(STORAGE_PREFIX + "word-search-unlocked") === "1") {
+        localStorage.setItem(STORAGE_PREFIX + KEYS.fruitSearch, "1");
+        localStorage.removeItem(STORAGE_PREFIX + "word-search-unlocked");
+      }
+    } catch {
+      /* ignore */
+    }
+  }
 
   window.KIDS_UNLOCKS = {
     keys: KEYS,
@@ -47,6 +59,15 @@
     isMemoryMatchingUnlocked() {
       return this.has(KEYS.memoryMatching);
     },
+
+    isFruitSearchUnlocked() {
+      return this.has(KEYS.fruitSearch);
+    },
+
+    /** Called when Memory Matching is cleared at or under par. */
+    grantFruitSearchUnlock() {
+      return this.grant(KEYS.fruitSearch);
+    },
   };
 
   window.KIDS_REWARDS = {
@@ -60,9 +81,17 @@
       shopHref: "/shop/",
     },
 
+    memoryMatching: {
+      unlocksGameId: "fruit-search",
+      unlocksGameTitle: "Fruit Search",
+      unlocksGameHref: "/kids/games/fruit-search/",
+    },
+
     getShopUrl() {
       const links = window.SITE_CONFIG?.links || {};
       return links.shopify || links.etsy || this.terminalTrainer.shopHref;
     },
   };
+
+  migrateUnlockKeys();
 })();

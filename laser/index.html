@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Laser engraving from the Laughing Dragons workroom — Glowforge Pro HD custom signs, gifts, nursery decor, coasters, and personalized maker pieces." />
+    <title>Laser Engraving</title>
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="canonical" href="https://laughing-dragons.com/laser/" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7048606415692002"
+     crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/site.js"></script>
+    <script>
+      const cfg = window.SITE_CONFIG;
+
+      const categories = [
+        {
+          title: "Personalized Cutting Boards",
+          body: "Bamboo and hardwood boards engraved with family names, wedding dates, and custom messages — charcuterie-ready gifts from the workroom.",
+        },
+        {
+          title: "Custom Name Signs",
+          body: "Wood and acrylic signs for nurseries, entryways, and kitchens. Names, quotes, and welcome messages cut and engraved to order.",
+        },
+        {
+          title: "Kids Night Lights & Nursery Decor",
+          body: "Birch ply night lights and nursery signs with custom names — tied to our kids show characters where you want a little extra magic.",
+        },
+        {
+          title: "Coasters & Kitchen Sets",
+          body: "Acrylic, wood, and slate coaster sets — monograms, mandalas, or Laughing Dragons fruit-friend and dragon motifs.",
+        },
+        {
+          title: "Keychains & Small Gifts",
+          body: "Fast-turn personalized keychains, bookmarks, and bag tags. Great for birthdays, stocking stuffers, and party favors.",
+        },
+        {
+          title: "Pet Tags & Memorial Pieces",
+          body: "Engraved pet ID tags and memorial keychains with names and silhouettes — durable gifts for the people who treat pets like family.",
+        },
+        {
+          title: "Wedding & Event Decor",
+          body: "Cake toppers, escort card holders, favor tags, and welcome signs for weddings, showers, and milestone celebrations.",
+        },
+        {
+          title: "Ornaments & Seasonal Gifts",
+          body: "Personalized basswood ornaments for holidays and keepsakes — names, years, and custom messages engraved on the Glowforge.",
+        },
+        {
+          title: "Layered Wall Art",
+          body: "Multi-layer wood scenes and silhouettes — dragons, geometric designs, and custom family pieces with depth and shadow.",
+        },
+        {
+          title: "Business Signs & Branding",
+          body: "Desk signs, logo plaques, and branded packaging inserts for local businesses and maker tables.",
+        },
+        {
+          title: "Dragon & Character Engraving",
+          body: "Laughing Dragons exclusive — fruit friends, dragons, and show art laser engraved on wood, acrylic, and leather goods.",
+        },
+      ];
+
+      const categoryCards = categories
+        .map(
+          (c) => `<article class="link-card laser-card reveal">
+            <h2>${c.title}</h2>
+            <p>${c.body}</p>
+          </article>`
+        )
+        .join("");
+
+      initPage({
+        title: "Laser Engraving",
+        description: "Laser engraving from the Laughing Dragons workroom — Glowforge Pro HD custom signs, gifts, nursery decor, coasters, and personalized maker pieces.",
+        activePath: "/laser/",
+        mediaHero: renderMediaHero({
+          ariaLabel: "Laser engraving",
+          videoSrc: "/assets/laser/workshopglowforge.mp4",
+          posterSrc: "/assets/brand/ldp-workroom-banner.png",
+          eyebrow: "Inside the workroom",
+          title: "Laser Engraving",
+          subline: "Our Glowforge Pro HD is live on the floor — custom cut and engraved wood, acrylic, leather, and more.",
+          ctas: [
+            { href: "#make", label: "What we make", primary: true },
+            { href: cfg.links.etsy, label: "Shop on Etsy", primary: true },
+          ],
+        }),
+        content: `
+          <section class="laser-body container" id="make">
+            <header class="page-header reveal">
+              <p class="pillar-eyebrow">Glowforge Pro HD</p>
+              <h2>Things we can make</h2>
+              <p>Every piece starts on the workroom floor. Browse the categories below — as we post new laser work, you'll find it in our storefronts.</p>
+            </header>
+            <div class="link-grid laser-grid reveal">
+              ${categoryCards}
+            </div>
+            <section class="laser-store reveal">
+              <h2>Shop the live store</h2>
+              <p>New laser pieces land in our Etsy and Shopify shops as they're ready. 3D prints from the bench stay on the <a href="/prints/">print catalog</a>.</p>
+              <div class="hero-cta">
+                <a class="btn btn-primary" href="${cfg.links.etsy}" target="_blank" rel="noopener">LaughingDragonsForge on Etsy</a>
+                <a class="btn btn-ghost" href="${cfg.links.shopify}" target="_blank" rel="noopener">Shopify storefront</a>
+                <a class="btn btn-ghost" href="/shop/">Shop hub</a>
+              </div>
+            </section>
+            <div class="prose reveal">
+              <h2>Materials we work with</h2>
+              <p>Basswood and birch plywood, bamboo cutting boards, acrylic, leather, slate, and anodized aluminum — chosen for clean cuts, sharp engraves, and gifts that feel worth keeping.</p>
+              <h2>Custom orders</h2>
+              <p>Have something in mind that isn't listed yet? <a href="/contact/">Get in touch</a> — we'll let you know what's possible on the Glowforge and when we can ship from the floor.</p>
+            </div>
+          </section>
+        `,
+      });
+    </script>
+  </body>
+</html>
