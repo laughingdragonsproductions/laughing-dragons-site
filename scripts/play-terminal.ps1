@@ -3,7 +3,7 @@ $Root = Split-Path $PSScriptRoot -Parent
 Set-Location $Root
 
 $Port = 8080
-$Url = "http://localhost:${Port}/kids/games/terminal/"
+$Url = "http://localhost:${Port}/games/terminal/"
 
 function Test-PortOpen([int]$p) {
   $tcp = New-Object System.Net.Sockets.TcpClient

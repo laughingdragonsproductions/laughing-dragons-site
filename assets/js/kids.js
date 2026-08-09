@@ -91,45 +91,6 @@ window.KIDS_DATA = {
     { letter: "Y", name: "Yevette the Yam", bio: "Grounded, warm, and deeply caring." },
     { letter: "Z", name: "Zackary the Zucchini", bio: "Fun-loving, flexible, and ready for anything." },
   ],
-  games: [
-    {
-      id: "terminal-trainer",
-      title: "Terminal Trainer",
-      description: "Retro DOS-style terminal — type HELP, DIR, and more to learn basic commands.",
-      href: "/kids/games/terminal/",
-      status: "live",
-    },
-    {
-      id: "memory-matching",
-      title: "Memory Matching Game",
-      description: "Flip tiles and match laughing dragon pairs on scenic maps.",
-      href: "/kids/games/memory-matching/",
-      status: "live",
-      requiresUnlock: "memory-matching-unlocked",
-      lockedDescription: "Beat Terminal Trainer to unlock this game.",
-      unlockHint: "Finish all three levels in Terminal Trainer.",
-      unlockHref: "/kids/games/terminal/",
-      unlockButtonLabel: "Play Terminal Trainer",
-    },
-    {
-      id: "fruit-search",
-      title: "Fruit Search",
-      description: "I-Spy style — scan busy maps and find the Fruit Friend you're looking for.",
-      href: "/kids/games/fruit-search/",
-      status: "unlocked",
-      requiresUnlock: "fruit-search-unlocked",
-      lockedDescription: "Beat par on Memory Matching to unlock this game.",
-      unlockHint: "Clear the board at or under par — Standard rating or better.",
-      unlockHref: "/kids/games/memory-matching/",
-      unlockButtonLabel: "Play Memory Matching",
-    },
-    {
-      id: "maze-generator",
-      title: "Maze Generator",
-      description: "Mazes for kids to solve on screen or on paper.",
-      href: "/kids/games/coming-soon/",
-    },
-  ],
 };
 
 function characterImageSrc(letter) {
@@ -149,7 +110,6 @@ function renderKidsSubnav(active) {
   const items = [
     { id: "episodes", label: "Episodes" },
     { id: "characters", label: "Characters" },
-    { id: "games", label: "Games" },
     { id: "printables", label: "3D Print Files" },
   ];
   return `<nav class="kids-subnav reveal" aria-label="Kids sections">
@@ -238,53 +198,6 @@ function renderKidsCharacters() {
   </section>`;
 }
 
-function isKidsGameUnlocked(game) {
-  if (!game.requiresUnlock) return true;
-  return window.KIDS_UNLOCKS?.has?.(game.requiresUnlock) === true;
-}
-
-function renderKidsGames() {
-  const games = window.KIDS_DATA?.games || [];
-  return `<section class="kids-section" id="games">
-    <div class="kids-section-head reveal">
-      <p class="pillar-eyebrow">Play</p>
-      <h2>Games</h2>
-      <p>Browser games for Fruit Friends fans — matching, I-Spy search, mazes, and more as we build them.</p>
-    </div>
-    <div class="episode-grid reveal">
-      ${games
-        .map((game) => {
-          const live = game.status === "live";
-          const unlocked = game.status === "unlocked" && isKidsGameUnlocked(game);
-          const locked = Boolean(game.requiresUnlock) && !isKidsGameUnlocked(game);
-
-          if (locked) {
-            return `<article class="episode-card episode-card-locked">
-              <h3>${game.title}</h3>
-              <p>${game.lockedDescription || game.description}</p>
-              <span class="status-tag status-locked">Locked</span>
-              <p class="game-unlock-hint">${game.unlockHint || "Complete Terminal Trainer to unlock."}</p>
-              <a class="btn btn-sm" href="${game.unlockHref || "/kids/games/terminal/"}">${game.unlockButtonLabel || "Play Terminal Trainer"}</a>
-            </article>`;
-          }
-
-          const tag = live
-            ? `<span class="status-tag status-published">Play now</span>`
-            : unlocked
-              ? `<span class="status-tag status-unlocked">Unlocked</span>`
-              : `<span class="status-tag status-coming-soon">Coming soon</span>`;
-          const cardClass = live ? "" : unlocked ? " episode-card-unlocked" : " episode-card-soon";
-          return `<a class="episode-card${cardClass}" href="${game.href}">
-            <h3>${game.title}</h3>
-            <p>${game.description}</p>
-            ${tag}
-          </a>`;
-        })
-        .join("")}
-    </div>
-  </section>`;
-}
-
 function renderCharacterDetail(letter) {
   const ch = getCharacterByLetter(letter);
   if (!ch) {
@@ -337,50 +250,20 @@ function renderKidsPrintables() {
   </section>`;
 }
 
-function refreshKidsGamesSection() {
-  const section = document.getElementById("games");
-  if (!section) return;
-  const replacement = document.createElement("div");
-  replacement.innerHTML = renderKidsGames();
-  section.replaceWith(replacement.firstElementChild);
-}
-
-function initKidsUnlockListeners() {
-  const refresh = () => refreshKidsGamesSection();
-  window.addEventListener("storage", (e) => {
-    if (
-      e.key === "ldp-kids-unlock-memory-matching-unlocked" ||
-      e.key === "ldp-kids-unlock-fruit-search-unlocked" ||
-      e.key === "ldp-kids-unlock-word-search-unlocked"
-    ) {
-      refresh();
-    }
-  });
-  window.addEventListener("ldp-kids-unlock-changed", (e) => {
-    if (
-      e.detail?.unlockId === "memory-matching-unlocked" ||
-      e.detail?.unlockId === "fruit-search-unlocked" ||
-      e.detail?.unlockId === "word-search-unlocked"
-    ) {
-      refresh();
-    }
-  });
-}
-
 function renderKidsHub() {
   const data = window.KIDS_DATA || {};
   return `
     <header class="kids-hero reveal">
       <p class="pillar-eyebrow">${data.tagline || "Kids Show"}</p>
       <h1>${data.showTitle || "Kids Show"}</h1>
-      <p>Episodes, characters, games, and 3D printable files — the home for everything Fruit Friends.</p>
+      <p>Episodes, Fruit Friends A–Z, and 3D printable files — the home for the Laughing Dragons Kids Show.</p>
     </header>
     ${renderKidsSubnav("episodes")}
     ${renderKidsEpisodes()}
     ${renderKidsCharacters()}
-    ${renderKidsGames()}
     ${renderKidsPrintables()}
     <div class="prose reveal kids-credits">
+      <p>Play free browser games in our separate <a href="/games/">Games</a> section — Terminal Trainer, Memory Matching, and more.</p>
       <p>Created by Brandon Sparks. Voice character and principal photography by Vinny Vincent.</p>
       <p>&copy; Laughing Dragons Productions</p>
     </div>

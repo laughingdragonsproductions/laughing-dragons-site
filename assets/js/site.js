@@ -1,6 +1,6 @@
 const NAV = [
-  { href: "/kids/", label: "Kids" },
-  { href: "/kids/#games", label: "Games" },
+  { href: "/games/", label: "Games" },
+  { href: "/kids/", label: "Kids Show" },
   { href: "/tools/", label: "Tools" },
   { href: "/shop/", label: "Shop" },
   { href: "/prints/", label: "Prints" },
@@ -26,10 +26,10 @@ function renderHeader(activePath) {
               (item.href === "/tools/" && (activePath === "/tools/" || (activePath && activePath.startsWith("/tools/")))) ||
               (item.href === "/prints/" && (activePath === "/prints/" || (activePath && activePath.startsWith("/prints/")))) ||
               (item.href === "/laser/" && (activePath === "/laser/" || (activePath && activePath.startsWith("/laser/")))) ||
+              (item.href === "/games/" &&
+                (activePath === "/games/" || (activePath && activePath.startsWith("/games/")))) ||
               (item.href === "/kids/" &&
-                (activePath === "/kids/" ||
-                  (activePath && activePath.startsWith("/kids/") && !activePath.startsWith("/kids/games/")))) ||
-              (item.href === "/kids/#games" && activePath && activePath.startsWith("/kids/games/"));
+                (activePath === "/kids/" || (activePath && activePath.startsWith("/kids/"))));
             return `<a href="${item.href}" class="nav-link${active ? " active" : ""}">${item.label}</a>`;
           }
         ).join("")}
@@ -98,6 +98,65 @@ function pushAds() {
   }
 }
 
+const ADSENSE_ALLOW_PREFIXES = ["/games/"];
+
+const ADSENSE_BLOCK_SEGMENTS = ["fruit-search", "coming-soon"];
+
+function isMonetizablePath(path) {
+  const p = path || window.location.pathname || "";
+  if (!ADSENSE_ALLOW_PREFIXES.some((prefix) => p.startsWith(prefix))) return false;
+  if (ADSENSE_BLOCK_SEGMENTS.some((seg) => p.includes(seg))) return false;
+  return true;
+}
+
+function loadAdSenseScript() {
+  if (!hasConfiguredAdSlots()) return;
+  if (!isMonetizablePath(window.location.pathname)) return;
+  if (document.querySelector("script[data-ld-adsense]")) return;
+  const pub = window.SITE_CONFIG?.adsense?.publisherId;
+  if (!pub) return;
+  const s = document.createElement("script");
+  s.async = true;
+  s.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${pub}`;
+  s.crossOrigin = "anonymous";
+  s.dataset.ldAdsense = "1";
+  document.head.appendChild(s);
+}
+
+function resolveAdSlots(adSlots, activePath) {
+  const path = window.location.pathname || activePath || "";
+  if (path.startsWith("/kids/")) return false;
+  if (!isMonetizablePath(path)) return false;
+  return adSlots;
+}
+
+function initGameChrome({ title, description, activePath, landingHtml }) {
+  const cfg = window.SITE_CONFIG || {};
+  document.title = title ? `${title} | ${cfg.name}` : cfg.name;
+  const meta = document.querySelector('meta[name="description"]');
+  if (meta && description) meta.content = description;
+
+  const headerMount = document.getElementById("game-header-mount");
+  if (headerMount) headerMount.innerHTML = renderHeader(activePath);
+
+  const landingMount = document.getElementById("game-landing-mount");
+  if (landingMount && landingHtml) landingMount.innerHTML = landingHtml;
+
+  const monetize = isMonetizablePath(window.location.pathname);
+  const adTop = document.getElementById("game-ad-top");
+  const adBottom = document.getElementById("game-ad-bottom");
+  if (monetize && adTop) adTop.innerHTML = adSlotWrap("header", "ad-top");
+  if (monetize && adBottom) adBottom.innerHTML = adSlotWrap("footer", "ad-bottom");
+
+  const footerMount = document.getElementById("game-footer-mount");
+  if (footerMount) footerMount.innerHTML = renderFooter();
+
+  loadAdSenseScript();
+  if (monetize && hasConfiguredAdSlots()) pushAds();
+  bindNav();
+  bindReveal();
+}
+
 function renderHero() {
   return renderMediaHero({
     ariaLabel: "Welcome",
@@ -105,10 +164,10 @@ function renderHero() {
     posterSrc: "/assets/brand/ldp-workroom-banner.png",
     eyebrow: "PRODUCTIONS",
     title: "Laughing Dragons",
-    subline: "Kids show, free learning tools, maker gear, 3D prints, and everything we build from the workroom floor.",
+    subline: "Free browser games, the Fruit Friends Kids Show, learning tools, and maker gear from the workroom floor.",
     ctas: [
+      { href: "/games/", label: "Play games", primary: true },
       { href: "/kids/", label: "Kids Show", primary: true },
-      { href: "/shop/", label: "Shop the floor", primary: true },
       { href: "#explore", label: "Explore everything", ghost: true },
     ],
   });
@@ -160,9 +219,7 @@ function renderPillar({ id, eyebrow, title, body, href, cta, reverse = false, im
 function initPage({ title, description, activePath, content, hero = false, mediaHero = null, adSlots = true }) {
   const cfg = window.SITE_CONFIG || {};
   const path = window.location.pathname || activePath || "";
-  if (path.startsWith("/kids/")) {
-    adSlots = false;
-  }
+  adSlots = resolveAdSlots(adSlots, activePath);
   document.title = title ? `${title} | ${cfg.name}` : cfg.name;
   const meta = document.querySelector('meta[name="description"]');
   if (meta && description) meta.content = description;
@@ -182,6 +239,7 @@ function initPage({ title, description, activePath, content, hero = false, media
     ${renderFooter()}
   `;
 
+  loadAdSenseScript();
   if (adSlots && hasConfiguredAdSlots()) pushAds();
   bindNav();
   bindReveal();

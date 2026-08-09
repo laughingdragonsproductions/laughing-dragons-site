@@ -1284,3 +1284,36 @@ body.print-lightbox-open {
   flex-wrap: wrap;
   gap: 0.75rem;
 }
+
+.game-landing-wrap {
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.game-landing {
+  max-width: 48rem;
+  margin: 0 auto 1.5rem;
+}
+
+.game-landing-back {
+  margin: 0 0 1rem;
+}
+
+.game-card-thumb {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 10rem;
+  object-fit: cover;
+  border-radius: var(--radius, 8px);
+  margin-bottom: 0.75rem;
+}
+
+.game-page .site-header {
+  position: relative;
+  z-index: 20;
+}
+
+.game-page #game-play {
+  scroll-margin-top: 5rem;
+}

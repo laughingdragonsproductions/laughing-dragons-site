@@ -527,7 +527,7 @@
     const rewards = window.KIDS_REWARDS?.terminalTrainer || {
       gameUnlockCode: "FORGE-GATE-7",
       unlocksGameTitle: "Memory Matching Game",
-      unlocksGameHref: "/kids/games/memory-matching/",
+      unlocksGameHref: "/games/memory-matching/",
       couponCode: "DragonForge15",
       couponLabel: "15% off anything in-store",
       shopHref: "/shop/",

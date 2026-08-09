@@ -75,7 +75,7 @@
       gameUnlockCode: "FORGE-GATE-7",
       unlocksGameId: "memory-matching",
       unlocksGameTitle: "Memory Matching Game",
-      unlocksGameHref: "/kids/games/memory-matching/",
+      unlocksGameHref: "/games/memory-matching/",
       couponCode: "DragonForge15",
       couponLabel: "15% off anything in-store",
       shopHref: "/shop/",
@@ -84,7 +84,7 @@
     memoryMatching: {
       unlocksGameId: "fruit-search",
       unlocksGameTitle: "Fruit Search",
-      unlocksGameHref: "/kids/games/fruit-search/",
+      unlocksGameHref: "/games/#coming-soon",
     },
 
     getShopUrl() {
