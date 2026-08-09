@@ -66,11 +66,21 @@ function renderFooter() {
   </footer>`;
 }
 
+function hasConfiguredAdSlots() {
+  const slots = window.SITE_CONFIG?.adsense?.slots || {};
+  return Object.values(slots).some((id) => Boolean(id));
+}
+
+function adSlotWrap(slotKey, wrapClass, unitClass = "ad-unit") {
+  const inner = renderAdSlot(slotKey, unitClass);
+  return inner ? `<div class="ad-slot ${wrapClass}">${inner}</div>` : "";
+}
+
 function renderAdSlot(key, className = "ad-unit") {
   const cfg = window.SITE_CONFIG?.adsense || {};
   const slot = cfg.slots?.[key];
   if (!cfg.publisherId || !slot) {
-    return `<div class="${className} ad-placeholder" aria-hidden="true">Ad space</div>`;
+    return "";
   }
   return `<ins class="adsbygoogle ${className}"
     style="display:block"
@@ -149,6 +159,10 @@ function renderPillar({ id, eyebrow, title, body, href, cta, reverse = false, im
 
 function initPage({ title, description, activePath, content, hero = false, mediaHero = null, adSlots = true }) {
   const cfg = window.SITE_CONFIG || {};
+  const path = window.location.pathname || activePath || "";
+  if (path.startsWith("/kids/")) {
+    adSlots = false;
+  }
   document.title = title ? `${title} | ${cfg.name}` : cfg.name;
   const meta = document.querySelector('meta[name="description"]');
   if (meta && description) meta.content = description;
@@ -161,14 +175,14 @@ function initPage({ title, description, activePath, content, hero = false, media
     ${renderHeader(activePath)}
     ${mediaHero || (hero ? renderHero() : "")}
     <main class="${hasFullBleedHero ? "page-main" : "container page-main page-inner"}">
-      ${!hero && adSlots ? `<div class="ad-slot ad-top">${renderAdSlot("header", "ad-unit")}</div>` : ""}
+      ${!hero && adSlots ? adSlotWrap("header", "ad-top") : ""}
       ${content}
-      ${adSlots ? `<div class="ad-slot ad-bottom">${renderAdSlot("footer", "ad-unit")}</div>` : ""}
+      ${adSlots ? adSlotWrap("footer", "ad-bottom") : ""}
     </main>
     ${renderFooter()}
   `;
 
-  if (adSlots) pushAds();
+  if (adSlots && hasConfiguredAdSlots()) pushAds();
   bindNav();
   bindReveal();
   bindReducedMotionVideo();
