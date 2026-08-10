@@ -96,6 +96,17 @@ Commit + push. `/kids/#episodes` shows a **Watch on YouTube** card automatically
 
 ---
 
+## Games pipeline (Agent Town)
+
+- **Master doc:** [`docs/games-pipeline.md`](docs/games-pipeline.md) — unlock chain, Carol/Dave deliverables  
+- **Status board:** [`docs/games/STATUS.md`](docs/games/STATUS.md) — agents update on handoff  
+- **Per-game specs:** `docs/games/{slug}/` — Carol design; Dave codes `games/{slug}/`  
+- **Unlock codes:** `assets/js/kids-unlocks.js` — Terminal `LOGIN` redeems codes  
+- **OpenClaw queue:** `G:\openclaw\business\TASK-QUEUE.md` — S003–S009  
+- **Live:** `/games/terminal/`, `/games/memory-matching/` · **WIP:** `/games/fruit-search/`
+
+---
+
 ## Kids — games and characters
 
 - **Games:** edit `games[]` in `assets/js/kids.js`. Until a game is built, set `href: "/kids/games/coming-soon/"`. Live games use `status: "live"` and a real path (e.g. `/kids/games/terminal/`).

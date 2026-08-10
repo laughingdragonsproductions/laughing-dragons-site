@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <meta
+      name="description"
+      content="Fruit Search — I-Spy hidden-object game with Fruit Friends. Find the character on busy maps."
+    />
+    <title>Fruit Search (WIP)</title>
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="stylesheet" href="/assets/css/fruit-search.css?v=20260810" />
+    <link rel="canonical" href="https://laughing-dragons.com/games/fruit-search/" />
+  </head>
+  <body class="fruit-search-page game-page">
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/kids-unlocks.js"></script>
+    <script>
+      if (!window.KIDS_UNLOCKS?.isFruitSearchUnlocked?.()) {
+        window.location.replace("/games/memory-matching/");
+      }
+    </script>
+
+    <div id="game-header-mount"></div>
+    <div class="container game-landing-wrap">
+      <div id="game-landing-mount"></div>
+    </div>
+
+    <div id="game-play" class="container">
+      <div id="fruit-search-root" class="fruit-search-root" aria-label="Fruit Search game"></div>
+    </div>
+
+    <div id="game-footer-mount"></div>
+
+    <script src="/assets/js/games.js"></script>
+    <script src="/assets/js/site.js"></script>
+    <script src="/assets/js/fruit-search.js?v=20260810"></script>
+    <script>
+      initGameChrome({
+        title: "Fruit Search",
+        description: "I-Spy style hidden-object maps — find the Fruit Friend you are looking for.",
+        activePath: "/games/fruit-search/",
+        landingHtml: `
+          <article class="game-landing prose reveal">
+            <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
+            <p class="pillar-eyebrow">In production</p>
+            <h1>Fruit Search</h1>
+            <p class="page-lead">Find Fruit Friends hidden in busy scenes — Where's Waldo meets the ABC cast.</p>
+            <p>Build in progress. Unlocked after beating par on Memory Matching.</p>
+          </article>`,
+      });
+    </script>
+  </body>
+</html>
