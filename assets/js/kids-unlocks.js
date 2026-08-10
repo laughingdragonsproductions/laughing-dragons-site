@@ -243,7 +243,7 @@
       rewardCode: "FIND-WALDO-3",
       unlocksGameId: "fruit-search",
       unlocksGameTitle: "Fruit Search",
-      unlocksGameHref: "/games/#more-games",
+      unlocksGameHref: "/games/fruit-search/",
     },
 
     fruitSearch: {
