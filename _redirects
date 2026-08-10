@@ -1,4 +1,5 @@
 /kids/games/terminal/ /games/terminal/ 301
 /kids/games/memory-matching/ /games/memory-matching/ 301
-/kids/games/coming-soon/ /games/#coming-soon 301
-/kids/games/fruit-search/ /games/#coming-soon 301
+/kids/games/coming-soon/ /games/#path 301
+/kids/games/fruit-search/ /games/#path 301
+/kids/#games /games/ 301

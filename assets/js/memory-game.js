@@ -394,7 +394,7 @@
       winUnlockGameNameEl.textContent = rewards.unlocksGameTitle || "Fruit Search";
     }
     if (winUnlockLinkEl) {
-      winUnlockLinkEl.href = rewards.unlocksGameHref || "/games/#coming-soon";
+      winUnlockLinkEl.href = rewards.unlocksGameHref || "/games/#path";
     }
 
     if (isNewBest) {

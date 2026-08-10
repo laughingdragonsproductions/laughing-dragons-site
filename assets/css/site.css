@@ -819,6 +819,32 @@ a:hover {
   opacity: 0.92;
 }
 
+.episode-card-soon .game-soon-detail,
+.episode-card-locked .game-soon-detail {
+  margin: 0.35rem 0 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--silver);
+}
+
+.game-path-step {
+  display: inline-block;
+  margin-bottom: 0.65rem;
+  font: 600 0.72rem var(--font-accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.game-path-list {
+  margin: 0.75rem 0 1.25rem;
+  padding-left: 1.25rem;
+}
+
+.game-path-list li {
+  margin: 0.35rem 0;
+}
+
 .episode-letter,
 .character-letter {
   display: inline-grid;

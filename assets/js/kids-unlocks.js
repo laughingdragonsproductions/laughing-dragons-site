@@ -84,7 +84,7 @@
     memoryMatching: {
       unlocksGameId: "fruit-search",
       unlocksGameTitle: "Fruit Search",
-      unlocksGameHref: "/games/#coming-soon",
+      unlocksGameHref: "/games/#path",
     },
 
     getShopUrl() {
