@@ -9,13 +9,13 @@
 | alphabet-trace | ready S006 | blocked | Spec pack complete — Dave may scaffold |
 | typing-race | ready S006 | blocked | Spec pack complete — Dave may scaffold |
 | color-match | ready S006 | blocked | Spec pack complete — Dave may scaffold |
-| count-the-dragons | pending S007 | blocked | |
-| simon-says | pending S007 | blocked | |
-| hangman-lite | pending S007 | blocked | |
-| whack-a-fruit | pending S008 | blocked | |
-| pattern-builder | pending S008 | blocked | |
-| maze-generator | pending S008 | blocked | |
-| coloring-viewer | pending S008 | blocked | |
+| count-the-dragons | ready S007 | blocked | Spec pack complete — Dave may scaffold |
+| simon-says | ready S007 | blocked | Spec pack complete — Dave may scaffold |
+| hangman-lite | ready S007 | blocked | Spec pack complete — Dave may scaffold |
+| whack-a-fruit | ready S008 | blocked | Spec pack complete — Dave may scaffold |
+| pattern-builder | ready S008 | blocked | Spec pack complete — Dave may scaffold |
+| maze-generator | ready S008 | blocked | Spec pack complete — Dave may scaffold |
+| coloring-viewer | ready S008 | blocked | Spec pack complete — Dave may scaffold |
 
 ## Handoff log
 
@@ -24,3 +24,5 @@
 | 2026-08-10 | Cursor | Pipeline bootstrapped — docs, TASK-QUEUE S003–S009, Fruit Search scaffold started |
 | 2026-08-10 | Dave | S005 Fruit Search v1 playable — maps, I-Spy loop, win code TRACE-A-Z-4 |
 | 2026-08-10 | Carol | S006 design ready — alphabet-trace, typing-race, color-match full spec packs + fruit-search HUD |
+| 2026-08-10 | Carol | S007 design ready — count-the-dragons, simon-says, hangman-lite full spec packs |
+| 2026-08-10 | Carol | S008 design ready — whack-a-fruit, pattern-builder, maze-generator, coloring-viewer full spec packs |
