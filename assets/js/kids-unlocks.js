@@ -246,6 +246,13 @@
       unlocksGameHref: "/games/#more-games",
     },
 
+    fruitSearch: {
+      rewardCode: "TRACE-A-Z-4",
+      unlocksGameId: "alphabet-trace",
+      unlocksGameTitle: "Alphabet Trace",
+      unlocksGameHref: "/games/#more-games",
+    },
+
     getShopUrl() {
       const links = window.SITE_CONFIG?.links || {};
       return links.shopify || links.etsy || this.terminalTrainer.shopHref;
