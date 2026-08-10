@@ -90,6 +90,7 @@
   const winBestNoteEl = document.getElementById("win-best-note");
   const winUnlockEl = document.getElementById("win-unlock");
   const winUnlockGameNameEl = document.getElementById("win-unlock-game-name");
+  const winUnlockCodeEl = document.getElementById("win-unlock-code");
   const winUnlockLinkEl = document.getElementById("win-unlock-link");
   const playAgainBtn = document.getElementById("play-again");
   const srAnnounceEl = document.getElementById("sr-announce");
@@ -388,13 +389,16 @@
     winBestNoteEl.hidden = !isNewBest;
 
     if (winUnlockEl) {
-      winUnlockEl.hidden = !newlyUnlockedFruitSearch;
+      winUnlockEl.hidden = !atOrUnderPar;
     }
     if (winUnlockGameNameEl) {
       winUnlockGameNameEl.textContent = rewards.unlocksGameTitle || "Fruit Search";
     }
+    if (winUnlockCodeEl) {
+      winUnlockCodeEl.textContent = rewards.rewardCode || "FIND-WALDO-3";
+    }
     if (winUnlockLinkEl) {
-      winUnlockLinkEl.href = rewards.unlocksGameHref || "/games/#path";
+      winUnlockLinkEl.href = rewards.unlocksGameHref || "/games/#more-games";
     }
 
     if (isNewBest) {
@@ -402,11 +406,11 @@
     }
 
     winEl.hidden = false;
-    const unlockMsg = newlyUnlockedFruitSearch
-      ? ` Fruit Search unlocked!`
+    const unlockMsg = atOrUnderPar
+      ? ` Fruit Search unlocked! Code: ${rewards.rewardCode || "FIND-WALDO-3"}`
       : "";
     announce(`You matched them all in ${state.moves} moves. Rating: ${rating.label}.${unlockMsg}`);
-    setStatus(newlyUnlockedFruitSearch ? "Board cleared — new game unlocked!" : "Board cleared!");
+    setStatus(atOrUnderPar ? "Board cleared — new game unlocked!" : "Board cleared!");
     updateBestScoresDisplay();
   }
 

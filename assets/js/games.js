@@ -4,16 +4,15 @@ window.GAMES_DATA = {
   intro:
     "Laughing Dragons builds small browser games you can play instantly — no download, no account, no install. " +
     "Each game teaches something useful while feeling like a classic flash-era arcade experience: retro terminals, tile matching, hidden-object search, letter tracing, counting, sorting, and more. " +
-    "Games are free to play on laughing-dragons.com. Titles unlock in order — beat one to open the next — so finishing what you start keeps the path moving. " +
+    "Beat a game to earn an unlock code, then hack the next title open in Terminal Trainer with LOGIN. Progress saves in your browser — no account needed. " +
     "Live games include full how-to-play guides. Later titles stay Locked until you earn them; once unlocked, a game that is still being finished shows as In production until it ships. " +
     "The Fruit Friends Kids Show lives separately under Kids Show — same studio, different section. Characters from the show inspire art and themes, but game pages here are built for general audiences with real written guides, tips, and walkthroughs alongside the play area. " +
     "New games ship when they are complete, tested, and documented — not as empty stubs.",
 
-  /** Ordered play path — unlock the next by progressing through the previous. */
+  /** Ordered catalog — unlock order is internal; UI shows a games list. */
   path: [
     {
       id: "terminal",
-      step: 1,
       title: "Terminal Trainer",
       description:
         "Retro DOS-style terminal on a workroom desk. Type HELP, DIR, CD, and more to learn real command-line basics across three hacking-themed levels.",
@@ -24,10 +23,10 @@ window.GAMES_DATA = {
       href: "/games/terminal/",
       image: "/assets/kids/games/terminal/desk-monitor-frame.png",
       status: "live",
+      rewardCode: "FORGE-GATE-7",
     },
     {
       id: "memory-matching",
-      step: 2,
       title: "Memory Matching Game",
       description:
         "Flip dragon tiles on scenic maps, match every pair, and beat par for a better rating. Unlocked after beating Terminal Trainer.",
@@ -43,11 +42,10 @@ window.GAMES_DATA = {
       unlockHint: "Finish the true ending in Terminal Trainer — complete Level 3.",
       unlockHref: "/games/terminal/",
       unlockButtonLabel: "Play Terminal Trainer",
-      unlocksNext: "Fruit Search",
+      rewardCode: "FIND-WALDO-3",
     },
     {
       id: "fruit-search",
-      step: 3,
       title: "Fruit Search",
       description: "I-Spy style hidden-object maps — find the Fruit Friend you are looking for in busy scenes.",
       longDescription:
@@ -58,11 +56,10 @@ window.GAMES_DATA = {
       unlockHint: "Clear the board at Standard rating or better (par or under).",
       unlockHref: "/games/memory-matching/",
       unlockButtonLabel: "Play Memory Matching",
-      unlocksNext: "Alphabet Trace",
+      rewardCode: "TRACE-A-Z-4",
     },
     {
       id: "alphabet-trace",
-      step: 4,
       title: "Alphabet Trace",
       description: "Trace A–Z letter paths with mouse or finger — handwriting practice that feels like a game.",
       longDescription:
@@ -70,14 +67,13 @@ window.GAMES_DATA = {
       status: "in-production",
       requiresUnlock: "alphabet-trace-unlocked",
       lockedDescription: "Clear Fruit Search to unlock Alphabet Trace.",
-      unlockHint: "Finish Fruit Search once it ships — progress saves in your browser.",
-      unlockHref: "/games/#path",
-      unlockButtonLabel: "See game path",
-      unlocksNext: "Typing Race",
+      unlockHint: "Finish Fruit Search once it ships — or LOGIN its code in Terminal Trainer.",
+      unlockHref: "/games/terminal/",
+      unlockButtonLabel: "Open Terminal Trainer",
+      rewardCode: "TYPE-FAST-5",
     },
     {
       id: "typing-race",
-      step: 5,
       title: "Typing Race",
       description: "Letters appear on screen — type them before they vanish. A fast sibling to Terminal Trainer.",
       longDescription:
@@ -85,14 +81,13 @@ window.GAMES_DATA = {
       status: "in-production",
       requiresUnlock: "typing-race-unlocked",
       lockedDescription: "Clear Alphabet Trace to unlock Typing Race.",
-      unlockHint: "Keep climbing the path — each clear opens the next title.",
-      unlockHref: "/games/#path",
-      unlockButtonLabel: "See game path",
-      unlocksNext: "Color Match Sort",
+      unlockHint: "Beat earlier games or LOGIN their codes in Terminal Trainer.",
+      unlockHref: "/games/terminal/",
+      unlockButtonLabel: "Open Terminal Trainer",
+      rewardCode: "SORT-COLOR-6",
     },
     {
       id: "color-match",
-      step: 6,
       title: "Color Match Sort",
       description: "Drag fruit into red, yellow, and green bins — classic preschool sorting with Fruit Friends art.",
       longDescription:
@@ -100,14 +95,13 @@ window.GAMES_DATA = {
       status: "in-production",
       requiresUnlock: "color-match-unlocked",
       lockedDescription: "Clear Typing Race to unlock Color Match Sort.",
-      unlockHint: "Play earlier games in order to open this slot.",
-      unlockHref: "/games/#path",
-      unlockButtonLabel: "See game path",
-      unlocksNext: "Count the Dragons",
+      unlockHint: "Beat earlier games or LOGIN their codes in Terminal Trainer.",
+      unlockHref: "/games/terminal/",
+      unlockButtonLabel: "Open Terminal Trainer",
+      rewardCode: "COUNT-DRAG-7",
     },
     {
       id: "count-the-dragons",
-      step: 7,
       title: "Count the Dragons",
       description: "Count the Fruit Friends on screen and tap the right number from 1 to 10.",
       longDescription:
@@ -115,14 +109,13 @@ window.GAMES_DATA = {
       status: "in-production",
       requiresUnlock: "count-the-dragons-unlocked",
       lockedDescription: "Clear Color Match Sort to unlock Count the Dragons.",
-      unlockHint: "Play earlier games in order to open this slot.",
-      unlockHref: "/games/#path",
-      unlockButtonLabel: "See game path",
-      unlocksNext: "Simon Says Light Pad",
+      unlockHint: "Beat earlier games or LOGIN their codes in Terminal Trainer.",
+      unlockHref: "/games/terminal/",
+      unlockButtonLabel: "Open Terminal Trainer",
+      rewardCode: "SIMON-GLOW-8",
     },
     {
       id: "simon-says",
-      step: 8,
       title: "Simon Says Light Pad",
       description: "Repeat the color and sound sequence — one canvas, high replay, optional high scores.",
       longDescription:
@@ -130,14 +123,13 @@ window.GAMES_DATA = {
       status: "in-production",
       requiresUnlock: "simon-says-unlocked",
       lockedDescription: "Clear Count the Dragons to unlock Simon Says Light Pad.",
-      unlockHint: "Play earlier games in order to open this slot.",
-      unlockHref: "/games/#path",
-      unlockButtonLabel: "See game path",
-      unlocksNext: "Hangman Lite",
+      unlockHint: "Beat earlier games or LOGIN their codes in Terminal Trainer.",
+      unlockHref: "/games/terminal/",
+      unlockButtonLabel: "Open Terminal Trainer",
+      rewardCode: "HANG-FRUIT-9",
     },
     {
       id: "hangman-lite",
-      step: 9,
       title: "Hangman Lite",
       description: "Guess Fruit Friend names and simple A–Z words, one letter at a time.",
       longDescription:
@@ -145,14 +137,13 @@ window.GAMES_DATA = {
       status: "in-production",
       requiresUnlock: "hangman-lite-unlocked",
       lockedDescription: "Clear Simon Says Light Pad to unlock Hangman Lite.",
-      unlockHint: "Play earlier games in order to open this slot.",
-      unlockHref: "/games/#path",
-      unlockButtonLabel: "See game path",
-      unlocksNext: "Whack-a-Fruit",
+      unlockHint: "Beat earlier games or LOGIN their codes in Terminal Trainer.",
+      unlockHref: "/games/terminal/",
+      unlockButtonLabel: "Open Terminal Trainer",
+      rewardCode: "WHACK-GRID-10",
     },
     {
       id: "whack-a-fruit",
-      step: 10,
       title: "Whack-a-Fruit",
       description: "Fruit Friends pop in a 3×3 grid — tap the target letter before it ducks away.",
       longDescription:
@@ -160,14 +151,13 @@ window.GAMES_DATA = {
       status: "in-production",
       requiresUnlock: "whack-a-fruit-unlocked",
       lockedDescription: "Clear Hangman Lite to unlock Whack-a-Fruit.",
-      unlockHint: "Play earlier games in order to open this slot.",
-      unlockHref: "/games/#path",
-      unlockButtonLabel: "See game path",
-      unlocksNext: "Pattern Builder",
+      unlockHint: "Beat earlier games or LOGIN their codes in Terminal Trainer.",
+      unlockHref: "/games/terminal/",
+      unlockButtonLabel: "Open Terminal Trainer",
+      rewardCode: "PATTERN-AB-11",
     },
     {
       id: "pattern-builder",
-      step: 11,
       title: "Pattern Builder",
       description: "Complete the next fruit in the sequence — ABA, ABC, and growing pattern puzzles.",
       longDescription:
@@ -175,14 +165,13 @@ window.GAMES_DATA = {
       status: "in-production",
       requiresUnlock: "pattern-builder-unlocked",
       lockedDescription: "Clear Whack-a-Fruit to unlock Pattern Builder.",
-      unlockHint: "Play earlier games in order to open this slot.",
-      unlockHref: "/games/#path",
-      unlockButtonLabel: "See game path",
-      unlocksNext: "Maze Generator",
+      unlockHint: "Beat earlier games or LOGIN their codes in Terminal Trainer.",
+      unlockHref: "/games/terminal/",
+      unlockButtonLabel: "Open Terminal Trainer",
+      rewardCode: "MAZE-PATH-12",
     },
     {
       id: "maze-generator",
-      step: 12,
       title: "Maze Generator",
       description: "Printable and on-screen mazes for puzzle fans — draw a path from start to finish.",
       longDescription:
@@ -190,14 +179,13 @@ window.GAMES_DATA = {
       status: "in-production",
       requiresUnlock: "maze-generator-unlocked",
       lockedDescription: "Clear Pattern Builder to unlock Maze Generator.",
-      unlockHint: "Play earlier games in order to open this slot.",
-      unlockHref: "/games/#path",
-      unlockButtonLabel: "See game path",
-      unlocksNext: "Coloring Page Studio",
+      unlockHint: "Beat earlier games or LOGIN their codes in Terminal Trainer.",
+      unlockHref: "/games/terminal/",
+      unlockButtonLabel: "Open Terminal Trainer",
+      rewardCode: "COLOR-SVG-13",
     },
     {
       id: "coloring-viewer",
-      step: 13,
       title: "Coloring Page Studio",
       description: "Click-to-color SVG Fruit Friends pages — printable fun for parents and classrooms.",
       longDescription:
@@ -205,9 +193,9 @@ window.GAMES_DATA = {
       status: "in-production",
       requiresUnlock: "coloring-viewer-unlocked",
       lockedDescription: "Clear Maze Generator to unlock Coloring Page Studio.",
-      unlockHint: "Reach the end of the path by clearing each game in order.",
-      unlockHref: "/games/#path",
-      unlockButtonLabel: "See game path",
+      unlockHint: "Beat earlier games or LOGIN their codes in Terminal Trainer.",
+      unlockHref: "/games/terminal/",
+      unlockButtonLabel: "Open Terminal Trainer",
     },
   ],
 };
@@ -220,59 +208,62 @@ function isGameUnlocked(game) {
   return window.KIDS_UNLOCKS?.has?.(game.requiresUnlock) === true;
 }
 
-function renderPathCard(game) {
+function renderRewardCodeBlock(game) {
+  const cleared = window.KIDS_UNLOCKS?.isCleared?.(game.id) === true;
+  const code = game.rewardCode || window.KIDS_UNLOCKS?.getRewardCode?.(game.id);
+  if (!cleared || !code) return "";
+
+  return `<div class="game-reward-code">
+    <p class="game-reward-code-label">Unlock code</p>
+    <code class="game-reward-code-value">${code}</code>
+    <p class="game-unlock-hint">Hack it in <a href="/games/terminal/">Terminal Trainer</a>: <strong>LOGIN ${code}</strong></p>
+  </div>`;
+}
+
+function renderGameCard(game) {
   const unlocked = isGameUnlocked(game);
-  const stepBadge = `<span class="game-path-step">Step ${game.step}</span>`;
   const detail = game.longDescription
     ? `<p class="game-soon-detail">${game.longDescription}</p>`
     : "";
-  const nextNote = game.unlocksNext
-    ? `<p class="game-unlock-hint">Clears unlock: <strong>${game.unlocksNext}</strong></p>`
-    : "";
+  const codeBlock = renderRewardCodeBlock(game);
 
   if (game.status === "live") {
     if (!unlocked) {
       return `<article class="episode-card episode-card-locked reveal" id="game-${game.id}">
-        ${stepBadge}
         ${game.image ? `<img src="${game.image}" alt="" class="game-card-thumb" loading="lazy" width="320" height="180" />` : ""}
         <h2>${game.title}</h2>
         <p>${game.lockedDescription || game.description}</p>
         <span class="status-tag status-locked">Locked</span>
         <p class="game-unlock-hint">${game.unlockHint || ""}</p>
-        <a class="btn btn-sm" href="${game.unlockHref || "/games/terminal/"}">${game.unlockButtonLabel || "Unlock path"}</a>
+        <a class="btn btn-sm" href="${game.unlockHref || "/games/terminal/"}">${game.unlockButtonLabel || "Play Terminal Trainer"}</a>
       </article>`;
     }
     return `<a class="episode-card reveal" href="${game.href}" id="game-${game.id}">
-      ${stepBadge}
       ${game.image ? `<img src="${game.image}" alt="" class="game-card-thumb" loading="lazy" width="320" height="180" />` : ""}
       <h2>${game.title}</h2>
       <p>${game.description}</p>
       <span class="status-tag status-published">Play now</span>
-      ${nextNote}
+      ${codeBlock}
     </a>`;
   }
 
-  /* in-production: earned seat shows In production; otherwise Locked */
   if (unlocked) {
     return `<article class="episode-card episode-card-soon reveal" id="game-${game.id}">
-      ${stepBadge}
       <h2>${game.title}</h2>
       <p>${game.description}</p>
       ${detail}
       <span class="status-tag status-in-production">In production</span>
-      <p class="game-unlock-hint">You unlocked this slot — the studio is finishing the playable build.</p>
-      ${nextNote}
+      <p class="game-unlock-hint">You unlocked this game — the studio is finishing the playable build.</p>
     </article>`;
   }
 
   return `<article class="episode-card episode-card-locked reveal" id="game-${game.id}">
-    ${stepBadge}
     <h2>${game.title}</h2>
     <p>${game.lockedDescription || game.description}</p>
     ${detail}
     <span class="status-tag status-locked">Locked</span>
     <p class="game-unlock-hint">${game.unlockHint || ""}</p>
-    <a class="btn btn-sm" href="${game.unlockHref || "/games/#path"}">${game.unlockButtonLabel || "See game path"}</a>
+    <a class="btn btn-sm" href="${game.unlockHref || "/games/terminal/"}">${game.unlockButtonLabel || "Open Terminal Trainer"}</a>
   </article>`;
 }
 
@@ -280,54 +271,40 @@ function renderGamesHub() {
   const data = window.GAMES_DATA || {};
   const path = data.path || [];
   const live = path.filter((g) => g.status === "live");
-  const upcoming = path.filter((g) => g.status !== "live");
+  const more = path.filter((g) => g.status !== "live");
 
-  const liveCards = live.map(renderPathCard).join("");
-  const pathCards = path.map(renderPathCard).join("");
-
-  const chainSummary = path
-    .map((game) => {
-      const gate = game.requiresUnlock
-        ? ` — unlocks after step ${game.step - 1}`
-        : " — open to everyone";
-      return `<li><strong>Step ${game.step}. ${game.title}</strong>${gate}</li>`;
-    })
-    .join("");
+  const liveCards = live.map(renderGameCard).join("");
+  const moreCards = more.map(renderGameCard).join("");
 
   return `
     <header class="page-header reveal">
       <p class="pillar-eyebrow">${data.tagline || "Games"}</p>
       <h1>Laughing Dragons Games</h1>
-      <p class="page-lead">Free browser games from the workroom — play in order, unlock the next, keep going.</p>
+      <p class="page-lead">Free browser games from the workroom — play, earn codes, hack the next one open.</p>
     </header>
     <div class="prose reveal">
       <p>${data.intro || ""}</p>
-      <h2>Progression path</h2>
-      <p>Thirteen titles sit on one ladder. Beat a live game to unlock the next slot. If that slot is still being built, it flips from Locked to In production until we ship the playable page.</p>
-      <ol class="game-path-list">${chainSummary}</ol>
     </div>
     <section class="kids-section reveal" id="live-games">
       <div class="kids-section-head">
         <h2>Play now</h2>
-        <p>Finished games with full guides — start here to open later steps.</p>
+        <p>Finished games with full guides. Beat one to reveal its unlock code on the card.</p>
       </div>
       <div class="episode-grid">${liveCards}</div>
     </section>
-    <section class="kids-section reveal" id="path">
+    <section class="kids-section reveal" id="more-games">
       <div class="kids-section-head">
-        <h2>Full game path</h2>
-        <p>Locked until you earn them. In production means you unlocked the seat and the build is underway.</p>
+        <h2>More games</h2>
+        <p>Locked until you earn them. In production means unlocked and still being built.</p>
       </div>
-      <div class="episode-grid">${pathCards}</div>
+      <div class="episode-grid">${moreCards}</div>
     </section>
     <div class="prose reveal">
       <h2>How unlocks work</h2>
-      <p><strong>Step 1 — Terminal Trainer</strong> is open to everyone. Beat all three levels to unlock <strong>Step 2 — Memory Matching</strong>.</p>
-      <p>Beat Memory Matching at or under par to unlock <strong>Step 3 — Fruit Search</strong>. When Fruit Search ships and you clear it, Alphabet Trace opens, then Typing Race, and so on through Coloring Page Studio. Progress saves in your browser — no account needed.</p>
-      <p>There are ${upcoming.length} titles still in the production pipeline after the live games. Keep playing the current step to move the path forward.</p>
+      <p><strong>Terminal Trainer</strong> is open to everyone — and it is also the hack console for the whole catalog. Beat a game and its unlock code appears on that game’s Play now card. Open Terminal Trainer, type <strong>LOGIN</strong> followed by the code, and the next game opens.</p>
+      <p>Example: beat Terminal Trainer and you earn <strong>FORGE-GATE-7</strong> (Memory Matching is also granted automatically). Beat Memory Matching at or under par and you earn <strong>FIND-WALDO-3</strong> for Fruit Search. Codes stay on cleared cards so returning players can look them up anytime.</p>
+      <p>Progress and codes save in your browser — no account needed.</p>
       <p>Watch the Fruit Friends Kids Show separately on our <a href="/kids/">Kids Show</a> pages — episodes, character sheets, and printable files live there without ads.</p>
-      <h2>Design approach</h2>
-      <p>Every game on this path is meant to ship as a small browser experience: one page, light JavaScript, no accounts, and a clear learning hook (letters, counting, memory, sorting, or typing). We reuse Fruit Friends characters and Laughing Dragons workroom themes so new titles feel like part of the same studio. When a game is ready, its card switches from In production to Play now with a full landing guide.</p>
     </div>`;
 }
 
@@ -335,7 +312,7 @@ function renderTerminalLanding() {
   return `
     <article class="game-landing prose reveal">
       <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
-      <p class="pillar-eyebrow">Live game · Step 1</p>
+      <p class="pillar-eyebrow">Live game</p>
       <h1>Terminal Trainer</h1>
       <p class="page-lead">A retro DOS-style terminal on the Laughing Dragons workroom desk. Learn real command-line basics while playing through three hacking-themed levels.</p>
       <p>Terminal Trainer teaches how computers organize files and folders using text commands — the same ideas behind every modern operating system. You sit at a CRT monitor, type at an A:\\> prompt, and explore an in-memory filesystem. No mouse required: discovery, reading clue files, and typing the right command at the right time is the whole game.</p>
@@ -346,12 +323,14 @@ function renderTerminalLanding() {
         <li><strong>CD</strong> — change directory; <strong>CD ..</strong> goes up one level</li>
         <li><strong>TYPE</strong> or <strong>READ</strong> — display text file contents</li>
         <li><strong>CLS</strong> — clear the screen; <strong>ECHO</strong> — print text</li>
-        <li><strong>LOGIN</strong> — authenticate with passwords found in mission files</li>
+        <li><strong>LOGIN</strong> — authenticate with passwords and game unlock codes</li>
       </ul>
       <h2>Level overview</h2>
       <p><strong>Level 1 — First Contact:</strong> Explore A:\\, find SYSTEM tools, read WELCOME.TXT in NOTES, and learn that directories hold executable programs. A fake ending teases completion — keep digging for hidden folders.</p>
       <p><strong>Level 2 — The Vault:</strong> MISSIONS opens after the secret unlock. Follow LEVEL2.TXT into VAULT, find the password FRUIT-42, and breach the vault with LOGIN.</p>
       <p><strong>Level 3 — True ending:</strong> Read FINAL\\CLUE.TXT for passphrase LAUGHING-DRAGONS, finish the last LOGIN, and win. Rewards include Memory Matching unlock plus shop coupon code DragonForge15.</p>
+      <h2>Game unlock codes</h2>
+      <p>After you beat other Laughing Dragons games, their unlock codes work here too. Type <strong>LOGIN</strong> followed by any code you earned — for example <strong>LOGIN FORGE-GATE-7</strong> opens Memory Matching.</p>
       <h2>Tips</h2>
       <p>Press <kbd>↑</kbd> to recall your last command. Press <kbd>Tab</kbd> to autocomplete command and folder names. Open the Hints panel on mobile for the current walkthrough step. Skip or replay the intro video anytime.</p>
       <p><a class="btn btn-primary" href="#game-play">Play now ↓</a></p>
@@ -362,7 +341,7 @@ function renderMemoryLanding() {
   return `
     <article class="game-landing prose reveal">
       <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
-      <p class="pillar-eyebrow">Live game · Step 2</p>
+      <p class="pillar-eyebrow">Live game</p>
       <h1>Memory Matching Game</h1>
       <p class="page-lead">Flip laughing dragon tiles on scenic maps, match every pair, and chase par for a better rating.</p>
       <p>Memory Matching is a classic concentration game built for quick sessions. Tiles hide dragon art from the Laughing Dragons universe; your job is to remember locations and clear the board in as few moves as possible. The game runs entirely in your browser — scores save locally so you can beat your own best runs.</p>
@@ -374,7 +353,7 @@ function renderMemoryLanding() {
         <li>Clear every pair to win. Fewer total moves means a better star rating.</li>
       </ol>
       <h2>Difficulty and par</h2>
-      <p><strong>Easy</strong> uses 4 pairs (8 tiles). Par is 8 moves. <strong>Hard</strong> uses 8 pairs (16 tiles). Par is 16 moves. Ratings above par earn better stars; beating par unlocks Fruit Search (Step 3) when that seat opens on the path.</p>
+      <p><strong>Easy</strong> uses 4 pairs (8 tiles). Par is 8 moves. <strong>Hard</strong> uses 8 pairs (16 tiles). Par is 16 moves. Ratings above par earn better stars; beating par unlocks Fruit Search and reveals code <strong>FIND-WALDO-3</strong> for Terminal Trainer.</p>
       <h2>Unlock requirement</h2>
       <p>Complete Terminal Trainer first — finish all three levels and reach the true ending. Your browser stores the unlock; then Memory Matching opens from the <a href="/games/">Games hub</a>.</p>
       <p><a class="btn btn-primary" href="#game-play">Play now ↓</a></p>

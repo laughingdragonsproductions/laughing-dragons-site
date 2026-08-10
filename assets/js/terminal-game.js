@@ -18,7 +18,7 @@
     READ: { summary: "Same as TYPE — displays a text file.", usage: "READ <filename>", example: "READ WELCOME.TXT" },
     ECHO: { summary: "Prints text to the screen.", usage: "ECHO <text>", example: "ECHO Hello!" },
     REBOOT: { summary: "Restarts the terminal session.", usage: "REBOOT", example: "REBOOT" },
-    LOGIN: { summary: "Attempts to log in with a password.", usage: "LOGIN <password>", example: "LOGIN DRAGON-ALPHA" },
+    LOGIN: { summary: "Log in with a password or game unlock code.", usage: "LOGIN <password or code>", example: "LOGIN FORGE-GATE-7" },
     EXIT: { summary: "Ends the current session.", usage: "EXIT", example: "EXIT" },
   };
 
@@ -617,6 +617,7 @@
       grantWinRewards();
       updateStatus();
       onProgressEvent();
+      printLine(">> Earned codes work with LOGIN anytime — hack more games open.", "dim");
       setTimeout(showWinBanner, 600);
     }
 
@@ -966,6 +967,19 @@
         onProgressEvent();
         return;
       }
+
+      const codeResult = window.KIDS_UNLOCKS?.grantByCode?.(pass);
+      if (codeResult?.ok) {
+        printLine("");
+        if (codeResult.already) {
+          printLine(`${codeResult.title} is already in your vault.`, "success");
+        } else {
+          printLine(`Access granted: ${codeResult.title} unlocked!`, "success");
+        }
+        printLine(">> Check the Games page for Play now or In production.", "dim");
+        return;
+      }
+
       printLine("Access denied.", "error");
     }
 

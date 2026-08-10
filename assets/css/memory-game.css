@@ -635,6 +635,32 @@ body.memory-page {
   color: rgba(247, 241, 228, 0.88);
 }
 
+.win-unlock-label {
+  margin: 0 0 0.35rem;
+  font: 600 0.68rem var(--font-accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(247, 241, 228, 0.65);
+}
+
+.win-unlock-code {
+  display: block;
+  margin: 0 0 0.5rem;
+  font: 600 1rem monospace;
+  color: #6dd4a0;
+  letter-spacing: 0.05em;
+}
+
+.win-unlock-hint {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  color: rgba(247, 241, 228, 0.75);
+}
+
+.win-unlock-hint a {
+  color: #6dd4a0;
+}
+
 .win-unlock .btn {
   text-decoration: none;
   display: inline-flex;
