@@ -12,8 +12,8 @@
   };
 
   const MODES = {
-    easy: { id: "easy", label: "Easy", gravityScale: 0.85 },
-    hard: { id: "hard", label: "Hard", gravityScale: 1 },
+    easy: { id: "easy", label: "Easy", physicsScale: 0.85 },
+    hard: { id: "hard", label: "Hard", physicsScale: 1 },
   };
 
   const DRAGONS = [
@@ -164,9 +164,16 @@
     return state.unlocked.includes(id);
   }
 
+  function getPhysicsScale() {
+    return MODES[state.mode]?.physicsScale ?? 1;
+  }
+
   function getGravity() {
-    const scale = MODES[state.mode]?.gravityScale ?? 1;
-    return BASE.gravity * scale;
+    return BASE.gravity * getPhysicsScale();
+  }
+
+  function getFlap() {
+    return BASE.flap * getPhysicsScale();
   }
 
   function getDifficulty() {
@@ -274,11 +281,11 @@
     if (screen === "ready") {
       setScreen("playing");
       announce("Go!");
-      state.dragonVy = BASE.flap;
+      state.dragonVy = getFlap();
       return;
     }
     if (screen !== "playing") return;
-    state.dragonVy = BASE.flap;
+    state.dragonVy = getFlap();
   }
 
   function rectsOverlap(a, b) {
