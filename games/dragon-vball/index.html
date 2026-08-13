@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Dragon Volleyball — beach Pong with laughing dragons. Move your dragon, bat the ball past the AI, first to 7 wins."
+    />
+    <title>Dragon Volleyball</title>
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="stylesheet" href="/assets/css/dragon-vball.css?v=20260813" />
+    <link rel="canonical" href="https://laughing-dragons.com/games/dragon-vball/" />
+  </head>
+  <body class="vball-page game-page">
+    <script src="/assets/js/config.js?v=20260813"></script>
+
+    <div id="game-header-mount"></div>
+    <div class="container game-landing-wrap">
+      <div id="game-landing-mount"></div>
+      <div id="game-ad-top" class="container"></div>
+    </div>
+
+    <div id="game-play">
+      <div class="vball-root" id="vball-root" aria-label="Dragon Volleyball game">
+        <div class="vball-stage-wrap">
+          <div class="vball-playfield">
+            <canvas id="vball-canvas" class="vball-canvas" width="960" height="540" aria-hidden="true"></canvas>
+
+            <div class="vball-hud" id="vball-hud" hidden>
+              <p class="vball-score-block">
+                <span class="vball-score-label">You</span>
+                <span class="vball-score-value" id="vball-player-score" aria-live="polite">0</span>
+              </p>
+              <p class="vball-score-block">
+                <span class="vball-score-label">AI</span>
+                <span class="vball-score-value" id="vball-ai-score" aria-live="polite">0</span>
+              </p>
+            </div>
+
+            <div class="vball-overlay" id="vball-menu" role="dialog" aria-labelledby="vball-menu-title">
+              <p class="vball-eyebrow">Laughing Dragons Games</p>
+              <h1 class="vball-title" id="vball-menu-title">Dragon Volleyball</h1>
+              <p class="vball-tagline">Beach Pong with laughing dragons. Bat the ball past the AI — first to 7 wins.</p>
+
+              <p class="vball-stats">Best win streak: <strong id="vball-best">0</strong> · Total wins: <strong id="vball-wins">0</strong></p>
+
+              <fieldset class="vball-difficulty" id="vball-difficulty">
+                <legend class="vball-skins-legend">Difficulty</legend>
+                <label class="vball-radio">
+                  <input type="radio" name="vball-difficulty" value="easy" id="vball-diff-easy" />
+                  <span>Easy — slower AI and ball</span>
+                </label>
+                <label class="vball-radio">
+                  <input type="radio" name="vball-difficulty" value="hard" id="vball-diff-hard" checked />
+                  <span>Hard — faster rallies</span>
+                </label>
+              </fieldset>
+
+              <fieldset class="vball-skins" id="vball-skins">
+                <legend class="vball-skins-legend">Choose your dragon</legend>
+                <div class="vball-skins-row" id="vball-skins-row"></div>
+              </fieldset>
+
+              <nav class="vball-actions" aria-label="Game menu">
+                <button type="button" class="btn btn-primary btn-lg" id="vball-btn-play">Play</button>
+                <button type="button" class="btn btn-lg" id="vball-btn-howto">How to Play</button>
+              </nav>
+            </div>
+
+            <div class="vball-overlay" id="vball-howto" hidden role="dialog" aria-labelledby="vball-howto-title">
+              <h2 class="vball-panel-title" id="vball-howto-title">How to Play</h2>
+              <ol class="vball-howto-list">
+                <li>Move your dragon up and down on the left side of the beach court.</li>
+                <li>Use mouse, touch, W/S, or the arrow keys to track the ball.</li>
+                <li>Hit the beach ball back over the net — angle depends on where you strike it.</li>
+                <li>Score when the ball passes the AI dragon on the right. First to <strong>7</strong> wins the match.</li>
+                <li>Keep a rally going — after 8 paddle hits in a row the ball catches fire!</li>
+                <li>Win matches to unlock new dragon colors.</li>
+                <li><strong>Easy</strong> gives the AI more error and a slower ball. <strong>Hard</strong> is the standard challenge.</li>
+              </ol>
+              <button type="button" class="btn btn-primary" id="vball-howto-back">Back</button>
+            </div>
+
+            <div class="vball-overlay vball-overlay--compact" id="vball-ready" hidden>
+              <p class="vball-ready-text">Tap or press a key to serve</p>
+            </div>
+
+            <div class="vball-overlay vball-overlay--compact" id="vball-over" hidden role="dialog" aria-labelledby="vball-over-title">
+              <h2 class="vball-panel-title" id="vball-over-title">Game Over</h2>
+              <p class="vball-over-score" id="vball-over-score">0 – 0</p>
+              <p class="vball-over-best" id="vball-over-best" hidden>New best streak!</p>
+              <p class="vball-unlock-toast" id="vball-unlock-toast" hidden></p>
+              <div class="vball-actions vball-over-actions">
+                <button type="button" class="btn btn-primary" id="vball-btn-retry">Play Again</button>
+                <button type="button" class="btn" id="vball-btn-menu">Menu</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sr-announce" id="vball-sr-announce" aria-live="assertive"></div>
+    </div>
+
+    <div id="game-footer-mount"></div>
+
+    <script src="/assets/js/games.js?v=20260813"></script>
+    <script src="/assets/js/site.js?v=20260813"></script>
+    <script src="/assets/js/dragon-vball.js?v=20260813b"></script>
+    <script>
+      initGameChrome({
+        title: "Dragon Volleyball",
+        description: "Beach Pong with laughing dragons — move your dragon, bat the ball past the AI, first to 7 wins.",
+        activePath: "/games/dragon-vball/",
+        landingHtml: `
+          <article class="game-landing prose reveal">
+            <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
+            <p class="pillar-eyebrow">Laughing Dragons Games</p>
+            <h1>Dragon Volleyball</h1>
+            <p class="page-lead">Beach Pong with laughing dragons. Bat the ball back and forth — first to 7 wins.</p>
+            <p>Always playable — no unlock code needed. Pick your dragon color, choose Easy or Hard, and rally on the tropical court.</p>
+          </article>`,
+      });
+      initDragonVball();
+    </script>
+  </body>
+</html>

@@ -45,6 +45,22 @@
     dragonX: 88,
   };
 
+  /** Hidden dev cheat — triple-tap + hold before first pipe; auto-centers to score 75. */
+  const DEV_CHEAT = {
+    tapWindowMs: 1000,
+    holdMs: 450,
+    unlockTestScore: 75,
+  };
+
+  const cheat = {
+    taps: [],
+    armedHold: false,
+    holdSince: 0,
+    autoPilot: false,
+    pointerDown: false,
+    keyDown: false,
+  };
+
   let canvas;
   let ctx;
   let els = {};
@@ -123,6 +139,82 @@
       localStorage.setItem(STORAGE.best, String(n));
     } catch {
       /* ignore */
+    }
+  }
+
+  function resetCheat() {
+    cheat.taps = [];
+    cheat.armedHold = false;
+    cheat.holdSince = 0;
+    cheat.autoPilot = false;
+    cheat.pointerDown = false;
+    cheat.keyDown = false;
+  }
+
+  function cheatEligible() {
+    return screen === "playing" && state.score === 0 && !cheat.autoPilot;
+  }
+
+  function noteCheatTap() {
+    if (!cheatEligible()) {
+      cheat.taps = [];
+      cheat.armedHold = false;
+      return;
+    }
+    const now = performance.now();
+    cheat.taps = cheat.taps.filter((t) => now - t <= DEV_CHEAT.tapWindowMs);
+    cheat.taps.push(now);
+    if (cheat.taps.length >= 3) {
+      cheat.armedHold = true;
+      cheat.holdSince = now;
+      cheat.taps = [];
+    }
+  }
+
+  function cheatHoldActive() {
+    return cheat.pointerDown || cheat.keyDown;
+  }
+
+  function activateAutoPilot() {
+    cheat.autoPilot = true;
+    cheat.armedHold = false;
+  }
+
+  function getAutoPilotTargetY() {
+    const dragonCx = BASE.dragonX + BASE.dragonSize / 2;
+    const flyBottom = WORLD.height - WORLD.groundH;
+    const defaultY = WORLD.ceilingPad + (flyBottom - WORLD.ceilingPad) / 2 - BASE.dragonSize / 2;
+
+    for (const pipe of state.pipes) {
+      if (pipe.x <= dragonCx && pipe.x + BASE.pipeWidth >= dragonCx) {
+        return pipe.topH + pipe.gap / 2 - BASE.dragonSize / 2;
+      }
+    }
+
+    let nextPipe = null;
+    for (const pipe of state.pipes) {
+      if (pipe.x + BASE.pipeWidth >= BASE.dragonX - 12 && pipe.x <= BASE.dragonX + 200) {
+        if (!nextPipe || pipe.x < nextPipe.x) nextPipe = pipe;
+      }
+    }
+    if (nextPipe) {
+      return nextPipe.topH + nextPipe.gap / 2 - BASE.dragonSize / 2;
+    }
+
+    return defaultY;
+  }
+
+  function centerDragonForAutoPilot() {
+    const targetY = getAutoPilotTargetY();
+    state.dragonY += (targetY - state.dragonY) * 0.42;
+    state.dragonVy = 0;
+    state.rotation = 0;
+  }
+
+  function updateCheatHold() {
+    if (!cheat.armedHold || cheat.autoPilot || !cheatHoldActive()) return;
+    if (performance.now() - cheat.holdSince >= DEV_CHEAT.holdMs) {
+      activateAutoPilot();
     }
   }
 
@@ -253,6 +345,7 @@
   }
 
   function resetRun() {
+    resetCheat();
     state.score = 0;
     state.dragonY = WORLD.height * 0.42;
     state.dragonVy = 0;
@@ -285,6 +378,7 @@
       return;
     }
     if (screen !== "playing") return;
+    noteCheatTap();
     state.dragonVy = getFlap();
   }
 
@@ -304,6 +398,7 @@
   }
 
   function checkCollisions() {
+    if (cheat.autoPilot) return false;
     const box = getDragonBox();
     if (box.y <= WORLD.ceilingPad || box.y + box.h >= WORLD.height - WORLD.groundH) {
       return true;
@@ -458,9 +553,15 @@
       return;
     }
 
-    state.dragonVy += getGravity() * dt;
-    state.dragonY += state.dragonVy * dt;
-    state.rotation = Math.max(-0.45, Math.min(state.dragonVy * 0.06, 0.85));
+    updateCheatHold();
+
+    if (cheat.autoPilot) {
+      centerDragonForAutoPilot();
+    } else {
+      state.dragonVy += getGravity() * dt;
+      state.dragonY += state.dragonVy * dt;
+      state.rotation = Math.max(-0.45, Math.min(state.dragonVy * 0.06, 0.85));
+    }
 
     state.bgOffset += diff.scrollSpeed * dt;
     state.pipeTimer += diff.scrollSpeed * dt;
@@ -479,6 +580,11 @@
       }
     }
     state.pipes = state.pipes.filter((p) => p.x + BASE.pipeWidth > -20);
+
+    if (cheat.autoPilot && state.score >= DEV_CHEAT.unlockTestScore) {
+      endRun();
+      return;
+    }
 
     if (checkCollisions()) {
       endRun();
@@ -520,7 +626,7 @@
   }
 
   function resizeCanvas() {
-    const wrap = canvas.parentElement;
+    const wrap = els.playfield;
     if (!wrap) return;
     const rect = wrap.getBoundingClientRect();
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -535,7 +641,8 @@
   }
 
   function bindInput() {
-    const stage = canvas.parentElement;
+    const stage = els.stageWrap;
+    if (!stage) return;
 
     const onFlap = (e) => {
       if (e.target.closest("button")) return;
@@ -545,8 +652,35 @@
       flap();
     };
 
-    stage.addEventListener("pointerdown", onFlap);
-    window.addEventListener("keydown", onFlap);
+    const onPointerDown = (e) => {
+      if (e.target.closest("button")) return;
+      cheat.pointerDown = true;
+      onFlap(e);
+    };
+
+    const onPointerUp = () => {
+      cheat.pointerDown = false;
+      if (!cheat.autoPilot) cheat.armedHold = false;
+    };
+
+    const onKeyDown = (e) => {
+      if (![" ", "ArrowUp"].includes(e.key)) return;
+      if (e.repeat) return;
+      cheat.keyDown = true;
+      onFlap(e);
+    };
+
+    const onKeyUp = (e) => {
+      if (![" ", "ArrowUp"].includes(e.key)) return;
+      cheat.keyDown = false;
+      if (!cheat.autoPilot) cheat.armedHold = false;
+    };
+
+    stage.addEventListener("pointerdown", onPointerDown);
+    stage.addEventListener("pointerup", onPointerUp);
+    stage.addEventListener("pointercancel", onPointerUp);
+    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("keyup", onKeyUp);
 
     els.btnPlay.addEventListener("click", (e) => {
       e.preventDefault();
@@ -591,6 +725,8 @@
   function cacheElements() {
     els = {
       canvas: document.getElementById("flappy-canvas"),
+      stageWrap: document.querySelector(".flappy-stage-wrap"),
+      playfield: document.querySelector(".flappy-playfield"),
       hud: document.getElementById("flappy-hud"),
       score: document.getElementById("flappy-score"),
       menu: document.getElementById("flappy-menu"),

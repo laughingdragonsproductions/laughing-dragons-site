@@ -25,6 +25,18 @@ window.GAMES_DATA = {
       status: "live",
     },
     {
+      id: "dragon-vball",
+      title: "Dragon Volleyball",
+      description:
+        "Beach Pong with laughing dragons — move up and down, bat the ball past the AI, first to 7 wins. Always playable.",
+      longDescription:
+        "Dragon Volleyball is a tropical beach Pong match on the Laughing Dragons court. Control your dragon on the left, track the glowing beach ball with mouse, touch, or keyboard, and score when it sails past the AI dragon on the right. First to seven points wins the match. " +
+        "Pick Easy for a slower ball and a looser opponent, or Hard for faster rallies. Win matches to unlock all eight dragon colors — progress saves in your browser. Always open from the Games hub; no Terminal Trainer code required.",
+      href: "/games/dragon-vball/",
+      image: "/assets/kids/games/dragon-vball/court.png",
+      status: "live",
+    },
+    {
       id: "terminal",
       title: "Terminal Trainer",
       description:

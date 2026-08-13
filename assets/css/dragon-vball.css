@@ -1,14 +1,14 @@
 :root {
-  --flappy-ink: #0f1419;
-  --flappy-panel: rgba(10, 10, 10, 0.82);
-  --flappy-accent: #39ff14;
-  --flappy-gold: #e8b84a;
-  --flappy-muted: #9bb88a;
-  --flappy-border: rgba(168, 168, 168, 0.28);
-  --flappy-font: "Segoe UI", "Trebuchet MS", sans-serif;
+  --vball-ink: #0f1419;
+  --vball-panel: rgba(10, 10, 10, 0.82);
+  --vball-accent: #39ff14;
+  --vball-gold: #e8b84a;
+  --vball-muted: #9bb88a;
+  --vball-border: rgba(168, 168, 168, 0.28);
+  --vball-font: "Segoe UI", "Trebuchet MS", sans-serif;
 }
 
-body.flappy-page {
+body.vball-page {
   background: var(--bg, #0a0a0a);
 }
 
@@ -16,16 +16,16 @@ body.flappy-page {
   padding: 0 0 2rem;
 }
 
-.flappy-root {
-  max-width: 480px;
+.vball-root {
+  max-width: 960px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-.flappy-stage-wrap {
+.vball-stage-wrap {
   position: relative;
   width: 100%;
-  border: 1px solid var(--flappy-border);
+  border: 1px solid var(--vball-border);
   border-radius: 12px;
   overflow: hidden;
   background: #1a2430;
@@ -35,19 +35,15 @@ body.flappy-page {
   flex-direction: column;
 }
 
-.flappy-playfield {
+.vball-playfield {
   position: relative;
   width: 100%;
-  aspect-ratio: 2 / 3;
-  max-height: min(78vh, 720px);
+  aspect-ratio: 16 / 9;
+  max-height: min(72vh, 540px);
   flex: 0 0 auto;
 }
 
-.flappy-tap-pad {
-  display: none;
-}
-
-.flappy-canvas {
+.vball-canvas {
   display: block;
   width: 100%;
   height: 100%;
@@ -56,23 +52,42 @@ body.flappy-page {
   z-index: 1;
 }
 
-.flappy-hud {
+.vball-hud {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 0.65rem;
 }
 
-.flappy-score {
-  margin: 0.75rem 0 0;
+.vball-score-block {
+  margin: 0;
   text-align: center;
-  font-family: var(--flappy-font);
-  font-size: clamp(2rem, 8vw, 3rem);
+  font-family: var(--vball-font);
+}
+
+.vball-score-label {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.vball-score-value {
+  display: block;
+  font-size: clamp(1.75rem, 6vw, 2.75rem);
   font-weight: 700;
   color: #fff;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65), 0 0 12px rgba(57, 255, 20, 0.35);
+  line-height: 1.1;
 }
 
-.flappy-overlay {
+.vball-overlay {
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -82,67 +97,67 @@ body.flappy-page {
   justify-content: center;
   gap: 0.75rem;
   padding: 1.25rem;
-  background: var(--flappy-panel);
+  background: var(--vball-panel);
   color: var(--text, #f2f2f2);
   text-align: center;
   overflow-y: auto;
 }
 
-.flappy-overlay--compact {
+.vball-overlay--compact {
   justify-content: center;
   background: rgba(10, 10, 10, 0.55);
 }
 
-#flappy-ready {
+#vball-ready {
   pointer-events: none;
 }
 
-#flappy-over {
+#vball-over {
   pointer-events: auto;
 }
 
-.flappy-over-actions {
+.vball-over-actions {
   position: relative;
   z-index: 3;
   pointer-events: auto;
 }
 
-.flappy-overlay[hidden] {
+.vball-overlay[hidden] {
   display: none !important;
 }
 
-.flappy-eyebrow {
+.vball-eyebrow {
   margin: 0;
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--flappy-muted);
+  color: var(--vball-muted);
 }
 
-.flappy-title {
+.vball-title {
   margin: 0;
-  font-family: var(--flappy-font);
-  font-size: clamp(1.6rem, 6vw, 2.2rem);
-  color: var(--flappy-accent);
+  font-family: var(--vball-font);
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  color: var(--vball-accent);
 }
 
-.flappy-tagline {
+.vball-tagline {
   margin: 0;
-  max-width: 22rem;
-  color: var(--flappy-muted);
+  max-width: 26rem;
+  color: var(--vball-muted);
   line-height: 1.45;
 }
 
-.flappy-best {
+.vball-stats {
   margin: 0;
   font-size: 0.95rem;
 }
 
-.flappy-best strong {
-  color: var(--flappy-gold);
+.vball-stats strong {
+  color: var(--vball-gold);
 }
 
-.flappy-difficulty {
+.vball-difficulty {
   margin: 0;
   padding: 0;
   border: 0;
@@ -151,7 +166,7 @@ body.flappy-page {
   text-align: left;
 }
 
-.flappy-radio {
+.vball-radio {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
@@ -161,12 +176,12 @@ body.flappy-page {
   cursor: pointer;
 }
 
-.flappy-radio input {
+.vball-radio input {
   margin-top: 0.2rem;
-  accent-color: var(--flappy-accent);
+  accent-color: var(--vball-accent);
 }
 
-.flappy-skins {
+.vball-skins {
   margin: 0;
   padding: 0;
   border: 0;
@@ -174,13 +189,13 @@ body.flappy-page {
   max-width: 100%;
 }
 
-.flappy-skins-legend {
+.vball-skins-legend {
   font-size: 0.8rem;
-  color: var(--flappy-muted);
+  color: var(--vball-muted);
   margin-bottom: 0.5rem;
 }
 
-.flappy-skins-row {
+.vball-skins-row {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -188,12 +203,12 @@ body.flappy-page {
   max-width: 100%;
 }
 
-.flappy-skin-btn {
+.vball-skin-btn {
   position: relative;
   width: 52px;
   height: 52px;
   padding: 0;
-  border: 2px solid var(--flappy-border);
+  border: 2px solid var(--vball-border);
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.06);
   cursor: pointer;
@@ -201,25 +216,25 @@ body.flappy-page {
   transition: border-color 0.15s, transform 0.15s;
 }
 
-.flappy-skin-btn img {
+.vball-skin-btn img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.flappy-skin-btn.is-selected {
-  border-color: var(--flappy-accent);
-  box-shadow: 0 0 0 1px var(--flappy-accent);
+.vball-skin-btn.is-selected {
+  border-color: var(--vball-accent);
+  box-shadow: 0 0 0 1px var(--vball-accent);
 }
 
-.flappy-skin-btn.is-locked {
+.vball-skin-btn.is-locked {
   cursor: not-allowed;
   opacity: 0.45;
   filter: grayscale(0.85);
 }
 
-.flappy-skin-btn.is-locked::after {
+.vball-skin-btn.is-locked::after {
   content: attr(data-lock-label);
   position: absolute;
   inset: 0;
@@ -234,12 +249,12 @@ body.flappy-page {
   padding: 0.15rem;
 }
 
-.flappy-skin-btn:not(.is-locked):hover {
+.vball-skin-btn:not(.is-locked):hover {
   transform: translateY(-2px);
-  border-color: var(--flappy-accent);
+  border-color: var(--vball-accent);
 }
 
-.flappy-actions {
+.vball-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
@@ -247,31 +262,31 @@ body.flappy-page {
   margin-top: 0.25rem;
 }
 
-.flappy-panel-title {
+.vball-panel-title {
   margin: 0;
   font-size: 1.35rem;
-  color: var(--flappy-accent);
+  color: var(--vball-accent);
 }
 
-.flappy-howto-list {
+.vball-howto-list {
   margin: 0;
   padding-left: 1.25rem;
   text-align: left;
-  max-width: 22rem;
+  max-width: 26rem;
   line-height: 1.5;
   color: var(--text, #f2f2f2);
 }
 
-.flappy-ready-text {
+.vball-ready-text {
   margin: 0;
   font-size: 1.25rem;
   font-weight: 600;
   color: #fff;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
-  animation: flappy-pulse 1.2s ease-in-out infinite;
+  animation: vball-pulse 1.2s ease-in-out infinite;
 }
 
-@keyframes flappy-pulse {
+@keyframes vball-pulse {
   0%,
   100% {
     opacity: 1;
@@ -281,51 +296,42 @@ body.flappy-page {
   }
 }
 
-.flappy-over-score {
+.vball-over-score {
   margin: 0;
-  font-size: 1.1rem;
-}
-
-.flappy-over-best {
-  margin: 0;
-  color: var(--flappy-gold);
+  font-size: 1.25rem;
   font-weight: 600;
 }
 
-.flappy-unlock-toast {
+.vball-over-best {
   margin: 0;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid var(--flappy-accent);
-  border-radius: 8px;
-  color: var(--flappy-accent);
-  font-size: 0.9rem;
-  max-width: 20rem;
+  color: var(--vball-gold);
+  font-weight: 600;
 }
 
-@media (max-width: 480px) {
-  .flappy-root {
+.vball-unlock-toast {
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--vball-accent);
+  border-radius: 8px;
+  color: var(--vball-accent);
+  font-size: 0.9rem;
+  max-width: 22rem;
+}
+
+@media (max-width: 640px) {
+  .vball-root {
     padding: 0 0.5rem;
   }
 
-  .flappy-stage-wrap {
+  .vball-stage-wrap {
     border-radius: 8px;
-    max-height: min(92vh, 820px);
   }
 
-  .flappy-playfield {
-    max-height: min(72vh, 680px);
+  .vball-playfield {
+    max-height: min(56vw, 360px);
   }
 
-  .flappy-tap-pad {
-    display: block;
-    flex: 1 1 auto;
-    min-height: 4.5rem;
-    background: linear-gradient(180deg, #4a7c3f 0%, #6b5344 28%, #3d2e24 100%);
-    border-top: 1px solid rgba(0, 0, 0, 0.22);
-    cursor: pointer;
-  }
-
-  .flappy-skin-btn {
+  .vball-skin-btn {
     width: 44px;
     height: 44px;
   }
