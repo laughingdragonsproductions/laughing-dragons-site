@@ -12,6 +12,19 @@ window.GAMES_DATA = {
   /** Ordered catalog — unlock order is internal; UI shows a games list. */
   path: [
     {
+      id: "flappy-dragon",
+      title: "Flappy Dragon",
+      description:
+        "Tap to fly your laughing dragon through stone pillars — always playable, no unlock needed. Choose Easy or Hard gravity and unlock all eight dragon colors.",
+      longDescription:
+        "Flappy Dragon is a classic tap-to-fly arcade game set against a scrolling Laughing Dragons sky. Tap, click, or press Space to flap upward, thread gaps between stone pillars, and chase a higher score each run. " +
+        "Pick Easy for 15% lighter gravity and more forgiving falls, or Hard for the standard challenge. The game speeds up as you climb. Start with the green dragon and unlock red, blue, purple, orange, pink, teal, and charcoal skins by beating score milestones — progress saves in your browser. " +
+        "Always open from the Games hub; no Terminal Trainer code required.",
+      href: "/games/flappy-dragon/",
+      image: "/assets/kids/games/flappy-dragon/background-fly.png",
+      status: "live",
+    },
+    {
       id: "terminal",
       title: "Terminal Trainer",
       description:

@@ -1,0 +1,306 @@
+:root {
+  --flappy-ink: #0f1419;
+  --flappy-panel: rgba(10, 10, 10, 0.82);
+  --flappy-accent: #39ff14;
+  --flappy-gold: #e8b84a;
+  --flappy-muted: #9bb88a;
+  --flappy-border: rgba(168, 168, 168, 0.28);
+  --flappy-font: "Segoe UI", "Trebuchet MS", sans-serif;
+}
+
+body.flappy-page {
+  background: var(--bg, #0a0a0a);
+}
+
+#game-play {
+  padding: 0 0 2rem;
+}
+
+.flappy-root {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.flappy-stage-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  max-height: min(78vh, 720px);
+  border: 1px solid var(--flappy-border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #1a2430;
+  touch-action: none;
+  user-select: none;
+}
+
+.flappy-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+}
+
+.flappy-hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.flappy-score {
+  margin: 0.75rem 0 0;
+  text-align: center;
+  font-family: var(--flappy-font);
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65), 0 0 12px rgba(57, 255, 20, 0.35);
+}
+
+.flappy-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background: var(--flappy-panel);
+  color: var(--text, #f2f2f2);
+  text-align: center;
+  overflow-y: auto;
+}
+
+.flappy-overlay--compact {
+  justify-content: center;
+  background: rgba(10, 10, 10, 0.55);
+}
+
+#flappy-ready {
+  pointer-events: none;
+}
+
+#flappy-over {
+  pointer-events: auto;
+}
+
+.flappy-over-actions {
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
+}
+
+.flappy-overlay[hidden] {
+  display: none !important;
+}
+
+.flappy-eyebrow {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--flappy-muted);
+}
+
+.flappy-title {
+  margin: 0;
+  font-family: var(--flappy-font);
+  font-size: clamp(1.6rem, 6vw, 2.2rem);
+  color: var(--flappy-accent);
+}
+
+.flappy-tagline {
+  margin: 0;
+  max-width: 22rem;
+  color: var(--flappy-muted);
+  line-height: 1.45;
+}
+
+.flappy-best {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.flappy-best strong {
+  color: var(--flappy-gold);
+}
+
+.flappy-difficulty {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-inline-size: 0;
+  max-width: 100%;
+  text-align: left;
+}
+
+.flappy-radio {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin: 0.35rem 0;
+  font-size: 0.9rem;
+  color: var(--text, #f2f2f2);
+  cursor: pointer;
+}
+
+.flappy-radio input {
+  margin-top: 0.2rem;
+  accent-color: var(--flappy-accent);
+}
+
+.flappy-skins {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-inline-size: 0;
+  max-width: 100%;
+}
+
+.flappy-skins-legend {
+  font-size: 0.8rem;
+  color: var(--flappy-muted);
+  margin-bottom: 0.5rem;
+}
+
+.flappy-skins-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.flappy-skin-btn {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 2px solid var(--flappy-border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.flappy-skin-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.flappy-skin-btn.is-selected {
+  border-color: var(--flappy-accent);
+  box-shadow: 0 0 0 1px var(--flappy-accent);
+}
+
+.flappy-skin-btn.is-locked {
+  cursor: not-allowed;
+  opacity: 0.45;
+  filter: grayscale(0.85);
+}
+
+.flappy-skin-btn.is-locked::after {
+  content: attr(data-lock-label);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  line-height: 1.1;
+  padding: 0.15rem;
+}
+
+.flappy-skin-btn:not(.is-locked):hover {
+  transform: translateY(-2px);
+  border-color: var(--flappy-accent);
+}
+
+.flappy-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+  margin-top: 0.25rem;
+}
+
+.flappy-panel-title {
+  margin: 0;
+  font-size: 1.35rem;
+  color: var(--flappy-accent);
+}
+
+.flappy-howto-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  text-align: left;
+  max-width: 22rem;
+  line-height: 1.5;
+  color: var(--text, #f2f2f2);
+}
+
+.flappy-ready-text {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  animation: flappy-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes flappy-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.flappy-over-score {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.flappy-over-best {
+  margin: 0;
+  color: var(--flappy-gold);
+  font-weight: 600;
+}
+
+.flappy-unlock-toast {
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--flappy-accent);
+  border-radius: 8px;
+  color: var(--flappy-accent);
+  font-size: 0.9rem;
+  max-width: 20rem;
+}
+
+@media (max-width: 480px) {
+  .flappy-root {
+    padding: 0 0.5rem;
+  }
+
+  .flappy-stage-wrap {
+    border-radius: 8px;
+  }
+
+  .flappy-skin-btn {
+    width: 44px;
+    height: 44px;
+  }
+}

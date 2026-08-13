@@ -5,6 +5,7 @@
 
 | Slug | Design (Carol) | Code (Dave) | Notes |
 |------|----------------|-------------|-------|
+| flappy-dragon | n/a (standalone) | done | Always playable at /games/flappy-dragon/ — outside unlock chain |
 | fruit-search | ready S004 | done S005 | Playable v1 at /games/fruit-search/ |
 | alphabet-trace | ready S006 | blocked | Spec pack complete — Dave may scaffold |
 | typing-race | ready S006 | blocked | Spec pack complete — Dave may scaffold |
@@ -26,3 +27,4 @@
 | 2026-08-10 | Carol | S006 design ready — alphabet-trace, typing-race, color-match full spec packs + fruit-search HUD |
 | 2026-08-10 | Carol | S007 design ready — count-the-dragons, simon-says, hangman-lite full spec packs |
 | 2026-08-10 | Carol | S008 design ready — whack-a-fruit, pattern-builder, maze-generator, coloring-viewer full spec packs |
+| 2026-08-13 | Cursor | Flappy Dragon v1 playable — standalone, always open, canvas + dragon skin unlocks |
