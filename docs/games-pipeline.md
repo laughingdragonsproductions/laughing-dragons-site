@@ -22,7 +22,7 @@ Standalone arcade titles — **outside** the Terminal unlock chain. Listed first
 |---------|-----------|--------|-------|
 | sliding-scale | `/games/sliding-scale/` | **live** | Workroom slider puzzle; workshop/logo art |
 | flappy-dragon | `/games/flappy-dragon/` | **live** | Tap-to-fly; dragon skin unlocks |
-| dragon-vball | `/games/dragon-vball/` | **live** | Forest Pong vs AI; first to 7 |
+| dragon-vball | `/games/dragon-vball/` | **live** | Forest Pong vs AI; first to 3 |
 | dragos-revenge | `/games/dragos-revenge/` | **live** | Rodent's Revenge clone; Drago + 8 levels (S010/S011) |
 
 ## Unlock chain (canonical)

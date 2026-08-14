@@ -39,10 +39,10 @@ window.GAMES_DATA = {
       id: "dragon-vball",
       title: "Dragon V-ball",
       description:
-        "Forest Pong with dragons — move your paddle and rally the ball. First to 7 wins. Always playable.",
+        "Forest Pong with dragons — move your paddle and rally the ball. First to 3 wins. Always playable.",
       longDescription:
         "Dragon V-ball is classic Pong in a sunlit forest clearing. Move your dragon up and down with arrow keys or drag on the screen. " +
-        "The ball bounces off both paddles automatically — keep it in play and send it past the AI to score. First to seven wins the match. Eight paddle hits in a row ignites the fireball. Win matches to unlock all eight dragon colors — progress saves in your browser.",
+        "The ball bounces off both paddles automatically — keep it in play and send it past the AI to score. First to three wins the match. Eight paddle hits in a row ignites the fireball. Win matches to unlock all eight dragon colors — progress saves in your browser.",
       href: "/games/dragon-vball/",
       image: "/assets/kids/games/dragon-vball/background.png",
       status: "live",

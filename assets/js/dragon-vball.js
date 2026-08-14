@@ -17,7 +17,7 @@
     difficulty: "ldp-vball-difficulty",
   };
 
-  const WIN_SCORE = 7;
+  const WIN_SCORE = 3;
 
   const MODES = {
     easy: {
