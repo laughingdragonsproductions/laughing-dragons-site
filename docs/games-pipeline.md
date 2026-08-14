@@ -14,6 +14,16 @@
 
 **Communication:** Every agent updates [`docs/games/STATUS.md`](games/STATUS.md) when starting or finishing work. Carol writes specs before Dave codes. Dave does not invent design — he implements Carol's spec.
 
+## Pre-pipeline (always playable)
+
+Standalone arcade titles — **outside** the Terminal unlock chain. Listed first in `assets/js/games.js` (`status: "live"`, no `requiresUnlock`, no reward code). Also add to `sitemap.xml` and `desktop-agent/scripts/facebook-post-pipeline.config.json` blurbs when shipping.
+
+| Game id | Site path | Status | Notes |
+|---------|-----------|--------|-------|
+| flappy-dragon | `/games/flappy-dragon/` | **live** | Tap-to-fly; dragon skin unlocks |
+| dragon-vball | `/games/dragon-vball/` | **live** | Beach Pong vs AI; first to 7 |
+| dragos-revenge | `/games/dragos-revenge/` | **live** | Rodent's Revenge clone; Drago + 8 levels (S010/S011) |
+
 ## Unlock chain (canonical)
 
 | Order | Game id | Reward code | Unlocks next | Site path |

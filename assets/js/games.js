@@ -28,12 +28,23 @@ window.GAMES_DATA = {
       id: "dragon-vball",
       title: "Dragon Volleyball",
       description:
-        "Beach Pong with laughing dragons — move up and down, bat the ball past the AI, first to 7 wins. Always playable.",
+        "Beach Pong with dragons — move your paddle and rally the ball. First to 7 wins. Always playable.",
       longDescription:
-        "Dragon Volleyball is a tropical beach Pong match on the Laughing Dragons court. Control your dragon on the left, track the glowing beach ball with mouse, touch, or keyboard, and score when it sails past the AI dragon on the right. First to seven points wins the match. " +
-        "Pick Easy for a slower ball and a looser opponent, or Hard for faster rallies. Win matches to unlock all eight dragon colors — progress saves in your browser. Always open from the Games hub; no Terminal Trainer code required.",
+        "Dragon Volleyball is beach Pong on the Laughing Dragons tropical court. Move your dragon up and down with arrow keys or drag on the court. " +
+        "The ball bounces off both paddles automatically — keep it in play and send it past the AI to score. First to seven wins the match. Eight paddle hits in a row ignites the fireball. Win matches to unlock all eight dragon colors — progress saves in your browser.",
       href: "/games/dragon-vball/",
       image: "/assets/kids/games/dragon-vball/court.png",
+      status: "live",
+    },
+    {
+      id: "dragos-revenge",
+      title: "Drago's Revenge",
+      description:
+        "Push green blocks, trap knights, and collect dragon tiles — Drago the Dragon Fruit in a Rodent's Revenge-style puzzle. Always playable.",
+      longDescription:
+        "Drago's Revenge is a grid puzzle starring Drago the Dragon Fruit from the Fruit Friends Kids Show. Push slidable green blocks across an olive board, trap chasing knights, and collect laughing-dragon tile pickups. Eight hand-built levels, three lives, countdown timer, and Easy or Hard modes. Always open from the Games hub — no Terminal Trainer code required.",
+      href: "/games/dragos-revenge/",
+      image: "/assets/kids/games/dragos-revenge/board-with-green.png",
       status: "live",
     },
     {

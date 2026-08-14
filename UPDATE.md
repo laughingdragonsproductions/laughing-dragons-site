@@ -103,7 +103,7 @@ Commit + push. `/kids/#episodes` shows a **Watch on YouTube** card automatically
 - **Per-game specs:** `docs/games/{slug}/` — Carol design; Dave codes `games/{slug}/`  
 - **Unlock codes:** `assets/js/kids-unlocks.js` — Terminal `LOGIN` redeems codes  
 - **OpenClaw queue:** `G:\openclaw\business\TASK-QUEUE.md` — S003–S009  
-- **Live:** `/games/terminal/`, `/games/memory-matching/` · **WIP:** `/games/fruit-search/`
+- **Live:** `/games/terminal/`, `/games/memory-matching/`, `/games/fruit-search/` · **Pre-pipeline (always playable):** Flappy Dragon, Dragon Volleyball, Drago's Revenge at `/games/`
 
 ---
 

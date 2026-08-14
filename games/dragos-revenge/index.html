@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Drago's Revenge — push blocks, trap knights, and collect dragon tiles. A Rodent's Revenge-style puzzle starring Drago the Dragon Fruit."
+    />
+    <title>Drago's Revenge</title>
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="stylesheet" href="/assets/css/dragos-revenge.css?v=20260814c" />
+    <link rel="canonical" href="https://laughing-dragons.com/games/dragos-revenge/" />
+  </head>
+  <body class="dr-page game-page">
+    <script src="/assets/js/config.js?v=20260814c"></script>
+
+    <div id="game-header-mount"></div>
+    <div class="container game-landing-wrap">
+      <div id="game-landing-mount"></div>
+      <div id="game-ad-top" class="container"></div>
+    </div>
+
+    <div id="game-play">
+      <div class="dr-root" id="dr-root" aria-label="Drago's Revenge game">
+        <div class="dr-stage-wrap">
+          <div class="dr-hud-bar" id="dr-hud" hidden>
+            <span class="dr-hud-lives" id="dr-lives" aria-label="Lives">♥♥♥</span>
+            <span class="dr-hud-timer" id="dr-timer" aria-live="polite">2:00</span>
+            <span class="dr-hud-score" id="dr-score" aria-live="polite">0</span>
+          </div>
+          <p class="dr-hud-level" id="dr-level">Level 1 / 8</p>
+
+          <div class="dr-playfield">
+            <canvas id="dr-canvas" class="dr-canvas" width="640" height="640" aria-label="Drago's Revenge game board"></canvas>
+
+            <div class="dr-overlay" id="dr-menu" role="dialog" aria-labelledby="dr-menu-title">
+              <p class="dr-eyebrow">Laughing Dragons Games</p>
+              <h1 class="dr-title" id="dr-menu-title">Drago's Revenge</h1>
+              <p class="dr-tagline">Push green blocks. Trap the knights. Collect the dragons.</p>
+              <p class="dr-stats">Best score: <strong id="dr-best">0</strong></p>
+
+              <fieldset class="dr-difficulty" id="dr-difficulty">
+                <legend>Difficulty</legend>
+                <label class="dr-radio">
+                  <input type="radio" name="dr-difficulty" value="easy" id="dr-diff-easy" />
+                  <span>Easy — slower knights and extra time</span>
+                </label>
+                <label class="dr-radio">
+                  <input type="radio" name="dr-difficulty" value="hard" id="dr-diff-hard" checked />
+                  <span>Hard — classic speed</span>
+                </label>
+              </fieldset>
+
+              <nav class="dr-actions" aria-label="Game menu">
+                <button type="button" class="btn btn-primary btn-lg" id="dr-btn-play">Play</button>
+                <button type="button" class="btn btn-lg" id="dr-btn-howto">How to Play</button>
+              </nav>
+            </div>
+
+            <div class="dr-overlay" id="dr-howto" hidden role="dialog" aria-labelledby="dr-howto-title">
+              <h2 class="dr-panel-title" id="dr-howto-title">How to Play</h2>
+              <ol class="dr-howto-list">
+                <li>Move <strong>Drago</strong> with <strong>arrow keys</strong> or the on-screen D-pad — one square at a time.</li>
+                <li>Walk into a <strong>green block</strong> to push it if the space behind it is empty.</li>
+                <li><strong>Knights</strong> chase you and <strong>block</strong> green tiles — you cannot push blocks into them.</li>
+                <li>Surround a knight with blocks or walls so it cannot move. It becomes a <strong>collectable dragon tile</strong>.</li>
+                <li>Walk over collectables to score. Clear the level when every knight is trapped and collected.</li>
+                <li>You have <strong>3 lives</strong>. Lose a life if a knight catches you or the timer runs out.</li>
+                <li><strong>Easy</strong> gives slower knights and extra time; <strong>Hard</strong> is classic speed.</li>
+              </ol>
+              <button type="button" class="btn btn-primary" id="dr-howto-back">Back</button>
+            </div>
+
+            <div class="dr-overlay" id="dr-level-clear" hidden role="dialog" aria-labelledby="dr-level-clear-title">
+              <h2 class="dr-panel-title" id="dr-level-clear-title">Level clear!</h2>
+              <p id="dr-level-clear-msg">Nice work!</p>
+              <div class="dr-actions">
+                <button type="button" class="btn btn-primary" id="dr-btn-next">Next level</button>
+              </div>
+            </div>
+
+            <div class="dr-overlay" id="dr-victory" hidden role="dialog" aria-labelledby="dr-victory-title">
+              <h2 class="dr-panel-title" id="dr-victory-title">You win!</h2>
+              <p id="dr-victory-score">Final score: 0</p>
+              <div class="dr-actions">
+                <button type="button" class="btn btn-primary" id="dr-btn-victory-retry">Play again</button>
+                <button type="button" class="btn" id="dr-btn-menu-go">Menu</button>
+              </div>
+            </div>
+
+            <div class="dr-overlay" id="dr-game-over" hidden role="dialog" aria-labelledby="dr-game-over-title">
+              <h2 class="dr-panel-title" id="dr-game-over-title">Game over</h2>
+              <p id="dr-game-over-score">Score: 0</p>
+              <p id="dr-game-over-best" hidden>New best score!</p>
+              <div class="dr-actions">
+                <button type="button" class="btn btn-primary" id="dr-btn-retry">Try again</button>
+                <button type="button" class="btn" id="dr-btn-menu">Menu</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="dr-touch-controls" id="dr-touch-controls" aria-label="Touch game controls">
+            <div class="dr-touch-row">
+              <button type="button" class="dr-touch-btn" id="dr-touch-up" aria-label="Move up">↑</button>
+            </div>
+            <div class="dr-touch-row">
+              <button type="button" class="dr-touch-btn" id="dr-touch-left" aria-label="Move left">←</button>
+              <button type="button" class="dr-touch-btn" id="dr-touch-down" aria-label="Move down">↓</button>
+              <button type="button" class="dr-touch-btn" id="dr-touch-right" aria-label="Move right">→</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sr-announce" id="dr-sr-announce" aria-live="assertive"></div>
+    </div>
+
+    <div id="game-footer-mount"></div>
+
+    <script src="/assets/js/games.js?v=20260814c"></script>
+    <script src="/assets/js/site.js?v=20260814c"></script>
+    <script src="/assets/js/dragos-revenge-levels.js?v=20260814c"></script>
+    <script src="/assets/js/dragos-revenge.js?v=20260814d"></script>
+    <script>
+      initGameChrome({
+        title: "Drago's Revenge",
+        description: "Push blocks, trap knights, collect dragon tiles — Drago the Dragon Fruit in a Rodent's Revenge-style grid puzzle.",
+        activePath: "/games/dragos-revenge/",
+        landingHtml: `
+          <article class="game-landing prose reveal">
+            <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
+            <p class="pillar-eyebrow">Laughing Dragons Games</p>
+            <h1>Drago's Revenge</h1>
+            <p class="page-lead">Push green blocks, trap the knights, and collect laughing-dragon tiles.</p>
+            <p>Always playable — no unlock code needed. Arrow keys on desktop; D-pad on mobile.</p>
+          </article>`,
+      });
+      initDragosRevenge();
+    </script>
+  </body>
+</html>

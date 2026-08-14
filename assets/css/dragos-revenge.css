@@ -1,0 +1,242 @@
+:root {
+  --dr-ink: #1a1208;
+  --dr-panel: rgba(20, 16, 10, 0.88);
+  --dr-accent: #e04080;
+  --dr-green: #6b7d35;
+  --dr-gold: #e8b84a;
+  --dr-muted: #c4b896;
+  --dr-border: rgba(255, 200, 220, 0.25);
+  --dr-font: "Segoe UI", "Trebuchet MS", sans-serif;
+}
+
+body.dr-page {
+  background: var(--bg, #0a0a0a);
+}
+
+#game-play {
+  padding: 0 0 2rem;
+}
+
+.dr-root {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.dr-stage-wrap {
+  position: relative;
+  border: 1px solid var(--dr-border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #3d4a22;
+  touch-action: none;
+  user-select: none;
+}
+
+.dr-hud-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.55rem 0.85rem;
+  background: linear-gradient(180deg, #fff8f0 0%, #f5e6dc 100%);
+  border-bottom: 2px solid var(--dr-accent);
+  font-family: var(--dr-font);
+  font-weight: 700;
+  color: var(--dr-ink);
+}
+
+.dr-hud-bar[hidden] {
+  display: none !important;
+}
+
+.dr-hud-lives {
+  color: var(--dr-accent);
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+  min-width: 4rem;
+}
+
+.dr-hud-timer {
+  flex: 1;
+  text-align: center;
+  font-size: 1.05rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(224, 64, 128, 0.12);
+  border: 1px solid rgba(224, 64, 128, 0.35);
+}
+
+.dr-hud-score {
+  font-size: 1.05rem;
+  min-width: 3.5rem;
+  text-align: right;
+}
+
+.dr-hud-level {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #666;
+  text-align: center;
+  padding: 0.25rem 0.5rem 0.35rem;
+  background: #f5e6dc;
+  margin: 0;
+  display: none;
+}
+
+.dr-hud-level.is-visible {
+  display: block;
+}
+
+.dr-playfield {
+  position: relative;
+}
+
+.dr-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  background: var(--dr-green);
+}
+
+.dr-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  background: var(--dr-panel);
+  color: #f5f0e8;
+  text-align: center;
+  z-index: 5;
+  overflow-y: auto;
+}
+
+.dr-overlay[hidden] {
+  display: none !important;
+}
+
+.dr-eyebrow {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dr-gold);
+}
+
+.dr-title {
+  margin: 0;
+  font-family: var(--dr-font);
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  color: #fff;
+}
+
+.dr-tagline {
+  margin: 0;
+  max-width: 28rem;
+  color: var(--dr-muted);
+  line-height: 1.5;
+}
+
+.dr-stats {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--dr-muted);
+}
+
+.dr-difficulty {
+  border: 1px solid var(--dr-border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  max-width: 22rem;
+  width: 100%;
+}
+
+.dr-difficulty legend {
+  font-weight: 700;
+  padding: 0 0.35rem;
+}
+
+.dr-radio {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  margin-top: 0.45rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.dr-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.dr-panel-title {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.dr-howto-list {
+  text-align: left;
+  max-width: 26rem;
+  margin: 0;
+  padding-left: 1.25rem;
+  line-height: 1.55;
+  font-size: 0.92rem;
+  color: var(--dr-muted);
+}
+
+.dr-howto-list strong {
+  color: #fff;
+}
+
+.dr-touch-controls {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.75rem;
+  background: rgba(10, 10, 10, 0.5);
+}
+
+.dr-touch-row {
+  display: flex;
+  gap: 0.35rem;
+  justify-content: center;
+}
+
+.dr-touch-btn {
+  min-width: 3.25rem;
+  min-height: 3.25rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  border: 1px solid var(--dr-border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  cursor: pointer;
+}
+
+.dr-touch-btn:active {
+  background: rgba(224, 64, 128, 0.35);
+}
+
+@media (max-width: 768px) {
+  .dr-touch-controls {
+    display: flex;
+  }
+}
+
+@media (pointer: coarse) {
+  .dr-touch-controls {
+    display: flex;
+  }
+}
