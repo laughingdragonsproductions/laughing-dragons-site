@@ -32,7 +32,57 @@ body.vball-page {
   touch-action: none;
   user-select: none;
   display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.vball-power-meter {
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  width: 2.75rem;
+  padding: 0.65rem 0.4rem;
+  background: rgba(10, 10, 10, 0.75);
+  border-right: 1px solid var(--vball-border);
+  flex: 0 0 auto;
+  z-index: 2;
+}
+
+.vball-power-meter[hidden] {
+  display: none !important;
+}
+
+.vball-power-label {
+  font-family: var(--vball-font);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vball-accent);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.vball-power-track {
+  position: relative;
+  flex: 1 1 auto;
+  width: 1.1rem;
+  min-height: 8rem;
+  border: 1px solid var(--vball-border);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.vball-power-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0%;
+  background: linear-gradient(180deg, var(--vball-gold) 0%, var(--vball-accent) 100%);
+  transition: height 0.05s linear;
 }
 
 .vball-playfield {
@@ -40,7 +90,8 @@ body.vball-page {
   width: 100%;
   aspect-ratio: 16 / 9;
   max-height: min(72vh, 540px);
-  flex: 0 0 auto;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .vball-canvas {
@@ -318,21 +369,151 @@ body.vball-page {
   max-width: 22rem;
 }
 
-@media (max-width: 640px) {
+/* Touch controls — hidden on desktop */
+.vball-touch-controls {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(10, 10, 10, 0.85);
+  border-top: 1px solid var(--vball-border);
+  touch-action: none;
+}
+
+.vball-touch-row {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.vball-touch-btn {
+  min-width: 3.25rem;
+  min-height: 3.25rem;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--vball-border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-family: var(--vball-font);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.vball-touch-btn:active {
+  background: rgba(57, 255, 20, 0.2);
+  border-color: var(--vball-accent);
+}
+
+.vball-touch-btn--jump {
+  flex: 1;
+  max-width: 7rem;
+}
+
+.vball-touch-btn--hit {
+  position: relative;
+  flex: 1;
+  max-width: 7rem;
+  overflow: hidden;
+}
+
+.vball-touch-hit-label {
+  position: relative;
+  z-index: 1;
+}
+
+.vball-touch-hit-track {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+.vball-touch-hit-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0%;
+  background: linear-gradient(180deg, var(--vball-gold) 0%, var(--vball-accent) 100%);
+  opacity: 0.55;
+  transition: height 0.05s linear;
+}
+
+/* Mobile: flip court so player side is at bottom + show touch controls */
+@media (max-width: 768px), (pointer: coarse) {
   .vball-root {
-    padding: 0 0.5rem;
+    padding: 0 0.35rem;
   }
 
   .vball-stage-wrap {
+    flex-direction: column;
     border-radius: 8px;
   }
 
+  .vball-power-meter {
+    flex-direction: row;
+    width: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--vball-border);
+    padding: 0.4rem 0.65rem;
+  }
+
+  .vball-power-label {
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+
+  .vball-power-track {
+    width: 100%;
+    min-height: 0;
+    height: 0.85rem;
+    flex: 1 1 auto;
+  }
+
+  .vball-power-fill {
+    top: 0;
+    bottom: auto;
+    height: 100%;
+    width: 0%;
+  }
+
   .vball-playfield {
-    max-height: min(56vw, 360px);
+    max-height: min(62vw, 420px);
+    transform: rotate(90deg);
+    transform-origin: center center;
+    margin: auto;
+    width: min(72vh, 540px);
+    aspect-ratio: 16 / 9;
+  }
+
+  .vball-touch-controls {
+    display: flex;
   }
 
   .vball-skin-btn {
     width: 44px;
     height: 44px;
+  }
+}
+
+/* When power meter visible on mobile, fill width not height */
+body.vball-mobile .vball-power-meter:not([hidden]) ~ .vball-playfield {
+  /* playfield follows rotated layout */
+}
+
+body.vball-mobile #vball-power-fill {
+  width: var(--power, 0%);
+  height: 100%;
+}
+
+@media (max-width: 768px), (pointer: coarse) {
+  .vball-power-fill {
+    width: 0%;
+    height: 100%;
   }
 }

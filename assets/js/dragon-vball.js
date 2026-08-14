@@ -2,12 +2,11 @@
   "use strict";
 
   const TILE_BASE = "/assets/kids/games/memory-matching/tiles";
-  const COURT_SRC = "/assets/kids/games/dragon-vball/court.png";
+  const COURT_SRC = "/assets/kids/games/dragon-vball/background.png";
   const BALL_SRC = "/assets/kids/games/dragon-vball/ball.png";
   const FIREBALL_SRC = "/assets/kids/games/dragon-vball/fireball.png";
 
   const FIREBALL_HITS = 8;
-  /** Sprite flames default upper-right; rotate so tail opposes velocity. */
   const FIREBALL_ANGLE_OFFSET = (5 * Math.PI) / 4;
 
   const STORAGE = {
@@ -21,8 +20,26 @@
   const WIN_SCORE = 7;
 
   const MODES = {
-    easy: { id: "easy", label: "Easy", aiSpeed: 3.4, aiError: 52, ballSpeed: 5.2 },
-    hard: { id: "hard", label: "Hard", aiSpeed: 5.8, aiError: 14, ballSpeed: 6.8 },
+    easy: {
+      id: "easy",
+      label: "Easy",
+      aiSpeed: 2.0,
+      aiError: 130,
+      ballSpeed: 5.0,
+      aiReactAt: 0.68,
+      aiEffort: 0.58,
+      aiMissChance: 0.22,
+    },
+    hard: {
+      id: "hard",
+      label: "Hard",
+      aiSpeed: 4.6,
+      aiError: 42,
+      ballSpeed: 6.5,
+      aiReactAt: 0.52,
+      aiEffort: 0.88,
+      aiMissChance: 0.06,
+    },
   };
 
   const DRAGONS = [
@@ -42,13 +59,13 @@
     topPad: 52,
     bottomPad: 72,
     netX: 480,
+    serveDelayMs: 900,
   };
 
   const BASE = {
     dragonSize: 72,
     playerX: 72,
     ballRadius: 30,
-    serveDelayMs: 900,
   };
 
   let canvas;
@@ -73,7 +90,8 @@
 
   const input = {
     pointerY: null,
-    keys: { up: false, down: false },
+    up: false,
+    down: false,
   };
 
   const state = {
@@ -130,22 +148,12 @@
 
   async function loadAssets() {
     const loads = [
-      loadImage(COURT_SRC).then((img) => {
-        courtImg = img;
-      }),
-      loadBallWithAlpha(BALL_SRC).then((img) => {
-        ballImg = img;
-      }),
-      loadBallWithAlpha(FIREBALL_SRC).then((img) => {
-        fireballImg = img;
-      }),
+      loadImage(COURT_SRC).then((img) => { courtImg = img; }),
+      loadBallWithAlpha(BALL_SRC).then((img) => { ballImg = img; }),
+      loadBallWithAlpha(FIREBALL_SRC).then((img) => { fireballImg = img; }),
     ];
     for (const d of DRAGONS) {
-      loads.push(
-        loadImage(d.src).then((img) => {
-          dragonImages[d.id] = img;
-        })
-      );
+      loads.push(loadImage(d.src).then((img) => { dragonImages[d.id] = img; }));
     }
     await Promise.all(loads);
     imagesReady = true;
@@ -368,7 +376,7 @@
   function scheduleServe(toward) {
     waitingServe = true;
     serveToward = toward;
-    serveTimer = BASE.serveDelayMs;
+    serveTimer = WORLD.serveDelayMs;
     resetRallyFire();
     ball.x = WORLD.netX;
     ball.y = WORLD.height / 2;
@@ -416,14 +424,13 @@
   }
 
   function updatePlayer(dt) {
-    const b = playBounds();
     const targetY = input.pointerY != null
       ? input.pointerY - BASE.dragonSize / 2
       : player.y;
 
     let moveY = 0;
-    if (input.keys.up) moveY -= 1;
-    if (input.keys.down) moveY += 1;
+    if (input.up) moveY -= 1;
+    if (input.down) moveY += 1;
 
     if (moveY !== 0) {
       player.y += moveY * 7.5 * dt;
@@ -432,25 +439,71 @@
     }
 
     player.y = clampY(player.y, BASE.dragonSize);
-    void b;
+  }
+
+  function predictBallYAtX(targetX) {
+    let x = ball.x;
+    let y = ball.y;
+    let vx = ball.vx;
+    let vy = ball.vy;
+    const b = playBounds();
+    const top = b.top + ball.r;
+    const bottom = b.bottom - ball.r;
+
+    for (let step = 0; step < 10; step += 1) {
+      if (Math.abs(vx) < 0.01) return y;
+
+      const tReach = (targetX - x) / vx;
+      if (tReach > 0 && tReach < 200) {
+        return y + vy * tReach;
+      }
+
+      let tWall = Infinity;
+      if (vy < 0) {
+        const t = (top - y) / vy;
+        if (t > 0) tWall = Math.min(tWall, t);
+      }
+      if (vy > 0) {
+        const t = (bottom - y) / vy;
+        if (t > 0) tWall = Math.min(tWall, t);
+      }
+      if (!Number.isFinite(tWall)) break;
+
+      x += vx * tWall;
+      y += vy * tWall;
+      vy = -vy;
+    }
+
+    return y;
   }
 
   function updateAi(dt) {
     const mode = getMode();
     const box = getDragonBox("ai");
     const centerY = box.y + box.h / 2;
-    let targetY = ball.y + (Math.random() - 0.5) * mode.aiError;
+    const b = playBounds();
+    const midCourt = (b.top + b.bottom) / 2;
+    const reactLine = WORLD.width * mode.aiReactAt;
+    const aiFaceX = getAiX() + BASE.dragonSize / 2;
 
-    if (waitingServe || Math.abs(ball.vx) < 0.5) {
-      targetY = (playBounds().top + playBounds().bottom) / 2;
-    } else if (ball.vx > 0) {
-      targetY = ball.y + (Math.random() - 0.5) * mode.aiError * 0.5;
-    } else {
-      targetY = (playBounds().top + playBounds().bottom) / 2;
+    let targetY = midCourt;
+
+    if (!waitingServe && ball.vx > 0 && ball.x > reactLine) {
+      if (Math.random() < mode.aiMissChance) {
+        targetY = midCourt + (Math.random() - 0.5) * (b.bottom - b.top) * 0.55;
+      } else if (mode.id === "hard") {
+        targetY = predictBallYAtX(aiFaceX) + (Math.random() - 0.5) * mode.aiError;
+      } else {
+        targetY = ball.y + (Math.random() - 0.5) * mode.aiError;
+        targetY += Math.sign(ball.vy || 1) * Math.abs(ball.vy) * 6;
+      }
+    } else if (!waitingServe && ball.vx > 0) {
+      targetY = ball.y + (Math.random() - 0.5) * mode.aiError * 1.4;
     }
 
     const diff = targetY - centerY;
-    ai.y += Math.sign(diff) * Math.min(Math.abs(diff), mode.aiSpeed * dt);
+    const maxStep = mode.aiSpeed * mode.aiEffort * dt;
+    ai.y += Math.sign(diff) * Math.min(Math.abs(diff), maxStep);
     ai.y = clampY(ai.y, BASE.dragonSize);
   }
 
@@ -696,6 +749,11 @@
     drawFrame();
   }
 
+  function detectMobileLayout() {
+    const mobile = window.matchMedia("(max-width: 768px), (pointer: coarse)").matches;
+    document.body.classList.toggle("vball-mobile", mobile);
+  }
+
   function resizeCanvas() {
     const wrap = els.playfield;
     if (!wrap) return;
@@ -717,20 +775,36 @@
     return relY * WORLD.height;
   }
 
+  function bindTouchButton(btn, onDown, onUp) {
+    if (!btn) return;
+    const down = (e) => {
+      e.preventDefault();
+      onDown();
+    };
+    const up = (e) => {
+      e.preventDefault();
+      onUp();
+    };
+    btn.addEventListener("pointerdown", down);
+    btn.addEventListener("pointerup", up);
+    btn.addEventListener("pointercancel", up);
+    btn.addEventListener("pointerleave", up);
+  }
+
   function bindInput() {
     const stage = els.stageWrap;
     if (!stage) return;
 
     const onReadyStart = (e) => {
       if (screen !== "ready") return;
-      if (e.target.closest("button")) return;
-      if (e.type === "keydown" && ![" ", "Enter", "ArrowUp", "ArrowDown", "w", "s", "W", "S"].includes(e.key)) return;
+      if (e.target.closest("button") && !e.target.closest(".vball-touch-controls")) return;
+      if (e.type === "keydown" && ![" ", "Enter", "ArrowUp", "ArrowDown", "w", "W", "s", "S"].includes(e.key)) return;
       if (e.type === "keydown") e.preventDefault();
       startMatch();
     };
 
     stage.addEventListener("pointerdown", (e) => {
-      if (e.target.closest("button")) return;
+      if (e.target.closest("button") && !e.target.closest(".vball-touch-controls")) return;
       if (screen === "ready") {
         onReadyStart(e);
         return;
@@ -745,20 +819,20 @@
       input.pointerY = pointerToWorldY(e.clientY);
     });
 
-    stage.addEventListener("pointerup", () => {
-      /* keep last pointer position for smooth follow */
-    });
-
     window.addEventListener("keydown", (e) => {
-      if (["ArrowUp", "w", "W"].includes(e.key)) input.keys.up = true;
-      if (["ArrowDown", "s", "S"].includes(e.key)) input.keys.down = true;
+      if (e.repeat) return;
+      if (["ArrowUp", "w", "W"].includes(e.key)) input.up = true;
+      if (["ArrowDown", "s", "S"].includes(e.key)) input.down = true;
       if (screen === "ready") onReadyStart(e);
     });
 
     window.addEventListener("keyup", (e) => {
-      if (["ArrowUp", "w", "W"].includes(e.key)) input.keys.up = false;
-      if (["ArrowDown", "s", "S"].includes(e.key)) input.keys.down = false;
+      if (["ArrowUp", "w", "W"].includes(e.key)) input.up = false;
+      if (["ArrowDown", "s", "S"].includes(e.key)) input.down = false;
     });
+
+    bindTouchButton(els.touchUp, () => { input.up = true; }, () => { input.up = false; });
+    bindTouchButton(els.touchDown, () => { input.down = true; }, () => { input.down = false; });
 
     els.btnPlay.addEventListener("click", (e) => {
       e.preventDefault();
@@ -797,7 +871,10 @@
       }
     });
 
-    window.addEventListener("resize", resizeCanvas);
+    window.addEventListener("resize", () => {
+      detectMobileLayout();
+      resizeCanvas();
+    });
   }
 
   function cacheElements() {
@@ -827,6 +904,8 @@
       sr: document.getElementById("vball-sr-announce"),
       diffEasy: document.getElementById("vball-diff-easy"),
       diffHard: document.getElementById("vball-diff-hard"),
+      touchUp: document.getElementById("vball-touch-up"),
+      touchDown: document.getElementById("vball-touch-down"),
     };
     canvas = els.canvas;
     ctx = canvas.getContext("2d");
@@ -836,6 +915,7 @@
     cacheElements();
     if (!canvas || !ctx) return;
 
+    detectMobileLayout();
     loadProgress();
     loadDifficulty();
     resetPositions();
@@ -846,7 +926,7 @@
     try {
       await loadAssets();
     } catch (err) {
-      console.warn("Dragon Volleyball asset load issue:", err);
+      console.warn("Dragon V-ball asset load issue:", err);
     }
 
     resizeCanvas();

@@ -12,6 +12,17 @@ window.GAMES_DATA = {
   /** Ordered catalog — unlock order is internal; UI shows a games list. */
   path: [
     {
+      id: "sliding-scale",
+      title: "The Sliding Scale",
+      description:
+        "Workroom slider puzzle — rebuild workshop photos and brand art. Easy 3×3, Med 4×4, or Hard 5×5. Always playable.",
+      longDescription:
+        "The Sliding Scale is a classic sliding-tile puzzle set on the Laughing Dragons workroom floor. Click tiles in the same row or column as the empty square to slide them into place — tap farther from the gap to move more tiles at once. Choose Easy (3×3), Med (4×4), or Hard (5×5), shuffle for a fresh scramble, and rebuild workshop photos, the workroom banner, or the Laughing Dragons logo. Arrow keys move one tile at a time. Always open from the Games hub — no Terminal Trainer code required.",
+      href: "/games/sliding-scale/",
+      image: "/assets/kids/games/sliding-scale/workshop.png",
+      status: "live",
+    },
+    {
       id: "flappy-dragon",
       title: "Flappy Dragon",
       description:
@@ -26,14 +37,14 @@ window.GAMES_DATA = {
     },
     {
       id: "dragon-vball",
-      title: "Dragon Volleyball",
+      title: "Dragon V-ball",
       description:
-        "Beach Pong with dragons — move your paddle and rally the ball. First to 7 wins. Always playable.",
+        "Forest Pong with dragons — move your paddle and rally the ball. First to 7 wins. Always playable.",
       longDescription:
-        "Dragon Volleyball is beach Pong on the Laughing Dragons tropical court. Move your dragon up and down with arrow keys or drag on the court. " +
+        "Dragon V-ball is classic Pong in a sunlit forest clearing. Move your dragon up and down with arrow keys or drag on the screen. " +
         "The ball bounces off both paddles automatically — keep it in play and send it past the AI to score. First to seven wins the match. Eight paddle hits in a row ignites the fireball. Win matches to unlock all eight dragon colors — progress saves in your browser.",
       href: "/games/dragon-vball/",
-      image: "/assets/kids/games/dragon-vball/court.png",
+      image: "/assets/kids/games/dragon-vball/background.png",
       status: "live",
     },
     {
