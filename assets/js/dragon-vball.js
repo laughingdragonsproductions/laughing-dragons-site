@@ -935,7 +935,7 @@
     try {
       await loadAssets();
     } catch (err) {
-      console.warn("Dragon V-ball asset load issue:", err);
+      console.warn("Dragon-Ball V asset load issue:", err);
     }
 
     resizeCanvas();

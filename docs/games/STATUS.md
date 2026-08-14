@@ -31,7 +31,7 @@
 | 2026-08-10 | Carol | S007 design ready — count-the-dragons, simon-says, hangman-lite full spec packs |
 | 2026-08-10 | Carol | S008 design ready — whack-a-fruit, pattern-builder, maze-generator, coloring-viewer full spec packs |
 | 2026-08-13 | Cursor | Flappy Dragon v1 playable — standalone, always open, canvas + dragon skin unlocks |
-| 2026-08-13 | Cursor | Dragon V-ball v1 playable — standalone forest Pong vs AI, first to 7 |
+| 2026-08-13 | Cursor | Dragon-Ball V v1 playable — standalone forest Pong vs AI, first to 3 |
 | 2026-08-14 | Carol | S010 Drago's Revenge design ready — LEVELS.md + HUD.md (8 layouts, fruit HUD) |
 | 2026-08-14 | Alice | S010 queued; Telegram Brandon — spec ready for Cursor double-check |
 | 2026-08-14 | Cursor | Drago's Revenge v1 playable — standalone at /games/dragos-revenge/, 8 levels, Drago + tile pickups |

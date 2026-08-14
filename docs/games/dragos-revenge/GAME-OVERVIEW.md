@@ -3,7 +3,7 @@
 **Slug:** `dragos-revenge`  
 **Brand:** Laughing Dragons / Fruit Friends (Drago the Dragon Fruit)  
 **Inspiration:** Rodent's Revenge (Windows 3.x)  
-**Unlock:** Always playable — standalone like Flappy Dragon and Dragon V-ball  
+**Unlock:** Always playable — standalone like Flappy Dragon and Dragon-Ball V  
 
 ## Pitch
 
