@@ -90,6 +90,7 @@
 
   const input = {
     pointerY: null,
+    pointerActive: false,
     up: false,
     down: false,
   };
@@ -341,6 +342,7 @@
     ball.vx = 0;
     ball.vy = 0;
     input.pointerY = null;
+    input.pointerActive = false;
   }
 
   function resetRallyFire() {
@@ -422,18 +424,16 @@
   }
 
   function updatePlayer(dt) {
-    const targetY = input.pointerY != null
-      ? input.pointerY - BASE.dragonSize / 2
-      : player.y;
-
     let moveY = 0;
     if (input.up) moveY -= 1;
     if (input.down) moveY += 1;
 
     if (moveY !== 0) {
+      input.pointerY = null;
+      input.pointerActive = false;
       player.y += moveY * 7.5 * dt;
-    } else if (input.pointerY != null) {
-      player.y = clampY(targetY, BASE.dragonSize);
+    } else if (input.pointerActive && input.pointerY != null) {
+      player.y = clampY(input.pointerY - BASE.dragonSize / 2, BASE.dragonSize);
     }
 
     player.y = clampY(player.y, BASE.dragonSize);
@@ -631,8 +631,8 @@
 
     ctx.save();
     ctx.translate(cx, cy);
-    const faceRight = ball.x >= cx;
-    const flipX = side === "player" ? (faceRight ? 1 : -1) : (faceRight ? -1 : 1);
+    // Tile art faces left by default; flip toward the ball on either side.
+    const flipX = ball.x >= cx ? -1 : 1;
     ctx.scale(flipX, 1);
     if (img) {
       ctx.drawImage(img, -size / 2, -size / 2, size, size);
@@ -810,14 +810,23 @@
         return;
       }
       if (screen !== "playing") return;
+      input.pointerActive = true;
       input.pointerY = pointerToWorldY(e.clientY);
     });
 
     stage.addEventListener("pointermove", (e) => {
-      if (screen !== "playing") return;
+      if (screen !== "playing" || !input.pointerActive) return;
       if (e.buttons === 0 && e.pointerType === "mouse") return;
       input.pointerY = pointerToWorldY(e.clientY);
     });
+
+    const endPointerDrag = () => {
+      input.pointerActive = false;
+      input.pointerY = null;
+    };
+
+    stage.addEventListener("pointerup", endPointerDrag);
+    stage.addEventListener("pointercancel", endPointerDrag);
 
     window.addEventListener("keydown", (e) => {
       if (e.repeat) return;
