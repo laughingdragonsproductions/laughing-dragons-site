@@ -76,7 +76,7 @@ window.GAMES_DATA = {
       longDescription:
         "Fruit Search is a Where's-Waldo style finder built around the Fruit Friends A–Z cast. A prompt asks you to find a named character or a letter, then you scan a busy map and tap the right portrait. Wrong taps get a gentle try-again; correct finds celebrate and roll the next target. Difficulty scales from a few large sprites to crowded hard mode.",
       href: "/games/fruit-search/",
-      image: "/assets/kids/games/fruit-search/maps/map-1.png",
+      image: "/assets/kids/games/fruit-search/ISpyFruit1.png",
       status: "live",
       requiresUnlock: "fruit-search-unlocked",
       lockedDescription: "Beat Memory Matching at or under par to unlock Fruit Search.",
