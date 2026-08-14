@@ -1,11 +1,19 @@
 param(
   [Parameter(Mandatory = $true, Position = 0)]
   [string]$Message,
-  [switch]$Force
+  [switch]$Force,
+  [switch]$SkipAiMarksFilter
 )
 
 Set-Location (Split-Path $PSScriptRoot -Parent)
 . (Join-Path $PSScriptRoot "git-author.ps1")
+
+$AiMarksFilter = "G:\LocalAIagent\desktop-agent\scripts\filter-ai-marks.ps1"
+$siteRoot = (Get-Location).Path
+if (-not $SkipAiMarksFilter -and (Test-Path $AiMarksFilter)) {
+  Write-Host "AI marks filter (Laughing Dragons Hub)..." -ForegroundColor DarkGray
+  & $AiMarksFilter -Scope websites -WebsitePath $siteRoot -Quiet
+}
 
 $sizeArgs = @()
 if ($Force) { $sizeArgs += "-Force" }

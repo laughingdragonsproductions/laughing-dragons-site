@@ -5,11 +5,14 @@ param(
   [switch]$HubOnly,
   [switch]$ChittinOnly,
   [switch]$ReptoolsOnly,
-  [switch]$DryRun
+  [switch]$DryRun,
+  [switch]$SkipAiMarksFilter
 )
 
 $ErrorActionPreference = "Stop"
 . (Join-Path $PSScriptRoot "git-author.ps1")
+
+$AiMarksFilter = "G:\LocalAIagent\desktop-agent\scripts\filter-ai-marks.ps1"
 
 $Sites = @(
   @{
@@ -56,11 +59,19 @@ function Push-SiteRepo {
 
   Write-Host ""
   Write-Host "=== $($Site.Name) ===" -ForegroundColor Cyan
-  Write-Host "Path: $root"
-  Push-Location $root
+    Write-Host "Path: $root"
+    Push-Location $root
 
-  try {
-    $sizeScript = Join-Path $root "scripts\check-site-size.ps1"
+    try {
+      if (-not $SkipAiMarksFilter -and (Test-Path $AiMarksFilter) -and $Site.Id -in @("hub", "chittin")) {
+        Write-Host "AI marks filter (websites)..." -ForegroundColor DarkGray
+        & $AiMarksFilter -Scope websites -WebsitePath $root -Quiet
+        if ($LASTEXITCODE -ne 0) {
+          Write-Host "AI marks filter reported errors for $($Site.Name)." -ForegroundColor Yellow
+        }
+      }
+
+      $sizeScript = Join-Path $root "scripts\check-site-size.ps1"
     if (Test-Path $sizeScript) {
       $sizeArgs = @()
       if ($Force) { $sizeArgs += "-Force" }
