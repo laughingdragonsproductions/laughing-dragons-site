@@ -3,7 +3,7 @@
 
   const ASSET_BASE = "/assets/kids/games/dragos-revenge";
   const TILE_BASE = "/assets/kids/games/memory-matching/tiles";
-  const ASSET_VERSION = "20260814d";
+  const ASSET_VERSION = "20260814e";
   const FLOOR_COLOR = "#9a9450";
 
   const asset = (file) => `${ASSET_BASE}/${file}?v=${ASSET_VERSION}`;
@@ -16,9 +16,12 @@
   const PICKUP_COLORS = ["green", "red", "blue", "purple", "orange", "pink", "teal", "charcoal"];
 
   const MODES = {
-    easy: { id: "easy", hunterEvery: 3, timeBonus: 30, label: "Easy" },
-    hard: { id: "hard", hunterEvery: 2, timeBonus: 0, label: "Hard" },
+    easy: { id: "easy", hunterEvery: 2, timeBonus: 30, label: "Easy" },
+    hard: { id: "hard", hunterEvery: 1, timeBonus: 0, label: "Hard" },
   };
+
+  const HUNTER_SLIDE_MS = 140;
+  const HUNTER_BOB_HZ = 0.0055;
 
   const SCORE = { trapCollect: 100, levelClear: 200 };
 
@@ -56,6 +59,7 @@
   let keyRepeatTimer = 0;
   let heldDir = null;
   const KEY_REPEAT_MS = 140;
+  let animFrameId = 0;
 
   function $(id) {
     return document.getElementById(id);
@@ -178,7 +182,7 @@
     }
 
     hunterSpawns.forEach((s) => {
-      hunters.push({ x: s.x, y: s.y, id: ++hunterIdSeq });
+      hunters.push(makeHunter(s.x, s.y));
     });
 
     if (!spawnFound) {
@@ -217,6 +221,37 @@
       els.level.classList.add("is-visible");
     }
     announce(`Level ${def.id}: ${def.name}`);
+    startAnimLoop();
+  }
+
+  function makeHunter(x, y) {
+    return {
+      x,
+      y,
+      id: ++hunterIdSeq,
+      fromX: x,
+      fromY: y,
+      moveStart: 0,
+      facingX: 0,
+      facingY: 1,
+    };
+  }
+
+  function startAnimLoop() {
+    stopAnimLoop();
+    const frame = () => {
+      if (screen !== "play") return;
+      draw();
+      animFrameId = requestAnimationFrame(frame);
+    };
+    animFrameId = requestAnimationFrame(frame);
+  }
+
+  function stopAnimLoop() {
+    if (animFrameId) {
+      cancelAnimationFrame(animFrameId);
+      animFrameId = 0;
+    }
   }
 
   function startTimer() {
@@ -234,6 +269,7 @@
       clearInterval(timerId);
       timerId = 0;
     }
+    stopAnimLoop();
   }
 
   function updateHud() {
@@ -266,8 +302,59 @@
     hunters = hunters.filter((x) => x.id !== h.id);
   }
 
-  function hunterCanMove(x, y) {
-    return isFloorWalkable(x, y);
+  function hunterCanMove(x, y, self) {
+    if (!isFloorWalkable(x, y)) return false;
+    if (self && hunters.some((h) => h !== self && h.x === x && h.y === y)) return false;
+    return true;
+  }
+
+  function pickHunterStep(h) {
+    const dx = player.x - h.x;
+    const dy = player.y - h.y;
+    const steps = [];
+
+    if (Math.abs(dx) >= Math.abs(dy)) {
+      if (dx !== 0) steps.push([Math.sign(dx), 0]);
+      if (dy !== 0) steps.push([0, Math.sign(dy)]);
+    } else {
+      if (dy !== 0) steps.push([0, Math.sign(dy)]);
+      if (dx !== 0) steps.push([Math.sign(dx), 0]);
+    }
+
+    for (const [mx, my] of steps) {
+      const nx = h.x + mx;
+      const ny = h.y + my;
+      if (hunterCanMove(nx, ny, h)) return [mx, my];
+    }
+
+    const wander = [
+      [0, -1],
+      [0, 1],
+      [-1, 0],
+      [1, 0],
+    ];
+    for (let i = wander.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [wander[i], wander[j]] = [wander[j], wander[i]];
+    }
+    for (const [mx, my] of wander) {
+      const nx = h.x + mx;
+      const ny = h.y + my;
+      if (hunterCanMove(nx, ny, h)) return [mx, my];
+    }
+
+    return [0, 0];
+  }
+
+  function moveHunter(h, nx, ny) {
+    if (h.x === nx && h.y === ny) return;
+    h.fromX = h.x;
+    h.fromY = h.y;
+    h.facingX = nx - h.x;
+    h.facingY = ny - h.y;
+    h.x = nx;
+    h.y = ny;
+    h.moveStart = performance.now();
   }
 
   function isHunterTrapped(h) {
@@ -365,41 +452,22 @@
     checkTrappedHunters();
     checkWin();
     updateHud();
-    draw();
   }
 
   function tickHunters() {
     hunters.slice().forEach((h) => {
-      const dx = player.x - h.x;
-      const dy = player.y - h.y;
-      let mx = 0;
-      let my = 0;
-
-      if (Math.abs(dx) >= Math.abs(dy)) {
-        mx = dx > 0 ? 1 : dx < 0 ? -1 : 0;
-        if (mx !== 0 && !hunterCanMove(h.x + mx, h.y)) mx = 0;
-      }
-      if (mx === 0) {
-        my = dy > 0 ? 1 : dy < 0 ? -1 : 0;
-        if (my !== 0 && !hunterCanMove(h.x, h.y + my)) my = 0;
-      }
-      if (mx === 0 && my === 0 && Math.abs(dy) > Math.abs(dx)) {
-        my = dy > 0 ? 1 : dy < 0 ? -1 : 0;
-      }
+      const [mx, my] = pickHunterStep(h);
+      if (mx === 0 && my === 0) return;
 
       const nx = h.x + mx;
       const ny = h.y + my;
-      if (mx === 0 && my === 0) return;
 
       if (nx === player.x && ny === player.y) {
         loseLife("A knight caught Drago!");
         return;
       }
 
-      if (hunterCanMove(nx, ny)) {
-        h.x = nx;
-        h.y = ny;
-      }
+      moveHunter(h, nx, ny);
     });
   }
 
@@ -501,16 +569,34 @@
     }
   }
 
-  function drawHunter(x, y, size) {
-    const cx = x * size + size / 2;
-    const cy = y * size + size / 2;
+  function hunterVisualPos(h, now) {
+    let px = h.x;
+    let py = h.y;
+    if (h.moveStart && now - h.moveStart < HUNTER_SLIDE_MS) {
+      const t = Math.min(1, (now - h.moveStart) / HUNTER_SLIDE_MS);
+      const ease = 1 - (1 - t) ** 2;
+      px = h.fromX + (h.x - h.fromX) * ease;
+      py = h.fromY + (h.y - h.fromY) * ease;
+    }
+    const bob = Math.sin(now * HUNTER_BOB_HZ + h.id * 1.9) * 0.07;
+    const leanX = (h.facingX || 0) * 0.05;
+    const leanY = (h.facingY || 0) * 0.03;
+    return { px, py, bob, leanX, leanY };
+  }
+
+  function drawHunter(h, size, now) {
+    const { px, py, bob, leanX, leanY } = hunterVisualPos(h, now);
+    const cx = px * size + size / 2 + leanX * size;
+    const cy = py * size + size / 2 + bob * size + leanY * size;
     const r = size * 0.32;
+    const pulse = 1 + Math.sin(now * HUNTER_BOB_HZ * 1.4 + h.id) * 0.04;
+
     ctx.fillStyle = "#d4af37";
     ctx.beginPath();
-    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.arc(cx, cy, r * pulse, 0, Math.PI * 2);
     ctx.fill();
     ctx.strokeStyle = "#5c4a1a";
-    ctx.lineWidth = 2;
+    ctx.lineWidth = Math.max(1, size * 0.04);
     ctx.stroke();
     ctx.fillStyle = "#333";
     ctx.fillRect(cx - r * 0.55, cy - r * 0.15, r * 1.1, r * 0.35);
@@ -554,7 +640,8 @@
       drawTileImage(img, p.x, p.y, size);
     });
 
-    hunters.forEach((h) => drawHunter(h.x, h.y, size));
+    const now = performance.now();
+    hunters.forEach((h) => drawHunter(h, size, now));
 
     drawTileImage(images.drago, player.x, player.y, size);
 
