@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="The Sliding Scale — a workroom slider puzzle from Laughing Dragons. Easy 3×3, Med 4×4, or Hard 5×5. Always playable."
+    />
+    <title>The Sliding Scale</title>
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="stylesheet" href="/assets/css/sliding-scale.css?v=20260814" />
+    <link rel="canonical" href="https://laughing-dragons.com/games/sliding-scale/" />
+  </head>
+  <body class="ss-page game-page">
+    <script src="/assets/js/config.js?v=20260814"></script>
+
+    <div id="game-header-mount"></div>
+    <div class="container game-landing-wrap">
+      <div id="game-landing-mount"></div>
+      <div id="game-ad-top" class="container"></div>
+    </div>
+
+    <div id="game-play">
+      <div class="ss-root" id="ss-root">
+        <div id="slider-puzzle-mount" class="reveal"></div>
+      </div>
+    </div>
+
+    <div id="game-footer-mount"></div>
+
+    <script src="/assets/js/games.js?v=20260814"></script>
+    <script src="/assets/js/site.js?v=20260814"></script>
+    <script src="/assets/js/sliding-scale-logic.js?v=20260814"></script>
+    <script src="/assets/js/sliding-scale.js?v=20260814"></script>
+    <script>
+      initGameChrome({
+        title: "The Sliding Scale",
+        description:
+          "The Sliding Scale — slide tiles on the workroom floor to rebuild workshop photos and Laughing Dragons brand art. Easy 3×3, Med 4×4, or Hard 5×5.",
+        activePath: "/games/sliding-scale/",
+        landingHtml: `
+          <article class="game-landing prose reveal">
+            <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
+            <p class="pillar-eyebrow">Laughing Dragons Games</p>
+            <h1>The Sliding Scale</h1>
+            <p class="page-lead">A workroom slider puzzle — rebuild workshop photos and brand art tile by tile.</p>
+            <p>Always playable — no unlock code needed. Click tiles in the same row or column as the empty square, or use arrow keys.</p>
+          </article>`,
+      });
+      initSlidingScale();
+    </script>
+  </body>
+</html>
