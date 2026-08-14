@@ -107,8 +107,8 @@
     winner: null,
   };
 
-  const player = { y: 0, vy: 0 };
-  const ai = { y: 0, vy: 0 };
+  const player = { y: 0 };
+  const ai = { y: 0 };
   const ball = { x: 0, y: 0, vx: 0, vy: 0, r: BASE.ballRadius };
 
   function loadImage(src) {
@@ -336,8 +336,6 @@
     const midY = (playBounds().top + playBounds().bottom - BASE.dragonSize) / 2;
     player.y = midY;
     ai.y = midY;
-    player.vy = 0;
-    ai.vy = 0;
     ball.x = WORLD.netX;
     ball.y = WORLD.height / 2;
     ball.vx = 0;
@@ -435,7 +433,7 @@
     if (moveY !== 0) {
       player.y += moveY * 7.5 * dt;
     } else if (input.pointerY != null) {
-      player.y += (clampY(targetY, BASE.dragonSize) - player.y) * 0.28 * dt;
+      player.y = clampY(targetY, BASE.dragonSize);
     }
 
     player.y = clampY(player.y, BASE.dragonSize);
@@ -633,7 +631,9 @@
 
     ctx.save();
     ctx.translate(cx, cy);
-    ctx.scale(side === "player" ? 1 : -1, 1);
+    const faceRight = ball.x >= cx;
+    const flipX = side === "player" ? (faceRight ? 1 : -1) : (faceRight ? -1 : 1);
+    ctx.scale(flipX, 1);
     if (img) {
       ctx.drawImage(img, -size / 2, -size / 2, size, size);
     } else {
