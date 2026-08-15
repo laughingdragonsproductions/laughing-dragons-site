@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Terminal Trainer — a retro DOS-style browser game that teaches basic computer commands. Type HELP, DIR, CD, and more across three levels."
+    />
+    <title>Terminal Trainer</title>
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="stylesheet" href="/assets/css/terminal-game.css?v=20260809" />
+    <link rel="canonical" href="https://laughing-dragons.com/games/terminal/" />
+  </head>
+  <body class="terminal-page game-page">
+    <div id="game-header-mount"></div>
+    <div class="container game-landing-wrap">
+      <div id="game-landing-mount"></div>
+      <div id="game-ad-top" class="container"></div>
+    </div>
+
+    <div id="game-play">
+      <button
+        type="button"
+        class="hints-panel-toggle"
+        id="hints-panel-toggle"
+        hidden
+        aria-expanded="false"
+        aria-controls="terminal-hints"
+      >
+        HELP
+      </button>
+      <button type="button" class="replay-intro-link" id="replay-intro" hidden>Replay intro</button>
+      <button type="button" class="intro-skip-btn" id="intro-skip" hidden>Skip intro</button>
+      <button type="button" class="intro-fallback-btn" id="intro-fallback" hidden>Tap to play intro</button>
+
+      <div class="game-layout" id="game-layout">
+        <div id="desk-stage" class="desk-stage">
+          <div class="desk-canvas">
+            <img
+              class="desk-frame"
+              src="/assets/kids/games/terminal/desk-monitor-frame.png"
+              alt="Laughing Dragons workroom desk with PC monitor"
+              width="1024"
+              height="576"
+            />
+            <video
+              id="intro-video"
+              class="intro-video"
+              src="/assets/kids/games/terminal/newterminalvideo.mp4?v=20260801"
+              muted
+              playsinline
+              preload="auto"
+            ></video>
+            <div id="monitor-viewport" class="monitor-viewport monitor-viewport--hidden">
+              <div id="terminal-win-banner" class="terminal-win-banner" hidden aria-live="polite">
+                <div class="terminal-win-banner-inner">
+                  <p class="terminal-win-stars" aria-hidden="true">***** YOU WIN *****</p>
+                  <h2 class="terminal-win-title">Terminal Trainer Complete</h2>
+                  <p class="terminal-win-lede">You hacked every level. Here are your rewards:</p>
+
+                  <section class="terminal-win-reward">
+                    <h3 class="terminal-win-reward-title">Game unlock</h3>
+                    <p class="terminal-win-reward-text">
+                      <strong id="win-unlock-game-name">Memory Matching Game</strong> is unlocked on the Games page.
+                    </p>
+                    <p class="terminal-win-reward-label">Unlock code</p>
+                    <div class="terminal-win-code-row">
+                      <code class="terminal-win-code" id="win-game-code">FORGE-GATE-7</code>
+                      <button type="button" class="terminal-win-copy" data-copy-target="win-game-code">Copy</button>
+                    </div>
+                  </section>
+
+                  <section class="terminal-win-reward">
+                    <h3 class="terminal-win-reward-title">Store coupon</h3>
+                    <p class="terminal-win-reward-text" id="win-coupon-label">15% off anything in-store</p>
+                    <p class="terminal-win-reward-label">Coupon code</p>
+                    <div class="terminal-win-code-row">
+                      <code class="terminal-win-code" id="win-coupon-code">DragonForge15</code>
+                      <button type="button" class="terminal-win-copy" data-copy-target="win-coupon-code">Copy</button>
+                    </div>
+                  </section>
+
+                  <div class="terminal-win-actions">
+                    <a class="terminal-win-btn" id="win-shop-link" href="/shop/">Visit the shop</a>
+                    <a class="terminal-win-btn terminal-win-btn-ghost" id="win-game-link" href="/games/memory-matching/">Unlocked game</a>
+                    <button type="button" class="terminal-win-btn terminal-win-btn-ghost" id="win-play-again">Play again</button>
+                  </div>
+                </div>
+              </div>
+              <header class="monitor-hud">
+                <span class="terminal-status" id="terminal-status">Level 1: First Contact</span>
+              </header>
+              <main class="terminal-shell" id="terminal-game">
+                <section
+                  class="terminal-screen"
+                  id="terminal-screen"
+                  aria-live="polite"
+                  aria-label="Terminal output"
+                ></section>
+
+                <div class="terminal-input-row">
+                  <label class="terminal-prompt-label" id="terminal-prompt-label" for="terminal-input">A:\></label>
+                  <input
+                    class="terminal-input"
+                    id="terminal-input"
+                    type="text"
+                    autocomplete="off"
+                    autocapitalize="characters"
+                    spellcheck="false"
+                    aria-label="Terminal command input"
+                  />
+                </div>
+
+                <aside class="terminal-panel">
+                  <h2 class="terminal-panel-title">Command list</h2>
+                  <div class="command-list" id="command-list"></div>
+                </aside>
+
+                <div class="terminal-restart" id="terminal-restart" hidden>
+                  <button type="button">Restart terminal</button>
+                </div>
+              </main>
+            </div>
+          </div>
+        </div>
+
+        <aside class="terminal-hints" id="terminal-hints" hidden>
+          <h2 class="terminal-hints-title">Hints</h2>
+          <p class="terminal-hint" id="hint-walkthrough"></p>
+          <p class="terminal-hint terminal-hint-tip">
+            Tip: Press <kbd>↑</kbd> to bring back your last command.
+          </p>
+          <p class="terminal-hint terminal-hint-tip">
+            Tip: Press <kbd>Tab</kbd> to autocomplete commands and folder names.
+          </p>
+        </aside>
+      </div>
+    </div>
+
+    <div class="container" id="game-ad-bottom"></div>
+    <div id="game-footer-mount"></div>
+
+    <script src="/assets/js/config.js?v=20260809"></script>
+    <script src="/assets/js/kids-unlocks.js?v=20260809"></script>
+    <script src="/assets/js/games.js?v=20260809"></script>
+    <script src="/assets/js/site.js?v=20260809"></script>
+    <script src="/assets/js/terminal-game.js?v=20260809"></script>
+    <script>
+      initGameChrome({
+        title: "Terminal Trainer",
+        description: "Retro DOS-style terminal game — learn HELP, DIR, CD, and more.",
+        activePath: "/games/terminal/",
+        landingHtml: renderTerminalLanding(),
+      });
+    </script>
+  </body>
+</html>

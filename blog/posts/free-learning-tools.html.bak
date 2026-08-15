@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Free browser-based learning tools from Laughing Dragons Productions." />
+    <title>Free learning tools online</title>
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="canonical" href="https://laughing-dragons.com/blog/posts/free-learning-tools.html" />
+</head>
+  <body>
+    <div id="app"></div>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/site.js"></script>
+    <script>
+      initPage({
+        title: "Free learning tools online",
+        description: "Free browser-based learning tools from Laughing Dragons Productions.",
+        activePath: "/blog/",
+        content: `
+          <article class="prose reveal">
+            <p class="pillar-eyebrow">July 28, 2026</p>
+            <h1>Free learning tools online</h1>
+            <p>We publish free utilities at <a href="/tools/">laughing-dragons.com/tools</a> — unit converters, percentage and tip calculators, word and syllable counters, JSON formatters, Base64 helpers, UUID generators, and password generators. Everything runs in your browser; we do not ask you to create an account or upload files to our servers.</p>
+            <h2>Why we build tools this way</h2>
+            <p>We use these pages ourselves when we are prototyping apps, checking homework with kids, or sanity-checking data before it goes into a project. Keeping them static and client-side means they load fast on school Chromebooks, work offline after the first visit, and stay easy to maintain.</p>
+            <p>Each tool lives on its own URL so you can bookmark what you need. The hub page links them all together with short descriptions so you are not guessing from the filename alone.</p>
+            <h2>Privacy by design</h2>
+            <p>Because processing happens locally, your inputs never pass through our backend. That is important for classroom use and for anyone who prefers not to paste sensitive text into random websites. We still publish a clear <a href="/privacy/">Privacy Policy</a> because AdSense and hosting providers may set cookies on the site overall.</p>
+            <h2>What is next</h2>
+            <p>We add tools when we hit the same problem twice in the workroom. If you have a small utility you wish existed, reach out through <a href="/contact/">Contact Us</a> — we keep a backlog tied to real tasks, not trend chasing.</p>
+            <p><a href="/tools/">Browse tools &rarr;</a></p>
+          </article>
+        `,
+      });
+    </script>
+  </body>
+</html>

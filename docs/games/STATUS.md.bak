@@ -1,0 +1,40 @@
+# Games pipeline — agent status board
+
+**Updated by:** Alice (coordination), Carol (design), Dave (code)  
+**Rule:** Update this file when you start or finish a task. Dave waits for Carol `ready` on a slug before coding.
+
+| Slug | Design (Carol) | Code (Dave) | Notes |
+|------|----------------|-------------|-------|
+| sliding-scale | n/a (standalone) | done | Always playable at /games/sliding-scale/ — workroom slider puzzle |
+| flappy-dragon | n/a (standalone) | done | Always playable at /games/flappy-dragon/ — outside unlock chain |
+| dragos-revenge | ready S010 | done | Always playable at /games/dragos-revenge/ — Rodent's Revenge clone |
+| dragon-vball | n/a (standalone) | done | Always playable at /games/dragon-vball/ — forest Pong vs AI |
+| fruit-search | ready S004 | done S005 | Playable v1 at /games/fruit-search/ |
+| alphabet-trace | ready S006 | blocked | Spec pack complete — Dave may scaffold |
+| typing-race | ready S006 | blocked | Spec pack complete — Dave may scaffold |
+| color-match | ready S006 | blocked | Spec pack complete — Dave may scaffold |
+| count-the-dragons | ready S007 | blocked | Spec pack complete — Dave may scaffold |
+| simon-says | ready S007 | blocked | Spec pack complete — Dave may scaffold |
+| hangman-lite | ready S007 | blocked | Spec pack complete — Dave may scaffold |
+| whack-a-fruit | ready S008 | blocked | Spec pack complete — Dave may scaffold |
+| pattern-builder | ready S008 | blocked | Spec pack complete — Dave may scaffold |
+| maze-generator | ready S008 | blocked | Spec pack complete — Dave may scaffold |
+| coloring-viewer | ready S008 | blocked | Spec pack complete — Dave may scaffold |
+
+## Handoff log
+
+| Date | Agent | Message |
+|------|-------|---------|
+| 2026-08-10 | Cursor | Pipeline bootstrapped — docs, TASK-QUEUE S003–S009, Fruit Search scaffold started |
+| 2026-08-10 | Dave | S005 Fruit Search v1 playable — maps, I-Spy loop, win code TRACE-A-Z-4 |
+| 2026-08-10 | Carol | S006 design ready — alphabet-trace, typing-race, color-match full spec packs + fruit-search HUD |
+| 2026-08-10 | Carol | S007 design ready — count-the-dragons, simon-says, hangman-lite full spec packs |
+| 2026-08-10 | Carol | S008 design ready — whack-a-fruit, pattern-builder, maze-generator, coloring-viewer full spec packs |
+| 2026-08-13 | Cursor | Flappy Dragon v1 playable — standalone, always open, canvas + dragon skin unlocks |
+| 2026-08-13 | Cursor | Dragon-Ball V v1 playable — standalone forest Pong vs AI, first to 3 |
+| 2026-08-14 | Carol | S010 Drago's Revenge design ready — LEVELS.md + HUD.md (8 layouts, fruit HUD) |
+| 2026-08-14 | Alice | S010 queued; Telegram Brandon — spec ready for Cursor double-check |
+| 2026-08-14 | Cursor | Drago's Revenge v1 playable — standalone at /games/dragos-revenge/, 8 levels, Drago + tile pickups |
+| 2026-08-14 | Cursor | Pre-pipeline registration — sitemap, Facebook blurb, games-pipeline.md |
+| 2026-08-15 | Cursor | Knight AI aligned with CAT-AI.md — real-time 8-way BFS, cluster trap, batch convert, push chains |
+| 2026-08-14 | Cursor | The Sliding Scale v1 playable — standalone at /games/sliding-scale/, workshop/logo art |

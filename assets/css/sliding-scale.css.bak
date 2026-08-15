@@ -1,0 +1,186 @@
+/* The Sliding Scale — slider puzzle (Laughing Dragons workroom theme) */
+
+.ss-page #game-play {
+  padding-block: 2rem 3rem;
+}
+
+.ss-root {
+  width: min(100%, 720px);
+  margin-inline: auto;
+}
+
+.ss-puzzle {
+  margin-top: 0.5rem;
+}
+
+.ss-puzzle-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.ss-puzzle-difficulty {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ss-diff-btn.is-active {
+  background: var(--neon);
+  border-color: var(--neon);
+  color: var(--bg);
+  font-weight: 700;
+}
+
+.ss-puzzle-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.ss-puzzle-stats {
+  margin: 0;
+  font-weight: 600;
+  color: var(--muted);
+  font-family: var(--font-accent);
+}
+
+.ss-puzzle-stats-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.ss-puzzle-art {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--silver);
+}
+
+.ss-puzzle-ref {
+  margin: 0;
+  text-align: center;
+}
+
+.ss-puzzle-ref img {
+  width: 192px;
+  max-width: min(42vw, 192px);
+  height: auto;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 16px rgba(57, 255, 20, 0.12);
+}
+
+.ss-puzzle-ref figcaption {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--silver);
+}
+
+.ss-puzzle-board-wrap {
+  position: relative;
+  width: min(92vw, 560px);
+  margin-inline: auto;
+}
+
+.ss-puzzle-board {
+  display: grid;
+  grid-template-columns: repeat(var(--ss-size, 3), 1fr);
+  gap: 3px;
+  aspect-ratio: 1;
+  padding: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(57, 255, 20, 0.08);
+}
+
+.ss-tile {
+  appearance: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 0.35rem;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.ss-tile:not(.ss-tile-empty):hover {
+  transform: scale(1.02);
+  box-shadow: 0 2px 8px rgba(57, 255, 20, 0.25);
+  z-index: 1;
+}
+
+.ss-tile:focus-visible {
+  outline: 2px solid var(--neon);
+  outline-offset: 2px;
+}
+
+.ss-tile-empty {
+  background: var(--surface-2);
+  border: 2px dashed rgba(168, 168, 168, 0.35);
+  cursor: default;
+  box-shadow: none;
+}
+
+.ss-puzzle-win {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  text-align: center;
+  background: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(6px);
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+}
+
+.ss-puzzle-win[hidden] {
+  display: none;
+}
+
+.ss-puzzle-win-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: var(--neon);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ss-puzzle-win-body {
+  margin: 0;
+  color: var(--muted);
+}
+
+.ss-puzzle-hint {
+  margin: 1rem 0 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--silver);
+}
+
+@media (max-width: 480px) {
+  .ss-puzzle-board {
+    gap: 2px;
+    padding: 3px;
+  }
+
+  .ss-tile {
+    border-radius: 0.2rem;
+  }
+}

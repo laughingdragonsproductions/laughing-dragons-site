@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Generate random UUID v4 identifiers in your browser." />
+    <title>UUID Generator</title>
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="canonical" href="https://laughing-dragons.com/tools/uuid-generator.html" />
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+</head>
+  <body>
+    <div id="app"></div>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/tools.js"></script>
+    <script src="/assets/js/site.js"></script>
+    <script>
+      initToolPage({
+        title: "UUID Generator",
+        description: "Generate random UUID v4 identifiers in your browser.",
+        content: `
+          <section class="tool-panel">
+            <h1>UUID Generator</h1>
+            <p class="lede">Create RFC 4122 version 4 UUIDs using crypto.randomUUID when available.</p>
+            <div class="field-grid two">
+              <div>
+                <label for="count">How many</label>
+                <input id="count" type="number" value="5" min="1" max="50" />
+              </div>
+            </div>
+            <button type="button" id="generate" style="margin-top:1rem">Generate</button>
+            <button type="button" id="copy" class="secondary" style="margin-left:0.5rem">Copy all</button>
+            <div id="result" class="result" aria-live="polite"></div>
+          </section>
+        `,
+      });
+
+      function uuidV4() {
+        if (crypto.randomUUID) return crypto.randomUUID();
+        const bytes = crypto.getRandomValues(new Uint8Array(16));
+        bytes[6] = (bytes[6] & 0x0f) | 0x40;
+        bytes[8] = (bytes[8] & 0x3f) | 0x80;
+        const hex = [...bytes].map((b) => b.toString(16).padStart(2, "0")).join("");
+        return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+      }
+
+      function generate() {
+        const count = Number(document.getElementById("count").value);
+        const resultEl = document.getElementById("result");
+        if (Number.isNaN(count) || count < 1 || count > 50) {
+          resultEl.textContent = "Enter a count between 1 and 50.";
+          resultEl.classList.add("error");
+          return;
+        }
+        resultEl.classList.remove("error");
+        resultEl.textContent = Array.from({ length: count }, uuidV4).join("\n");
+      }
+
+      document.getElementById("generate").addEventListener("click", generate);
+      document.getElementById("copy").addEventListener("click", async () => {
+        const text = document.getElementById("result").textContent;
+        if (text && !text.includes("Enter a count")) await navigator.clipboard.writeText(text);
+      });
+      generate();
+    </script>
+  </body>
+</html>

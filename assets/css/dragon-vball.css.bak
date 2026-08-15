@@ -1,0 +1,514 @@
+:root {
+  --vball-ink: #0f1419;
+  --vball-panel: rgba(10, 10, 10, 0.82);
+  --vball-accent: #39ff14;
+  --vball-gold: #e8b84a;
+  --vball-muted: #9bb88a;
+  --vball-border: rgba(168, 168, 168, 0.28);
+  --vball-font: "Segoe UI", "Trebuchet MS", sans-serif;
+}
+
+body.vball-page {
+  background: var(--bg, #0a0a0a);
+}
+
+#game-play {
+  padding: 0 0 2rem;
+}
+
+.vball-root {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.vball-stage-wrap {
+  position: relative;
+  width: 100%;
+  border: 1px solid var(--vball-border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #1a2430;
+  touch-action: none;
+  user-select: none;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.vball-power-meter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  width: 2.75rem;
+  padding: 0.65rem 0.4rem;
+  background: rgba(10, 10, 10, 0.75);
+  border-right: 1px solid var(--vball-border);
+  flex: 0 0 auto;
+  z-index: 2;
+}
+
+.vball-power-meter[hidden] {
+  display: none !important;
+}
+
+.vball-power-label {
+  font-family: var(--vball-font);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vball-accent);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.vball-power-track {
+  position: relative;
+  flex: 1 1 auto;
+  width: 1.1rem;
+  min-height: 8rem;
+  border: 1px solid var(--vball-border);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.vball-power-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0%;
+  background: linear-gradient(180deg, var(--vball-gold) 0%, var(--vball-accent) 100%);
+  transition: height 0.05s linear;
+}
+
+.vball-playfield {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: min(72vh, 540px);
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.vball-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+}
+
+.vball-hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 0.65rem;
+}
+
+.vball-score-block {
+  margin: 0;
+  text-align: center;
+  font-family: var(--vball-font);
+}
+
+.vball-score-label {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.vball-score-value {
+  display: block;
+  font-size: clamp(1.75rem, 6vw, 2.75rem);
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65), 0 0 12px rgba(57, 255, 20, 0.35);
+  line-height: 1.1;
+}
+
+.vball-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background: var(--vball-panel);
+  color: var(--text, #f2f2f2);
+  text-align: center;
+  overflow-y: auto;
+}
+
+.vball-overlay--compact {
+  justify-content: center;
+  background: rgba(10, 10, 10, 0.55);
+}
+
+#vball-ready {
+  pointer-events: none;
+}
+
+#vball-over {
+  pointer-events: auto;
+}
+
+.vball-over-actions {
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
+}
+
+.vball-overlay[hidden] {
+  display: none !important;
+}
+
+.vball-eyebrow {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vball-muted);
+}
+
+.vball-title {
+  margin: 0;
+  font-family: var(--vball-font);
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  color: var(--vball-accent);
+}
+
+.vball-tagline {
+  margin: 0;
+  max-width: 26rem;
+  color: var(--vball-muted);
+  line-height: 1.45;
+}
+
+.vball-stats {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.vball-stats strong {
+  color: var(--vball-gold);
+}
+
+.vball-difficulty {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-inline-size: 0;
+  max-width: 100%;
+  text-align: left;
+}
+
+.vball-radio {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin: 0.35rem 0;
+  font-size: 0.9rem;
+  color: var(--text, #f2f2f2);
+  cursor: pointer;
+}
+
+.vball-radio input {
+  margin-top: 0.2rem;
+  accent-color: var(--vball-accent);
+}
+
+.vball-skins {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-inline-size: 0;
+  max-width: 100%;
+}
+
+.vball-skins-legend {
+  font-size: 0.8rem;
+  color: var(--vball-muted);
+  margin-bottom: 0.5rem;
+}
+
+.vball-skins-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.vball-skin-btn {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 2px solid var(--vball-border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.vball-skin-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.vball-skin-btn.is-selected {
+  border-color: var(--vball-accent);
+  box-shadow: 0 0 0 1px var(--vball-accent);
+}
+
+.vball-skin-btn.is-locked {
+  cursor: not-allowed;
+  opacity: 0.45;
+  filter: grayscale(0.85);
+}
+
+.vball-skin-btn.is-locked::after {
+  content: attr(data-lock-label);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  line-height: 1.1;
+  padding: 0.15rem;
+}
+
+.vball-skin-btn:not(.is-locked):hover {
+  transform: translateY(-2px);
+  border-color: var(--vball-accent);
+}
+
+.vball-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+  margin-top: 0.25rem;
+}
+
+.vball-panel-title {
+  margin: 0;
+  font-size: 1.35rem;
+  color: var(--vball-accent);
+}
+
+.vball-howto-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  text-align: left;
+  max-width: 26rem;
+  line-height: 1.5;
+  color: var(--text, #f2f2f2);
+}
+
+.vball-ready-text {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  animation: vball-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes vball-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.vball-over-score {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.vball-over-best {
+  margin: 0;
+  color: var(--vball-gold);
+  font-weight: 600;
+}
+
+.vball-unlock-toast {
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--vball-accent);
+  border-radius: 8px;
+  color: var(--vball-accent);
+  font-size: 0.9rem;
+  max-width: 22rem;
+}
+
+/* Touch controls — hidden on desktop */
+.vball-touch-controls {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(10, 10, 10, 0.85);
+  border-top: 1px solid var(--vball-border);
+  touch-action: none;
+}
+
+.vball-touch-row {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.vball-touch-btn {
+  min-width: 3.25rem;
+  min-height: 3.25rem;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--vball-border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-family: var(--vball-font);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.vball-touch-btn:active {
+  background: rgba(57, 255, 20, 0.2);
+  border-color: var(--vball-accent);
+}
+
+.vball-touch-btn--jump {
+  flex: 1;
+  max-width: 7rem;
+}
+
+.vball-touch-btn--hit {
+  position: relative;
+  flex: 1;
+  max-width: 7rem;
+  overflow: hidden;
+}
+
+.vball-touch-hit-label {
+  position: relative;
+  z-index: 1;
+}
+
+.vball-touch-hit-track {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+.vball-touch-hit-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0%;
+  background: linear-gradient(180deg, var(--vball-gold) 0%, var(--vball-accent) 100%);
+  opacity: 0.55;
+  transition: height 0.05s linear;
+}
+
+/* Mobile: flip court so player side is at bottom + show touch controls */
+@media (max-width: 768px), (pointer: coarse) {
+  .vball-root {
+    padding: 0 0.35rem;
+  }
+
+  .vball-stage-wrap {
+    flex-direction: column;
+    border-radius: 8px;
+  }
+
+  .vball-power-meter {
+    flex-direction: row;
+    width: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--vball-border);
+    padding: 0.4rem 0.65rem;
+  }
+
+  .vball-power-label {
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+
+  .vball-power-track {
+    width: 100%;
+    min-height: 0;
+    height: 0.85rem;
+    flex: 1 1 auto;
+  }
+
+  .vball-power-fill {
+    top: 0;
+    bottom: auto;
+    height: 100%;
+    width: 0%;
+  }
+
+  .vball-playfield {
+    max-height: min(56vh, 420px);
+  }
+
+  .vball-touch-controls {
+    display: flex;
+  }
+
+  .vball-skin-btn {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* When power meter visible on mobile, fill width not height */
+body.vball-mobile .vball-power-meter:not([hidden]) ~ .vball-playfield {
+  /* playfield follows rotated layout */
+}
+
+body.vball-mobile #vball-power-fill {
+  width: var(--power, 0%);
+  height: 100%;
+}
+
+@media (max-width: 768px), (pointer: coarse) {
+  .vball-power-fill {
+    width: 0%;
+    height: 100%;
+  }
+}

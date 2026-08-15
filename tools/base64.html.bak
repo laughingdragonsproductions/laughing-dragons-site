@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Encode and decode Base64 text in your browser." />
+    <title>Base64 Encoder</title>
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="canonical" href="https://laughing-dragons.com/tools/base64.html" />
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+</head>
+  <body>
+    <div id="app"></div>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/tools.js"></script>
+    <script src="/assets/js/site.js"></script>
+    <script>
+      initToolPage({
+        title: "Base64 Encoder",
+        description: "Encode and decode Base64 text in your browser.",
+        content: `
+          <section class="tool-panel">
+            <h1>Base64 Encoder / Decoder</h1>
+            <p class="lede">Convert plain text to Base64 and back. UTF-8 safe.</p>
+            <label for="input">Input</label>
+            <textarea id="input" placeholder="Text to encode or Base64 to decode"></textarea>
+            <div style="margin-top:1rem;display:flex;gap:0.5rem;flex-wrap:wrap">
+              <button type="button" id="encode">Encode</button>
+              <button type="button" id="decode" class="secondary">Decode</button>
+            </div>
+            <div id="result" class="result" aria-live="polite"></div>
+          </section>
+        `,
+      });
+
+      function utf8ToBase64(str) {
+        const bytes = new TextEncoder().encode(str);
+        let binary = "";
+        bytes.forEach((b) => {
+          binary += String.fromCharCode(b);
+        });
+        return btoa(binary);
+      }
+
+      function base64ToUtf8(b64) {
+        const bin = atob(b64);
+        const bytes = Uint8Array.from(bin, (c) => c.charCodeAt(0));
+        return new TextDecoder().decode(bytes);
+      }
+
+      function showResult(text, isError) {
+        const el = document.getElementById("result");
+        el.textContent = text;
+        el.classList.toggle("error", !!isError);
+      }
+
+      document.getElementById("encode").addEventListener("click", () => {
+        try {
+          showResult(utf8ToBase64(document.getElementById("input").value), false);
+        } catch (e) {
+          showResult("Could not encode input.", true);
+        }
+      });
+
+      document.getElementById("decode").addEventListener("click", () => {
+        try {
+          showResult(base64ToUtf8(document.getElementById("input").value.trim()), false);
+        } catch (e) {
+          showResult("Invalid Base64 input.", true);
+        }
+      });
+    </script>
+  </body>
+</html>

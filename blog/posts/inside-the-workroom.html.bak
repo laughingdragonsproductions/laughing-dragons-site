@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Inside the Laughing Dragons workroom — 3D prints, apparel, and maker gear." />
+    <title>Inside the workroom</title>
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="canonical" href="https://laughing-dragons.com/blog/posts/inside-the-workroom.html" />
+</head>
+  <body>
+    <div id="app"></div>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/site.js"></script>
+    <script>
+      initPage({
+        title: "Inside the workroom",
+        description: "Inside the Laughing Dragons workroom — 3D prints, apparel, and maker gear.",
+        activePath: "/blog/",
+        content: `
+          <article class="prose reveal">
+            <p class="pillar-eyebrow">July 28, 2026</p>
+            <h1>Inside the workroom</h1>
+            <p>Our studio is built around one idea: make things here, ship them to you. The bench runs 3D printers for dragons, geometric art, coolers, and custom pieces. A Glowforge Pro HD handles laser cut and engraved gifts — signs, coasters, nursery decor, and one-off maker experiments.</p>
+            <p>When you browse <a href="/prints/">prints</a> or order through Etsy and Shopify, you are seeing output from the same floor where we prototype kids show props, test tool ideas, and iterate on apparel designs.</p>
+            <h2>How fulfillment works</h2>
+            <p>Apparel and many merch items ship through Printful, which lets us offer consistent sizing and reliable delivery without stuffing a warehouse. Custom 3D prints and laser pieces ship directly from the workroom when they are ready — we post photos and listings as each design clears QA.</p>
+            <p>That split is intentional: POD for scale, bench work for things that need a human eye before they leave the building.</p>
+            <h2>Brand palette on the floor</h2>
+            <p>Neon green, charcoal, and black show up everywhere — shirts on the rack, filament on the spool, UI accents on our sites. Keeping the palette tight makes it obvious when something belongs to Laughing Dragons versus a one-off experiment.</p>
+            <p>Want to see what is live right now? Start at the <a href="/shop/">shop hub</a>, browse <a href="/prints/">coolers and prints</a>, or read about <a href="/laser/">laser engraving</a> services. New listings land there first.</p>
+            <p><a href="/shop/">Visit the shop &rarr;</a></p>
+          </article>
+        `,
+      });
+    </script>
+  </body>
+</html>

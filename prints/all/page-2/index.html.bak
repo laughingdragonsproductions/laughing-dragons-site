@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="All 3D print designs from Laughing Dragons Productions — page 2." />
+    <title>All Print Files — Page 2</title>
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/css/site.css?v=20260731c" />
+    <link rel="canonical" href="https://laughing-dragons.com/prints/all/page-2/" />
+</head>
+  <body>
+    <div id="app"></div>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/prints.js?v=20260731c"></script>
+    <script src="/assets/js/site.js?v=20260731c"></script>
+    <script>
+      initPrintsPage({
+        title: "All Print Files — Page 2",
+        description: "All 3D print designs from Laughing Dragons Productions — page 2.",
+        activePath: "/prints/",
+        content: renderPrintGrid({ page: 2, basePath: "/prints/all/" }),
+      });
+    </script>
+  </body>
+</html>

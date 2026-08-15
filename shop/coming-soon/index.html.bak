@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <meta name="description" content="Our Shopify store is opening soon — Laughing Dragons Productions." />
+    <title>Store Opening Soon</title>
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="canonical" href="https://laughing-dragons.com/shop/coming-soon/" />
+</head>
+  <body>
+    <div id="app"></div>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/site.js"></script>
+    <script>
+      initPage({
+        title: "Store Opening Soon",
+        description: "Our Shopify store is opening soon — Laughing Dragons Productions.",
+        activePath: "/shop/",
+        content: `
+          <header class="page-header reveal">
+            <p class="pillar-eyebrow">Shop</p>
+            <h1>Store opening soon</h1>
+            <p class="lede">Our full Shopify storefront at laughingdragonsproductions.com is being wired to the same catalog you see on Etsy. While checkout finishes, shop through the links below — every order still ships through our production partners.</p>
+          </header>
+          <div class="prose reveal">
+            <p>We are not leaving this page empty: the workroom is actively listing coolers, apparel, and maker gear. The <a href="/prints/">3D print catalog</a> shows bench-ready designs with photos from the floor. Etsy listings under LaughingDragonsForge are live today.</p>
+            <p>When the Shopify domain flips to primary checkout, this page will redirect to the live store. Until then, bookmark <a href="/shop/">the shop hub</a> for the latest links.</p>
+          </div>
+        `,
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Convert length, weight, and temperature units instantly in your browser." />
+    <title>Unit Converter</title>
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="canonical" href="https://laughing-dragons.com/tools/unit-converter.html" />
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+</head>
+  <body>
+    <div id="app"></div>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/tools.js"></script>
+    <script src="/assets/js/site.js"></script>
+    <script>
+      const conversions = {
+        length: { m: 1, km: 1000, cm: 0.01, mm: 0.001, mi: 1609.344, ft: 0.3048, in: 0.0254 },
+        weight: { kg: 1, g: 0.001, lb: 0.453592, oz: 0.0283495 },
+      };
+
+      initToolPage({
+        title: "Unit Converter",
+        description: "Convert length, weight, and temperature units instantly in your browser.",
+        content: `
+          <section class="tool-panel">
+            <h1>Unit Converter</h1>
+            <p class="lede">Convert length, weight, or temperature without leaving your browser.</p>
+            <div class="field-grid">
+              <div>
+                <label for="category">Category</label>
+                <select id="category">
+                  <option value="length">Length</option>
+                  <option value="weight">Weight</option>
+                  <option value="temp">Temperature</option>
+                </select>
+              </div>
+              <div class="field-grid two">
+                <div>
+                  <label for="amount">Amount</label>
+                  <input id="amount" type="number" value="1" step="any" />
+                </div>
+                <div>
+                  <label for="from">From</label>
+                  <select id="from"></select>
+                </div>
+                <div>
+                  <label for="to">To</label>
+                  <select id="to"></select>
+                </div>
+              </div>
+              <button type="button" id="convert">Convert</button>
+              <div id="result" class="result" aria-live="polite"></div>
+            </div>
+          </section>
+        `,
+      });
+
+      const categoryEl = document.getElementById("category");
+      const fromEl = document.getElementById("from");
+      const toEl = document.getElementById("to");
+      const amountEl = document.getElementById("amount");
+      const resultEl = document.getElementById("result");
+
+      function tempUnits() {
+        return [
+          ["C", "Celsius"],
+          ["F", "Fahrenheit"],
+          ["K", "Kelvin"],
+        ];
+      }
+
+      function fillUnits() {
+        const cat = categoryEl.value;
+        let options = [];
+        if (cat === "temp") {
+          options = tempUnits();
+        } else {
+          options = Object.keys(conversions[cat]).map((k) => [k, k]);
+        }
+        fromEl.innerHTML = options.map(([v, l]) => `<option value="${v}">${l}</option>`).join("");
+        toEl.innerHTML = options.map(([v, l]) => `<option value="${v}">${l}</option>`).join("");
+        if (options.length > 1) toEl.selectedIndex = 1;
+      }
+
+      function convertTemp(value, from, to) {
+        let c = value;
+        if (from === "F") c = ((value - 32) * 5) / 9;
+        if (from === "K") c = value - 273.15;
+        if (to === "F") return (c * 9) / 5 + 32;
+        if (to === "K") return c + 273.15;
+        return c;
+      }
+
+      function convert() {
+        const amount = Number(amountEl.value);
+        if (Number.isNaN(amount)) {
+          resultEl.textContent = "Enter a valid number.";
+          resultEl.classList.add("error");
+          return;
+        }
+        const cat = categoryEl.value;
+        const from = fromEl.value;
+        const to = toEl.value;
+        let out;
+        if (cat === "temp") {
+          out = convertTemp(amount, from, to);
+        } else {
+          const base = amount * conversions[cat][from];
+          out = base / conversions[cat][to];
+        }
+        resultEl.classList.remove("error");
+        resultEl.textContent = `${amount} ${from} = ${out.toFixed(6).replace(/\.?0+$/, "")} ${to}`;
+      }
+
+      categoryEl.addEventListener("change", () => {
+        fillUnits();
+        convert();
+      });
+      fromEl.addEventListener("change", convert);
+      toEl.addEventListener("change", convert);
+      amountEl.addEventListener("input", convert);
+      document.getElementById("convert").addEventListener("click", convert);
+      fillUnits();
+      convert();
+    </script>
+  </body>
+</html>

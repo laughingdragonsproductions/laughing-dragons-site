@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <meta name="description" content="More free learning tools from Laughing Dragons are on the way." />
+    <title>Tools Coming Soon</title>
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="canonical" href="https://laughing-dragons.com/tools/coming-soon.html" />
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+</head>
+  <body>
+    <div id="app"></div>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/tools.js"></script>
+    <script src="/assets/js/site.js"></script>
+    <script>
+      initToolPage({
+        title: "Tools Coming Soon",
+        description: "More free learning tools from Laughing Dragons are on the way.",
+        content: `
+          <section class="tool-panel">
+            <h1>Coming soon</h1>
+            <p class="lede">This tool is not live yet. We are building more free browser utilities for learning, kids, and makers — check back soon.</p>
+            <p>Browse what is already live on the <a href="/tools/">tools hub</a>, or visit the <a href="/kids/">Kids Show</a> for Fruit Friends.</p>
+          </section>
+        `,
+      });
+    </script>
+  </body>
+</html>

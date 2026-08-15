@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="About Laughing Dragons Productions — the workroom behind our kids show, apps, tools, and maker shop." />
+    <title>About</title>
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="canonical" href="https://laughing-dragons.com/about/" />
+</head>
+  <body>
+    <div id="app"></div>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/site.js"></script>
+    <script>
+      const cfg = window.SITE_CONFIG;
+      initPage({
+        title: "About",
+        description: "About Laughing Dragons Productions — the workroom behind our kids show, apps, tools, and maker shop.",
+        activePath: "/about/",
+        content: `
+          <header class="page-header reveal">
+            <p class="pillar-eyebrow">The workroom</p>
+            <h1>Laughing Dragons Productions</h1>
+            <p>We build media, software, free learning tools, and maker gear from one studio floor — 3D prints, laser engraving, textiles, and dragon energy.</p>
+          </header>
+          <div class="prose reveal">
+            <p><strong>Laughing Dragons Productions</strong> is an independent studio that makes things for families, makers, and curious learners. laughing-dragons.com is our home base — every project we ship links back here so you can see the full picture in one place.</p>
+            <p>We run a kids show built around Fruit Friends and the A–Z alphabet, ship privacy-first apps, publish free browser tools for learning, and sell apparel, prints, and custom maker work through our shop partners.</p>
+
+            <h2>What we do</h2>
+            <ul>
+              <li><strong>Kids Show</strong> — episodes, characters, and printable files at <a href="/kids/">/kids/</a></li>
+              <li><strong>Free tools</strong> — converters, formatters, and calculators at <a href="/tools/">/tools/</a></li>
+              <li><strong>Apps</strong> — DRI, Dragon Gems, Loquora, and more</li>
+              <li><strong>Shop</strong> — <a href="${cfg.links.etsy}" target="_blank" rel="noopener">Etsy (LaughingDragonsForge)</a>, <a href="${cfg.links.shopify}" target="_blank" rel="noopener">Shopify</a>, and <a href="/prints/">3D prints</a></li>
+              <li><strong>Laser engraving</strong> — custom Glowforge work at <a href="/laser/">/laser/</a></li>
+            </ul>
+
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:laughingdragonsproductions@gmail.com">laughingdragonsproductions@gmail.com</a></p>
+            <p>Orders, collaborations, or questions about the kids show? Use our <a href="/contact/">Contact Us</a> form — we read every message.</p>
+          </div>
+        `,
+      });
+    </script>
+  </body>
+</html>

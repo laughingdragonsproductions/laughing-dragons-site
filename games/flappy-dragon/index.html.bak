@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Flappy Dragon — tap to fly through stone pillars, beat your best score, and unlock colored laughing dragon skins."
+    />
+    <title>Flappy Dragon</title>
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="stylesheet" href="/assets/css/flappy-dragon.css?v=20260813h" />
+    <link rel="canonical" href="https://laughing-dragons.com/games/flappy-dragon/" />
+  </head>
+  <body class="flappy-page game-page">
+    <script src="/assets/js/config.js?v=20260813"></script>
+
+    <div id="game-header-mount"></div>
+    <div class="container game-landing-wrap">
+      <div id="game-landing-mount"></div>
+      <div id="game-ad-top" class="container"></div>
+    </div>
+
+    <div id="game-play">
+      <div class="flappy-root" id="flappy-root" aria-label="Flappy Dragon game">
+        <div class="flappy-stage-wrap">
+          <div class="flappy-playfield">
+          <canvas id="flappy-canvas" class="flappy-canvas" width="400" height="600" aria-hidden="true"></canvas>
+
+          <div class="flappy-hud" id="flappy-hud" hidden>
+            <p class="flappy-score" id="flappy-score" aria-live="polite">0</p>
+          </div>
+
+          <div class="flappy-overlay" id="flappy-menu" role="dialog" aria-labelledby="flappy-menu-title">
+            <p class="flappy-eyebrow">Laughing Dragons Games</p>
+            <h1 class="flappy-title" id="flappy-menu-title">Flappy Dragon</h1>
+            <p class="flappy-tagline">Tap to fly. Dodge the pillars. Unlock every color.</p>
+
+            <p class="flappy-best">Best score: <strong id="flappy-best">0</strong></p>
+
+            <fieldset class="flappy-difficulty" id="flappy-difficulty">
+              <legend class="flappy-skins-legend">Difficulty</legend>
+              <label class="flappy-radio">
+                <input type="radio" name="flappy-difficulty" value="easy" id="flappy-diff-easy" />
+                <span>Easy — 15% lighter gravity and jump</span>
+              </label>
+              <label class="flappy-radio">
+                <input type="radio" name="flappy-difficulty" value="hard" id="flappy-diff-hard" checked />
+                <span>Hard — standard gravity</span>
+              </label>
+            </fieldset>
+
+            <fieldset class="flappy-skins" id="flappy-skins">
+              <legend class="flappy-skins-legend">Choose your dragon</legend>
+              <div class="flappy-skins-row" id="flappy-skins-row"></div>
+            </fieldset>
+
+            <nav class="flappy-actions" aria-label="Game menu">
+              <button type="button" class="btn btn-primary btn-lg" id="flappy-btn-play">Play</button>
+              <button type="button" class="btn btn-lg" id="flappy-btn-howto">How to Play</button>
+            </nav>
+          </div>
+
+          <div class="flappy-overlay" id="flappy-howto" hidden role="dialog" aria-labelledby="flappy-howto-title">
+            <h2 class="flappy-panel-title" id="flappy-howto-title">How to Play</h2>
+            <ol class="flappy-howto-list">
+              <li>Tap, click, or press Space / ↑ to flap upward.</li>
+              <li>Fly through gaps between stone pillars — each gap scores one point.</li>
+              <li>Hit a pillar, the ground, or the sky and the run ends.</li>
+              <li>The game speeds up as your score climbs.</li>
+              <li>Beat score milestones to unlock new dragon colors.</li>
+              <li><strong>Easy</strong> uses 15% lighter gravity and jump — great for slower reaction times. <strong>Hard</strong> is the standard challenge.</li>
+            </ol>
+            <button type="button" class="btn btn-primary" id="flappy-howto-back">Back</button>
+          </div>
+
+          <div class="flappy-overlay flappy-overlay--compact" id="flappy-ready" hidden>
+            <p class="flappy-ready-text">Tap to start</p>
+          </div>
+
+          <div class="flappy-overlay flappy-overlay--compact" id="flappy-over" hidden role="dialog" aria-labelledby="flappy-over-title">
+            <h2 class="flappy-panel-title" id="flappy-over-title">Game Over</h2>
+            <p class="flappy-over-score">Score: <strong id="flappy-over-score">0</strong></p>
+            <p class="flappy-over-best" id="flappy-over-best" hidden>New best!</p>
+            <p class="flappy-unlock-toast" id="flappy-unlock-toast" hidden></p>
+            <div class="flappy-actions flappy-over-actions">
+              <button type="button" class="btn btn-primary" id="flappy-btn-retry">Try Again</button>
+              <button type="button" class="btn" id="flappy-btn-menu">Menu</button>
+            </div>
+          </div>
+          </div>
+          <div class="flappy-tap-pad" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div class="sr-announce" id="flappy-sr-announce" aria-live="assertive"></div>
+    </div>
+
+    <div id="game-footer-mount"></div>
+
+    <script src="/assets/js/games.js?v=20260813"></script>
+    <script src="/assets/js/site.js?v=20260813"></script>
+    <script src="/assets/js/flappy-dragon.js?v=20260813j"></script>
+    <script>
+      initGameChrome({
+        title: "Flappy Dragon",
+        description: "Tap to fly your laughing dragon through stone pillars — unlock all eight colors as your score climbs.",
+        activePath: "/games/flappy-dragon/",
+        landingHtml: `
+          <article class="game-landing prose reveal">
+            <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
+            <p class="pillar-eyebrow">Laughing Dragons Games</p>
+            <h1>Flappy Dragon</h1>
+            <p class="page-lead">Tap to fly. Dodge the pillars. Unlock every colored dragon.</p>
+            <p>Always playable — no unlock code needed. Start with the green dragon and earn new colors by beating score milestones.</p>
+          </article>`,
+      });
+      initFlappyDragon();
+    </script>
+  </body>
+</html>

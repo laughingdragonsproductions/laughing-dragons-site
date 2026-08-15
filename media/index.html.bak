@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Laughing Dragons media — YouTube, TikTok, and studio video." />
+    <title>Media</title>
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="canonical" href="https://laughing-dragons.com/media/" />
+</head>
+  <body>
+    <div id="app"></div>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/site.js"></script>
+    <script>
+      const links = window.SITE_CONFIG?.links || {};
+      initPage({
+        title: "Media",
+        description: "Laughing Dragons media — YouTube, TikTok, and studio video.",
+        activePath: "/media/",
+        content: `
+          <header class="page-header reveal">
+            <p class="pillar-eyebrow">Watch &amp; follow</p>
+            <h1>Media</h1>
+            <p>Short-form clips and long-form uploads from the Laughing Dragons studio.</p>
+          </header>
+          <section class="link-grid reveal">
+            <a class="link-card" href="/kids/#episodes">
+              <h2>Kids Show episodes</h2>
+              <p>Full letter episodes live on the <strong>Kids</strong> hub — YouTube links appear there as each episode publishes.</p>
+            </a>
+            <a class="link-card" href="${links.youtube || "#"}" target="_blank" rel="noopener noreferrer">
+              <h2>YouTube</h2>
+              <p>Laughing Dragons Productions channel — uploads from our social pipeline as episodes and clips go live.</p>
+            </a>
+            <a class="link-card" href="${links.tiktok || "#"}" target="_blank" rel="noopener noreferrer">
+              <h2>TikTok</h2>
+              <p>Short clips and behind-the-workroom moments tagged #LaughingDragons.</p>
+            </a>
+          </section>
+        `,
+      });
+    </script>
+  </body>
+</html>
