@@ -1,6 +1,7 @@
 /**
  * Drago's Revenge — level layouts (Carol S010 spec)
  * Legend: # wall  . floor  G slidable  T tooth  P spawn  H hunter marker
+ * Optional level fields: timeLimit, hunterMoveInterval (seconds per knight step; defaults from Easy/Hard mode)
  */
 (() => {
   "use strict";

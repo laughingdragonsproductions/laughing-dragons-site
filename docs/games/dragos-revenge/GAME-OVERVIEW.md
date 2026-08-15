@@ -13,21 +13,25 @@ Push green dragon-fruit slidables across an olive board, trap knights (hunters),
 
 Retro puzzle fans, Kids Show parents, anyone who remembers pushing blocks to trap cats.
 
+## Hunter AI (canonical)
+
+Full cat/knight behavior spec: [CAT-AI.md](CAT-AI.md) — real-time 8-way BFS pursuit, cluster trapping, batch cheese conversion.
+
 ## Core loop
 
 1. Move Drago one cell at a time (arrows / D-pad).
-2. Push green slidables when the next cell is empty.
-3. Hunters step toward Drago every few player moves.
-4. Trap a hunter (no escape) or crush one with a push → dragon-tile pickup.
-5. Collect all pickups after hunters are gone to clear the level.
+2. Push green slidables; blocks can push an active knight if the tile behind it is empty.
+3. Knights move on their **own timer** (independent of player steps), including **diagonal** pursuit via BFS.
+4. Trap **all** knights (8-way, cluster-aware) — they convert to dragon tiles **together**.
+5. Walk over collectables to score; clear the level when every tile is collected.
 6. Eight levels; 3 lives; countdown timer; score persists best run.
 
 ## Modes
 
 | Mode | Hunters | Timer |
 |------|---------|-------|
-| Easy | Slower tick, +30s timer | Forgiving |
-| Hard | Faster tick, standard timer | Classic |
+| Easy | ~0.75s per tile, +30s timer | Forgiving |
+| Hard | ~0.32s per tile, standard timer | Classic |
 
 ## Art
 

@@ -46,10 +46,10 @@ Top bar above canvas:
 | # | Copy |
 |---|------|
 | 1 | Move **Drago** with **arrow keys** or the on-screen D-pad — one square at a time. |
-| 2 | Walk into a **green block** to push it if the space behind it is empty. |
-| 3 | **Knights** chase you. Trap them with blocks so they cannot move, or crush them by pushing a block onto them. |
-| 4 | Trapped knights turn into **dragon tiles** — walk over them to collect points. |
-| 5 | Clear the level when every knight is gone and every tile is collected. |
+| 2 | Walk into a **green block** to push it. You can push a block into an active knight if the tile behind the knight is empty. |
+| 3 | **Knights** move on their own timer and chase you in **eight directions** (including diagonals). |
+| 4 | Trap **all** knights — surrounded knights wait (sleeping) until every knight is trapped, then they all become **dragon tiles**. |
+| 5 | Walk over collectables to score. Clear the level when every tile is collected. |
 | 6 | You have **3 lives**. Lose a life if a knight catches you or the timer runs out. |
 | 7 | **Easy** gives slower knights and extra time; **Hard** is classic speed. |
 

@@ -13,7 +13,14 @@
 
 ## Win condition
 
-All hunters eliminated (trapped or crushed) **and** all dragon-tile pickups collected → advance to next level. Beat level 8 → victory screen; best score saved.
+Trap **all** knights (8-way movement, cluster-aware) so they convert to dragon tiles **together**. Collect every dragon-tile pickup → advance to next level. Beat level 8 → victory screen; best score saved.
+
+## Hunter movement (see [CAT-AI.md](CAT-AI.md))
+
+- Real-time timer per knight (not tied to player steps)
+- 8-way BFS pursuit with diagonal corner-cutting
+- Easy: ~0.75s per tile; Hard: ~0.32s per tile (+30s timer on Easy)
+- Optional per-level override: `hunterMoveInterval` in level data
 
 ## Lives
 
@@ -32,15 +39,13 @@ All hunters eliminated (trapped or crushed) **and** all dragon-tile pickups coll
 | 7 | Asymmetric | 4 | 80s | Offset teeth, broken mirror symmetry |
 | 8 | Gauntlet | 4 | 75s | Fragmented greens, scattered teeth, max pressure |
 
-Easy mode: hunter moves every 3 player steps (Hard: 2), timer +30s.
+Easy mode: slower knight timer (~0.75s/tile), timer +30s.
 
 ## Scoring
 
 | Event | Points |
 |-------|--------|
-| Trap hunter | 100 |
-| Crush hunter | 75 |
-| Collect dragon tile | 50 |
+| Collect dragon tile (after all knights trapped) | 100 |
 | Level clear bonus | 200 × level # |
 
 ## Level 1 — Mockup (reference layout)

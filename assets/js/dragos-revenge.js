@@ -3,7 +3,7 @@
 
   const ASSET_BASE = "/assets/kids/games/dragos-revenge";
   const TILE_BASE = "/assets/kids/games/memory-matching/tiles";
-  const ASSET_VERSION = "20260814e";
+  const ASSET_VERSION = "20260815b";
   const FLOOR_COLOR = "#9a9450";
 
   const asset = (file) => `${ASSET_BASE}/${file}?v=${ASSET_VERSION}`;
@@ -13,15 +13,29 @@
 
   const TILE = { FLOOR: 0, WALL: 1, SLIDABLE: 2, TOOTH: 3 };
 
+  const HUNTER_STATE = { ACTIVE: "active", TRAPPED: "trapped" };
+
   const PICKUP_COLORS = ["green", "red", "blue", "purple", "orange", "pink", "teal", "charcoal"];
 
   const MODES = {
-    easy: { id: "easy", hunterEvery: 2, timeBonus: 30, label: "Easy" },
-    hard: { id: "hard", hunterEvery: 1, timeBonus: 0, label: "Hard" },
+    easy: { id: "easy", moveInterval: 0.75, timeBonus: 30, label: "Easy" },
+    hard: { id: "hard", moveInterval: 0.32, timeBonus: 0, label: "Hard" },
   };
+
+  const DIRS_8 = [
+    [-1, -1],
+    [0, -1],
+    [1, -1],
+    [-1, 0],
+    [1, 0],
+    [-1, 1],
+    [0, 1],
+    [1, 1],
+  ];
 
   const HUNTER_SLIDE_MS = 140;
   const HUNTER_BOB_HZ = 0.0055;
+  const MAX_FRAME_DT = 0.05;
 
   const SCORE = { trapCollect: 100, levelClear: 200 };
 
@@ -44,13 +58,12 @@
   let best = 0;
   let timeLeft = 0;
   let timerId = 0;
-  let playerMoves = 0;
 
   /** @type {number[][]} */
   let grid = [];
   /** @type {{x:number,y:number}} */
   let player = { x: 0, y: 0 };
-  /** @type {Array<{x:number,y:number,id:number}>} */
+  /** @type {Array<object>} */
   let hunters = [];
   /** @type {Array<{x:number,y:number,color:string}>} */
   let pickups = [];
@@ -60,6 +73,7 @@
   let heldDir = null;
   const KEY_REPEAT_MS = 140;
   let animFrameId = 0;
+  let lastFrameTime = 0;
 
   function $(id) {
     return document.getElementById(id);
@@ -90,14 +104,15 @@
   }
 
   async function loadAssets() {
-    const [drago, wallBorder, wallCorner, slidable, tooth] = await Promise.all([
+    const [drago, wallBorder, wallCorner, slidable, tooth, teethHunter] = await Promise.all([
       loadImage(asset("drago-player.png")),
       loadImage(asset("wall-border.png")),
       loadImage(asset("wall-corner.png")),
       loadFirstAvailable([asset("slidable.jpg"), asset("slidable-tile.png")]),
       loadFirstAvailable([asset("tooth-tile.png"), asset("wall-cluster.jpg")]),
+      loadFirstAvailable([asset("teeth-hunter.png"), asset("teethsprite.png")]),
     ]);
-    images = { drago, wallBorder, wallCorner, slidable, tooth };
+    images = { drago, wallBorder, wallCorner, slidable, tooth, teethHunter };
     await Promise.all(
       PICKUP_COLORS.map(async (c) => {
         pickupImages[c] = await loadImage(tileAsset(`${c}.png`));
@@ -127,12 +142,37 @@
     return pickups.find((p) => p.x === x && p.y === y);
   }
 
-  function isFloorWalkable(x, y) {
-    const t = staticAt(x, y);
-    if (t !== TILE.FLOOR) return false;
-    if (hunterAt(x, y)) return false;
+  function hunterMoveInterval() {
+    const def = getLevelDef();
+    const mode = MODES[difficulty] || MODES.hard;
+    if (def && def.hunterMoveInterval != null) return def.hunterMoveInterval;
+    return mode.moveInterval;
+  }
+
+  function isFloorTile(x, y) {
+    return staticAt(x, y) === TILE.FLOOR;
+  }
+
+  /** Pathfinding: goal tile always enterable; ignore other hunters. */
+  function hunterCanEnterPath(x, y, goal) {
+    if (!inBounds(x, y)) return false;
+    if (x === goal.x && y === goal.y) return true;
+    if (!isFloorTile(x, y)) return false;
     if (pickupAt(x, y)) return false;
     return true;
+  }
+
+  /** Movement / trap: empty floor only, no pickups. */
+  function hunterCanEnterMove(x, y) {
+    if (!inBounds(x, y)) return false;
+    if (!isFloorTile(x, y)) return false;
+    if (pickupAt(x, y)) return false;
+    return true;
+  }
+
+  function hunterBlocksCell(h, x, y) {
+    const other = hunterAt(x, y);
+    return other && other !== h;
   }
 
   function isPlayerWalkable(x, y) {
@@ -209,12 +249,12 @@
     parseLevel(def);
     const mode = MODES[difficulty] || MODES.hard;
     timeLeft = def.timeLimit + mode.timeBonus;
-    playerMoves = 0;
     updateHud();
     draw();
     startTimer();
     hideOverlays();
     screen = "play";
+    lastFrameTime = performance.now();
     if (els.hud) els.hud.hidden = false;
     if (els.level) {
       els.level.hidden = false;
@@ -225,10 +265,14 @@
   }
 
   function makeHunter(x, y) {
+    const interval = hunterMoveInterval();
     return {
       x,
       y,
       id: ++hunterIdSeq,
+      state: HUNTER_STATE.ACTIVE,
+      moveTimer: Math.random() * interval * 0.5,
+      moveInterval: interval,
       fromX: x,
       fromY: y,
       moveStart: 0,
@@ -239,8 +283,12 @@
 
   function startAnimLoop() {
     stopAnimLoop();
-    const frame = () => {
+    lastFrameTime = performance.now();
+    const frame = (now) => {
       if (screen !== "play") return;
+      const dt = Math.min(MAX_FRAME_DT, (now - lastFrameTime) / 1000);
+      lastFrameTime = now;
+      updateHunterSimulation(dt);
       draw();
       animFrameId = requestAnimationFrame(frame);
     };
@@ -255,7 +303,10 @@
   }
 
   function startTimer() {
-    stopTimer();
+    if (timerId) {
+      clearInterval(timerId);
+      timerId = 0;
+    }
     timerId = window.setInterval(() => {
       if (screen !== "play") return;
       timeLeft -= 1;
@@ -298,52 +349,102 @@
     pickups.push({ x, y, color });
   }
 
-  function removeHunter(h) {
-    hunters = hunters.filter((x) => x.id !== h.id);
+  function bfsPath8(start, goal) {
+    const sk = cellKey(start.x, start.y);
+    const gk = cellKey(goal.x, goal.y);
+    if (sk === gk) return [start];
+
+    const queue = [start];
+    const cameFrom = new Map([[sk, null]]);
+
+    while (queue.length > 0) {
+      const current = queue.shift();
+      const ck = cellKey(current.x, current.y);
+      if (ck === gk) {
+        const path = [];
+        let cur = gk;
+        while (cur) {
+          const [px, py] = cur.split(",").map(Number);
+          path.unshift({ x: px, y: py });
+          cur = cameFrom.get(cur);
+        }
+        return path;
+      }
+
+      for (const [dx, dy] of DIRS_8) {
+        const nx = current.x + dx;
+        const ny = current.y + dy;
+        const nk = cellKey(nx, ny);
+        if (cameFrom.has(nk)) continue;
+        if (!hunterCanEnterPath(nx, ny, goal)) continue;
+        cameFrom.set(nk, ck);
+        queue.push({ x: nx, y: ny });
+      }
+    }
+
+    return null;
   }
 
-  function hunterCanMove(x, y, self) {
-    if (!isFloorWalkable(x, y)) return false;
-    if (self && hunters.some((h) => h !== self && h.x === x && h.y === y)) return false;
-    return true;
+  function pathDistanceToPlayer(x, y) {
+    const path = bfsPath8({ x, y }, player);
+    return path ? path.length - 1 : Infinity;
   }
 
-  function pickHunterStep(h) {
-    const dx = player.x - h.x;
-    const dy = player.y - h.y;
-    const steps = [];
+  function chooseNextBestNeighbor(h) {
+    let bestDistance = Infinity;
+    const candidates = [];
 
-    if (Math.abs(dx) >= Math.abs(dy)) {
-      if (dx !== 0) steps.push([Math.sign(dx), 0]);
-      if (dy !== 0) steps.push([0, Math.sign(dy)]);
-    } else {
-      if (dy !== 0) steps.push([0, Math.sign(dy)]);
-      if (dx !== 0) steps.push([Math.sign(dx), 0]);
+    for (const [dx, dy] of DIRS_8) {
+      const nx = h.x + dx;
+      const ny = h.y + dy;
+      if (!hunterCanEnterMove(nx, ny)) continue;
+      if (hunterBlocksCell(h, nx, ny)) continue;
+
+      const dist = pathDistanceToPlayer(nx, ny);
+      if (dist < bestDistance) {
+        bestDistance = dist;
+        candidates.length = 0;
+        candidates.push({ x: nx, y: ny });
+      } else if (dist === bestDistance) {
+        candidates.push({ x: nx, y: ny });
+      }
     }
 
-    for (const [mx, my] of steps) {
-      const nx = h.x + mx;
-      const ny = h.y + my;
-      if (hunterCanMove(nx, ny, h)) return [mx, my];
+    if (candidates.length === 0) return null;
+    return candidates[Math.floor(Math.random() * candidates.length)];
+  }
+
+  function randomWander(h) {
+    const moves = [];
+    for (const [dx, dy] of DIRS_8) {
+      const nx = h.x + dx;
+      const ny = h.y + dy;
+      if (!hunterCanEnterMove(nx, ny)) continue;
+      if (hunterBlocksCell(h, nx, ny)) continue;
+      moves.push({ x: nx, y: ny });
+    }
+    if (moves.length === 0) return null;
+    return moves[Math.floor(Math.random() * moves.length)];
+  }
+
+  function pickHunterTarget(h) {
+    const path = bfsPath8({ x: h.x, y: h.y }, player);
+    if (path && path.length > 1) {
+      const target = path[1];
+      if (target.x === player.x && target.y === player.y) {
+        return { x: target.x, y: target.y, catchPlayer: true };
+      }
+      if (!hunterBlocksCell(h, target.x, target.y)) {
+        return { x: target.x, y: target.y, catchPlayer: false };
+      }
+      const alt = chooseNextBestNeighbor(h);
+      if (alt) return { x: alt.x, y: alt.y, catchPlayer: false };
+      return null;
     }
 
-    const wander = [
-      [0, -1],
-      [0, 1],
-      [-1, 0],
-      [1, 0],
-    ];
-    for (let i = wander.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [wander[i], wander[j]] = [wander[j], wander[i]];
-    }
-    for (const [mx, my] of wander) {
-      const nx = h.x + mx;
-      const ny = h.y + my;
-      if (hunterCanMove(nx, ny, h)) return [mx, my];
-    }
-
-    return [0, 0];
+    const wander = randomWander(h);
+    if (!wander) return null;
+    return { x: wander.x, y: wander.y, catchPlayer: false };
   }
 
   function moveHunter(h, nx, ny) {
@@ -357,30 +458,112 @@
     h.moveStart = performance.now();
   }
 
-  function isHunterTrapped(h) {
-    const dirs = [
-      [0, -1],
-      [0, 1],
-      [-1, 0],
-      [1, 0],
-    ];
-    return !dirs.some(([dx, dy]) => {
-      const nx = h.x + dx;
-      const ny = h.y + dy;
-      if (!inBounds(nx, ny)) return false;
-      const t = staticAt(nx, ny);
-      return t === TILE.FLOOR && !hunterAt(nx, ny) && !pickupAt(nx, ny);
-    });
+  function stepHunter(h) {
+    if (h.state !== HUNTER_STATE.ACTIVE) return;
+
+    const target = pickHunterTarget(h);
+    if (!target) return;
+
+    if (target.catchPlayer) {
+      loseLife("The chattering teeth got Drago!");
+      return;
+    }
+
+    moveHunter(h, target.x, target.y);
+
+    if (h.x === player.x && h.y === player.y) {
+      loseLife("The chattering teeth got Drago!");
+    }
   }
 
-  function checkTrappedHunters() {
-    hunters.slice().forEach((h) => {
-      if (isHunterTrapped(h)) {
-        spawnPickup(h.x, h.y);
-        removeHunter(h);
-        announce("Knight trapped — collect the tile!");
+  function updateHunterSimulation(dt) {
+    if (screen !== "play" || hunters.length === 0) return;
+
+    for (const h of hunters) {
+      if (h.state !== HUNTER_STATE.ACTIVE) continue;
+      h.moveTimer += dt;
+      while (h.moveTimer >= h.moveInterval) {
+        h.moveTimer -= h.moveInterval;
+        stepHunter(h);
+        if (screen !== "play") return;
       }
-    });
+    }
+
+    updateTrapStates();
+    checkWin();
+  }
+
+  function getHunterClusters() {
+    const unvisited = new Set(hunters.map((h) => h.id));
+    const clusters = [];
+
+    for (const h of hunters) {
+      if (!unvisited.has(h.id)) continue;
+      const cluster = [];
+      const queue = [h];
+      unvisited.delete(h.id);
+
+      while (queue.length > 0) {
+        const cur = queue.shift();
+        cluster.push(cur);
+
+        for (const [dx, dy] of DIRS_8) {
+          const nx = cur.x + dx;
+          const ny = cur.y + dy;
+          const neighbor = hunterAt(nx, ny);
+          if (!neighbor || !unvisited.has(neighbor.id)) continue;
+          unvisited.delete(neighbor.id);
+          queue.push(neighbor);
+        }
+      }
+
+      clusters.push(cluster);
+    }
+
+    return clusters;
+  }
+
+  function clusterHasExit(cluster) {
+    const clusterIds = new Set(cluster.map((h) => h.id));
+
+    for (const h of cluster) {
+      for (const [dx, dy] of DIRS_8) {
+        const nx = h.x + dx;
+        const ny = h.y + dy;
+        if (!hunterCanEnterMove(nx, ny)) continue;
+        const other = hunterAt(nx, ny);
+        if (other && clusterIds.has(other.id)) continue;
+        if (other) continue;
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  function updateTrapStates() {
+    if (hunters.length === 0) return;
+
+    const clusters = getHunterClusters();
+    let trappedCount = 0;
+
+    for (const cluster of clusters) {
+      const trapped = !clusterHasExit(cluster);
+      for (const h of cluster) {
+        h.state = trapped ? HUNTER_STATE.TRAPPED : HUNTER_STATE.ACTIVE;
+        if (trapped) trappedCount += 1;
+      }
+    }
+
+    if (trappedCount === hunters.length) {
+      convertAllTrappedToCheese();
+    }
+  }
+
+  function convertAllTrappedToCheese() {
+    hunters.forEach((h) => spawnPickup(h.x, h.y));
+    hunters = [];
+    announce("All teeth trapped — collect the dragon tiles!");
   }
 
   function getSlidableChain(nx, ny, dx, dy) {
@@ -395,20 +578,36 @@
     return { blocks, tailX: cx, tailY: cy };
   }
 
-  function canPushChain(tailX, tailY) {
-    if (!inBounds(tailX, tailY)) return false;
-    if (staticAt(tailX, tailY) !== TILE.FLOOR) return false;
-    if (pickupAt(tailX, tailY)) return false;
-    if (hunterAt(tailX, tailY)) return false;
+  function canPushOntoFloor(x, y) {
+    if (!inBounds(x, y)) return false;
+    if (!isFloorTile(x, y)) return false;
+    if (pickupAt(x, y)) return false;
     return true;
   }
 
-  function pushSlidableChain(blocks, dx, dy) {
+  function tryExecutePush(blocks, dx, dy) {
+    const { tailX, tailY } = getSlidableChain(blocks[0].x, blocks[0].y, dx, dy);
+    const hunter = hunterAt(tailX, tailY);
+
+    if (hunter) {
+      if (hunter.state === HUNTER_STATE.TRAPPED) return false;
+      const beyondX = tailX + dx;
+      const beyondY = tailY + dy;
+      if (!canPushOntoFloor(beyondX, beyondY)) return false;
+      if (hunterAt(beyondX, beyondY)) return false;
+      moveHunter(hunter, beyondX, beyondY);
+    } else {
+      if (!canPushOntoFloor(tailX, tailY)) return false;
+      if (hunterAt(tailX, tailY)) return false;
+    }
+
     for (let i = blocks.length - 1; i >= 0; i--) {
       const b = blocks[i];
       grid[b.y][b.x] = TILE.FLOOR;
       grid[b.y + dy][b.x + dx] = TILE.SLIDABLE;
     }
+
+    return true;
   }
 
   function tryMovePlayer(dx, dy) {
@@ -422,15 +621,16 @@
     if (target === TILE.SLIDABLE) {
       const { blocks, tailX, tailY } = getSlidableChain(nx, ny, dx, dy);
       if (blocks.length === 0) return;
-      if (!canPushChain(tailX, tailY)) return;
-      pushSlidableChain(blocks, dx, dy);
+      if (!tryExecutePush(blocks, dx, dy)) return;
       player.x = nx;
       player.y = ny;
     } else if (isPlayerWalkable(nx, ny)) {
-      if (hunterAt(nx, ny)) {
-        loseLife("A knight caught Drago!");
+      const h = hunterAt(nx, ny);
+      if (h && h.state === HUNTER_STATE.ACTIVE) {
+        loseLife("The chattering teeth got Drago!");
         return;
       }
+      if (h) return;
       player.x = nx;
       player.y = ny;
       const pu = pickupAt(nx, ny);
@@ -443,32 +643,9 @@
       return;
     }
 
-    playerMoves += 1;
-    const def = getLevelDef();
-    const mode = MODES[difficulty] || MODES.hard;
-    const every = def.hunterEvery || mode.hunterEvery;
-    if (playerMoves % every === 0) tickHunters();
-
-    checkTrappedHunters();
+    updateTrapStates();
     checkWin();
     updateHud();
-  }
-
-  function tickHunters() {
-    hunters.slice().forEach((h) => {
-      const [mx, my] = pickHunterStep(h);
-      if (mx === 0 && my === 0) return;
-
-      const nx = h.x + mx;
-      const ny = h.y + my;
-
-      if (nx === player.x && ny === player.y) {
-        loseLife("A knight caught Drago!");
-        return;
-      }
-
-      moveHunter(h, nx, ny);
-    });
   }
 
   function checkWin() {
@@ -578,28 +755,65 @@
       px = h.fromX + (h.x - h.fromX) * ease;
       py = h.fromY + (h.y - h.fromY) * ease;
     }
-    const bob = Math.sin(now * HUNTER_BOB_HZ + h.id * 1.9) * 0.07;
-    const leanX = (h.facingX || 0) * 0.05;
-    const leanY = (h.facingY || 0) * 0.03;
-    return { px, py, bob, leanX, leanY };
+    const trapped = h.state === HUNTER_STATE.TRAPPED;
+    const bobHz = trapped ? HUNTER_BOB_HZ * 0.35 : HUNTER_BOB_HZ;
+    const bobAmp = trapped ? 0.02 : 0.07;
+    const bob = Math.sin(now * bobHz + h.id * 1.9) * bobAmp;
+    const leanX = trapped ? 0 : (h.facingX || 0) * 0.05;
+    const leanY = trapped ? 0 : (h.facingY || 0) * 0.03;
+    return { px, py, bob, leanX, leanY, trapped };
+  }
+
+  function drawSpriteAt(img, px, py, size, offsetX, offsetY, alpha) {
+    if (!img) return false;
+    const x = px * size + offsetX;
+    const y = py * size + offsetY;
+    ctx.save();
+    if (alpha != null && alpha < 1) ctx.globalAlpha = alpha;
+    ctx.drawImage(img, x, y, size, size);
+    ctx.restore();
+    return true;
+  }
+
+  function drawHunterFallback(h, cx, cy, size, trapped) {
+    const r = size * 0.32;
+    ctx.fillStyle = trapped ? "#8a9a6a" : "#d4af37";
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = trapped ? "#4a5a3a" : "#5c4a1a";
+    ctx.lineWidth = Math.max(1, size * 0.04);
+    ctx.stroke();
   }
 
   function drawHunter(h, size, now) {
-    const { px, py, bob, leanX, leanY } = hunterVisualPos(h, now);
-    const cx = px * size + size / 2 + leanX * size;
-    const cy = py * size + size / 2 + bob * size + leanY * size;
-    const r = size * 0.32;
-    const pulse = 1 + Math.sin(now * HUNTER_BOB_HZ * 1.4 + h.id) * 0.04;
+    const { px, py, bob, leanX, leanY, trapped } = hunterVisualPos(h, now);
+    const leanPxX = leanX * size;
+    const leanPxY = leanY * size + bob * size;
+    const cx = px * size + size / 2 + leanPxX;
+    const cy = py * size + size / 2 + leanPxY;
 
-    ctx.fillStyle = "#d4af37";
-    ctx.beginPath();
-    ctx.arc(cx, cy, r * pulse, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.strokeStyle = "#5c4a1a";
-    ctx.lineWidth = Math.max(1, size * 0.04);
-    ctx.stroke();
-    ctx.fillStyle = "#333";
-    ctx.fillRect(cx - r * 0.55, cy - r * 0.15, r * 1.1, r * 0.35);
+    const drew = drawSpriteAt(
+      images.teethHunter,
+      px,
+      py,
+      size,
+      leanPxX,
+      leanPxY,
+      trapped ? 0.72 : 1
+    );
+
+    if (!drew) {
+      drawHunterFallback(h, cx, cy, size, trapped);
+    }
+
+    if (trapped) {
+      ctx.fillStyle = "rgba(74, 90, 58, 0.85)";
+      ctx.font = `bold ${Math.max(8, size * 0.22)}px sans-serif`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText("z", cx, cy - size * 0.18);
+    }
   }
 
   function draw() {

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Drago's Revenge — push blocks, trap knights, and collect dragon tiles. A Rodent's Revenge-style puzzle starring Drago the Dragon Fruit."
+      content="Drago's Revenge — push blocks, trap chattering teeth, and collect dragon tiles. A Rodent's Revenge-style puzzle starring Drago the Dragon Fruit."
     />
     <title>Drago's Revenge</title>
     <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
@@ -38,14 +38,14 @@
             <div class="dr-overlay" id="dr-menu" role="dialog" aria-labelledby="dr-menu-title">
               <p class="dr-eyebrow">Laughing Dragons Games</p>
               <h1 class="dr-title" id="dr-menu-title">Drago's Revenge</h1>
-              <p class="dr-tagline">Push green blocks. Trap the knights. Collect the dragons.</p>
+              <p class="dr-tagline">Push green blocks. Trap the teeth. Collect the dragons.</p>
               <p class="dr-stats">Best score: <strong id="dr-best">0</strong></p>
 
               <fieldset class="dr-difficulty" id="dr-difficulty">
                 <legend>Difficulty</legend>
                 <label class="dr-radio">
                   <input type="radio" name="dr-difficulty" value="easy" id="dr-diff-easy" />
-                  <span>Easy — slower knights and extra time</span>
+                  <span>Easy — slower teeth and extra time</span>
                 </label>
                 <label class="dr-radio">
                   <input type="radio" name="dr-difficulty" value="hard" id="dr-diff-hard" checked />
@@ -63,12 +63,12 @@
               <h2 class="dr-panel-title" id="dr-howto-title">How to Play</h2>
               <ol class="dr-howto-list">
                 <li>Move <strong>Drago</strong> with <strong>arrow keys</strong> or the on-screen D-pad — one square at a time.</li>
-                <li>Walk into a <strong>green block</strong> to push it if the space behind it is empty.</li>
-                <li><strong>Knights</strong> chase you and <strong>block</strong> green tiles — you cannot push blocks into them.</li>
-                <li>Surround a knight with blocks or walls so it cannot move. It becomes a <strong>collectable dragon tile</strong>.</li>
-                <li>Walk over collectables to score. Clear the level when every knight is trapped and collected.</li>
-                <li>You have <strong>3 lives</strong>. Lose a life if a knight catches you or the timer runs out.</li>
-                <li><strong>Easy</strong> gives slower knights and extra time; <strong>Hard</strong> is classic speed.</li>
+                <li>Walk into a <strong>green block</strong> to push it. You can push a block into active chattering teeth if the tile behind them is empty.</li>
+                <li><strong>Chattering teeth</strong> move on their own timer and chase you in <strong>eight directions</strong> (including diagonals).</li>
+                <li>Trap <strong>all</strong> teeth — surrounded ones wait until every set is trapped, then they all become <strong>collectable dragon tiles</strong>.</li>
+                <li>Walk over collectables to score. Clear the level when every tile is collected.</li>
+                <li>You have <strong>3 lives</strong>. Lose a life if the teeth catch you or the timer runs out.</li>
+                <li><strong>Easy</strong> gives slower teeth and extra time; <strong>Hard</strong> is classic speed.</li>
               </ol>
               <button type="button" class="btn btn-primary" id="dr-howto-back">Back</button>
             </div>
@@ -122,18 +122,18 @@
     <script src="/assets/js/games.js?v=20260814c"></script>
     <script src="/assets/js/site.js?v=20260814c"></script>
     <script src="/assets/js/dragos-revenge-levels.js?v=20260814c"></script>
-    <script src="/assets/js/dragos-revenge.js?v=20260814e"></script>
+    <script src="/assets/js/dragos-revenge.js?v=20260815b"></script>
     <script>
       initGameChrome({
         title: "Drago's Revenge",
-        description: "Push blocks, trap knights, collect dragon tiles — Drago the Dragon Fruit in a Rodent's Revenge-style grid puzzle.",
+        description: "Push blocks, trap chattering teeth, collect dragon tiles — Drago the Dragon Fruit in a Rodent's Revenge-style grid puzzle.",
         activePath: "/games/dragos-revenge/",
         landingHtml: `
           <article class="game-landing prose reveal">
             <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
             <p class="pillar-eyebrow">Laughing Dragons Games</p>
             <h1>Drago's Revenge</h1>
-            <p class="page-lead">Push green blocks, trap the knights, and collect laughing-dragon tiles.</p>
+            <p class="page-lead">Push green blocks, trap the chattering teeth, and collect laughing-dragon tiles.</p>
             <p>Always playable — no unlock code needed. Arrow keys on desktop; D-pad on mobile.</p>
           </article>`,
       });

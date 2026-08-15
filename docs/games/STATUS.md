@@ -36,4 +36,5 @@
 | 2026-08-14 | Alice | S010 queued; Telegram Brandon — spec ready for Cursor double-check |
 | 2026-08-14 | Cursor | Drago's Revenge v1 playable — standalone at /games/dragos-revenge/, 8 levels, Drago + tile pickups |
 | 2026-08-14 | Cursor | Pre-pipeline registration — sitemap, Facebook blurb, games-pipeline.md |
+| 2026-08-15 | Cursor | Knight AI aligned with CAT-AI.md — real-time 8-way BFS, cluster trap, batch convert, push chains |
 | 2026-08-14 | Cursor | The Sliding Scale v1 playable — standalone at /games/sliding-scale/, workshop/logo art |
