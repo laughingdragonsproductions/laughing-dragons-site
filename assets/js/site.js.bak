@@ -109,10 +109,16 @@ function isMonetizablePath(path) {
   return true;
 }
 
+function shouldLoadAdSenseScript() {
+  const path = window.location.pathname || "";
+  if (path.startsWith("/kids/")) return false;
+  if (ADSENSE_BLOCK_SEGMENTS.some((seg) => path.includes(seg))) return false;
+  return Boolean(window.SITE_CONFIG?.adsense?.publisherId);
+}
+
 function loadAdSenseScript() {
-  if (!hasConfiguredAdSlots()) return;
-  if (!isMonetizablePath(window.location.pathname)) return;
-  if (document.querySelector("script[data-ld-adsense]")) return;
+  if (!shouldLoadAdSenseScript()) return;
+  if (document.querySelector("script[data-ld-adsense], script[src*='adsbygoogle.js']")) return;
   const pub = window.SITE_CONFIG?.adsense?.publisherId;
   if (!pub) return;
   const s = document.createElement("script");

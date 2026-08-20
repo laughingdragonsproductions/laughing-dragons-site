@@ -46,15 +46,19 @@ In Shopify Admin → **Settings** → **Domains**:
 
 Publisher ID: `ca-pub-7048606415692002`
 
-Every page includes the AdSense script in `<head>`. Root `ads.txt` is set for `pub-7048606415692002`.
+Root `ads.txt` is set for `pub-7048606415692002`. The AdSense publisher script loads on all pages **except** `/kids/**` and coming-soon/WIP paths. **Ad units** render only on live `/games/` pages after you paste slot IDs into `config.js`. The homepage includes the script in `<head>` for Google site verification.
 
 After the domain is live:
 
-1. AdSense → **Sites** → **Add site** → `laughing-dragons.com`
-2. Verify `https://laughing-dragons.com/ads.txt`
-3. Ensure Privacy, Terms, and About are linked (footer already does this)
-4. Create ad units in AdSense and paste slot IDs into `assets/js/config.js` → `adsense.slots`
-5. Wait for review (can take days)
+1. AdSense → **Ads** → **Auto ads** → **Disable** (manual units only)
+2. AdSense → **Privacy & messaging** → **European regulations** → publish CMP for `laughing-dragons.com`
+3. AdSense → **Sites** → **Add site** → `laughing-dragons.com`
+4. Verify `https://laughing-dragons.com/ads.txt` and view-source on `/` confirms `adsbygoogle.js`
+5. Create **LD Games Header** and **LD Games Footer** ad units; paste slot IDs into `assets/js/config.js` → `adsense.slots`
+6. Ensure Privacy, Terms, About, and Contact are linked (footer already does this)
+7. Request review (can take days)
+
+See [ADSENSE-MANUAL.md](ADSENSE-MANUAL.md) for the full compliance checklist.
 
 ## 6. Search Console
 

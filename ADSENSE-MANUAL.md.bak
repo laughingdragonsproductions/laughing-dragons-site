@@ -6,15 +6,39 @@ Games-first monetization is live in code. Complete these steps in **Google AdSen
 
 
 
+## Compliance matrix (Aug 2026)
+
+
+| Requirement | Status | Notes |
+|-------------|--------|-------|
+| ads.txt | **Ready** | Root `ads.txt` → `pub-7048606415692002` |
+| Privacy policy | **Ready** | `/privacy/` — AdSense, cookies, opt-out, Google policy links |
+| Contact page | **Ready** | `/contact/` — Web3Forms form |
+| About page | **Ready** | `/about/` — real studio content |
+| Terms | **Ready** | `/terms/` |
+| Footer legal links | **Ready** | Privacy, Terms, About, Contact |
+| Original content | **Ready** | 7 live games with guides, 9 tools, blog, kids characters |
+| Kids section ad-free | **Ready** | No script on `/kids/**` |
+| Publisher script on site | **Ready** | Homepage `<head>` + `site.js` on non-kids pages |
+| Ad units configured | **You** | Paste slot IDs in `config.js` after creating units |
+| Auto ads disabled | **You** | AdSense dashboard — prior policy flag from auto ads on thin pages |
+| EU consent (CMP) | **You** | AdSense → Privacy & messaging → European regulations |
+| Search Console | **Recommended** | Verify domain, submit sitemap |
+| Request review | **You** | After checklist above |
+
+
+
 ## 0. Before you create ad units
 
 
 
 1. AdSense → **Ads** → **Auto ads** → **Disable** (or turn off all formats) until manual slot IDs are configured. Auto ads on thin pages caused the prior policy flag.
 
-2. After deploy, view page source on `/kids/` and `/shop/coming-soon/` — confirm **no** `adsbygoogle.js` script tag.
+2. After deploy, view page source on `/kids/` — confirm **no** `adsbygoogle.js` script tag.
 
-3. View `/games/terminal/` — confirm the written guide (commands, levels, tips) appears **above** the game.
+3. View page source on `/` and `/games/terminal/` — confirm `adsbygoogle.js` is present (verification script).
+
+4. View `/games/terminal/` — confirm the written guide (commands, levels, tips) appears **above** the game.
 
 
 
@@ -62,7 +86,7 @@ adsense: {
 
 
 
-Push to GitHub after updating. The site loads AdSense **only** on `/games/` live pages (hub, Terminal Trainer, Memory Matching). Until slots are filled, no script loads anywhere.
+Push to GitHub after updating. The site loads the AdSense **publisher script** on all pages except `/kids/**` and WIP paths. **Ad units** render only on `/games/` live pages once slot IDs are filled.
 
 
 

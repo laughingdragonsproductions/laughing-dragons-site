@@ -69,7 +69,7 @@ Options: `-HubOnly`, `-ChittinOnly`, `-Force` (skip size block), `-DryRun` (prev
 | **Store goes live (Buy buttons)** | Change `buyHref` in `assets/js/prints.js` to Shopify URL |
 | **Site size check before push** | `.\scripts\check-site-size.ps1` (warns at 80% of 1 GB) |
 | **New brand images** | `assets/brand/` |
-| **AdSense slot IDs** | `assets/js/config.js` → `adsense.slots` |
+| **AdSense slot IDs** | `assets/js/config.js` → `adsense.slots` (script loads sitewide except `/kids/`; units only on `/games/`) |
 | **Home hero / pillar copy** | `index.html` |
 | **Home pillar photos (Kids / Tools)** | `assets/kids/best-shot.png`, `assets/tools/tools-pillar.png`; pass `image` in `index.html` `renderPillar()` |
 | **Kids game (coming soon)** | Add to `games[]` in `assets/js/kids.js`; link to `/kids/games/coming-soon/` until live |
@@ -153,7 +153,7 @@ If a new category needs its own hub tile later, add a folder under `assets/print
 
 Every page uses:
 
-- AdSense script in `<head>` (`ca-pub-7048606415692002`)
+- AdSense publisher script via `site.js` (except `/kids/` and WIP paths); homepage also has script in `<head>` for verification
 - `config.js` + `site.js` (and `kids.js` / `tools.js` when needed)
 - `initPage({ title, description, activePath, content })` for hub header/footer
 
