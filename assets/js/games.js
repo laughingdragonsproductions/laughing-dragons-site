@@ -6,7 +6,7 @@ window.GAMES_DATA = {
     "Each game teaches something useful while feeling like a classic flash-era arcade experience: retro terminals, tile matching, hidden-object search, letter tracing, counting, sorting, and more. " +
     "Beat a game to earn an unlock code, then hack the next title open in Terminal Trainer with LOGIN. Progress saves in your browser — no account needed. " +
     "Live games include full how-to-play guides. Later titles stay Locked until you earn them; once unlocked, a game that is still being finished shows as In production until it ships. " +
-    "The Fruit Friends Kids Show lives separately under Kids Show — same studio, different section. Characters from the show inspire art and themes, but game pages here are built for general audiences with real written guides, tips, and walkthroughs alongside the play area. " +
+    "These are original Laughing Dragons studio products — separate from the Fruit Friends Kids Show under <a href=\"/kids/\">Kids Show</a>, which is ad-free. Games here ship with real written guides, tips, and walkthroughs alongside the play area. " +
     "New games ship when they are complete, tested, and documented — not as empty stubs.",
 
   /** Ordered catalog — unlock order is internal; UI shows a games list. */
@@ -53,7 +53,7 @@ window.GAMES_DATA = {
       description:
         "Push green blocks, trap knights, and collect dragon tiles — Drago the Dragon Fruit in a Rodent's Revenge-style puzzle. Always playable.",
       longDescription:
-        "Drago's Revenge is a grid puzzle starring Drago the Dragon Fruit from the Fruit Friends Kids Show. Push slidable green blocks across an olive board, trap chasing knights, and collect laughing-dragon tile pickups. Eight hand-built levels, three lives, countdown timer, and Easy or Hard modes. Always open from the Games hub — no Terminal Trainer code required.",
+        "Drago's Revenge is a grid puzzle starring Drago the Dragon Fruit. Push slidable green blocks across an olive board, trap chasing knights, and collect laughing-dragon tile pickups. Eight hand-built levels, three lives, countdown timer, and Easy or Hard modes. Always open from the Games hub — no Terminal Trainer code required.",
       href: "/games/dragos-revenge/",
       image: "/assets/kids/games/dragos-revenge/board-with-green.png",
       status: "live",
@@ -66,7 +66,7 @@ window.GAMES_DATA = {
       longDescription:
         "Terminal Trainer drops you at a glowing CRT on the Laughing Dragons workroom desk. An intro video sets the scene, then you type commands exactly like a classic DOS prompt — HELP lists tools, DIR explores folders, CD moves between directories, TYPE reads files, and LOGIN cracks the final vault. " +
         "Level one teaches discovery: find SYSTEM tools and read NOTES for clues. Level two opens hidden MISSIONS with password-protected vaults. Level three is the true ending — finish it to unlock Memory Matching and earn a shop coupon code. " +
-        "Hints appear in a sidebar; Tab autocompletes commands. Perfect for kids curious about how computers work and adults who miss the A:\\> prompt.",
+        "Hints appear in a sidebar; Tab autocompletes commands. Great for anyone curious about how computers work — from first-time explorers to adults who miss the A:\\> prompt.",
       href: "/games/terminal/",
       image: "/assets/kids/games/terminal/desk-monitor-frame.png",
       status: "live",
@@ -94,9 +94,9 @@ window.GAMES_DATA = {
     {
       id: "fruit-search",
       title: "Fruit Search",
-      description: "I-Spy style hidden-object maps — find the Fruit Friend you are looking for in busy scenes.",
+      description: "I-Spy style hidden-object maps — find the character you are looking for in busy scenes.",
       longDescription:
-        "Fruit Search is a Where's-Waldo style finder built around the Fruit Friends A–Z cast. A prompt asks you to find a named character or a letter, then you scan a busy map and tap the right portrait. Wrong taps get a gentle try-again; correct finds celebrate and roll the next target. Difficulty scales from a few large sprites to crowded hard mode.",
+        "Fruit Search is a Where's-Waldo style finder built around the Fruit Friends A–Z cast. A prompt asks you to find a named character or a letter, then you scan a busy map and tap the right portrait. Wrong taps get a gentle try-again; correct finds celebrate and roll the next target. Difficulty scales from a few large sprites to crowded hard mode. Part of the Laughing Dragons Games catalog — a standalone hidden-object title with a full landing guide.",
       href: "/games/fruit-search/",
       image: "/assets/kids/games/fruit-search/ISpyFruit1.png",
       status: "live",
@@ -112,7 +112,7 @@ window.GAMES_DATA = {
       title: "Alphabet Trace",
       description: "Trace A–Z letter paths with mouse or finger — handwriting practice that feels like a game.",
       longDescription:
-        "Alphabet Trace puts each letter on screen as a guided path. Drag along the strokes to complete A through Z, with Fruit Friends themes for kids learning to write. Built for tablets and desktops; short rounds make it easy to practice one letter at a time.",
+        "Alphabet Trace puts each letter on screen as a guided path. Drag along the strokes to complete A through Z, with Fruit Friends-themed art. Built for tablets and desktops; short rounds make it easy to practice one letter at a time.",
       status: "in-production",
       requiresUnlock: "alphabet-trace-unlocked",
       lockedDescription: "Clear Fruit Search to unlock Alphabet Trace.",
@@ -138,9 +138,9 @@ window.GAMES_DATA = {
     {
       id: "color-match",
       title: "Color Match Sort",
-      description: "Drag fruit into red, yellow, and green bins — classic preschool sorting with Fruit Friends art.",
+      description: "Drag fruit into red, yellow, and green bins — classic color sorting with Fruit Friends art.",
       longDescription:
-        "Color Match Sort is a drag-and-drop sorter: pick up fruit friends and drop them into matching color bins. Simple rules, immediate feedback, and art parents can share. A low-friction first game for preschoolers before the harder puzzle titles.",
+        "Color Match Sort is a drag-and-drop sorter: pick up fruit characters and drop them into matching color bins. Simple rules, immediate feedback, and bright art. A low-friction sorting puzzle before the harder titles in the catalog.",
       status: "in-production",
       requiresUnlock: "color-match-unlocked",
       lockedDescription: "Clear Typing Race to unlock Color Match Sort.",
@@ -182,7 +182,7 @@ window.GAMES_DATA = {
       title: "Hangman Lite",
       description: "Guess Fruit Friend names and simple A–Z words, one letter at a time.",
       longDescription:
-        "Hangman Lite uses character names and short fruit words from the kids show. Guess letters to reveal the word before misses run out. Minimal graphics, classroom-friendly, and a natural tie-in to letter learning.",
+        "Hangman Lite uses character names and short fruit words from the Laughing Dragons cast. Guess letters to reveal the word before misses run out. Minimal graphics, quick rounds, and a natural tie-in to letter learning.",
       status: "in-production",
       requiresUnlock: "hangman-lite-unlocked",
       lockedDescription: "Clear Simon Says Light Pad to unlock Hangman Lite.",
@@ -236,9 +236,9 @@ window.GAMES_DATA = {
     {
       id: "coloring-viewer",
       title: "Coloring Page Studio",
-      description: "Click-to-color SVG Fruit Friends pages — printable fun for parents and classrooms.",
+      description: "Click-to-color SVG Fruit Friends pages — printable creative pages from the Games hub.",
       longDescription:
-        "Coloring Page Studio is a light creative tool more than a score chase: open a character outline, fill regions with color, and optionally print. Parents and teachers search for printable coloring constantly — this keeps that traffic inside the games hub.",
+        "Coloring Page Studio is a light creative tool more than a score chase: open a character outline, fill regions with color, and optionally print. A creative break inside the Laughing Dragons Games catalog.",
       status: "in-production",
       requiresUnlock: "coloring-viewer-unlocked",
       lockedDescription: "Clear Maze Generator to unlock Coloring Page Studio.",
@@ -353,7 +353,7 @@ function renderGamesHub() {
       <p><strong>Terminal Trainer</strong> is open to everyone — and it is also the hack console for the whole catalog. Beat a game and its unlock code appears on that game’s Play now card. Open Terminal Trainer, type <strong>LOGIN</strong> followed by the code, and the next game opens.</p>
       <p>Example: beat Terminal Trainer and you earn <strong>FORGE-GATE-7</strong> (Memory Matching is also granted automatically). Beat Memory Matching at or under par and you earn <strong>FIND-WALDO-3</strong> for Fruit Search. Codes stay on cleared cards so returning players can look them up anytime.</p>
       <p>Progress and codes save in your browser — no account needed.</p>
-      <p>Watch the Fruit Friends Kids Show separately on our <a href="/kids/">Kids Show</a> pages — episodes, character sheets, and printable files live there without ads.</p>
+      <p>The Fruit Friends <a href="/kids/">Kids Show</a> — episodes, character sheets, and printable files — lives in a separate ad-free section. Games here are standalone Laughing Dragons products.</p>
     </div>`;
 }
 

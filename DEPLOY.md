@@ -46,7 +46,7 @@ In Shopify Admin → **Settings** → **Domains**:
 
 Publisher ID: `ca-pub-7048606415692002`
 
-Root `ads.txt` is set for `pub-7048606415692002`. The AdSense publisher script loads on all pages **except** `/kids/**` and coming-soon/WIP paths. **Ad units** render only on live `/games/` pages after you paste slot IDs into `config.js`. The homepage includes the script in `<head>` for Google site verification.
+Root `ads.txt` is set for `pub-7048606415692002`. The AdSense publisher script loads on all pages **except** `/kids/**` (Kids Show) and `coming-soon` WIP paths. **Ad units** render on all finished `/games/` pages after you paste slot IDs into `config.js`. The homepage includes the script in `<head>` for Google site verification.
 
 After the domain is live:
 

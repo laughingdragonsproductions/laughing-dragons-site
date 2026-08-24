@@ -36,7 +36,6 @@ Where's-Waldo style I-Spy with the Fruit Friends A–Z cast. A busy map, a promp
 
 ## Out of scope v1
 
-- Drago clue mode, audio polish, full A–Z sprites if art incomplete  
-- AdSense on page until `status: live`
+- Drago clue mode, audio polish, full A–Z sprites if art incomplete
 
 See also: `LEVELS.md`, `BUILD-PLAN.md`, `UNLOCK.md`
