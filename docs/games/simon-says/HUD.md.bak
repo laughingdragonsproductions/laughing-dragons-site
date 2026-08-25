@@ -1,4 +1,4 @@
-# Simon Says Light Pad — HUD & UI copy
+# Simon Says Light Pad - HUD & UI copy
 
 ## Screen flow
 
@@ -19,7 +19,7 @@ Standard `initGameChrome`. Eyebrow: **In production**.
 
 Difficulty pills: Easy · Normal · Hard.
 
-High score line (Endless only): *Best: **12** steps* — key `ldp-simon-says-hiscore`.
+High score line (Endless only): *Best: **12** steps* - key `ldp-simon-says-hiscore`.
 
 ## Play HUD (top)
 
@@ -36,7 +36,7 @@ High score line (Endless only): *Best: **12** steps* — key `ldp-simon-says-his
 | Element | ID | Layout |
 |---------|-----|--------|
 | Pad grid | `#ss-pad` | 2×2 colored buttons, min 80×80 px each |
-| Pad 0–3 | `#ss-pad-0` … | `data-pad="0"` etc. |
+| Pad 0-3 | `#ss-pad-0` … | `data-pad="0"` etc. |
 
 Watch phase: pads non-interactive (`pointer-events: none`).  
 Repeat phase: pads active; highlight on tap.
@@ -50,7 +50,7 @@ Repeat phase: pads active; highlight on tap.
 | Step correct | (subtle pad pulse only) |
 | Step wrong | *"Oops!"* + red flash |
 | Round success | *"Nice! Next pattern is longer."* |
-| Length milestone (5, 8) | *"Amazing — **N** steps!"* |
+| Length milestone (5, 8) | *"Amazing - **N** steps!"* |
 | Session clear | Win overlay |
 
 ## Win overlay
@@ -80,10 +80,10 @@ Shows *Steps: **N*** instead of round; on game over:
 
 ## Mobile / a11y
 
-- Pads stack 2×2 or 1×4 on narrow screens — maintain 64 px min touch
+- Pads stack 2×2 or 1×4 on narrow screens - maintain 64 px min touch
 - `aria-label` on pads: *Green pad*, *Red pad*, etc.
 - `aria-live="polite"` on phase label
-- Keyboard: keys Q/W/E/R map to pads 0–3 (desktop)
+- Keyboard: keys Q/W/E/R map to pads 0-3 (desktop)
 
 ## Colors
 

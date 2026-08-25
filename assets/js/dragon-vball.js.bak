@@ -317,7 +317,7 @@
         class="vball-skin-btn${selected ? " is-selected" : ""}${locked ? " is-locked" : ""}"
         data-skin="${d.id}"
         data-lock-label="${lockLabel}"
-        aria-label="${d.name}${locked ? ` — unlock at ${d.unlockWins} wins` : ""}"
+        aria-label="${d.name}${locked ? ` - unlock at ${d.unlockWins} wins` : ""}"
         aria-pressed="${selected}"
         ${locked ? "disabled" : ""}>
         <img src="${d.src}" alt="" width="52" height="52" loading="lazy" />
@@ -580,7 +580,7 @@
 
     const won = winner === "player";
     els.overTitle.textContent = won ? "You Win!" : "AI Wins";
-    els.overScore.textContent = `${state.playerScore} – ${state.aiScore}`;
+    els.overScore.textContent = `${state.playerScore} - ${state.aiScore}`;
 
     if (won && state.matchWinStreak > 1) {
       els.overBest.textContent = `Win streak: ${state.matchWinStreak}`;

@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Terminal Trainer — a retro DOS-style browser game that teaches basic computer commands. Type HELP, DIR, CD, and more across three levels."
+      content="Terminal Trainer - a retro DOS-style browser game that teaches basic computer commands. Type HELP, DIR, CD, and more across three levels."
     />
     <title>Terminal Trainer</title>
     <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
     <link rel="stylesheet" href="/assets/css/site.css" />
     <link rel="stylesheet" href="/assets/css/terminal-game.css?v=20260809" />
     <link rel="canonical" href="https://laughing-dragons.com/games/terminal/" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7048606415692002"
+     crossorigin="anonymous"></script>
   </head>
   <body class="terminal-page game-page">
     <div id="game-header-mount"></div>
@@ -150,7 +152,7 @@
     <script>
       initGameChrome({
         title: "Terminal Trainer",
-        description: "Retro DOS-style terminal game — learn HELP, DIR, CD, and more.",
+        description: "Retro DOS-style terminal game - learn HELP, DIR, CD, and more.",
         activePath: "/games/terminal/",
         landingHtml: renderTerminalLanding(),
       });

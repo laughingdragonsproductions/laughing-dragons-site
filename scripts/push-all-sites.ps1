@@ -3,8 +3,11 @@ param(
   [string]$Message,
   [switch]$Force,
   [switch]$HubOnly,
-  [switch]$ChittinOnly,
   [switch]$ReptoolsOnly,
+  [switch]$LitPrintzOnly,
+  [switch]$Them1947Only,
+  [switch]$AssociatedGuessOnly,
+  [switch]$ToolSiteOnly,
   [switch]$DryRun,
   [switch]$SkipAiMarksFilter
 )
@@ -23,11 +26,11 @@ $Sites = @(
     LiveUrl = "https://laughing-dragons.com"
   },
   @{
-    Id = "chittin"
-    Name = "Chittinn Chattin"
-    Path = "G:\Laughing Dragons\Chittinnchattin.com"
+    Id = "lit-printz"
+    Name = "Lit Printz"
+    Path = "G:\LocalAIagent\lit-printz-site"
     Branch = "main"
-    LiveUrl = "https://chittinnchattin.com"
+    LiveUrl = "https://litprintz.com"
   },
   @{
     Id = "reptools"
@@ -35,6 +38,27 @@ $Sites = @(
     Path = "G:\LocalAIagent\reptools-site"
     Branch = "main"
     LiveUrl = "https://reptools.pages.dev"
+  },
+  @{
+    Id = "them1947"
+    Name = "THEM 1947"
+    Path = "G:\LocalAIagent\Them1947"
+    Branch = "main"
+    LiveUrl = "https://them1947.com"
+  },
+  @{
+    Id = "associatedguess"
+    Name = "The Associated Guess"
+    Path = "G:\LocalAIagent\Theassociatedguess"
+    Branch = "main"
+    LiveUrl = "https://theassociatedguess.com"
+  },
+  @{
+    Id = "tool-site"
+    Name = "Tool Site"
+    Path = "G:\LocalAIagent\tool-site"
+    Branch = "main"
+    LiveUrl = ""
   }
 )
 
@@ -59,19 +83,19 @@ function Push-SiteRepo {
 
   Write-Host ""
   Write-Host "=== $($Site.Name) ===" -ForegroundColor Cyan
-    Write-Host "Path: $root"
-    Push-Location $root
+  Write-Host "Path: $root"
+  Push-Location $root
 
-    try {
-      if (-not $SkipAiMarksFilter -and (Test-Path $AiMarksFilter) -and $Site.Id -in @("hub", "chittin")) {
-        Write-Host "AI marks filter (websites)..." -ForegroundColor DarkGray
-        & $AiMarksFilter -Scope websites -WebsitePath $root -Quiet
-        if ($LASTEXITCODE -ne 0) {
-          Write-Host "AI marks filter reported errors for $($Site.Name)." -ForegroundColor Yellow
-        }
+  try {
+    if (-not $SkipAiMarksFilter -and (Test-Path $AiMarksFilter)) {
+      Write-Host "AI marks filter (websites)..." -ForegroundColor DarkGray
+      & $AiMarksFilter -Scope websites -WebsitePath $root -Quiet
+      if ($LASTEXITCODE -ne 0) {
+        Write-Host "AI marks filter reported errors for $($Site.Name)." -ForegroundColor Yellow
       }
+    }
 
-      $sizeScript = Join-Path $root "scripts\check-site-size.ps1"
+    $sizeScript = Join-Path $root "scripts\check-site-size.ps1"
     if (Test-Path $sizeScript) {
       $sizeArgs = @()
       if ($Force) { $sizeArgs += "-Force" }
@@ -131,11 +155,20 @@ $selected = @($Sites)
 if ($HubOnly) {
   $selected = @($Sites | Where-Object { $_.Id -eq "hub" })
 }
-elseif ($ChittinOnly) {
-  $selected = @($Sites | Where-Object { $_.Id -eq "chittin" })
-}
 elseif ($ReptoolsOnly) {
   $selected = @($Sites | Where-Object { $_.Id -eq "reptools" })
+}
+elseif ($LitPrintzOnly) {
+  $selected = @($Sites | Where-Object { $_.Id -eq "lit-printz" })
+}
+elseif ($Them1947Only) {
+  $selected = @($Sites | Where-Object { $_.Id -eq "them1947" })
+}
+elseif ($AssociatedGuessOnly) {
+  $selected = @($Sites | Where-Object { $_.Id -eq "associatedguess" })
+}
+elseif ($ToolSiteOnly) {
+  $selected = @($Sites | Where-Object { $_.Id -eq "tool-site" })
 }
 
 Write-Host "Push all sites - $Message"

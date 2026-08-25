@@ -1,11 +1,11 @@
-# Color Match Sort — Build plan (Dave)
+# Color Match Sort - Build plan (Dave)
 
 ## Files to create
 
 | Path | Purpose |
 |------|---------|
 | `games/color-match/index.html` | Gate + landing + `#color-match-root` |
-| `assets/js/color-match.js` | `initColorMatch()` — drag-drop, round state, win |
+| `assets/js/color-match.js` | `initColorMatch()` - drag-drop, round state, win |
 | `assets/js/color-match-data.js` | Fruit list with `colorBin: "red"|"yellow"|"green"|"neutral"` |
 | `assets/css/color-match.css` | Bins, lane, drag states, overlays |
 

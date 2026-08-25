@@ -1,4 +1,4 @@
-# The Sliding Scale — game overview
+# The Sliding Scale - game overview
 
 **Slug:** `sliding-scale`  
 **Path:** `/games/sliding-scale/`  
@@ -6,7 +6,7 @@
 
 ## Pitch
 
-A workroom slider puzzle — slide tiles to rebuild Laughing Dragons workshop photos, the workroom banner, and the studio logo. Easy 3×3, Med 4×4, or Hard 5×5.
+A workroom slider puzzle - slide tiles to rebuild Laughing Dragons workshop photos, the workroom banner, and the studio logo. Easy 3×3, Med 4×4, or Hard 5×5.
 
 ## Audience
 
@@ -38,9 +38,9 @@ General audiences on the Games hub; casual puzzle players who want a quick brain
 
 ## Query params
 
-- `?diff=easy|med|hard` — starting difficulty
-- `?image=workshop|workroom|logo` — fixed puzzle image
-- `?seed=N` — deterministic shuffle RNG
+- `?diff=easy|med|hard` - starting difficulty
+- `?image=workshop|workroom|logo` - fixed puzzle image
+- `?seed=N` - deterministic shuffle RNG
 
 ## Out of scope (v1)
 

@@ -1,4 +1,4 @@
-# Simon Says Light Pad — Levels
+# Simon Says Light Pad - Levels
 
 ## Structure
 
@@ -16,7 +16,7 @@ No numbered levels. A **Memory Run** = up to 5 rounds. Each round builds a rando
 
 **Session clear:** Hit sequence length **8** at least once during the 5-round Memory Run.
 
-If player fails a round (after retries exhausted), next round still starts at tier start length — session continues until round 5 completes or clear achieved early.
+If player fails a round (after retries exhausted), next round still starts at tier start length - session continues until round 5 completes or clear achieved early.
 
 ## Easy tier
 
@@ -27,14 +27,14 @@ If player fails a round (after retries exhausted), next round still starts at ti
 ## Hard tier
 
 - Start length 3; session goal length **10**
-- No retries — wrong tap ends round immediately
+- No retries - wrong tap ends round immediately
 - Faster flash (600 ms)
 
 ## Sequence generation
 
-- Each new step: random pad index 0–3
+- Each new step: random pad index 0-3
 - Avoid same pad more than 3 times in a row (reshuffle if needed)
-- Store current sequence in memory only — no persistence mid-round
+- Store current sequence in memory only - no persistence mid-round
 
 ## Win condition
 
@@ -49,9 +49,9 @@ Optional: clear on first round that hits length 8 with zero mistakes in that rou
 ## Wrong-tap behavior
 
 - Pad flashes red + low buzz tone
-- If retries remain: toast *"Try again from the start of your turn"* — player re-enters repeat phase from step 1 of current sequence
+- If retries remain: toast *"Try again from the start of your turn"* - player re-enters repeat phase from step 1 of current sequence
 - If no retries: round ends, advance round counter
 
 ## Session length target
 
-~4–6 minutes for a full 5-round Normal session.
+~4-6 minutes for a full 5-round Normal session.

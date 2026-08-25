@@ -1,12 +1,12 @@
-# Alphabet Trace — Build plan (Dave)
+# Alphabet Trace - Build plan (Dave)
 
 ## Files to create
 
 | Path | Purpose |
 |------|---------|
 | `games/alphabet-trace/index.html` | Gate + landing + `#alphabet-trace-root` mount |
-| `assets/js/alphabet-trace.js` | `initAlphabetTrace()` — modes, canvas trace, win hook |
-| `assets/js/alphabet-trace-data.js` | Letter stroke paths (SVG coords), friend metadata A–Z |
+| `assets/js/alphabet-trace.js` | `initAlphabetTrace()` - modes, canvas trace, win hook |
+| `assets/js/alphabet-trace-data.js` | Letter stroke paths (SVG coords), friend metadata A-Z |
 | `assets/css/alphabet-trace.css` | HUD, canvas, overlays, Free Pick grid |
 
 ## Data shapes
@@ -18,7 +18,7 @@ export const LETTERS = {
   A: {
     friend: { name: "Adam Apple", thumb: "/assets/kids/fruit-friends/adam-apple.png" },
     strokes: [
-      { points: [[x,y], ...], direction: "cw" },  // normalized 0–100 viewBox
+      { points: [[x,y], ...], direction: "cw" },  // normalized 0-100 viewBox
     ],
   },
   // B … Z
@@ -63,7 +63,7 @@ On Journey letter J complete:
 
 ```javascript
 window.KIDS_UNLOCKS.markCleared("alphabet-trace");
-// Do NOT auto-grant typing-race-unlocked — Terminal LOGIN TYPE-FAST-5
+// Do NOT auto-grant typing-race-unlocked - Terminal LOGIN TYPE-FAST-5
 ```
 
 Win overlay displays `KIDS_UNLOCKS.getRewardCode("alphabet-trace")`.
@@ -74,7 +74,7 @@ Win overlay displays `KIDS_UNLOCKS.getRewardCode("alphabet-trace")`.
 - [ ] Mode picker (Journey / Free Pick) + difficulty toggle
 - [ ] SVG letter render + stroke state machine
 - [ ] Pointer trace with tolerance + retry feedback
-- [ ] Journey A–J progression + friend HUD
+- [ ] Journey A-J progression + friend HUD
 - [ ] Free Pick letter grid
 - [ ] Win overlay + reward code `TYPE-FAST-5`
 - [ ] Mobile touch (`touch-action: none`, 44px targets)
@@ -83,9 +83,9 @@ Win overlay displays `KIDS_UNLOCKS.getRewardCode("alphabet-trace")`.
 ## Out of scope v1
 
 - Stroke sound FX, TTS cheer lines
-- K–Z in Journey path (Free Pick only)
+- K-Z in Journey path (Free Pick only)
 - SVG export of kid's traced letter
 
 ## Art dependencies
 
-- Fruit Friend thumbnails A–Z (reuse `/assets/kids/fruit-friends/` if present; placeholder colored circles OK for scaffold)
+- Fruit Friend thumbnails A-Z (reuse `/assets/kids/fruit-friends/` if present; placeholder colored circles OK for scaffold)

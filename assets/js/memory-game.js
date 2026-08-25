@@ -194,7 +194,7 @@
 
   function formatBest(difficulty) {
     const best = Number(localStorage.getItem(BEST_KEYS[difficulty]) || "0");
-    if (!best) return "—";
+    if (!best) return "-";
     const config = DIFFICULTY_CONFIG[difficulty];
     const rating = getRating(best, difficulty);
     return `${best} (${rating.label})`;
@@ -357,8 +357,8 @@
     flipClosed(b);
     state.flipped = [];
     state.lock = false;
-    announce("No match — tiles flipped back");
-    setStatus("Not a match — try again!");
+    announce("No match - tiles flipped back");
+    setStatus("Not a match - try again!");
   }
 
   function beatPar(moves, difficulty) {
@@ -410,7 +410,7 @@
       ? ` Fruit Search unlocked! Code: ${rewards.rewardCode || "FIND-WALDO-3"}`
       : "";
     announce(`You matched them all in ${state.moves} moves. Rating: ${rating.label}.${unlockMsg}`);
-    setStatus(atOrUnderPar ? "Board cleared — new game unlocked!" : "Board cleared!");
+    setStatus(atOrUnderPar ? "Board cleared - new game unlocked!" : "Board cleared!");
     updateBestScoresDisplay();
   }
 

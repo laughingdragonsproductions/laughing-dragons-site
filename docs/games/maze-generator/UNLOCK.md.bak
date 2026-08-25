@@ -1,4 +1,4 @@
-# Maze Generator — Unlock integration
+# Maze Generator - Unlock integration
 
 **Requires:** `maze-generator-unlocked`  
 **Earned by clearing:** `pattern-builder` → Terminal code `MAZE-PATH-12`  

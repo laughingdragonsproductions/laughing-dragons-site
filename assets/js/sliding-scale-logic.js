@@ -13,15 +13,15 @@ const SLIDER_DIFFICULTIES = {
 const SLIDER_WIN_MESSAGES = {
   workshop: [
     { title: "Scale balanced.", body: "Every piece clicked back into place on the workroom floor." },
-    { title: "Workshop win!", body: "The Glowforge table looks good as new — nice solve." },
+    { title: "Workshop win!", body: "The Glowforge table looks good as new - nice solve." },
     { title: "Maker moment.", body: "You put the whole shop back in order." },
   ],
   workroom: [
-    { title: "Workroom restored.", body: "The banner is whole again — back to the bench." },
+    { title: "Workroom restored.", body: "The banner is whole again - back to the bench." },
     { title: "Picture perfect.", body: "Laughing Dragons production, assembled tile by tile." },
   ],
   logo: [
-    { title: "Logo locked in.", body: "The dragons are laughing — puzzle complete." },
+    { title: "Logo locked in.", body: "The dragons are laughing - puzzle complete." },
     { title: "Brand balanced.", body: "Every tile found its spot on The Sliding Scale." },
     { title: "Forge complete.", body: "From scattered pieces to one clean mark." },
   ],

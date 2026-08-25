@@ -1,4 +1,4 @@
-# Pattern Builder — Unlock integration
+# Pattern Builder - Unlock integration
 
 **Requires:** `pattern-builder-unlocked`  
 **Earned by clearing:** `whack-a-fruit` → Terminal code `WHACK-GRID-10`  

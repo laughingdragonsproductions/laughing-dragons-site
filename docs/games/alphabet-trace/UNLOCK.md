@@ -1,4 +1,4 @@
-# Alphabet Trace — Unlock integration
+# Alphabet Trace - Unlock integration
 
 **Requires:** `alphabet-trace-unlocked`  
 **Earned by clearing:** `fruit-search` → Terminal code `TRACE-A-Z-4`  

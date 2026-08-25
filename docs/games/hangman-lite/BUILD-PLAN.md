@@ -1,11 +1,11 @@
-# Hangman Lite — Build plan (Dave)
+# Hangman Lite - Build plan (Dave)
 
 ## Files to create
 
 | Path | Purpose |
 |------|---------|
 | `games/hangman-lite/index.html` | Gate + landing + `#hangman-lite-root` |
-| `assets/js/hangman-lite.js` | `initHangmanLite()` — word state, keyboard, dragon misses, win |
+| `assets/js/hangman-lite.js` | `initHangmanLite()` - word state, keyboard, dragon misses, win |
 | `assets/js/hangman-lite-words.js` | Word list with `text`, `category`, `tier`, `length` |
 | `assets/css/hangman-lite.css` | Slots, keyboard, dragon states, overlays |
 
@@ -55,7 +55,7 @@ Do not auto-grant `whack-a-fruit-unlocked`.
 - [ ] Gate + initGameChrome landing
 - [ ] Difficulty tier + localStorage
 - [ ] Word picker + slot rendering
-- [ ] A–Z keyboard + physical keyboard
+- [ ] A-Z keyboard + physical keyboard
 - [ ] Correct / wrong letter logic
 - [ ] Miss counter + dragon visual steps
 - [ ] Easy hint reveal

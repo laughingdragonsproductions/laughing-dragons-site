@@ -1,6 +1,6 @@
 # How to Add Content and Push Updates
 
-The site is **GitHub → Cloudflare Pages**. Every push to `main` triggers an automatic redeploy (usually 1–3 minutes). No build step.
+The site is **GitHub → Cloudflare Pages**. Every push to `main` triggers an automatic redeploy (usually 1-3 minutes). No build step.
 
 **Repo:** `G:\LocalAIagent\laughing-dragons-site`  
 **Remote:** `https://github.com/laughingdragonsproductions/laughing-dragons-site.git`  
@@ -19,7 +19,7 @@ python -m http.server 8080
 
 Or run `.\scripts\preview.ps1`
 
-Open `http://localhost:8080/` — hard refresh (Ctrl+F5) if CSS/JS looks stale.
+Open `http://localhost:8080/` - hard refresh (Ctrl+F5) if CSS/JS looks stale.
 
 ### 2. Commit and push
 
@@ -33,13 +33,13 @@ git push origin main
 
 Or run `.\scripts\push-update.ps1 "Describe what you changed"`
 
-Or push **both** Cloudflare sites (hub + Chittinn Chattin):
+Or push **all owned Cloudflare sites** (hub, Lit Printz, Reptools, THEM 1947, Associated Guess, tool-site):
 
 ```powershell
 .\scripts\push-all-sites.ps1 "Describe what you changed"
 ```
 
-Options: `-HubOnly`, `-ChittinOnly`, `-Force` (skip size block), `-DryRun` (preview only).
+Options: `-HubOnly`, `-LitPrintzOnly`, `-ReptoolsOnly`, `-Them1947Only`, `-AssociatedGuessOnly`, `-ToolSiteOnly`, `-Force` (skip size block), `-DryRun` (preview only).
 
 `push-update.ps1` runs `check-site-size.ps1` first (warns at **800 MB / 80%** of the 1 GB budget, blocks at **950 MB / 95%** unless you pass `-Force`).
 
@@ -51,15 +51,15 @@ Options: `-HubOnly`, `-ChittinOnly`, `-Force` (skip size block), `-DryRun` (prev
 
 ---
 
-## Where to edit — common additions
+## Where to edit - common additions
 
 | What you want to add | File(s) to edit |
 |---------------------|-----------------|
-| **Kids Show episode on YouTube** | `assets/js/kids.js` — set `youtubeUrl` + `status: "published"` |
-| **Episode finished, premiere pending** | `assets/js/kids.js` — set `status: "premiere-soon"` (shows **Premiering soon** tag) |
-| **New Kids episode row** | `assets/js/kids.js` — add object to `episodes[]` |
-| **3D printable STL for a character** | `assets/js/kids.js` — add `printUrl` when ready (see comments in file) |
-| **Character images** | PNGs in `assets/kids/characters/` as `{letter}.png` (a.png–z.png) |
+| **Kids Show episode on YouTube** | `assets/js/kids.js` - set `youtubeUrl` + `status: "published"` |
+| **Episode finished, premiere pending** | `assets/js/kids.js` - set `status: "premiere-soon"` (shows **Premiering soon** tag) |
+| **New Kids episode row** | `assets/js/kids.js` - add object to `episodes[]` |
+| **3D printable STL for a character** | `assets/js/kids.js` - add `printUrl` when ready (see comments in file) |
+| **Character images** | PNGs in `assets/kids/characters/` as `{letter}.png` (a.png-z.png) |
 | **New free tool** | Copy a file in `tools/`, add to `assets/js/tools.js` `TOOLS`, add URL to `sitemap.xml` |
 | **Blog post** | New HTML under `blog/posts/`, link from `blog/index.html`, add to `sitemap.xml` |
 | **Shop / Etsy / Shopify URL** | `assets/js/config.js` → `links` |
@@ -78,17 +78,17 @@ Options: `-HubOnly`, `-ChittinOnly`, `-Force` (skip size block), `-DryRun` (prev
 
 ---
 
-## Kids Show — publish an episode
+## Kids Show - publish an episode
 
 Edit `assets/js/kids.js`:
 
 ```javascript
 {
   letter: "A",
-  title: "Letter A — Adam the Apple",
+  title: "Letter A - Adam the Apple",
   status: "published",
   youtubeUrl: "https://www.youtube.com/watch?v=YOUR_VIDEO_ID",
-  description: "Meet Adam — sweet, happy, and full of energy!",
+  description: "Meet Adam - sweet, happy, and full of energy!",
 }
 ```
 
@@ -98,22 +98,22 @@ Commit + push. `/kids/#episodes` shows a **Watch on YouTube** card automatically
 
 ## Games pipeline (Agent Town)
 
-- **Master doc:** [`docs/games-pipeline.md`](docs/games-pipeline.md) — unlock chain, Carol/Dave deliverables  
-- **Status board:** [`docs/games/STATUS.md`](docs/games/STATUS.md) — agents update on handoff  
-- **Per-game specs:** `docs/games/{slug}/` — Carol design; Dave codes `games/{slug}/`  
-- **Unlock codes:** `assets/js/kids-unlocks.js` — Terminal `LOGIN` redeems codes  
-- **OpenClaw queue:** `G:\openclaw\business\TASK-QUEUE.md` — S003–S009  
+- **Master doc:** [`docs/games-pipeline.md`](docs/games-pipeline.md) - unlock chain, Carol/Dave deliverables  
+- **Status board:** [`docs/games/STATUS.md`](docs/games/STATUS.md) - agents update on handoff  
+- **Per-game specs:** `docs/games/{slug}/` - Carol design; Dave codes `games/{slug}/`  
+- **Unlock codes:** `assets/js/kids-unlocks.js` - Terminal `LOGIN` redeems codes  
+- **OpenClaw queue:** `G:\openclaw\business\TASK-QUEUE.md` - S003-S009  
 - **Live:** `/games/terminal/`, `/games/memory-matching/`, `/games/fruit-search/` · **Pre-pipeline (always playable):** The Sliding Scale, Flappy Dragon, Dragon-Ball V, Drago's Revenge at `/games/`
 
 ---
 
-## Kids — games and characters
+## Kids - games and characters
 
 - **Games:** edit `games[]` in `assets/js/kids.js`. Until a game is built, set `href: "/kids/games/coming-soon/"`. Live games use `status: "live"` and a real path (e.g. `/kids/games/terminal/`).
 - **Terminal Trainer (local test):** `.\scripts\play-terminal.ps1` or double-click `scripts\play-terminal.bat` → opens `http://localhost:8080/kids/games/terminal/`. Game code: `assets/js/terminal-game.js`, `assets/css/terminal-game.css`, page at `kids/games/terminal/index.html`.
 - **Terminal Trainer media sync:** `.\scripts\copy-terminal-assets.ps1` copies intro video from `G:\Laughing Dragons\Laughing-Dragons.com\Newterminalvideo.mp4` into `assets/kids/games/terminal/newterminalvideo.mp4` (and removes legacy `sitting-at-pc.mp4` if present). Desk frame lives at `assets/kids/games/terminal/desk-monitor-frame.png`.
-- **Terminal Trainer game tree map:** [`docs/terminal-trainer-game-tree.png`](docs/terminal-trainer-game-tree.png) — visual step-by-step path (steps 1–19).
-- **Terminal Trainer walkthrough & content map:** [`docs/terminal-trainer-walkthrough.md`](docs/terminal-trainer-walkthrough.md) — site pages, repo files, A:\ tree, full command walkthrough, where to add levels.
+- **Terminal Trainer game tree map:** [`docs/terminal-trainer-game-tree.png`](docs/terminal-trainer-game-tree.png) - visual step-by-step path (steps 1-19).
+- **Terminal Trainer walkthrough & content map:** [`docs/terminal-trainer-walkthrough.md`](docs/terminal-trainer-walkthrough.md) - site pages, repo files, A:\ tree, full command walkthrough, where to add levels.
 - **Monitor overlay tuning:** edit CSS variables `--monitor-top`, `--monitor-left`, `--monitor-width`, `--monitor-height` in `assets/css/terminal-game.css` if the terminal drifts off the PC screen in the desk image.
 - **Terminal Trainer win rewards:** codes and unlock logic live in `assets/js/kids-unlocks.js`. Win banner in `kids/games/terminal/index.html` + `terminal-game.js`. Full deploy checklist: [`docs/terminal-trainer-integration.md`](docs/terminal-trainer-integration.md) (create **DragonForge15** in Shopify admin before go-live).
 - **Kids game unlocks:** `assets/js/kids-unlocks.js` must load on `/kids/` and any gated game page. Hub locked/unlocked cards rendered in `renderKidsGames()` in `kids.js`.

@@ -1,4 +1,4 @@
-/* The Sliding Scale — slider puzzle (Laughing Dragons workroom theme) */
+/* The Sliding Scale - slider puzzle (Laughing Dragons workroom theme) */
 
 .ss-page #game-play {
   padding-block: 2rem 3rem;

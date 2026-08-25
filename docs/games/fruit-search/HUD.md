@@ -1,4 +1,4 @@
-# Fruit Search — HUD & UI copy
+# Fruit Search - HUD & UI copy
 
 ## Screen flow
 
@@ -15,10 +15,10 @@ Standard `initGameChrome` from `games/fruit-search/index.html`.
 | Element | Copy |
 |---------|------|
 | Eyebrow | In production |
-| Lead | Find Fruit Friends hidden in busy scenes — Where's Waldo meets the ABC cast. |
+| Lead | Find Fruit Friends hidden in busy scenes - Where's Waldo meets the ABC cast. |
 | Note | Unlocked after beating par on Memory Matching. |
 
-**Primary CTA:** Start finding (scrolls to `#game-play` or hides landing — match site pattern when wired).
+**Primary CTA:** Start finding (scrolls to `#game-play` or hides landing - match site pattern when wired).
 
 ## Play HUD (top bar)
 
@@ -33,7 +33,7 @@ Standard `initGameChrome` from `games/fruit-search/index.html`.
 
 | Element | Behavior |
 |---------|----------|
-| Map image | `#fruit-search-stage` — scrollable on mobile |
+| Map image | `#fruit-search-stage` - scrollable on mobile |
 | Sprites | Percent-positioned hitboxes over map |
 | Wrong tap | Brief red ring at tap point + toast |
 | Correct tap | Sprite bounce + confetti class 600 ms |
@@ -60,7 +60,7 @@ Default last choice from `localStorage` key `ldp-fruit-search-difficulty`.
 | 4th find | *"One more!"* |
 | Round clear | Overlay (below) |
 
-Keep wrong-tap copy gentle — no penalty, unlimited tries.
+Keep wrong-tap copy gentle - no penalty, unlimited tries.
 
 ## Round clear overlay (win)
 
@@ -71,7 +71,7 @@ Keep wrong-tap copy gentle — no penalty, unlimited tries.
 | Reward code | **TRACE-A-Z-4** |
 | Terminal hint | Type `LOGIN TRACE-A-Z-4` in Terminal Trainer |
 | Primary | **Back to Games** → `/games/` |
-| Secondary | **Find again** — new round, same or new difficulty |
+| Secondary | **Find again** - new round, same or new difficulty |
 
 On first clear ever: `KIDS_UNLOCKS.markCleared("fruit-search")`.
 

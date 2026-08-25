@@ -1,4 +1,4 @@
-# Alphabet Trace — HUD & UI copy
+# Alphabet Trace - HUD & UI copy
 
 ## Screen flow
 
@@ -12,17 +12,17 @@ Free Pick returns to letter grid after each clear instead of advancing Journey.
 
 Uses standard `initGameChrome` landing from `index.html`. Eyebrow: **In production**. Lead copy matches hub description.
 
-**Primary CTA:** `Start Journey` — opens play mount, begins letter A.
+**Primary CTA:** `Start Journey` - opens play mount, begins letter A.
 
-**Secondary:** `Pick a Letter` — opens Free Pick grid.
+**Secondary:** `Pick a Letter` - opens Free Pick grid.
 
 ## Mode picker (first visit only)
 
 | Element | Copy / behavior |
 |---------|-----------------|
 | Title | Choose how to play |
-| Journey card | **Letter Journey** — Trace A to J with the Fruit Friends |
-| Free Pick card | **Free Pick** — Practice any letter you want |
+| Journey card | **Letter Journey** - Trace A to J with the Fruit Friends |
+| Free Pick card | **Free Pick** - Practice any letter you want |
 | Difficulty row | Easy · Normal · Hard (pill toggle, default Easy) |
 
 ## Play HUD (top bar)
@@ -43,15 +43,15 @@ Uses standard `initGameChrome` landing from `index.html`. Eyebrow: **In producti
 | Letter SVG | Large outline; inactive strokes gray, active stroke gold |
 | Trace layer | Captures pointer; draws player path in brand green |
 | Guide dots | Numbered circles along active stroke |
-| Hint text | `#at-hint` — *"Drag along the glowing line"* (first stroke only) |
+| Hint text | `#at-hint` - *"Drag along the glowing line"* (first stroke only) |
 
 ## Feedback copy
 
 | Event | Message | Duration |
 |-------|---------|----------|
-| Stroke start | *(none — visual only)* | — |
+| Stroke start | *(none - visual only)* | - |
 | Stroke success | *"Nice!"* | 0.8 s toast |
-| Stroke fail | *"Stay on the line — try again!"* | until retry |
+| Stroke fail | *"Stay on the line - try again!"* | until retry |
 | Letter complete | *"You traced {letter}! {friend cheer line}"* | 1.5 s then advance |
 | Journey complete | Win overlay (below) | until dismissed |
 
@@ -82,7 +82,7 @@ On show: call `KIDS_UNLOCKS.markCleared("alphabet-trace")`.
 | Element | Copy / behavior |
 |---------|-----------------|
 | Title | Pick a letter |
-| Grid | 26 tiles A–Z with mini friend icon |
+| Grid | 26 tiles A-Z with mini friend icon |
 | Tap tile | Loads that letter in play HUD |
 | Done | **Back to Journey** if Journey incomplete; else **All games** |
 

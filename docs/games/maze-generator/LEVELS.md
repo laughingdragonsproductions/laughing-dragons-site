@@ -1,4 +1,4 @@
-# Maze Generator — Levels
+# Maze Generator - Levels
 
 ## Structure
 
@@ -12,7 +12,7 @@ No numbered levels. A **Solve Run** = **3 mazes completed** (path reaches Finish
 | 2 | Player choice | |
 | 3 | Player choice | Win overlay after Finish |
 
-Preset choice is player-driven — no forced escalation.
+Preset choice is player-driven - no forced escalation.
 
 ## Win condition
 
@@ -42,7 +42,7 @@ Optional: all 3 mazes on Medium or Large with zero invalid wall bumps → toast 
 
 ## Session length target
 
-~6–10 minutes for 3 Medium mazes.
+~6-10 minutes for 3 Medium mazes.
 
 ## Print behavior
 

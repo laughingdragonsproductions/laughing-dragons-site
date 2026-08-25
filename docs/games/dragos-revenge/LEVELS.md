@@ -1,4 +1,4 @@
-# Drago's Revenge — Levels
+# Drago's Revenge - Levels
 
 ## Grid
 
@@ -30,7 +30,7 @@ Trap **all** knights (8-way movement, cluster-aware) so they convert to dragon t
 
 | # | Name | Hunters | Timer (Hard) | Notes |
 |---|------|---------|--------------|-------|
-| 1 | Mockup | 2 | 120s | Transcribe `Boardwithgreen.png` — center column, framing rectangle, top/bottom teeth, mid 2×2 clusters |
+| 1 | Mockup | 2 | 120s | Transcribe `Boardwithgreen.png` - center column, framing rectangle, top/bottom teeth, mid 2×2 clusters |
 | 2 | Open Arena | 2 | 110s | Sparse greens, teeth in corners, room to kite |
 | 3 | Tight Lattice | 2 | 100s | Dense greens, narrow gaps |
 | 4 | Twin Rooms | 3 | 100s | Teeth wall with gap; hunters in both halves |
@@ -48,7 +48,7 @@ Easy mode: slower knight timer (~0.75s/tile), timer +30s.
 | Collect dragon tile (after all knights trapped) | 100 |
 | Level clear bonus | 200 × level # |
 
-## Level 1 — Mockup (reference layout)
+## Level 1 - Mockup (reference layout)
 
 ```
 ####################
@@ -71,6 +71,6 @@ Easy mode: slower knight timer (~0.75s/tile), timer +30s.
 ####################
 ```
 
-(Adjustments at encode time — `H` and `P` on floor cells inside border.)
+(Adjustments at encode time - `H` and `P` on floor cells inside border.)
 
-Levels 2–8: encoded in `assets/js/dragos-revenge-levels.js` per names above.
+Levels 2-8: encoded in `assets/js/dragos-revenge-levels.js` per names above.

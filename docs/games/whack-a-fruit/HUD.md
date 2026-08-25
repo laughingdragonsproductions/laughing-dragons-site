@@ -1,4 +1,4 @@
-# Whack-a-Fruit — HUD & UI copy
+# Whack-a-Fruit - HUD & UI copy
 
 ## Screen flow
 
@@ -18,7 +18,7 @@ Standard `initGameChrome`. Eyebrow: **In production**.
 
 Difficulty pills: Easy · Normal · Hard.
 
-Endless high score: *Best: **42*** — key `ldp-whack-a-fruit-hiscore`.
+Endless high score: *Best: **42*** - key `ldp-whack-a-fruit-hiscore`.
 
 ## Play HUD (top)
 
@@ -26,7 +26,7 @@ Endless high score: *Best: **42*** — key `ldp-whack-a-fruit-hiscore`.
 |---------|-----|---------|
 | Score | `#waf-score` | Score: **8** / **15** |
 | Timer | `#waf-timer` | **0:42** |
-| Target | `#waf-target` | Tap **B** — Benjamin Banana! |
+| Target | `#waf-target` | Tap **B** - Benjamin Banana! |
 | Quit | `#waf-quit` | *Menu* |
 
 ## Grid (center)

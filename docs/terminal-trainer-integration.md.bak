@@ -1,4 +1,4 @@
-# Terminal Trainer — Laughing-dragons.com integration plan
+# Terminal Trainer - Laughing-dragons.com integration plan
 
 This document covers what was built in `laughing-dragons-site`, how the win/reward flow works, and the checklist to ship it on **https://laughing-dragons.com**.
 
@@ -8,11 +8,11 @@ This document covers what was built in `laughing-dragons-site`, how the win/rewa
 
 After `ECHO LAUGHING-DRAGONS` (Level 3 complete):
 
-1. **Win banner** on the in-game monitor — `***** YOU WIN *****`
-2. **Game unlock** — Memory Matching Game unlocked on `/kids/#games`
+1. **Win banner** on the in-game monitor - `***** YOU WIN *****`
+2. **Game unlock** - Memory Matching Game unlocked on `/kids/#games`
    - Display code: **`FORGE-GATE-7`**
    - Unlock is saved automatically in the browser (`localStorage`)
-3. **Store coupon** — **`DragonForge15`** — 15% off anything in-store
+3. **Store coupon** - **`DragonForge15`** - 15% off anything in-store
    - Link goes to shop (Shopify → Etsy → `/shop/` fallback)
 
 ---
@@ -39,7 +39,7 @@ After `ECHO LAUGHING-DRAGONS` (Level 3 complete):
 |-----|----------|
 | `ldp-terminal-trainer-v2` | Terminal progress (levels, commands, etc.) |
 | `ldp-kids-unlock-terminal-trainer-complete` | Level 3 beaten |
-| `ldp-kids-unlock-memory-matching-unlocked` | Same moment — unlocks Memory Matching card |
+| `ldp-kids-unlock-memory-matching-unlocked` | Same moment - unlocks Memory Matching card |
 
 Existing players who already beat Level 3 get unlocks re-granted on next visit (sync in `terminal-game.js`).
 
@@ -63,13 +63,13 @@ Shop URL resolves from `assets/js/config.js` → `links.shopify` or `links.etsy`
 
 ### 1. Code deploy
 
-- [ ] Commit and push this repo to the site host (GitHub Pages, Cloudflare, etc. — see `DEPLOY.md`)
+- [ ] Commit and push this repo to the site host (GitHub Pages, Cloudflare, etc. - see `DEPLOY.md`)
 - [ ] Confirm live URLs:
   - `/kids/games/terminal/`
   - `/kids/games/memory-matching/`
   - `/kids/#games`
 
-### 2. Shopify — create discount **DragonForge15**
+### 2. Shopify - create discount **DragonForge15**
 
 In **Shopify Admin → Discounts → Create discount**:
 
@@ -80,7 +80,7 @@ In **Shopify Admin → Discounts → Create discount**:
 | Type | Percentage |
 | Value | 15% |
 | Applies to | All products (or “in-store pickup” collection if you prefer) |
-| Usage | One per customer (recommended) or unlimited — your call |
+| Usage | One per customer (recommended) or unlimited - your call |
 | Active dates | Set start; no end date until promo ends |
 
 **Note:** The site only *displays* the code. Shopify must have the matching discount or checkout will reject it.
@@ -97,9 +97,9 @@ Optional: add the same code on **Etsy** if you want parity for Etsy shoppers.
 1. Open `/kids/games/terminal/` in a private window
 2. Play through (or use saved progress) to `ECHO LAUGHING-DRAGONS`
 3. Confirm win banner shows both codes + copy buttons
-4. Visit `/kids/#games` — Memory Matching shows **Unlocked**
-5. Open `/kids/games/memory-matching/` — unlocked landing (not redirect to terminal)
-6. Click **Visit the shop** — correct Shopify/Etsy URL
+4. Visit `/kids/#games` - Memory Matching shows **Unlocked**
+5. Open `/kids/games/memory-matching/` - unlocked landing (not redirect to terminal)
+6. Click **Visit the shop** - correct Shopify/Etsy URL
 
 ### 5. Memory Matching (live)
 
@@ -158,5 +158,5 @@ localStorage.removeItem('ldp-terminal-trainer-v2');
 
 ## Related docs
 
-- [`docs/terminal-trainer-walkthrough.md`](terminal-trainer-walkthrough.md) — full game map
-- [`UPDATE.md`](../UPDATE.md) — day-to-day edit guide
+- [`docs/terminal-trainer-walkthrough.md`](terminal-trainer-walkthrough.md) - full game map
+- [`UPDATE.md`](../UPDATE.md) - day-to-day edit guide

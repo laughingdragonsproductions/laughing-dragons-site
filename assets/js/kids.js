@@ -1,4 +1,4 @@
-/** Laughing Dragons Kids Show — episodes, characters, printable files
+/** Laughing Dragons Kids Show - episodes, characters, printable files
  *
  * UPDATE WORKFLOW (see UPDATE.md):
  * - YouTube episode live: set youtubeUrl + status: "published" on the episode row
@@ -12,28 +12,28 @@ window.KIDS_DATA = {
   episodes: [
     {
       letter: "A",
-      title: "Letter A — Adam the Apple",
+      title: "Letter A - Adam the Apple",
       status: "premiere-soon",
       youtubeUrl: "",
-      description: "Meet Adam — sweet, happy, and full of energy!",
+      description: "Meet Adam - sweet, happy, and full of energy!",
     },
     {
       letter: "B",
-      title: "Letter B — Benjamin the Banana",
+      title: "Letter B - Benjamin the Banana",
       status: "premiere-soon",
       youtubeUrl: "",
       description: "Benjamin is funny, energetic, and always optimistic.",
     },
     {
       letter: "C",
-      title: "Letter C — Cheri the Cherry",
+      title: "Letter C - Cheri the Cherry",
       status: "in-production",
       youtubeUrl: "",
       description: "Twin cherries who finish each other's sentences.",
     },
     {
       letter: "D",
-      title: "Letter D — Drago the Dragon Fruit",
+      title: "Letter D - Drago the Dragon Fruit",
       status: "in-production",
       youtubeUrl: "",
       description: "Wise adventurer who guides friends on every journey.",
@@ -43,39 +43,39 @@ window.KIDS_DATA = {
     {
       letter: "A",
       name: "Adam the Apple",
-      bio: "Adam is the first friend most kids meet on the show — a bright red apple with a permanent grin and more enthusiasm than a whole bushel. He loves leading the alphabet parade, teaching simple words that start with A, and cheering on every friend who tries something new. Adam believes every day is a good day for learning, especially when there is music, movement, and a fruit friend nearby to high-five.",
+      bio: "Adam is the first friend most kids meet on the show - a bright red apple with a permanent grin and more enthusiasm than a whole bushel. He loves leading the alphabet parade, teaching simple words that start with A, and cheering on every friend who tries something new. Adam believes every day is a good day for learning, especially when there is music, movement, and a fruit friend nearby to high-five.",
     },
     {
       letter: "B",
       name: "Benjamin the Banana",
-      bio: "Benjamin is the class clown of the Fruit Friends crew — a cheerful banana who slips, slides, and bounces back with a laugh every time. He turns small mistakes into learning moments and helps kids see that trying again is part of the fun. Benjamin loves silly rhymes, upbeat songs, and showing that optimism is a superpower you can practice.",
+      bio: "Benjamin is the class clown of the Fruit Friends crew - a cheerful banana who slips, slides, and bounces back with a laugh every time. He turns small mistakes into learning moments and helps kids see that trying again is part of the fun. Benjamin loves silly rhymes, upbeat songs, and showing that optimism is a superpower you can practice.",
     },
     {
       letter: "C",
       name: "Cheri the Cherry",
-      bio: "Cheri is actually two cherries on one stem — a perfectly matched pair who finish each other's sentences and share one big heart. They teach cooperation, listening, and how two voices can work together without talking over each other. On letter C days, Cheri brings teamwork games, counting by twos, and gentle reminders that friendship works best when everyone gets a turn.",
+      bio: "Cheri is actually two cherries on one stem - a perfectly matched pair who finish each other's sentences and share one big heart. They teach cooperation, listening, and how two voices can work together without talking over each other. On letter C days, Cheri brings teamwork games, counting by twos, and gentle reminders that friendship works best when everyone gets a turn.",
     },
     {
       letter: "D",
       name: "Drago the Dragon Fruit",
-      bio: "Drago looks exotic and acts like the wise guide of the group — scales, spikes, and a calm voice that helps friends solve problems. He connects the Laughing Dragons brand to the kids show: dragons, adventure, and curiosity about the world. Drago loves maps, mini-quests, and asking questions that make kids think a little deeper before they answer.",
+      bio: "Drago looks exotic and acts like the wise guide of the group - scales, spikes, and a calm voice that helps friends solve problems. He connects the Laughing Dragons brand to the kids show: dragons, adventure, and curiosity about the world. Drago loves maps, mini-quests, and asking questions that make kids think a little deeper before they answer.",
     },
     {
       letter: "E",
       name: "Eggy P the Eggplant",
-      bio: "Eggy P is quick on his feet and quick with a joke — a street-smart eggplant who keeps lessons lively when energy starts to dip. He introduces vocabulary, sound play, and confidence builders for kids who feel shy about speaking up. Eggy P shows that being clever and kind at the same time is not only possible — it is the best combo on the workroom floor.",
+      bio: "Eggy P is quick on his feet and quick with a joke - a street-smart eggplant who keeps lessons lively when energy starts to dip. He introduces vocabulary, sound play, and confidence builders for kids who feel shy about speaking up. Eggy P shows that being clever and kind at the same time is not only possible - it is the best combo on the workroom floor.",
     },
     {
       letter: "F",
       name: "Ficus the Fig",
-      bio: "Ficus slows the pace down in the best way — calm, thoughtful, and always ready with a story about nature, patience, or helping a friend feel better. Letter F episodes lean into feelings, empathy, and quiet observation skills. Ficus reminds viewers that not every hero has to be loud; sometimes the kindest voice in the room is the one that listens first.",
+      bio: "Ficus slows the pace down in the best way - calm, thoughtful, and always ready with a story about nature, patience, or helping a friend feel better. Letter F episodes lean into feelings, empathy, and quiet observation skills. Ficus reminds viewers that not every hero has to be loud; sometimes the kindest voice in the room is the one that listens first.",
     },
     { letter: "G", name: "Gary the Garlic", bio: "Clever, curious, and loves helping friends solve problems." },
-    { letter: "H", name: "Harry the Huckleberry", bio: "Tiny but mighty — full of curiosity and courage." },
+    { letter: "H", name: "Harry the Huckleberry", bio: "Tiny but mighty - full of curiosity and courage." },
     { letter: "I", name: "Ikumi the Imbe", bio: "Cheerful, gentle, and curious about little surprises." },
-    { letter: "J", name: "Julio the Jalapeño", bio: "Lively, playful, and a little spicy — always kind." },
+    { letter: "J", name: "Julio the Jalapeño", bio: "Lively, playful, and a little spicy - always kind." },
     { letter: "K", name: "Kelsey the Kiwi", bio: "Cheerful, sweet, and loves sharing and singing." },
-    { letter: "L", name: "Lonnie the Lemon", bio: "Bright and encouraging — helps friends stay sunny." },
+    { letter: "L", name: "Lonnie the Lemon", bio: "Bright and encouraging - helps friends stay sunny." },
     { letter: "M", name: "Manny the Mango", bio: "Warm, friendly, and always ready to help." },
     { letter: "N", name: "Natalie the Nectarine", bio: "Gentle, caring, and loves making friends feel welcome." },
     { letter: "O", name: "Oscar the Orange", bio: "Energetic, upbeat, and full of zest." },
@@ -159,7 +159,7 @@ function renderKidsEpisodes() {
         })
         .join("")}
     </div>
-    <p class="kids-note reveal">More letters A–Z will be added as episodes publish. Short clips may also appear on <a href="/media/">Media</a>.</p>
+    <p class="kids-note reveal">More letters A-Z will be added as episodes publish. Short clips may also appear on <a href="/media/">Media</a>.</p>
   </section>`;
 }
 
@@ -184,15 +184,15 @@ function renderKidsCharacters() {
   return `<section class="kids-section" id="characters">
     <div class="kids-section-head reveal">
       <p class="pillar-eyebrow">Meet the cast</p>
-      <h2>Fruit Friends A–Z</h2>
-      <p>Twenty-six characters — one for every letter of the alphabet. Click a tile for the full character sheet.</p>
+      <h2>Fruit Friends A-Z</h2>
+      <p>Twenty-six characters - one for every letter of the alphabet. Click a tile for the full character sheet.</p>
     </div>
     <div class="character-range reveal">
-      <h3 class="character-range-title">A – M</h3>
+      <h3 class="character-range-title">A - M</h3>
       <div class="character-grid">${renderCharacterCards(firstHalf)}</div>
     </div>
     <div class="character-range reveal">
-      <h3 class="character-range-title">N – Z</h3>
+      <h3 class="character-range-title">N - Z</h3>
       <div class="character-grid">${renderCharacterCards(secondHalf)}</div>
     </div>
   </section>`;
@@ -219,7 +219,7 @@ function initCharacterPage(letter) {
   const key = String(letter || "").toLowerCase();
   initPage({
     title: ch ? ch.name : "Character",
-    description: ch ? `${ch.name} — Fruit Friends character from the Laughing Dragons Kids Show.` : "Fruit Friends character",
+    description: ch ? `${ch.name} - Fruit Friends character from the Laughing Dragons Kids Show.` : "Fruit Friends character",
     activePath: `/kids/characters/${key}/`,
     adSlots: false,
     content: renderCharacterDetail(letter),
@@ -232,7 +232,7 @@ function renderKidsPrintables() {
     <div class="kids-section-head reveal">
       <p class="pillar-eyebrow">Maker corner</p>
       <h2>3D printable character files</h2>
-      <p>Downloadable STL files for each Fruit Friend — print your own cast at home. Files drop here as they are ready.</p>
+      <p>Downloadable STL files for each Fruit Friend - print your own cast at home. Files drop here as they are ready.</p>
     </div>
     <div class="printable-grid reveal">
       ${characters
@@ -256,14 +256,14 @@ function renderKidsHub() {
     <header class="kids-hero reveal">
       <p class="pillar-eyebrow">${data.tagline || "Kids Show"}</p>
       <h1>${data.showTitle || "Kids Show"}</h1>
-      <p>Episodes, Fruit Friends A–Z, and 3D printable files — the home for the Laughing Dragons Kids Show.</p>
+      <p>Episodes, Fruit Friends A-Z, and 3D printable files - the home for the Laughing Dragons Kids Show.</p>
     </header>
     ${renderKidsSubnav("episodes")}
     ${renderKidsEpisodes()}
     ${renderKidsCharacters()}
     ${renderKidsPrintables()}
     <div class="prose reveal kids-credits">
-      <p>Play free browser games in our separate <a href="/games/">Games</a> section — Terminal Trainer, Memory Matching, and more.</p>
+      <p>Play free browser games in our separate <a href="/games/">Games</a> section - Terminal Trainer, Memory Matching, and more.</p>
       <p>Created by Brandon Sparks. Voice character and principal photography by Vinny Vincent.</p>
       <p>&copy; Laughing Dragons Productions</p>
     </div>

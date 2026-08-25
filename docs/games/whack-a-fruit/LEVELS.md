@@ -1,4 +1,4 @@
-# Whack-a-Fruit — Levels
+# Whack-a-Fruit - Levels
 
 ## Structure
 
@@ -8,11 +8,11 @@ One **Whack Round** = 60-second timed session. Clear when **score ≥ 15** (corr
 
 | Time block | Active cells | Target rotation |
 |------------|--------------|-----------------|
-| 0–20 s | 2–3 pops | Rotate A–M letters |
-| 21–40 s | 3–4 pops | Full pool |
-| 41–60 s | 4–5 pops | Slightly faster respawn |
+| 0-20 s | 2-3 pops | Rotate A-M letters |
+| 21-40 s | 3-4 pops | Full pool |
+| 41-60 s | 4-5 pops | Slightly faster respawn |
 
-New wave every 1.5–2.5 s (random interval). Only one target per wave.
+New wave every 1.5-2.5 s (random interval). Only one target per wave.
 
 ## Easy tier
 
@@ -26,7 +26,7 @@ New wave every 1.5–2.5 s (random interval). Only one target per wave.
 - Name-only prompts (no letter shown in target line)
 - 1.2 s pop visibility
 - Up to 6 decoys
-- Wrong tap −1 score
+- Wrong tap -1 score
 
 ## Win condition
 
@@ -44,4 +44,4 @@ Optional: score ≥ 20 with zero wrong taps → toast *Whack wizard!*
 
 ## Session length target
 
-Exactly 60 s per Whack Round attempt; expect 1–3 attempts for younger players.
+Exactly 60 s per Whack Round attempt; expect 1-3 attempts for younger players.

@@ -1,15 +1,15 @@
-# Color Match Sort — Game Overview
+# Color Match Sort - Game Overview
 
 **Slug:** `color-match`  
 **Site path:** `/games/color-match/`  
 **Status:** in production  
 **Unlock:** requires `color-match-unlocked` · reward code `COUNT-DRAG-7`  
-**Audience:** Kids ~4–10 (strong preschool fit)  
+**Audience:** Kids ~4-10 (strong preschool fit)  
 **Brand:** Laughing Dragons / Fruit Friends
 
 ## Pitch
 
-Classic color sorting with Fruit Friends charm. Drag smiling fruit from a conveyor belt into **Red**, **Yellow**, or **Green** bins — immediate snap feedback, wrong-bin bounce-back, and a cheerful crowd cheer when the round is done. Low friction, high replay, perfect for younger siblings watching an older kid play Terminal Trainer.
+Classic color sorting with Fruit Friends charm. Drag smiling fruit from a conveyor belt into **Red**, **Yellow**, or **Green** bins - immediate snap feedback, wrong-bin bounce-back, and a cheerful crowd cheer when the round is done. Low friction, high replay, perfect for younger siblings watching an older kid play Terminal Trainer.
 
 ## Core loop
 
@@ -31,8 +31,8 @@ Classic color sorting with Fruit Friends charm. Drag smiling fruit from a convey
 
 | Tier | Fruit pool | Distractors | Bin labels |
 |------|------------|-------------|------------|
-| Easy | 3 primary fruit colors only | None — each fruit matches exactly one bin | Color + word + icon |
-| Normal | Same pool | 1 gray/neutral fruit per 5 items → *"Skip — no bin!"* tap to dismiss | Color + word |
+| Easy | 3 primary fruit colors only | None - each fruit matches exactly one bin | Color + word + icon |
+| Normal | Same pool | 1 gray/neutral fruit per 5 items → *"Skip - no bin!"* tap to dismiss | Color + word |
 | Hard | Adds orange/purple fruits mapped to nearest bin (orange→Red, purple→Red) | Faster spawn cadence | Color swatch only |
 
 Default: **Easy**. Key: `ldp-color-match-difficulty`.
@@ -51,12 +51,12 @@ Exact mapping lives in data file; art may use colored silhouettes if full roster
 
 - More than three bins (blue/orange standalone bins → v2)
 - Two-player competitive sort
-- Auto-grant Count the Dragons — Terminal `LOGIN COUNT-DRAG-7`
+- Auto-grant Count the Dragons - Terminal `LOGIN COUNT-DRAG-7`
 - Voice-over color names
 
 ## References
 
 - Unlock registry: `assets/js/kids-unlocks.js`
-- Hub card: `assets/js/games.js` — `id: "color-match"`
+- Hub card: `assets/js/games.js` - `id: "color-match"`
 
 See also: `LEVELS.md`, `HUD.md`, `BUILD-PLAN.md`, `UNLOCK.md`

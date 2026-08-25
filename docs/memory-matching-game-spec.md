@@ -1,8 +1,8 @@
-# Memory Matching Game — spec and build plan
+# Memory Matching Game - spec and build plan
 
 Mahjong-style pair matching for Laughing Dragons Kids. Players flip face-down tiles, find matching Fruit Friends pairs, clear the board to win.
 
-**Unlock gate:** Beat Terminal Trainer Level 3 (`kids-unlocks.js` — already wired).  
+**Unlock gate:** Beat Terminal Trainer Level 3 (`kids-unlocks.js` - already wired).  
 **Live URL (WIP):** `/kids/games/memory-matching/`  
 **Reference:** [`docs/terminal-trainer-integration.md`](terminal-trainer-integration.md)
 
@@ -12,12 +12,12 @@ Mahjong-style pair matching for Laughing Dragons Kids. Players flip face-down ti
 
 <!-- TODO (Dave / S001): Document each state transition -->
 
-1. **Deal** — shuffle N pairs; render grid face-down.
-2. **First flip** — reveal tile A; lock other tiles briefly.
-3. **Second flip** — reveal tile B.
-4. **Match** — same pair id → leave face-up; increment match count.
-5. **Mismatch** — flip both back after short delay (~800ms).
-6. **Win** — all pairs matched → show win banner + optional replay.
+1. **Deal** - shuffle N pairs; render grid face-down.
+2. **First flip** - reveal tile A; lock other tiles briefly.
+3. **Second flip** - reveal tile B.
+4. **Match** - same pair id → leave face-up; increment match count.
+5. **Mismatch** - flip both back after short delay (~800ms).
+6. **Win** - all pairs matched → show win banner + optional replay.
 
 ---
 
@@ -25,10 +25,10 @@ Mahjong-style pair matching for Laughing Dragons Kids. Players flip face-down ti
 
 <!-- TODO: Pick default character letters for v1 board sizes -->
 
-- Art source: `assets/kids/characters/{letter}.png` (Fruit Friends A–Z)
-- Each tile: `{ id, letter, name, imageSrc }` — two DOM nodes share the same `id` per pair
-- Default v1 deck: **8 pairs** (16 tiles) — letters A–H
-- Medium deck: **10 pairs** (20 tiles) — letters A–J
+- Art source: `assets/kids/characters/{letter}.png` (Fruit Friends A-Z)
+- Each tile: `{ id, letter, name, imageSrc }` - two DOM nodes share the same `id` per pair
+- Default v1 deck: **8 pairs** (16 tiles) - letters A-H
+- Medium deck: **10 pairs** (20 tiles) - letters A-J
 
 Face-down state: solid card back (site surface color + subtle dragon/neon border).  
 Face-up state: character image + name label.
@@ -42,7 +42,7 @@ Face-up state: character image + name label.
 | Easy (default) | 4×4 | 8 | First playable build |
 | Medium | 4×5 | 10 | Optional second level |
 
-<!-- TODO: CSS grid layout — responsive min tile size 72px tap target -->
+<!-- TODO: CSS grid layout - responsive min tile size 72px tap target -->
 
 ---
 
@@ -55,7 +55,7 @@ Already implemented in `assets/js/kids-unlocks.js`:
 | Unlock code | `FORGE-GATE-7` |
 | Store coupon | `DragonForge15` (15% off) |
 
-<!-- TODO: On win — reuse Terminal Trainer reward UI pattern or inline banner -->
+<!-- TODO: On win - reuse Terminal Trainer reward UI pattern or inline banner -->
 
 Win does **not** need to re-grant unlock; player already unlocked to reach the page.
 
@@ -65,7 +65,7 @@ Win does **not** need to re-grant unlock; player already unlocked to reach the p
 
 | File | Role |
 |------|------|
-| `assets/js/memory-game.js` | `initMemoryGame()` — state, shuffle, flip logic, win detection |
+| `assets/js/memory-game.js` | `initMemoryGame()` - state, shuffle, flip logic, win detection |
 | `assets/css/memory-game.css` | Grid, tile faces, flip animation, win overlay |
 | `kids/games/memory-matching/index.html` | Gate check + game mount point |
 | `assets/js/kids-unlocks.js` | Unlock gate (no changes expected) |
@@ -142,4 +142,4 @@ function initMemoryGame(container, options) {
 3. Create stub `assets/css/memory-game.css` (board grid + tile back/front shells).
 4. Update `kids/games/memory-matching/index.html` to mount `#memory-game-root` when unlocked.
 
-Do **not** ship full polish in S001 — structure and opening scaffold only. Phase 2 (human/Cursor) implements playable flip/match logic.
+Do **not** ship full polish in S001 - structure and opening scaffold only. Phase 2 (human/Cursor) implements playable flip/match logic.

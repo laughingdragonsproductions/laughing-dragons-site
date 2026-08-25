@@ -1,11 +1,11 @@
-# Maze Generator — Build plan (Dave)
+# Maze Generator - Build plan (Dave)
 
 ## Files to create
 
 | Path | Purpose |
 |------|---------|
 | `games/maze-generator/index.html` | Gate + landing + `#maze-generator-root` |
-| `assets/js/maze-generator.js` | `initMazeGenerator()` — generate, draw input, solve detect, win |
+| `assets/js/maze-generator.js` | `initMazeGenerator()` - generate, draw input, solve detect, win |
 | `assets/js/maze-generator-algo.js` | Recursive backtracker + grid wall model |
 | `assets/css/maze-generator.css` | Canvas, print styles, toolbar, overlays |
 
@@ -14,12 +14,12 @@
 ```javascript
 // cell (x,y) has walls: { north, east, south, west }
 export function generateMaze(cols, rows, seed) {
-  // cols/rows odd for classic maze; 8×8 playable = 4×4 cells or 8×8 cell grid — pick one convention and document in code
+  // cols/rows odd for classic maze; 8×8 playable = 4×4 cells or 8×8 cell grid - pick one convention and document in code
   return { cells, start: { x: 0, y: 0 }, finish: { x: cols - 1, y: rows - 1 } };
 }
 ```
 
-Recommend **8×8 logical cells** (17×17 wall grid) for Small — adjust presets in config object.
+Recommend **8×8 logical cells** (17×17 wall grid) for Small - adjust presets in config object.
 
 ## Path drawing
 

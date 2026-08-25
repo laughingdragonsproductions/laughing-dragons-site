@@ -1,4 +1,4 @@
-# {Game Title} — Unlock integration
+# {Game Title} - Unlock integration
 
 **Requires:** `{requires-unlock-id}`  
 **Earned by clearing:** `{previous-game-id}`  
@@ -7,7 +7,7 @@
 
 ## Hub
 
-Entry in `assets/js/games.js` — `status: "in-production"` until launch.
+Entry in `assets/js/games.js` - `status: "in-production"` until launch.
 
 ## Terminal
 

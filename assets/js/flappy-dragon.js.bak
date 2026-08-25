@@ -45,7 +45,7 @@
     dragonX: 88,
   };
 
-  /** Hidden dev cheat — triple-tap + hold before first pipe; auto-centers to score 75. */
+  /** Hidden dev cheat - triple-tap + hold before first pipe; auto-centers to score 75. */
   const DEV_CHEAT = {
     tapWindowMs: 1000,
     holdMs: 450,
@@ -328,7 +328,7 @@
         class="flappy-skin-btn${selected ? " is-selected" : ""}${locked ? " is-locked" : ""}"
         data-skin="${d.id}"
         data-lock-label="${lockLabel}"
-        aria-label="${d.name}${locked ? ` — unlock at score ${d.unlockScore}` : ""}"
+        aria-label="${d.name}${locked ? ` - unlock at score ${d.unlockScore}` : ""}"
         aria-pressed="${selected}"
         ${locked ? "disabled" : ""}>
         <img src="${d.src}" alt="" width="52" height="52" loading="lazy" />

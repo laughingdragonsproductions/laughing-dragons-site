@@ -1,4 +1,4 @@
-# {Game Title} — Levels
+# {Game Title} - Levels
 
 ## Structure
 

@@ -577,13 +577,13 @@ A useful starting point:
 
 ```text
 early levels:
-0.70–0.80 seconds per tile
+0.70-0.80 seconds per tile
 
 medium:
-0.45–0.60 seconds per tile
+0.45-0.60 seconds per tile
 
 hard:
-0.25–0.40 seconds per tile
+0.25-0.40 seconds per tile
 ```
 
 Then tune against the gameplay feel you want.

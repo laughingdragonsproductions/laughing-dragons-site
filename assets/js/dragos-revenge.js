@@ -367,7 +367,7 @@
     const pu = pickupAt(x, y);
     if (!pu) return false;
     pickups = pickups.filter((p) => p !== pu);
-    announce("Dragon tile crushed — no points.");
+    announce("Dragon tile crushed - no points.");
     return true;
   }
 
@@ -585,7 +585,7 @@
   function convertAllTrappedToCheese() {
     hunters.forEach((h) => spawnPickup(h.x, h.y));
     hunters = [];
-    announce("All teeth trapped — collect the dragon tiles!");
+    announce("All teeth trapped - collect the dragon tiles!");
   }
 
   function getSlidableChain(nx, ny, dx, dy) {

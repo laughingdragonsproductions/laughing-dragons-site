@@ -369,7 +369,7 @@ body.vball-page {
   max-width: 22rem;
 }
 
-/* Touch controls — hidden on desktop */
+/* Touch controls - hidden on desktop */
 .vball-touch-controls {
   display: none;
   flex-direction: column;

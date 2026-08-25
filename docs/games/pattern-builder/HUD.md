@@ -1,4 +1,4 @@
-# Pattern Builder — HUD & UI copy
+# Pattern Builder - HUD & UI copy
 
 ## Screen flow
 

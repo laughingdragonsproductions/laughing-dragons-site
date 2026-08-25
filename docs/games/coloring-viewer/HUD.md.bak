@@ -1,4 +1,4 @@
-# Coloring Page Studio — HUD & UI copy
+# Coloring Page Studio - HUD & UI copy
 
 ## Screen flow
 
@@ -25,7 +25,7 @@ Session progress banner when active: *Pages completed: **1** / **3***.
 | Grid | `#cv-gallery` | Thumbnail cards per page |
 | Card | `.cv-page-card` | Thumbnail, title, progress ring if partial |
 
-Locked pages: none in v1 — all 5 open once game unlocked.
+Locked pages: none in v1 - all 5 open once game unlocked.
 
 ## Editor HUD (top)
 
@@ -58,7 +58,7 @@ Tap region → apply `#cv-palette` active color fill.
 
 | Event | Message |
 |-------|---------|
-| Region filled | (silent — visual only) |
+| Region filled | (silent - visual only) |
 | 80% reached | *"Page complete! **N** / **3** in this session."* |
 | Session done | Win overlay |
 | Clear confirm | *"Erase all colors on this page?"* |
@@ -68,9 +68,9 @@ Tap region → apply `#cv-palette` active color fill.
 | Element | Copy |
 |---------|------|
 | Headline | **Master colorist!** |
-| Body | You finished 3 Fruit Friends coloring pages — you cleared the whole Laughing Dragons game path! |
+| Body | You finished 3 Fruit Friends coloring pages - you cleared the whole Laughing Dragons game path! |
 | Flair | If 100% on all 3: *Master colorist!* |
-| Reward line | *(no code — chain complete)* |
+| Reward line | *(no code - chain complete)* |
 | Subtext | Show every reward code you earned on the <a href="/games/">Games hub</a> anytime. |
 | Primary | **Back to Games** → `/games/` |
 | Secondary | **Color more** |

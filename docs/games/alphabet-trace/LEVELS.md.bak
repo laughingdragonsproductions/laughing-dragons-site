@@ -1,15 +1,15 @@
-# Alphabet Trace — Levels
+# Alphabet Trace - Levels
 
 ## Structure
 
 Alphabet Trace has no traditional "levels." Progress is measured in **letters traced** within a **Journey run**.
 
 - **Journey run:** sequential letters A through J (10 letters)
-- **Free Pick:** any single letter A–Z; does not advance Journey or trigger clear
-- Each letter has 1–3 strokes defined in data (see BUILD-PLAN)
+- **Free Pick:** any single letter A-Z; does not advance Journey or trigger clear
+- Each letter has 1-3 strokes defined in data (see BUILD-PLAN)
 - Failed stroke → gentle retry on same stroke; no lives or game-over
 
-## Letter table (Journey A–J)
+## Letter table (Journey A-J)
 
 | # | Letter | Fruit Friend | Strokes | Notes |
 |---|--------|--------------|---------|-------|
@@ -24,7 +24,7 @@ Alphabet Trace has no traditional "levels." Progress is measured in **letters tr
 | 9 | I | Ivan Iceberg | 3 | Top serif, stem, bottom serif |
 | 10 | J | Jenny Jackfruit | 2 | Hook + bottom curve |
 
-Letters K–Z exist in Free Pick with same stroke data; not required for v1 clear.
+Letters K-Z exist in Free Pick with same stroke data; not required for v1 clear.
 
 ## Win condition
 
@@ -32,14 +32,14 @@ Complete **Journey letters A through J** (all 10) on any difficulty → `KIDS_UN
 
 ## Par
 
-None for v1. Any completed A–J Journey counts as clear regardless of retries per stroke.
+None for v1. Any completed A-J Journey counts as clear regardless of retries per stroke.
 
 ## Retry rules
 
-- Stroke leaves tolerance band → path resets, copy: *"Stay on the line — try again!"*
+- Stroke leaves tolerance band → path resets, copy: *"Stay on the line - try again!"*
 - No penalty; unlimited retries per stroke
 - "Skip letter" button hidden in Journey until v2 (keeps clear meaningful)
 
 ## Session length target
 
-~3–5 minutes for A–J on Easy (parent-friendly single sitting).
+~3-5 minutes for A-J on Easy (parent-friendly single sitting).

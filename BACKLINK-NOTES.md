@@ -16,7 +16,7 @@ PRIVACY_POLICY_URL = "https://laughing-dragons.com/privacy/"
 
 ## Shopify theme footer
 
-**File:** `G:\LocalAIagent\desktop-agent\shopify-theme-ldp\` — footer section or `ldp-footer` snippet
+**File:** `G:\LocalAIagent\desktop-agent\shopify-theme-ldp\` - footer section or `ldp-footer` snippet
 
 Add a link: **Laughing Dragons Home** → `https://laughing-dragons.com`
 
@@ -24,7 +24,7 @@ Also update theme settings copy so the storefront header/footer brand links to t
 
 ## QuickUtil / tool-site
 
-Tools now live as subpages on the hub at `https://laughing-dragons.com/tools/` (unit converter, word counter, JSON formatter, etc.). The standalone `tool-site` repo is optional legacy — point any remaining QuickUtil links to `/tools/` on the hub instead.
+Tools now live as subpages on the hub at `https://laughing-dragons.com/tools/` (unit converter, word counter, JSON formatter, etc.). The standalone `tool-site` repo is optional legacy - point any remaining QuickUtil links to `/tools/` on the hub instead.
 
 ## TextFixer / ditto.site output
 

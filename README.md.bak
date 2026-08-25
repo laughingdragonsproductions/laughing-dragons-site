@@ -1,6 +1,6 @@
-# Laughing Dragons Productions — Master Hub
+# Laughing Dragons Productions - Master Hub
 
-Static marketing site for **laughing-dragons.com** — the home base for the kids show, free learning tools, apps, Shopify/Etsy shop, and workroom story.
+Static marketing site for **laughing-dragons.com** - the home base for the kids show, free learning tools, apps, Shopify/Etsy shop, and workroom story.
 
 ## Stack
 
@@ -10,7 +10,7 @@ Static marketing site for **laughing-dragons.com** — the home base for the kid
 
 ## Add content and push updates
 
-See **[UPDATE.md](UPDATE.md)** — the day-to-day workflow for episodes, tools, blog posts, and images.
+See **[UPDATE.md](UPDATE.md)** - the day-to-day workflow for episodes, tools, blog posts, and images.
 
 Quick commands:
 

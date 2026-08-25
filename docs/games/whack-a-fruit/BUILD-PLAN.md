@@ -1,11 +1,11 @@
-# Whack-a-Fruit — Build plan (Dave)
+# Whack-a-Fruit - Build plan (Dave)
 
 ## Files to create
 
 | Path | Purpose |
 |------|---------|
 | `games/whack-a-fruit/index.html` | Gate + landing + `#whack-a-fruit-root` |
-| `assets/js/whack-a-fruit.js` | `initWhackAFruit()` — grid spawn loop, timer, scoring, win |
+| `assets/js/whack-a-fruit.js` | `initWhackAFruit()` - grid spawn loop, timer, scoring, win |
 | `assets/js/whack-a-fruit-data.js` | Fruit Friend roster: `id`, `name`, `letter`, `sprite` |
 | `assets/css/whack-a-fruit.css` | 3×3 grid, pop animations, HUD |
 
@@ -19,7 +19,7 @@ export const FRUITS = [
     letter: "B",
     sprite: "/assets/kids/games/whack-a-fruit/banana.png",
   },
-  // min 15 entries A–O for v1
+  // min 15 entries A-O for v1
 ];
 
 export const GOAL_SCORE = 15;

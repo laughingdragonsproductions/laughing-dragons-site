@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Dragon-Ball V — forest Pong with laughing dragons. Move your paddle, rally the ball, first to 3 wins."
+      content="Dragon-Ball V - forest Pong with laughing dragons. Move your paddle, rally the ball, first to 3 wins."
     />
     <title>Dragon-Ball V</title>
     <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
     <link rel="stylesheet" href="/assets/css/site.css" />
     <link rel="stylesheet" href="/assets/css/dragon-vball.css?v=20260814d" />
     <link rel="canonical" href="https://laughing-dragons.com/games/dragon-vball/" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7048606415692002"
+     crossorigin="anonymous"></script>
   </head>
   <body class="vball-page game-page">
     <script src="/assets/js/config.js?v=20260813"></script>
@@ -42,7 +44,7 @@
             <div class="vball-overlay" id="vball-menu" role="dialog" aria-labelledby="vball-menu-title">
               <p class="vball-eyebrow">Laughing Dragons Games</p>
               <h1 class="vball-title" id="vball-menu-title">Dragon-Ball V</h1>
-              <p class="vball-tagline">Classic Pong in the forest — move your dragon and rally the ball. First to 3 wins.</p>
+              <p class="vball-tagline">Classic Pong in the forest - move your dragon and rally the ball. First to 3 wins.</p>
 
               <p class="vball-stats">Best win streak: <strong id="vball-best">0</strong> · Total wins: <strong id="vball-wins">0</strong></p>
 
@@ -50,11 +52,11 @@
                 <legend class="vball-skins-legend">Difficulty</legend>
                 <label class="vball-radio">
                   <input type="radio" name="vball-difficulty" value="easy" id="vball-diff-easy" />
-                  <span>Easy — slower ball and weaker AI</span>
+                  <span>Easy - slower ball and weaker AI</span>
                 </label>
                 <label class="vball-radio">
                   <input type="radio" name="vball-difficulty" value="hard" id="vball-diff-hard" checked />
-                  <span>Hard — faster ball and sharper AI</span>
+                  <span>Hard - faster ball and sharper AI</span>
                 </label>
               </fieldset>
 
@@ -73,7 +75,7 @@
               <h2 class="vball-panel-title" id="vball-howto-title">How to Play</h2>
               <ol class="vball-howto-list">
                 <li>Move your dragon up and down with <strong>↑ ↓</strong> or <strong>W / S</strong>, or drag on the screen.</li>
-                <li>The ball bounces off both dragons automatically — keep it in play.</li>
+                <li>The ball bounces off both dragons automatically - keep it in play.</li>
                 <li>Score when the ball passes the AI dragon. First to <strong>3</strong> wins the match.</li>
                 <li>Eight paddle hits in a row ignite the fireball!</li>
                 <li>On mobile use the on-screen <strong>↑ ↓</strong> buttons or drag on the screen.</li>
@@ -88,7 +90,7 @@
 
             <div class="vball-overlay vball-overlay--compact" id="vball-over" hidden role="dialog" aria-labelledby="vball-over-title">
               <h2 class="vball-panel-title" id="vball-over-title">Game Over</h2>
-              <p class="vball-over-score" id="vball-over-score">0 – 0</p>
+              <p class="vball-over-score" id="vball-over-score">0 - 0</p>
               <p class="vball-over-best" id="vball-over-best" hidden>New best streak!</p>
               <p class="vball-unlock-toast" id="vball-unlock-toast" hidden></p>
               <div class="vball-actions vball-over-actions">
@@ -112,6 +114,8 @@
       <div class="sr-announce" id="vball-sr-announce" aria-live="assertive"></div>
     </div>
 
+    <div class="container" id="game-ad-bottom"></div>
+
     <div id="game-footer-mount"></div>
 
     <script src="/assets/js/games.js?v=20260813"></script>
@@ -120,15 +124,15 @@
     <script>
       initGameChrome({
         title: "Dragon-Ball V",
-        description: "Forest Pong with laughing dragons — move your paddle, rally the ball, first to 3 wins.",
+        description: "Forest Pong with laughing dragons - move your paddle, rally the ball, first to 3 wins.",
         activePath: "/games/dragon-vball/",
         landingHtml: `
           <article class="game-landing prose reveal">
             <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
             <p class="pillar-eyebrow">Laughing Dragons Games</p>
             <h1>Dragon-Ball V</h1>
-            <p class="page-lead">Classic Pong in the forest — move your dragon, rally the ball, first to 3 wins.</p>
-            <p>Always playable — no unlock code needed. Arrow keys on desktop; on-screen buttons on mobile.</p>
+            <p class="page-lead">Classic Pong in the forest - move your dragon, rally the ball, first to 3 wins.</p>
+            <p>Always playable - no unlock code needed. Arrow keys on desktop; on-screen buttons on mobile.</p>
           </article>`,
       });
       initDragonVball();

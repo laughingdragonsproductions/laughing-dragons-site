@@ -1,11 +1,11 @@
-# Coloring Page Studio — Build plan (Dave)
+# Coloring Page Studio - Build plan (Dave)
 
 ## Files to create
 
 | Path | Purpose |
 |------|---------|
 | `games/coloring-viewer/index.html` | Gate + landing gallery + `#coloring-viewer-root` |
-| `assets/js/coloring-viewer.js` | `initColoringViewer()` — gallery, editor, fill tracking, session, win |
+| `assets/js/coloring-viewer.js` | `initColoringViewer()` - gallery, editor, fill tracking, session, win |
 | `assets/js/coloring-viewer-pages.js` | Page manifest: `id`, `title`, `svgUrl`, `thumbnail` |
 | `assets/css/coloring-viewer.css` | Gallery, palette, SVG host, print |
 | `assets/kids/games/coloring-viewer/*.svg` | 5 outline SVGs with `.color-region` paths |
@@ -53,7 +53,7 @@ if (session.completedPageIds.size >= 3) {
 }
 ```
 
-No further unlock grant — terminal chain ends.
+No further unlock grant - terminal chain ends.
 
 ## v1 checklist
 
@@ -73,7 +73,7 @@ No further unlock grant — terminal chain ends.
 
 ## Art
 
-- SVG outlines required — black stroke 2px, white fills
+- SVG outlines required - black stroke 2px, white fills
 - Thumbnails can be raster exports of empty SVG
 
 ## Out of scope v1

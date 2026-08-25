@@ -1,4 +1,4 @@
-# Whack-a-Fruit — Unlock integration
+# Whack-a-Fruit - Unlock integration
 
 **Requires:** `whack-a-fruit-unlocked`  
 **Earned by clearing:** `hangman-lite` → Terminal code `WHACK-GRID-10`  
@@ -38,7 +38,7 @@
 
 ## Clear condition
 
-Complete one **Whack Round** — score ≥ **15** correct taps before 60 s expires → `KIDS_UNLOCKS.markCleared("whack-a-fruit")`.
+Complete one **Whack Round** - score ≥ **15** correct taps before 60 s expires → `KIDS_UNLOCKS.markCleared("whack-a-fruit")`.
 
 ## Win UI copy
 

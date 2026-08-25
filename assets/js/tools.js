@@ -1,4 +1,4 @@
-/** Free browser tools — subpages under laughing-dragons.com/tools/
+/** Free browser tools - subpages under laughing-dragons.com/tools/
  *
  * UPDATE WORKFLOW (see UPDATE.md):
  * - New tool: copy tools/word-counter.html, add TOOLS entry below, add URL to sitemap.xml, push

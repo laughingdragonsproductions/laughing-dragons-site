@@ -1,4 +1,4 @@
-# Typing Race — HUD & UI copy
+# Typing Race - HUD & UI copy
 
 ## Screen flow
 
@@ -21,7 +21,7 @@ Standard `initGameChrome`. Eyebrow: **In production**.
 | Element | Content |
 |---------|---------|
 | Difficulty pills | Easy · Normal · Hard |
-| Tip | *Use your keyboard — tap keys on screen if you're on a tablet* |
+| Tip | *Use your keyboard - tap keys on screen if you're on a tablet* |
 
 ## Play HUD (top bar)
 
@@ -36,8 +36,8 @@ Standard `initGameChrome`. Eyebrow: **In production**.
 
 | Element | Behavior |
 |---------|----------|
-| Big letter | `#tr-letter` — 120px+ display font, Fruit Friends accent color |
-| Friend hint | `#tr-friend` — small portrait + name, e.g. *"Like Carlos Coconut!"* |
+| Big letter | `#tr-letter` - 120px+ display font, Fruit Friends accent color |
+| Friend hint | `#tr-friend` - small portrait + name, e.g. *"Like Carlos Coconut!"* |
 | Miss flash | Red border pulse 300 ms on wrong key |
 
 ## On-screen keyboard (Easy + tablet Normal)
@@ -52,7 +52,7 @@ Standard `initGameChrome`. Eyebrow: **In production**.
 |-------|---------|
 | Countdown | **3** · **2** · **1** · **Go!** |
 | Correct | *(short chime)* optional toast: *"Yes!"* every 5th correct |
-| Wrong key | *"Oops — that's {key}. Try {letter}!"* |
+| Wrong key | *"Oops - that's {key}. Try {letter}!"* |
 | Timeout | *"Time's up! Next letter…"* |
 | Streak 5 | *"Five in a row!"* |
 | Streak 8 | *"You're on fire!"* |

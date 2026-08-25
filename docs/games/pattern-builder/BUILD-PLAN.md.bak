@@ -1,11 +1,11 @@
-# Pattern Builder — Build plan (Dave)
+# Pattern Builder - Build plan (Dave)
 
 ## Files to create
 
 | Path | Purpose |
 |------|---------|
 | `games/pattern-builder/index.html` | Gate + landing + `#pattern-builder-root` |
-| `assets/js/pattern-builder.js` | `initPatternBuilder()` — generator, choices, run state, win |
+| `assets/js/pattern-builder.js` | `initPatternBuilder()` - generator, choices, run state, win |
 | `assets/js/pattern-builder-data.js` | Fruit pool + pattern type definitions |
 | `assets/css/pattern-builder.css` | Row, choices, feedback |
 
@@ -67,4 +67,4 @@ Do not auto-grant `maze-generator-unlocked`.
 
 ## Out of scope v1
 
-- ABBC generator unless time — spec includes Hard; implement if trivial else defer to v1.1 with Normal clear unchanged
+- ABBC generator unless time - spec includes Hard; implement if trivial else defer to v1.1 with Normal clear unchanged

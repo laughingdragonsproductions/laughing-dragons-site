@@ -1,4 +1,4 @@
-# Count the Dragons — HUD & UI copy
+# Count the Dragons - HUD & UI copy
 
 ## Screen flow
 
@@ -31,7 +31,7 @@ Difficulty pills below CTAs: Easy · Normal · Hard.
 
 | Element | Behavior |
 |---------|----------|
-| Playfield | `#ctd-scene` — absolute-positioned character sprites |
+| Playfield | `#ctd-scene` - absolute-positioned character sprites |
 | Prompt | `#ctd-prompt` | *How many do you see?* |
 | First-round hint | *Tap the number that matches how many dragons you count!* (dismiss after round 1) |
 
@@ -39,7 +39,7 @@ Difficulty pills below CTAs: Easy · Normal · Hard.
 
 | Element | ID | Layout |
 |---------|-----|--------|
-| Pad grid | `#ctd-pad` | Buttons **1**–**10** in two rows (Easy: 1–5 only) |
+| Pad grid | `#ctd-pad` | Buttons **1**-**10** in two rows (Easy: 1-5 only) |
 | Button min size | 48×48 px touch targets |
 
 Correct tap: brief green flash on button + scene sparkle.  
@@ -72,7 +72,7 @@ On show: `KIDS_UNLOCKS.markCleared("count-the-dragons")`.
 
 Small banner on first Hard run:
 
-*Clouds and rocks don't count — only dragons and Fruit Friends!*
+*Clouds and rocks don't count - only dragons and Fruit Friends!*
 
 Dismiss: **Got it**
 
@@ -85,7 +85,7 @@ Progress shows *Practice*; no win overlay; **Done** returns to landing.
 - Full touch on number pad; no drag required
 - `aria-label` on each pad button: *Answer 7*
 - `aria-live="polite"` on prompt and feedback toast
-- Keyboard: number keys 0–9 submit answer (desktop a11y bonus; 0 unused)
+- Keyboard: number keys 0-9 submit answer (desktop a11y bonus; 0 unused)
 
 ## Colors
 

@@ -1,4 +1,4 @@
-# Typing Race — Levels
+# Typing Race - Levels
 
 ## Structure
 
@@ -6,16 +6,16 @@ Typing Race uses a single **Heat** run instead of numbered levels. Difficulty ti
 
 - **Heat target:** 20 correct keypresses
 - **Miss handling:** wrong key or timeout counts as a miss; after 1 miss on a letter, next letter spawns (letter is not re-queued)
-- **Max misses before soft fail:** none — run always reaches 20 correct or player quits
+- **Max misses before soft fail:** none - run always reaches 20 correct or player quits
 - **Practice mode:** infinite letters, no score toward clear
 
 ## Heat progression (within one run)
 
 | Correct count | Timer feel | Notes |
 |---------------|------------|-------|
-| 1–5 | Full tier duration | Warm-up; friend hint shown |
-| 6–12 | −10% time per tier | Streak counter appears after 3 |
-| 13–20 | −20% time (floor 1.8 s Easy) | Optional "You're on fire!" at streak 8 |
+| 1-5 | Full tier duration | Warm-up; friend hint shown |
+| 6-12 | -10% time per tier | Streak counter appears after 3 |
+| 13-20 | -20% time (floor 1.8 s Easy) | Optional "You're on fire!" at streak 8 |
 
 Timer adjustments are multipliers on base tier time, not separate levels.
 
@@ -45,4 +45,4 @@ Par does not block clear if exceeded.
 
 ## Session length target
 
-~2–4 minutes for 20 letters on Easy.
+~2-4 minutes for 20 letters on Easy.

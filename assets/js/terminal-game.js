@@ -1,5 +1,5 @@
 /**
- * Kids Terminal Trainer V2 — desk intro, walkthrough, history, fake ending
+ * Kids Terminal Trainer V2 - desk intro, walkthrough, history, fake ending
  */
 (function () {
   const STORAGE_KEY = "ldp-terminal-trainer-v2";
@@ -15,7 +15,7 @@
     CD: { summary: "Changes the current directory.", usage: "CD <folder> or CD ..", example: "CD NOTES" },
     CLS: { summary: "Clears the terminal screen.", usage: "CLS", example: "CLS" },
     TYPE: { summary: "Displays the contents of a text file.", usage: "TYPE <filename>", example: "TYPE WELCOME.TXT" },
-    READ: { summary: "Same as TYPE — displays a text file.", usage: "READ <filename>", example: "READ WELCOME.TXT" },
+    READ: { summary: "Same as TYPE - displays a text file.", usage: "READ <filename>", example: "READ WELCOME.TXT" },
     ECHO: { summary: "Prints text to the screen.", usage: "ECHO <text>", example: "ECHO Hello!" },
     REBOOT: { summary: "Restarts the terminal session.", usage: "REBOOT", example: "REBOOT" },
     LOGIN: { summary: "Log in with a password or game unlock code.", usage: "LOGIN <password or code>", example: "LOGIN FORGE-GATE-7" },
@@ -24,7 +24,7 @@
 
   const WALKTHROUGH = [
     { after: "boot", sidebar: "Step 1: Type HELP and press Enter.", terminal: ">> Type HELP for commands, or CD MISSIONS to start your first mission." },
-    { after: "HELP", sidebar: "Step 2: Type DIR and press Enter.", terminal: ">> Now try DIR to see folders on Drive A — including MISSIONS." },
+    { after: "HELP", sidebar: "Step 2: Type DIR and press Enter.", terminal: ">> Now try DIR to see folders on Drive A - including MISSIONS." },
     { after: "DIR", sidebar: "Try DIR A:\\MISSIONS or CD MISSIONS to start the mission.", terminal: ">> Explore A:\\MISSIONS\\ for your first mission." },
   ];
 
@@ -91,7 +91,7 @@
       password: "FRUIT-42",
       completeMessage: [
         "",
-        "VAULT OPEN — LEVEL 2 COMPLETE",
+        "VAULT OPEN - LEVEL 2 COMPLETE",
         "New path live: A:\\MISSIONS\\FINAL\\",
         "",
       ],
@@ -102,10 +102,10 @@
       passphrase: "LAUGHING-DRAGONS",
       completeMessage: [
         "",
-        "PASSPHRASE ACCEPTED — LEVEL 3 COMPLETE",
+        "PASSPHRASE ACCEPTED - LEVEL 3 COMPLETE",
         "You beat the Terminal Trainer. Well done, hacker.",
         "",
-        ">> REWARD CHANNEL OPEN — collect your prizes on screen.",
+        ">> REWARD CHANNEL OPEN - collect your prizes on screen.",
         "",
       ],
     },
@@ -143,16 +143,16 @@
                 content: [
                   "WELCOME TO THE TERMINAL TRAINER",
                   "",
-                  "Laughing Dragons workroom terminal — online.",
+                  "Laughing Dragons workroom terminal - online.",
                   "",
                   "Your mission folder is open:",
                   "  A:\\MISSIONS\\",
                   "",
                   "Quick start:",
-                  "  HELP   — list commands",
-                  "  DIR    — list files and folders",
-                  "  CD MISSIONS — enter the mission folder",
-                  "  TYPE LEVEL2.TXT — read your first clue",
+                  "  HELP   - list commands",
+                  "  DIR    - list files and folders",
+                  "  CD MISSIONS - enter the mission folder",
+                  "  TYPE LEVEL2.TXT - read your first clue",
                   "",
                   "Good luck, operator.",
                 ],
@@ -165,7 +165,7 @@
               "LEVEL2.TXT": {
                 type: "file",
                 content: [
-                  "LEVEL 2 — LOCKED DOOR",
+                  "LEVEL 2 - LOCKED DOOR",
                   "",
                   "Search the vault for a password.",
                   "Look in A:\\MISSIONS\\VAULT\\",
@@ -572,7 +572,7 @@
       if (!state.level2Complete) {
         return "Level 2: CD MISSIONS → TYPE LEVEL2.TXT → CD VAULT → TYPE HINT.TXT → LOGIN FRUIT-42";
       }
-      return "Type HELP to see commands. A:\\MISSIONS\\ is open — start there.";
+      return "Type HELP to see commands. A:\\MISSIONS\\ is open - start there.";
     }
 
     function populateWinBanner() {
@@ -617,7 +617,7 @@
       grantWinRewards();
       updateStatus();
       onProgressEvent();
-      printLine(">> Earned codes work with LOGIN anytime — hack more games open.", "dim");
+      printLine(">> Earned codes work with LOGIN anytime - hack more games open.", "dim");
       setTimeout(showWinBanner, 600);
     }
 
@@ -707,7 +707,7 @@
         "Logging into Drive A: .............. OK",
         "Mission channel: A:\\MISSIONS\\ .... LIVE",
         "",
-        "Type HELP for commands — or CD MISSIONS to begin.",
+        "Type HELP for commands - or CD MISSIONS to begin.",
         "",
       ];
 
@@ -794,7 +794,7 @@
         printLine("");
         printLine("Available commands:");
         EXE_COMMANDS.forEach((c) => {
-          if (COMMAND_HELP[c]) printLine(`  ${c} — ${COMMAND_HELP[c].summary}`, "dim");
+          if (COMMAND_HELP[c]) printLine(`  ${c} - ${COMMAND_HELP[c].summary}`, "dim");
         });
         printLine("");
         printLine("Programs live in A:\\SYSTEM\\ as .EXE files.");
@@ -856,7 +856,7 @@
       if (isHiddenUnlockPath(next)) {
         grantHiddenDevUnlock();
         printLine("");
-        printLine("UNLOCK OK — Memory Matching is live on the Kids games page.", "success");
+        printLine("UNLOCK OK - Memory Matching is live on the Kids games page.", "success");
         printLine("");
         return;
       }
@@ -886,11 +886,11 @@
         return;
       }
       if (filePath.includes("VAULT\\HINT.TXT") && !state.level2Complete && !state.secretUnlocked) {
-        printLine("[LOCKED — FIND MISSIONS FIRST]", "dim");
+        printLine("[LOCKED - FIND MISSIONS FIRST]", "dim");
         return;
       }
       if (filePath.includes("FINAL\\CLUE.TXT") && !state.level2Complete) {
-        printLine("[LOCKED — COMPLETE LEVEL 2 FIRST]", "dim");
+        printLine("[LOCKED - COMPLETE LEVEL 2 FIRST]", "dim");
         return;
       }
 

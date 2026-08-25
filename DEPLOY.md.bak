@@ -1,6 +1,6 @@
 # Deploy Laughing Dragons Hub to Cloudflare Pages
 
-Static site — no build step. Cloudflare serves files from the repo root.
+Static site - no build step. Cloudflare serves files from the repo root.
 
 ## 1. Push this repo to GitHub
 
@@ -26,7 +26,7 @@ git push -u origin main
 
 Preview URL: `https://laughing-dragons-site.pages.dev` (name may vary).
 
-## 3. Add custom domain — laughing-dragons.com
+## 3. Add custom domain - laughing-dragons.com
 
 1. Pages project → **Custom domains** → **Set up a custom domain**
 2. Enter `laughing-dragons.com` and `www.laughing-dragons.com`
@@ -34,19 +34,19 @@ Preview URL: `https://laughing-dragons-site.pages.dev` (name may vary).
 
 Wait for SSL (usually a few minutes).
 
-## 4. Shopify domain — laughingdragonsproductions.com
+## 4. Shopify domain - laughingdragonsproductions.com
 
 In Shopify Admin → **Settings** → **Domains**:
 
 1. Connect `laughingdragonsproductions.com` as the primary storefront domain
 2. Update `assets/js/config.js` → `links.shopify` to `https://laughingdragonsproductions.com`
-3. Commit and push — Pages redeploys automatically
+3. Commit and push - Pages redeploys automatically
 
 ## 5. AdSense (already wired)
 
 Publisher ID: `ca-pub-7048606415692002`
 
-Root `ads.txt` is set for `pub-7048606415692002`. The AdSense publisher script loads on all pages **except** `/kids/**` and coming-soon/WIP paths. **Ad units** render only on live `/games/` pages after you paste slot IDs into `config.js`. The homepage includes the script in `<head>` for Google site verification.
+Root `ads.txt` is set for `pub-7048606415692002`. The AdSense publisher script loads on all pages **except** `/kids/**` (Kids Show) and `coming-soon` WIP paths. **Ad units** render on all finished `/games/` and live `/tools/` pages after you paste slot IDs into `config.js`. The homepage includes the script in `<head>` for Google site verification.
 
 After the domain is live:
 
@@ -71,7 +71,7 @@ See [BACKLINK-NOTES.md](BACKLINK-NOTES.md) for DRI privacy, Shopify footer, Quic
 
 ## 8. Ongoing updates
 
-After the site is live, use [UPDATE.md](UPDATE.md) for every content change (Kids episodes, tools, blog, images). Push to `main` — Cloudflare redeploys automatically.
+After the site is live, use [UPDATE.md](UPDATE.md) for every content change (Kids episodes, tools, blog, images). Push to `main` - Cloudflare redeploys automatically.
 
 ## Troubleshooting
 

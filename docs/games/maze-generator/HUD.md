@@ -1,4 +1,4 @@
-# Maze Generator — HUD & UI copy
+# Maze Generator - HUD & UI copy
 
 ## Screen flow
 
@@ -49,7 +49,7 @@ Draw with pointer down → move → up. Touch supported.
 
 | Event | Message |
 |-------|---------|
-| Invalid wall bump | *"That's a wall — try another way!"* |
+| Invalid wall bump | *"That's a wall - try another way!"* |
 | Finish reached | *"You found the path!"* |
 | Maze 1 of 3 done | *"2 more mazes to go!"* |
 | Run complete | Win overlay |
@@ -70,7 +70,7 @@ On show: `KIDS_UNLOCKS.markCleared("maze-generator")`.
 
 ## Print stylesheet
 
-`@media print` hides HUD chrome; maze fills page. Header: *Laughing Dragons — Maze Generator*.
+`@media print` hides HUD chrome; maze fills page. Header: *Laughing Dragons - Maze Generator*.
 
 ## Mobile / a11y
 

@@ -1,4 +1,4 @@
-/* Kids Terminal Trainer V2 — desk monitor shell + terminal */
+/* Kids Terminal Trainer V2 - desk monitor shell + terminal */
 :root {
   --term-bg: #0a0a0a;
   --term-green: #39ff14;
@@ -74,7 +74,7 @@
   display: none;
 }
 
-/* Intro video — stacked on desk frame inside shared 16:9 canvas */
+/* Intro video - stacked on desk frame inside shared 16:9 canvas */
 .intro-video {
   position: absolute;
   inset: 0;
@@ -141,7 +141,7 @@
   transition: opacity 280ms ease;
 }
 
-/* Hints sidebar — hidden until HELP toggle opens it */
+/* Hints sidebar - hidden until HELP toggle opens it */
 .terminal-hints {
   width: min(240px, 28vw);
   flex-shrink: 0;
@@ -182,7 +182,7 @@
   padding: 0.5rem;
 }
 
-/* Locked to desk image 1024×576 — overlay % tracks the photo exactly */
+/* Locked to desk image 1024×576 - overlay % tracks the photo exactly */
 .desk-canvas {
   position: relative;
   width: min(100%, calc((100vh - 1rem) * 16 / 9));

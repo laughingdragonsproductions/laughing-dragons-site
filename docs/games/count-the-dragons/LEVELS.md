@@ -1,4 +1,4 @@
-# Count the Dragons — Levels
+# Count the Dragons - Levels
 
 ## Structure
 
@@ -8,22 +8,22 @@ One **Count Round** = 10 correct answers. No numbered level map; difficulty tier
 
 | Round | Count range | Notes |
 |-------|-------------|-------|
-| 1–3 | 1–4 | Warm-up — large sprites, generous spacing |
-| 4–7 | 3–8 | Mixed mid-range counts |
-| 8–10 | 5–10 | Slightly denser layout; celebration after round 10 |
+| 1-3 | 1-4 | Warm-up - large sprites, generous spacing |
+| 4-7 | 3-8 | Mixed mid-range counts |
+| 8-10 | 5-10 | Slightly denser layout; celebration after round 10 |
 
 Each round picks a random integer N within the tier's allowed range. Avoid repeating the same N on consecutive rounds when possible.
 
 ## Easy tier
 
-- N always 1–5
+- N always 1-5
 - No decoy objects
-- Number pad shows only buttons 1–5 (hide 6–10)
+- Number pad shows only buttons 1-5 (hide 6-10)
 
 ## Hard tier
 
-- N always 1–10
-- 1–2 non-countable decoys per scene (cloud, rock, bush) — player counts characters only
+- N always 1-10
+- 1-2 non-countable decoys per scene (cloud, rock, bush) - player counts characters only
 - One-time HUD banner explains decoys (see `HUD.md`)
 
 ## Win condition
@@ -45,4 +45,4 @@ None required. Optional flair: zero wrong taps across all 10 rounds → toast *P
 
 ## Session length target
 
-~3–4 minutes for 10 rounds on Easy.
+~3-4 minutes for 10 rounds on Easy.

@@ -1,4 +1,4 @@
-# Coloring Page Studio — Levels
+# Coloring Page Studio - Levels
 
 ## Structure
 
@@ -34,7 +34,7 @@ No threshold tracking; no `markCleared`. Progress persists in `sessionStorage` f
 
 Complete **3 distinct pages** at ≥80% in one Studio Session → `KIDS_UNLOCKS.markCleared("coloring-viewer")`.
 
-No reward code displayed — final game in unlock chain. Win overlay celebrates full catalog completion.
+No reward code displayed - final game in unlock chain. Win overlay celebrates full catalog completion.
 
 ## Par
 
@@ -42,7 +42,7 @@ Optional: all 3 pages at 100% fill → toast *Master colorist!*
 
 ## Session length target
 
-~10–15 minutes for 3 pages (parent-led).
+~10-15 minutes for 3 pages (parent-led).
 
 ## Print
 

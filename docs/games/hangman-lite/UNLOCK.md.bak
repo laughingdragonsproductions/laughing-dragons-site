@@ -1,4 +1,4 @@
-# Hangman Lite — Unlock integration
+# Hangman Lite - Unlock integration
 
 **Requires:** `hangman-lite-unlocked`  
 **Earned by clearing:** `simon-says` → Terminal code `HANG-FRUIT-9`  

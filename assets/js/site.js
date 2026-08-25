@@ -103,9 +103,9 @@ function pushAds() {
   }
 }
 
-const ADSENSE_ALLOW_PREFIXES = ["/games/"];
+const ADSENSE_ALLOW_PREFIXES = ["/games/", "/tools/"];
 
-/** WIP stub paths only — all finished /games/ pages are monetizable. Kids Show (/kids/) is blocked separately. */
+/** WIP stub paths only - all finished /games/ pages are monetizable. Kids Show (/kids/) is blocked separately. */
 const ADSENSE_BLOCK_SEGMENTS = ["coming-soon"];
 
 function isMonetizablePath(path) {
@@ -375,7 +375,7 @@ function bindContactForm(options = {}) {
     fd.append("access_key", accessKey);
     fd.append("from_name", subjectPrefix);
     const subject = fd.get("subject");
-    fd.set("subject", subject ? `${subjectPrefix}: ${subject}` : `${subjectPrefix} — Contact form`);
+    fd.set("subject", subject ? `${subjectPrefix}: ${subject}` : `${subjectPrefix} - Contact form`);
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {

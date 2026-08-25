@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Memory Matching Game — flip laughing dragon tiles on scenic maps, match every pair, and beat par. Unlocked by beating Terminal Trainer."
+      content="Memory Matching Game - flip laughing dragon tiles on scenic maps, match every pair, and beat par. Unlocked by beating Terminal Trainer."
     />
     <title>Memory Matching Game</title>
     <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
     <link rel="stylesheet" href="/assets/css/site.css" />
     <link rel="stylesheet" href="/assets/css/memory-game.css?v=20260809" />
     <link rel="canonical" href="https://laughing-dragons.com/games/memory-matching/" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7048606415692002"
+     crossorigin="anonymous"></script>
   </head>
   <body class="memory-page game-page">
     <script src="/assets/js/config.js?v=20260809"></script>
@@ -48,8 +50,8 @@
 
             <div class="menu-best" id="menu-best-scores" aria-live="polite">
               <p class="menu-best-label">Best scores</p>
-              <p class="menu-best-row">Easy: <strong id="best-easy">—</strong></p>
-              <p class="menu-best-row">Hard: <strong id="best-hard">—</strong></p>
+              <p class="menu-best-row">Easy: <strong id="best-easy">-</strong></p>
+              <p class="menu-best-row">Hard: <strong id="best-hard">-</strong></p>
             </div>
 
             <nav class="menu-actions" aria-label="Main menu">
@@ -65,11 +67,11 @@
             <fieldset class="menu-fieldset">
               <label class="menu-radio">
                 <input type="radio" name="difficulty" value="easy" id="diff-easy" />
-                <span>Easy — 4 pairs (8 tiles)</span>
+                <span>Easy - 4 pairs (8 tiles)</span>
               </label>
               <label class="menu-radio">
                 <input type="radio" name="difficulty" value="hard" id="diff-hard" checked />
-                <span>Hard — 8 pairs (16 tiles)</span>
+                <span>Hard - 8 pairs (16 tiles)</span>
               </label>
             </fieldset>
 
@@ -82,7 +84,7 @@
             <h2 class="menu-panel-title" id="howto-title">How to Play</h2>
             <ol class="menu-howto-list">
               <li>Tap a tile to flip it and reveal a dragon.</li>
-              <li>Flip a second tile — if they match, both stay up and disappear.</li>
+              <li>Flip a second tile - if they match, both stay up and disappear.</li>
               <li>If they don't match, both flip back. Try to remember where each dragon was!</li>
               <li>Clear every pair to win. Fewer moves = better rating.</li>
             </ol>
@@ -140,7 +142,7 @@
           <section class="win-unlock" id="win-unlock" hidden>
             <h3 class="win-unlock-title">Game unlocked!</h3>
             <p class="win-unlock-text">
-              You beat par — <strong id="win-unlock-game-name">Fruit Search</strong> is on the Games page.
+              You beat par - <strong id="win-unlock-game-name">Fruit Search</strong> is on the Games page.
             </p>
             <p class="win-unlock-label">Unlock code</p>
             <code class="win-unlock-code" id="win-unlock-code">FIND-WALDO-3</code>

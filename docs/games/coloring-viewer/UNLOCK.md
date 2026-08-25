@@ -1,8 +1,8 @@
-# Coloring Page Studio — Unlock integration
+# Coloring Page Studio - Unlock integration
 
 **Requires:** `coloring-viewer-unlocked`  
 **Earned by clearing:** `maze-generator` → Terminal code `MAZE-PATH-12`  
-**Reward code (shown on hub after clear):** *(none — final game in chain)*  
+**Reward code (shown on hub after clear):** *(none - final game in chain)*  
 **Unlocks next:** *(none)*
 
 ## Prerequisite chain (abbreviated)
@@ -16,7 +16,7 @@
 - `id: "coloring-viewer"`
 - `title: "Coloring Page Studio"`
 - `requiresUnlock: "coloring-viewer-unlocked"`
-- `rewardCode` — omitted (no next game)
+- `rewardCode` - omitted (no next game)
 - `status: "in-production"`
 
 ## Terminal
@@ -30,7 +30,7 @@
 },
 ```
 
-No entry in `REWARD_CODES_BY_GAME` for `coloring-viewer` — confirmed in `kids-unlocks.js`.
+No entry in `REWARD_CODES_BY_GAME` for `coloring-viewer` - confirmed in `kids-unlocks.js`.
 
 ## Clear condition
 
@@ -40,8 +40,8 @@ Complete one **Studio Session** (3 distinct pages at ≥80% fill) → `KIDS_UNLO
 
 **Headline:** Master colorist!  
 **Body:** You finished 3 coloring pages and completed the full Laughing Dragons unlock path.  
-**Hint:** *(no LOGIN code)* — Return to the Games hub to replay any title.
+**Hint:** *(no LOGIN code)* - Return to the Games hub to replay any title.
 
 ## Chain completion
 
-When cleared, hub card may show badge *Path complete* (Dave optional polish) — design-only note, not required v1.
+When cleared, hub card may show badge *Path complete* (Dave optional polish) - design-only note, not required v1.

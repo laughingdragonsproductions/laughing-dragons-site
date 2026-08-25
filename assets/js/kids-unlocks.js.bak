@@ -1,5 +1,5 @@
 /**
- * Kids games — cross-game unlocks, reward codes, and Terminal Trainer rewards.
+ * Kids games - cross-game unlocks, reward codes, and Terminal Trainer rewards.
  * Used by terminal-game.js, games.js hub, and gated game pages.
  */
 (function () {
@@ -201,7 +201,7 @@
       };
     },
 
-    /** Hidden dev backdoor — Terminal Trainer CD A:\\Dev\\unlockmatch */
+    /** Hidden dev backdoor - Terminal Trainer CD A:\\Dev\\unlockmatch */
     grantHiddenDevUnlock() {
       return this.grantTerminalWin();
     },

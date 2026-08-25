@@ -1,4 +1,4 @@
-# Simon Says Light Pad — Unlock integration
+# Simon Says Light Pad - Unlock integration
 
 **Requires:** `simon-says-unlocked`  
 **Earned by clearing:** `count-the-dragons` → Terminal code `SIMON-GLOW-8`  
@@ -38,7 +38,7 @@
 
 ## Clear condition
 
-Complete one **Memory Run** — reach sequence length **8** (Normal), **6** (Easy), or **10** (Hard) at least once → `KIDS_UNLOCKS.markCleared("simon-says")`.
+Complete one **Memory Run** - reach sequence length **8** (Normal), **6** (Easy), or **10** (Hard) at least once → `KIDS_UNLOCKS.markCleared("simon-says")`.
 
 ## Win UI copy
 

@@ -1,4 +1,4 @@
-# Terminal Trainer — Walkthrough & Content Map
+# Terminal Trainer - Walkthrough & Content Map
 
 Dev reference for [Terminal Trainer](/kids/games/terminal/). Use this to see every page, file, folder, and the exact command path from intro to true ending.
 
@@ -8,7 +8,7 @@ Dev reference for [Terminal Trainer](/kids/games/terminal/). Use this to see eve
 
 | URL | Repo path | Purpose |
 |-----|-----------|---------|
-| `/kids/` | [kids/index.html](../kids/index.html) | Kids hub — games section links here |
+| `/kids/` | [kids/index.html](../kids/index.html) | Kids hub - games section links here |
 | `/kids/#games` | [assets/js/kids.js](../assets/js/kids.js) `games[]` | Game card grid |
 | `/kids/games/terminal/` | [kids/games/terminal/index.html](../kids/games/terminal/index.html) | **Playable game** (intro video → desk → terminal) |
 | `/kids/games/coming-soon/` | [kids/games/coming-soon/index.html](../kids/games/coming-soon/index.html) | Stub for other games |
@@ -23,10 +23,10 @@ Dev reference for [Terminal Trainer](/kids/games/terminal/). Use this to see eve
 |-------------------------|------|
 | Intro video | [assets/kids/games/terminal/newterminalvideo.mp4](../assets/kids/games/terminal/newterminalvideo.mp4) |
 | Desk / monitor frame | [assets/kids/games/terminal/desk-monitor-frame.png](../assets/kids/games/terminal/desk-monitor-frame.png) |
-| Monitor position on desk | [assets/css/terminal-game.css](../assets/css/terminal-game.css) — `--monitor-top/left/width/height` |
+| Monitor position on desk | [assets/css/terminal-game.css](../assets/css/terminal-game.css) - `--monitor-top/left/width/height` |
 | All game logic, levels, filesystem | [assets/js/terminal-game.js](../assets/js/terminal-game.js) |
 | Page shell, hints panel | [kids/games/terminal/index.html](../kids/games/terminal/index.html) |
-| List on Kids hub | [assets/js/kids.js](../assets/js/kids.js) — `games[]` entry `terminal-trainer` |
+| List on Kids hub | [assets/js/kids.js](../assets/js/kids.js) - `games[]` entry `terminal-trainer` |
 | This map + tree image | [docs/terminal-trainer-walkthrough.md](terminal-trainer-walkthrough.md), [docs/terminal-trainer-game-tree.png](terminal-trainer-game-tree.png) |
 | Sync video from PC | `.\scripts\copy-terminal-assets.ps1` |
 
@@ -51,7 +51,7 @@ kids/games/terminal/index.html
 
 ---
 
-## A:\ filesystem (in-memory — edit in `buildFilesystem()`)
+## A:\ filesystem (in-memory - edit in `buildFilesystem()`)
 
 ```
 A:\
@@ -81,19 +81,19 @@ A:\
 
 Kid-friendly paths work: `CD A`, `CD A SYSTEM`, `DIR A`, Tab to autocomplete, ↑ for history.
 
-### Phase 0 — Intro
+### Phase 0 - Intro
 | Step | Action | Result |
 |------|--------|--------|
 | 0 | Open `/kids/games/terminal/` | Intro video (Skip or Tap to start) |
 | 0b | Skip / video ends | Terminal appears on desk monitor |
 
-### Phase 1 — Tutorial (sidebar guides first two commands)
+### Phase 1 - Tutorial (sidebar guides first two commands)
 | Step | Type | Teaches |
 |------|------|---------|
 | 1 | `HELP` | Command list |
 | 2 | `DIR` | See folders on `A:\` |
 
-### Phase 2 — Level 1 “First Contact” (discovery)
+### Phase 2 - Level 1 “First Contact” (discovery)
 Use **every** basic tool once. Sidebar lists what is still missing.
 
 | Step | Type | Notes |
@@ -113,7 +113,7 @@ Use **every** basic tool once. Sidebar lists what is still missing.
 | 10 | ~4 sec or any key → secret unlock: `A:\MISSIONS\` appears |
 | 11 | Cheat code shown: **DRAGON-ALPHA** (for optional `LOGIN` later) |
 
-### Phase 3 — Level 2 “Locked Door”
+### Phase 3 - Level 2 “Locked Door”
 | Step | Type | Notes |
 |------|------|-------|
 | 12 | `CD MISSIONS` | Enter missions folder |
@@ -124,12 +124,12 @@ Use **every** basic tool once. Sidebar lists what is still missing.
 
 Optional: `LOGIN DRAGON-ALPHA` after step 11 gives a nudge toward VAULT.
 
-### Phase 4 — Level 3 “Final Passphrase”
+### Phase 4 - Level 3 “Final Passphrase”
 | Step | Type | Notes |
 |------|------|-------|
 | 17 | `CD FINAL` | (from `A:\MISSIONS\`) |
 | 18 | `TYPE CLUE.TXT` | Passphrase instruction |
-| 19 | `ECHO LAUGHING-DRAGONS` | **True ending** — game complete |
+| 19 | `ECHO LAUGHING-DRAGONS` | **True ending** - game complete |
 
 ### After beat
 - HUD shows **Complete**
@@ -169,4 +169,4 @@ Optional: `LOGIN DRAGON-ALPHA` after step 11 gives a nudge toward VAULT.
 - [ ] Tab / ↑ / `CD A` work
 - [ ] Mobile fallback (no desk frame, terminal full width)
 
-See also: [terminal-trainer-game-tree.png](terminal-trainer-game-tree.png) — visual map of the same path.
+See also: [terminal-trainer-game-tree.png](terminal-trainer-game-tree.png) - visual map of the same path.

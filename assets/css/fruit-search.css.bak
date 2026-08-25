@@ -1,4 +1,4 @@
-/* Fruit Search — map stage + HUD */
+/* Fruit Search - map stage + HUD */
 :root {
   --fs-cream: #f7f1e4;
   --fs-accent: #e8b84a;
@@ -209,7 +209,7 @@
   font-size: 0.95rem;
 }
 
-/* Win overlay — mirrors memory-game pattern */
+/* Win overlay - mirrors memory-game pattern */
 .fruit-search-win {
   position: fixed;
   inset: 0;

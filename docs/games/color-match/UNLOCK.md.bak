@@ -1,4 +1,4 @@
-# Color Match Sort — Unlock integration
+# Color Match Sort - Unlock integration
 
 **Requires:** `color-match-unlocked`  
 **Earned by clearing:** `typing-race` → Terminal code `SORT-COLOR-6`  

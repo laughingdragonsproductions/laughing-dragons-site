@@ -67,8 +67,8 @@ function renderFooter() {
 }
 
 function hasConfiguredAdSlots() {
-  const slots = window.SITE_CONFIG?.adsense?.slots || {};
-  return Object.values(slots).some((id) => Boolean(id));
+  const cfg = window.SITE_CONFIG?.adsense || {};
+  return Boolean(cfg.publisherId) && isMonetizablePath(window.location.pathname);
 }
 
 function adSlotWrap(slotKey, wrapClass, unitClass = "ad-unit") {
@@ -79,13 +79,18 @@ function adSlotWrap(slotKey, wrapClass, unitClass = "ad-unit") {
 function renderAdSlot(key, className = "ad-unit") {
   const cfg = window.SITE_CONFIG?.adsense || {};
   const slot = cfg.slots?.[key];
-  if (!cfg.publisherId || !slot) {
-    return "";
+  if (!cfg.publisherId) return "";
+  if (slot) {
+    return `<ins class="adsbygoogle ${className}"
+    style="display:block"
+    data-ad-client="${cfg.publisherId}"
+    data-ad-slot="${slot}"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>`;
   }
   return `<ins class="adsbygoogle ${className}"
     style="display:block"
     data-ad-client="${cfg.publisherId}"
-    data-ad-slot="${slot}"
     data-ad-format="auto"
     data-full-width-responsive="true"></ins>`;
 }
@@ -98,9 +103,10 @@ function pushAds() {
   }
 }
 
-const ADSENSE_ALLOW_PREFIXES = ["/games/"];
+const ADSENSE_ALLOW_PREFIXES = ["/games/", "/tools/"];
 
-const ADSENSE_BLOCK_SEGMENTS = ["fruit-search", "coming-soon"];
+/** WIP stub paths only - all finished /games/ pages are monetizable. Kids Show (/kids/) is blocked separately. */
+const ADSENSE_BLOCK_SEGMENTS = ["coming-soon"];
 
 function isMonetizablePath(path) {
   const p = path || window.location.pathname || "";
@@ -369,7 +375,7 @@ function bindContactForm(options = {}) {
     fd.append("access_key", accessKey);
     fd.append("from_name", subjectPrefix);
     const subject = fd.get("subject");
-    fd.set("subject", subject ? `${subjectPrefix}: ${subject}` : `${subjectPrefix} — Contact form`);
+    fd.set("subject", subject ? `${subjectPrefix}: ${subject}` : `${subjectPrefix} - Contact form`);
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {

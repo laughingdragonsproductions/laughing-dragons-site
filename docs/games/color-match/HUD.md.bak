@@ -1,4 +1,4 @@
-# Color Match Sort — HUD & UI copy
+# Color Match Sort - HUD & UI copy
 
 ## Screen flow
 
@@ -40,8 +40,8 @@ Drop zones highlight on drag-over (dashed border + scale 1.05).
 
 | Element | Behavior |
 |---------|----------|
-| Current fruit | `#cm-fruit` — draggable sprite 96×96 min |
-| Skip button | `#cm-skip` — visible only for neutral items (Normal+): *Skip this one* |
+| Current fruit | `#cm-fruit` - draggable sprite 96×96 min |
+| Skip button | `#cm-skip` - visible only for neutral items (Normal+): *Skip this one* |
 | Hint (first item) | *Drag the fruit to the matching color bin!* |
 
 ## Feedback copy
@@ -50,7 +50,7 @@ Drop zones highlight on drag-over (dashed border + scale 1.05).
 |-------|---------|
 | Correct sort | *"Perfect!"* + sparkle |
 | Wrong bin | *"Try another bin!"* |
-| Neutral shown | *"This one's not red, yellow, or green — tap Skip!"* |
+| Neutral shown | *"This one's not red, yellow, or green - tap Skip!"* |
 | Round halfway | *"Halfway there!"* (at 8/15) |
 | Round complete | Win overlay |
 

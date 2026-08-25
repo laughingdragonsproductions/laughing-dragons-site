@@ -1,4 +1,4 @@
-# Pattern Builder — Levels
+# Pattern Builder - Levels
 
 ## Structure
 
@@ -8,9 +8,9 @@ One **Pattern Run** = **8 puzzles solved**. Difficulty tier controls pattern typ
 
 | Puzzle # | Pattern types allowed | Row length |
 |----------|----------------------|------------|
-| 1–2 | AB, ABA | 4 + slot |
-| 3–5 | ABA, ABC | 5 + slot |
-| 6–8 | ABC, AABB | 5–6 + slot |
+| 1-2 | AB, ABA | 4 + slot |
+| 3-5 | ABA, ABC | 5 + slot |
+| 6-8 | ABC, AABB | 5-6 + slot |
 
 No duplicate exact pattern within one run (same type + same fruit ids).
 
@@ -29,7 +29,7 @@ No duplicate exact pattern within one run (same type + same fruit ids).
 ## Puzzle generation
 
 1. Pick pattern type from tier pool
-2. Pick 2–3 distinct fruit ids for pattern alphabet
+2. Pick 2-3 distinct fruit ids for pattern alphabet
 3. Extend row to required length; last cell is `?`
 4. Compute correct answer id
 5. Generate 2 decoys per tier rules; shuffle choice order
@@ -53,4 +53,4 @@ Optional: all 8 solved on first try each → toast *Pattern pro!*
 
 ## Session length target
 
-~4–5 minutes for 8 puzzles on Normal.
+~4-5 minutes for 8 puzzles on Normal.

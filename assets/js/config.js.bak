@@ -1,8 +1,8 @@
-/** Laughing Dragons Productions — site config */
+/** Laughing Dragons Productions - site config */
 window.SITE_CONFIG = {
   name: "Laughing Dragons",
   legalName: "Laughing Dragons Productions",
-  tagline: "Inside the workroom — media, tools, prints, and maker gear.",
+  tagline: "Inside the workroom - media, tools, prints, and maker gear.",
   domain: "https://laughing-dragons.com",
   web3formsAccessKey: "0235bcac-35ff-4f1c-b17b-e08aaf3866e1",
   links: {

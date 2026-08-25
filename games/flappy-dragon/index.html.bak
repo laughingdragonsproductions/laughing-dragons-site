@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Flappy Dragon — tap to fly through stone pillars, beat your best score, and unlock colored laughing dragon skins."
+      content="Flappy Dragon - tap to fly through stone pillars, beat your best score, and unlock colored laughing dragon skins."
     />
     <title>Flappy Dragon</title>
     <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
     <link rel="stylesheet" href="/assets/css/site.css" />
     <link rel="stylesheet" href="/assets/css/flappy-dragon.css?v=20260813h" />
     <link rel="canonical" href="https://laughing-dragons.com/games/flappy-dragon/" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7048606415692002"
+     crossorigin="anonymous"></script>
   </head>
   <body class="flappy-page game-page">
     <script src="/assets/js/config.js?v=20260813"></script>
@@ -43,11 +45,11 @@
               <legend class="flappy-skins-legend">Difficulty</legend>
               <label class="flappy-radio">
                 <input type="radio" name="flappy-difficulty" value="easy" id="flappy-diff-easy" />
-                <span>Easy — 15% lighter gravity and jump</span>
+                <span>Easy - 15% lighter gravity and jump</span>
               </label>
               <label class="flappy-radio">
                 <input type="radio" name="flappy-difficulty" value="hard" id="flappy-diff-hard" checked />
-                <span>Hard — standard gravity</span>
+                <span>Hard - standard gravity</span>
               </label>
             </fieldset>
 
@@ -66,11 +68,11 @@
             <h2 class="flappy-panel-title" id="flappy-howto-title">How to Play</h2>
             <ol class="flappy-howto-list">
               <li>Tap, click, or press Space / ↑ to flap upward.</li>
-              <li>Fly through gaps between stone pillars — each gap scores one point.</li>
+              <li>Fly through gaps between stone pillars - each gap scores one point.</li>
               <li>Hit a pillar, the ground, or the sky and the run ends.</li>
               <li>The game speeds up as your score climbs.</li>
               <li>Beat score milestones to unlock new dragon colors.</li>
-              <li><strong>Easy</strong> uses 15% lighter gravity and jump — great for slower reaction times. <strong>Hard</strong> is the standard challenge.</li>
+              <li><strong>Easy</strong> uses 15% lighter gravity and jump - great for slower reaction times. <strong>Hard</strong> is the standard challenge.</li>
             </ol>
             <button type="button" class="btn btn-primary" id="flappy-howto-back">Back</button>
           </div>
@@ -97,6 +99,8 @@
       <div class="sr-announce" id="flappy-sr-announce" aria-live="assertive"></div>
     </div>
 
+    <div class="container" id="game-ad-bottom"></div>
+
     <div id="game-footer-mount"></div>
 
     <script src="/assets/js/games.js?v=20260813"></script>
@@ -105,7 +109,7 @@
     <script>
       initGameChrome({
         title: "Flappy Dragon",
-        description: "Tap to fly your laughing dragon through stone pillars — unlock all eight colors as your score climbs.",
+        description: "Tap to fly your laughing dragon through stone pillars - unlock all eight colors as your score climbs.",
         activePath: "/games/flappy-dragon/",
         landingHtml: `
           <article class="game-landing prose reveal">
@@ -113,7 +117,7 @@
             <p class="pillar-eyebrow">Laughing Dragons Games</p>
             <h1>Flappy Dragon</h1>
             <p class="page-lead">Tap to fly. Dodge the pillars. Unlock every colored dragon.</p>
-            <p>Always playable — no unlock code needed. Start with the green dragon and earn new colors by beating score milestones.</p>
+            <p>Always playable - no unlock code needed. Start with the green dragon and earn new colors by beating score milestones.</p>
           </article>`,
       });
       initFlappyDragon();

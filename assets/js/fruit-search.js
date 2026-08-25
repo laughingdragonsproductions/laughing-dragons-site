@@ -1,4 +1,4 @@
-/** Fruit Search — I-Spy Fruit Friends */
+/** Fruit Search - I-Spy Fruit Friends */
 (function () {
   "use strict";
 
@@ -297,8 +297,8 @@
     }
 
     btn.classList.add("is-wrong");
-    announce("Not that friend — keep looking!");
-    setStatus("Not that friend — keep looking!");
+    announce("Not that friend - keep looking!");
+    setStatus("Not that friend - keep looking!");
     window.setTimeout(() => btn.classList.remove("is-wrong"), 480);
   }
 

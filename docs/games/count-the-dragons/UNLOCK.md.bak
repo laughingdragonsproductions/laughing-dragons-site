@@ -1,4 +1,4 @@
-# Count the Dragons — Unlock integration
+# Count the Dragons - Unlock integration
 
 **Requires:** `count-the-dragons-unlocked`  
 **Earned by clearing:** `color-match` → Terminal code `COUNT-DRAG-7`  

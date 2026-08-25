@@ -1,4 +1,4 @@
-# Typing Race — Unlock integration
+# Typing Race - Unlock integration
 
 **Requires:** `typing-race-unlocked`  
 **Earned by clearing:** `alphabet-trace` → Terminal code `TYPE-FAST-5`  

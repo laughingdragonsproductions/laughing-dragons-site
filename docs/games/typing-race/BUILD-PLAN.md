@@ -1,11 +1,11 @@
-# Typing Race — Build plan (Dave)
+# Typing Race - Build plan (Dave)
 
 ## Files to create
 
 | Path | Purpose |
 |------|---------|
 | `games/typing-race/index.html` | Gate + landing + `#typing-race-root` |
-| `assets/js/typing-race.js` | `initTypingRace()` — Heat loop, keyboard input, win |
+| `assets/js/typing-race.js` | `initTypingRace()` - Heat loop, keyboard input, win |
 | `assets/css/typing-race.css` | Workroom theme, letter stage, timer, OSK |
 
 ## Data
@@ -42,7 +42,7 @@ if (!window.KIDS_UNLOCKS?.has?.("typing-race-unlocked")) {
 
 ## Input handling
 
-- `keydown` on `window` — `event.key` length 1, compare `toUpperCase()` to current letter
+- `keydown` on `window` - `event.key` length 1, compare `toUpperCase()` to current letter
 - Ignore modifier combos
 - On tablet: delegate clicks from `.tr-osk-key` with `data-key`
 - Prevent default on game keys to avoid scroll

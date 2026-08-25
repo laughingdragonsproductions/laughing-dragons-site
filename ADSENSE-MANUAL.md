@@ -1,4 +1,4 @@
-# AdSense — manual steps for Brandon
+# AdSense - manual steps for Brandon
 
 Games-first monetization is live in code. Complete these steps in **Google AdSense** (not in the repo):
 
@@ -7,17 +7,18 @@ Games-first monetization is live in code. Complete these steps in **Google AdSen
 | Requirement | Status | Notes |
 |-------------|--------|-------|
 | ads.txt | **Ready** | Root `ads.txt` → `pub-7048606415692002` (live at laughing-dragons.com) |
-| Privacy policy | **Ready** | `/privacy/` — AdSense, cookies, opt-out, Games vs Kids Show boundary |
-| Contact page | **Ready** | `/contact/` — Web3Forms form |
-| About page | **Ready** | `/about/` — real studio content |
+| Privacy policy | **Ready** | `/privacy/` - AdSense, cookies, opt-out, Games vs Kids Show boundary |
+| Contact page | **Ready** | `/contact/` - Web3Forms form |
+| About page | **Ready** | `/about/` - real studio content |
 | Terms | **Ready** | `/terms/` |
 | Footer legal links | **Ready** | Privacy, Terms, About, Contact |
 | Original content | **Ready** | 7 live games with guides, 9 tools, blog, kids characters |
-| Games section monetized | **Ready** | All finished `/games/` pages eligible — original studio products |
+| Games section monetized | **Ready** | All finished `/games/` pages eligible - original studio products |
+| Tools section monetized | **Ready** | Live `/tools/` pages eligible; `coming-soon` stub excluded |
 | Kids section ad-free | **Ready** | No script or units on `/kids/**` (child-directed Kids Show only) |
 | Publisher script on site | **Ready** | Homepage `<head>` + `site.js` on non-kids, non-WIP pages |
 | Ad units configured | **You** | Paste slot IDs in `config.js` after creating units |
-| Auto ads disabled | **You** | AdSense dashboard — prior policy flag from auto ads on thin pages |
+| Auto ads disabled | **You** | AdSense dashboard - prior policy flag from auto ads on thin pages |
 | EU consent (CMP) | **You** | AdSense → Privacy & messaging → European regulations |
 | Search Console | **Recommended** | Verify domain, submit sitemap |
 | Request review | **You** | After checklist above |
@@ -28,8 +29,9 @@ Laughing Dragons operates two separate sections on the same domain:
 
 | Section | Path | Ads | Audience |
 |---------|------|-----|----------|
-| **Games** | `/games/` | Yes — manual units on finished game pages | General audience; original browser games with written guides |
-| **Kids Show** | `/kids/` | No — script and units blocked | Child-directed Fruit Friends content |
+| **Games** | `/games/` | Yes - manual units on finished game pages | General audience; original browser games with written guides |
+| **Tools** | `/tools/` | Yes - manual units on live tool pages | General audience; free browser utilities |
+| **Kids Show** | `/kids/` | No - script and units blocked | Child-directed Fruit Friends content |
 
 Games are standalone studio products. They may share character art with the Kids Show, but they live under `/games/`, include substantive landing copy, and are monetized. The Kids Show under `/kids/` is the only child-directed area and remains ad-free.
 
@@ -39,13 +41,13 @@ Games are standalone studio products. They may share character art with the Kids
 
 1. AdSense → **Ads** → **Auto ads** → **Disable** (or turn off all formats) until manual slot IDs are configured. Auto ads on thin pages caused the prior policy flag.
 
-2. After deploy, view page source on `/kids/` — confirm **no** `adsbygoogle.js` script tag.
+2. After deploy, view page source on `/kids/` - confirm **no** `adsbygoogle.js` script tag.
 
-3. View page source on `/`, `/games/terminal/`, and `/games/fruit-search/` — confirm `adsbygoogle.js` is present (verification script).
+3. View page source on `/`, `/games/terminal/`, and `/games/fruit-search/` - confirm `adsbygoogle.js` is present (verification script).
 
-4. View `/games/terminal/` — confirm the written guide (commands, levels, tips) appears **above** the game.
+4. View `/games/terminal/` - confirm the written guide (commands, levels, tips) appears **above** the game.
 
-5. View `/games/fruit-search/` — confirm landing guide + ad mount divs (`#game-ad-top`, `#game-ad-bottom`) are present.
+5. View `/games/fruit-search/` - confirm landing guide + ad mount divs (`#game-ad-top`, `#game-ad-bottom`) are present.
 
 ## 1. Create ad units (Games section only)
 
@@ -69,7 +71,7 @@ adsense: {
 },
 ```
 
-Push to GitHub after updating. The site loads the AdSense **publisher script** on all pages except `/kids/**` and `coming-soon` WIP paths. **Ad units** render on all finished `/games/` pages once slot IDs are filled.
+Push to GitHub after updating. The site loads the AdSense **publisher script** on all pages except `/kids/**` and `coming-soon` WIP paths. **Ad units** render on all finished `/games/` and live `/tools/` pages once slot IDs are filled.
 
 ## 2. EU consent (CMP)
 
@@ -95,9 +97,10 @@ AdSense → **Sites** → select domain → check **"I confirm I have fixed the 
 
 **Policy notes:**
 
-- **Ads on all finished `/games/` pages** — original Laughing Dragons browser games with substantive landing content
-- **No ads** on `/kids/**` (Kids Show — child-directed)
+- **Ads on all finished `/games/` pages** - original Laughing Dragons browser games with substantive landing content
+- **Ads on live `/tools/` pages** - free browser utilities (excluding coming-soon stubs)
+- **No ads** on `/kids/**` (Kids Show - child-directed)
 - **No ads** on under-development or coming-soon stub pages
-- **Auto ads stay disabled** — manual units only
+- **Auto ads stay disabled** - manual units only
 
 Publisher: `ca-pub-7048606415692002`

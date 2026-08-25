@@ -1,4 +1,4 @@
-# {Game Title} — Build plan (Dave)
+# {Game Title} - Build plan (Dave)
 
 ## Files to create
 

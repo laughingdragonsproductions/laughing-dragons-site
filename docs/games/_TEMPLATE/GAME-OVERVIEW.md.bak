@@ -1,15 +1,15 @@
-# {Game Title} — Game Overview
+# {Game Title} - Game Overview
 
 **Slug:** `{slug}`  
 **Site path:** `/games/{slug}/`  
 **Status:** in production  
 **Unlock:** requires `{requires-unlock-id}` · reward code `{REWARD-CODE}`  
-**Audience:** Kids ~4–10  
+**Audience:** Kids ~4-10  
 **Brand:** Laughing Dragons / Fruit Friends
 
 ## Pitch
 
-One paragraph — what it feels like and why parents search for it.
+One paragraph - what it feels like and why parents search for it.
 
 ## Core loop
 

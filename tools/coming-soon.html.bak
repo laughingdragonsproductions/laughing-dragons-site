@@ -19,10 +19,11 @@
       initToolPage({
         title: "Tools Coming Soon",
         description: "More free learning tools from Laughing Dragons are on the way.",
+        adSlots: false,
         content: `
           <section class="tool-panel">
             <h1>Coming soon</h1>
-            <p class="lede">This tool is not live yet. We are building more free browser utilities for learning, kids, and makers — check back soon.</p>
+            <p class="lede">This tool is not live yet. We are building more free browser utilities for learning, kids, and makers - check back soon.</p>
             <p>Browse what is already live on the <a href="/tools/">tools hub</a>, or visit the <a href="/kids/">Kids Show</a> for Fruit Friends.</p>
           </section>
         `,

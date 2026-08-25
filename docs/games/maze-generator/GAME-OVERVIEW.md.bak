@@ -1,15 +1,15 @@
-# Maze Generator — Game Overview
+# Maze Generator - Game Overview
 
 **Slug:** `maze-generator`  
 **Site path:** `/games/maze-generator/`  
 **Status:** in production  
 **Unlock:** requires `maze-generator-unlocked` · reward code `COLOR-SVG-13`  
-**Audience:** Kids ~6–12 + parents/teachers  
+**Audience:** Kids ~6-12 + parents/teachers  
 **Brand:** Laughing Dragons / Fruit Friends
 
 ## Pitch
 
-Fresh printable and on-screen mazes every visit. Draw a path from **Start** to **Finish** with finger or mouse — or print the PDF-friendly page for offline puzzle time. Difficulty presets change grid size and dead-end density. A classic puzzle format that pairs with Fruit Friends theming when skins land.
+Fresh printable and on-screen mazes every visit. Draw a path from **Start** to **Finish** with finger or mouse - or print the PDF-friendly page for offline puzzle time. Difficulty presets change grid size and dead-end density. A classic puzzle format that pairs with Fruit Friends theming when skins land.
 
 ## Core loop
 
@@ -32,13 +32,13 @@ Fresh printable and on-screen mazes every visit. Draw a path from **Start** to *
 
 | Preset | Grid | Cell px (screen) | Dead-end feel |
 |--------|------|------------------|---------------|
-| Small | 8×8 | 32 | Few branches — good for ages 6–7 |
+| Small | 8×8 | 32 | Few branches - good for ages 6-7 |
 | Medium | 12×12 | 28 | Balanced |
-| Large | 16×16 | 24 | More dead ends — ages 9+ |
+| Large | 16×16 | 24 | More dead ends - ages 9+ |
 
 Default preset: **Medium**. Key: `ldp-maze-generator-size`.
 
-Solve Run may mix presets — player chooses before each maze.
+Solve Run may mix presets - player chooses before each maze.
 
 ## Generation algorithm (v1)
 
@@ -48,12 +48,12 @@ Recursive backtracker on odd-sized cell grid; render walls as thick strokes. Sta
 
 - 3D mazes
 - Multiplayer race
-- Auto-grant Coloring Page Studio — Terminal `LOGIN COLOR-SVG-13`
-- Themed wall textures (dragon scales) — CSS solid walls v1
+- Auto-grant Coloring Page Studio - Terminal `LOGIN COLOR-SVG-13`
+- Themed wall textures (dragon scales) - CSS solid walls v1
 
 ## References
 
 - Unlock registry: `assets/js/kids-unlocks.js`
-- Hub card: `assets/js/games.js` — `id: "maze-generator"`
+- Hub card: `assets/js/games.js` - `id: "maze-generator"`
 
 See also: `LEVELS.md`, `HUD.md`, `BUILD-PLAN.md`, `UNLOCK.md`

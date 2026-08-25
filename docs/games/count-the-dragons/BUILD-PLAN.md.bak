@@ -1,11 +1,11 @@
-# Count the Dragons — Build plan (Dave)
+# Count the Dragons - Build plan (Dave)
 
 ## Files to create
 
 | Path | Purpose |
 |------|---------|
 | `games/count-the-dragons/index.html` | Gate + landing + `#count-dragons-root` |
-| `assets/js/count-the-dragons.js` | `initCountTheDragons()` — scene layout, pad, round state, win |
+| `assets/js/count-the-dragons.js` | `initCountTheDragons()` - scene layout, pad, round state, win |
 | `assets/js/count-the-dragons-data.js` | Character sprite list, decoy list, tier config |
 | `assets/css/count-the-dragons.css` | Scene, pad, feedback, overlays |
 
@@ -39,8 +39,8 @@ export const TIERS = {
 
 1. Pick N from tier range (avoid same N twice in a row)
 2. Pick N character sprites (with replacement allowed)
-3. Place via rejection sampling inside `#ctd-scene` bounds — min 16 px gap between sprite centers
-4. Hard: add 1–2 decoys using same placement rules
+3. Place via rejection sampling inside `#ctd-scene` bounds - min 16 px gap between sprite centers
+4. Hard: add 1-2 decoys using same placement rules
 
 ## Gate
 
@@ -66,7 +66,7 @@ Do not auto-grant `simon-says-unlocked`.
 - [ ] Gate + initGameChrome landing
 - [ ] Difficulty tier + localStorage
 - [ ] Random N + sprite placement
-- [ ] Number pad 1–10 (1–5 on Easy)
+- [ ] Number pad 1-10 (1-5 on Easy)
 - [ ] Correct / wrong feedback
 - [ ] Hard tier decoys + one-time hint
 - [ ] 10-round session + progress HUD
