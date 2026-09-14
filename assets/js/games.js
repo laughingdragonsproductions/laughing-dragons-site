@@ -9,8 +9,47 @@ window.GAMES_DATA = {
     "These are original Laughing Dragons studio products - separate from the Fruit Friends Kids Show under <a href=\"/kids/\">Kids Show</a>, which is ad-free. Games here ship with real written guides, tips, and walkthroughs alongside the play area. " +
     "New games ship when they are complete, tested, and documented - not as empty stubs.",
 
+  /** Shown first in the New games hub section (newest first). */
+  newGameIds: ["count-the-dragons", "typing-race", "hangman-lite"],
+
   /** Ordered catalog - unlock order is internal; UI shows a games list. */
   path: [
+    {
+      id: "count-the-dragons",
+      title: "Count the Dragons",
+      description:
+        "Count laughing dragons hiding in busy Fruit Search scenes - tap the right number. Always playable.",
+      longDescription:
+        "Count the Dragons drops dragon tiles into colorful Fruit Search maps crowded with Fruit Friends. Only the dragons count - scan the scene and tap 1-10. Easy uses 1-5; Hard packs in more crowd and decoys. Clear 10 rounds to earn SIMON-GLOW-8. Always open - no unlock required.",
+      href: "/games/count-the-dragons/",
+      image: "/assets/kids/games/fruit-search/maps/map-2.png",
+      status: "live",
+      rewardCode: "SIMON-GLOW-8",
+    },
+    {
+      id: "typing-race",
+      title: "Typing Race",
+      description:
+        "Letters appear on screen - type them before they vanish. Always playable keyboard warm-up.",
+      longDescription:
+        "Typing Race is a short-session keyboard warm-up: letters flash on screen, and you type the matching key before time runs out. Same workroom energy as Terminal Trainer, but bite-sized for younger players building letter recognition and typing speed. Clear a Heat of 20 correct letters to earn SORT-COLOR-6. Always open - no unlock required.",
+      href: "/games/typing-race/",
+      image: "/assets/kids/games/terminal/desk-monitor-frame.png",
+      status: "live",
+      rewardCode: "SORT-COLOR-6",
+    },
+    {
+      id: "hangman-lite",
+      title: "Hangman Lite",
+      description:
+        "Guess dragon words one letter at a time - miss too often and the stickman goes limp. Always playable.",
+      longDescription:
+        "Hangman Lite is classic hangman with dragon-themed words - FIRE, DRAGON, TALON, LAUGHING, and more. Guess letters to reveal the word before misses run out. A simple stickman fills in on wrong guesses; lose a word and the figure goes limp before a new random word appears. Clear a 5-word Word Run to earn WHACK-GRID-10 for Terminal Trainer. Always open - no unlock required.",
+      href: "/games/hangman-lite/",
+      image: "/assets/kids/games/memory-matching/tiles/green.png",
+      status: "live",
+      rewardCode: "WHACK-GRID-10",
+    },
     {
       id: "sliding-scale",
       title: "The Sliding Scale",
@@ -122,20 +161,6 @@ window.GAMES_DATA = {
       rewardCode: "TYPE-FAST-5",
     },
     {
-      id: "typing-race",
-      title: "Typing Race",
-      description: "Letters appear on screen - type them before they vanish. A fast sibling to Terminal Trainer.",
-      longDescription:
-        "Typing Race is a short-session keyboard warm-up: letters fall or flash, and you type the matching key before time runs out. Same workroom energy as Terminal Trainer, but bite-sized for younger players building letter recognition and typing speed.",
-      status: "in-production",
-      requiresUnlock: "typing-race-unlocked",
-      lockedDescription: "Clear Alphabet Trace to unlock Typing Race.",
-      unlockHint: "Beat earlier games or LOGIN their codes in Terminal Trainer.",
-      unlockHref: "/games/terminal/",
-      unlockButtonLabel: "Open Terminal Trainer",
-      rewardCode: "SORT-COLOR-6",
-    },
-    {
       id: "color-match",
       title: "Color Match Sort",
       description: "Drag fruit into red, yellow, and green bins - classic color sorting with Fruit Friends art.",
@@ -143,25 +168,11 @@ window.GAMES_DATA = {
         "Color Match Sort is a drag-and-drop sorter: pick up fruit characters and drop them into matching color bins. Simple rules, immediate feedback, and bright art. A low-friction sorting puzzle before the harder titles in the catalog.",
       status: "in-production",
       requiresUnlock: "color-match-unlocked",
-      lockedDescription: "Clear Typing Race to unlock Color Match Sort.",
-      unlockHint: "Beat earlier games or LOGIN their codes in Terminal Trainer.",
+      lockedDescription: "Clear Typing Race or LOGIN SORT-COLOR-6 in Terminal Trainer to unlock Color Match Sort.",
+      unlockHint: "Beat Typing Race (always open) or LOGIN SORT-COLOR-6 in Terminal Trainer.",
       unlockHref: "/games/terminal/",
       unlockButtonLabel: "Open Terminal Trainer",
       rewardCode: "COUNT-DRAG-7",
-    },
-    {
-      id: "count-the-dragons",
-      title: "Count the Dragons",
-      description: "Count the Fruit Friends on screen and tap the right number from 1 to 10.",
-      longDescription:
-        "Count the Dragons shows a random group of characters and asks how many you see. Tap the correct number to score. Early math practice with search-friendly counting-game keywords, built for quick rounds and replay.",
-      status: "in-production",
-      requiresUnlock: "count-the-dragons-unlocked",
-      lockedDescription: "Clear Color Match Sort to unlock Count the Dragons.",
-      unlockHint: "Beat earlier games or LOGIN their codes in Terminal Trainer.",
-      unlockHref: "/games/terminal/",
-      unlockButtonLabel: "Open Terminal Trainer",
-      rewardCode: "SIMON-GLOW-8",
     },
     {
       id: "simon-says",
@@ -171,25 +182,11 @@ window.GAMES_DATA = {
         "Simon Says Light Pad is the classic memory sequence game: watch the pad light up, then repeat the pattern. Each round adds another step. Dragon-themed colors and sounds keep it on-brand without heavy art requirements.",
       status: "in-production",
       requiresUnlock: "simon-says-unlocked",
-      lockedDescription: "Clear Count the Dragons to unlock Simon Says Light Pad.",
-      unlockHint: "Beat earlier games or LOGIN their codes in Terminal Trainer.",
+      lockedDescription: "Clear Count the Dragons or LOGIN SIMON-GLOW-8 in Terminal Trainer to unlock Simon Says Light Pad.",
+      unlockHint: "Beat Count the Dragons (always open) or LOGIN SIMON-GLOW-8 in Terminal Trainer.",
       unlockHref: "/games/terminal/",
       unlockButtonLabel: "Open Terminal Trainer",
       rewardCode: "HANG-FRUIT-9",
-    },
-    {
-      id: "hangman-lite",
-      title: "Hangman Lite",
-      description: "Guess Fruit Friend names and simple A-Z words, one letter at a time.",
-      longDescription:
-        "Hangman Lite uses character names and short fruit words from the Laughing Dragons cast. Guess letters to reveal the word before misses run out. Minimal graphics, quick rounds, and a natural tie-in to letter learning.",
-      status: "in-production",
-      requiresUnlock: "hangman-lite-unlocked",
-      lockedDescription: "Clear Simon Says Light Pad to unlock Hangman Lite.",
-      unlockHint: "Beat earlier games or LOGIN their codes in Terminal Trainer.",
-      unlockHref: "/games/terminal/",
-      unlockButtonLabel: "Open Terminal Trainer",
-      rewardCode: "WHACK-GRID-10",
     },
     {
       id: "whack-a-fruit",
@@ -199,8 +196,8 @@ window.GAMES_DATA = {
         "Whack-a-Fruit is a fast reaction game on a nine-cell grid. Characters pop up; tap the one that matches the letter or name prompt. Mobile-friendly, high dopamine, short sessions that still teach letter recognition.",
       status: "in-production",
       requiresUnlock: "whack-a-fruit-unlocked",
-      lockedDescription: "Clear Hangman Lite to unlock Whack-a-Fruit.",
-      unlockHint: "Beat earlier games or LOGIN their codes in Terminal Trainer.",
+      lockedDescription: "Clear Hangman Lite or LOGIN WHACK-GRID-10 in Terminal Trainer to unlock Whack-a-Fruit.",
+      unlockHint: "Beat Hangman Lite (always open) or LOGIN WHACK-GRID-10 in Terminal Trainer.",
       unlockHref: "/games/terminal/",
       unlockButtonLabel: "Open Terminal Trainer",
       rewardCode: "PATTERN-AB-11",
@@ -257,6 +254,17 @@ function isGameUnlocked(game) {
   return window.KIDS_UNLOCKS?.has?.(game.requiresUnlock) === true;
 }
 
+function isNewGame(game) {
+  return (window.GAMES_DATA?.newGameIds || []).includes(game.id);
+}
+
+function liveStatusTag(game) {
+  if (isNewGame(game)) {
+    return `<span class="status-tag status-new">New</span>`;
+  }
+  return `<span class="status-tag status-published">Play now</span>`;
+}
+
 function renderRewardCodeBlock(game) {
   const cleared = window.KIDS_UNLOCKS?.isCleared?.(game.id) === true;
   const code = game.rewardCode || window.KIDS_UNLOCKS?.getRewardCode?.(game.id);
@@ -291,7 +299,7 @@ function renderGameCard(game) {
       ${game.image ? `<img src="${game.image}" alt="" class="game-card-thumb" loading="lazy" width="320" height="180" />` : ""}
       <h2>${game.title}</h2>
       <p>${game.description}</p>
-      <span class="status-tag status-published">Play now</span>
+      ${liveStatusTag(game)}
       ${codeBlock}
     </a>`;
   }
@@ -319,11 +327,26 @@ function renderGameCard(game) {
 function renderGamesHub() {
   const data = window.GAMES_DATA || {};
   const path = data.path || [];
-  const live = path.filter((g) => g.status === "live");
+  const newIds = data.newGameIds || [];
+  const newGames = newIds
+    .map((id) => path.find((g) => g.id === id))
+    .filter((g) => g && g.status === "live");
+  const live = path.filter((g) => g.status === "live" && !newIds.includes(g.id));
   const more = path.filter((g) => g.status !== "live");
 
+  const newCards = newGames.map(renderGameCard).join("");
   const liveCards = live.map(renderGameCard).join("");
   const moreCards = more.map(renderGameCard).join("");
+
+  const newSection = newGames.length
+    ? `<section class="kids-section reveal" id="new-games">
+      <div class="kids-section-head">
+        <h2>New games</h2>
+        <p>Three fresh titles - always open, no unlock needed. Jump in and play.</p>
+      </div>
+      <div class="episode-grid">${newCards}</div>
+    </section>`
+    : "";
 
   return `
     <header class="page-header reveal">
@@ -334,6 +357,7 @@ function renderGamesHub() {
     <div class="prose reveal">
       <p>${data.intro || ""}</p>
     </div>
+    ${newSection}
     <section class="kids-section reveal" id="live-games">
       <div class="kids-section-head">
         <h2>Play now</h2>

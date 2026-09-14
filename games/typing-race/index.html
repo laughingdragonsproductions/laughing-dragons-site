@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Typing Race - type letters before the timer runs out. Laughing Dragons keyboard warm-up game."
+    />
+    <title>Typing Race</title>
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="stylesheet" href="/assets/css/typing-race.css?v=20260910" />
+    <link rel="canonical" href="https://laughing-dragons.com/games/typing-race/" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7048606415692002"
+     crossorigin="anonymous"></script>
+  </head>
+  <body class="typing-race-page game-page">
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/kids-unlocks.js"></script>
+
+    <div id="game-header-mount"></div>
+    <div class="container game-landing-wrap">
+      <div id="game-landing-mount"></div>
+      <div id="game-ad-top" class="container"></div>
+    </div>
+
+    <div id="game-play" class="container">
+      <div id="typing-race-root" class="typing-race-root" aria-label="Typing Race game"></div>
+    </div>
+
+    <div class="container" id="game-ad-bottom"></div>
+    <div id="game-footer-mount"></div>
+
+    <script src="/assets/js/games.js"></script>
+    <script src="/assets/js/site.js"></script>
+    <script src="/assets/js/typing-race.js?v=20260910"></script>
+    <script>
+      initGameChrome({
+        title: "Typing Race",
+        description: "Letters appear on screen - type them before they vanish.",
+        activePath: "/games/typing-race/",
+        landingHtml: `
+          <article class="game-landing prose reveal">
+            <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
+            <p class="pillar-eyebrow">Laughing Dragons Games</p>
+            <h1>Typing Race</h1>
+            <p class="page-lead">A bite-sized keyboard sprint - type each letter before the timer bar runs out.</p>
+            <p>Clear a Heat of 20 correct letters to earn your unlock code. Practice mode is untimed for warm-ups.</p>
+            <h2>How to play</h2>
+            <ol>
+              <li>Choose Easy (A-M), Normal, or Hard.</li>
+              <li>Type the big letter on your keyboard or tap the on-screen keys.</li>
+              <li>Hit 20 correct letters in one Heat to win.</li>
+            </ol>
+            <h2>Reward code</h2>
+            <p>Always open from the Games hub. Clearing a Heat reveals code <strong>SORT-COLOR-6</strong> for Terminal Trainer.</p>
+            <p><a class="btn btn-primary" href="#game-play">Play now ↓</a></p>
+          </article>`,
+      });
+    </script>
+  </body>
+</html>

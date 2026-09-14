@@ -58,7 +58,7 @@ After the domain is live:
 6. Ensure Privacy, Terms, About, and Contact are linked (footer already does this)
 7. Request review (can take days)
 
-See [ADSENSE-MANUAL.md](ADSENSE-MANUAL.md) for the full compliance checklist.
+See [ADSENSE-MANUAL.md](ADSENSE-MANUAL.md) for the compliance matrix and [ADSENSE-GO-LIVE.md](ADSENSE-GO-LIVE.md) for the full step-by-step go-live checklist.
 
 ## 6. Search Console
 

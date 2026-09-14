@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Hangman Lite - guess dragon words letter by letter. Classic stickman hangman from Laughing Dragons."
+    />
+    <title>Hangman Lite</title>
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="stylesheet" href="/assets/css/hangman-lite.css?v=20260910" />
+    <link rel="canonical" href="https://laughing-dragons.com/games/hangman-lite/" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7048606415692002"
+     crossorigin="anonymous"></script>
+  </head>
+  <body class="hangman-page game-page">
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/kids-unlocks.js"></script>
+
+    <div id="game-header-mount"></div>
+    <div class="container game-landing-wrap">
+      <div id="game-landing-mount"></div>
+      <div id="game-ad-top" class="container"></div>
+    </div>
+
+    <div id="game-play" class="container">
+      <div id="hangman-lite-root" class="hangman-root" aria-label="Hangman Lite game"></div>
+      <div class="sr-announce" id="hangman-sr-announce" aria-live="assertive"></div>
+    </div>
+
+    <div class="container" id="game-ad-bottom"></div>
+    <div id="game-footer-mount"></div>
+
+    <script src="/assets/js/games.js"></script>
+    <script src="/assets/js/site.js"></script>
+    <script src="/assets/js/hangman-lite-words.js?v=20260910"></script>
+    <script src="/assets/js/hangman-lite.js?v=20260910b"></script>
+    <script>
+      initGameChrome({
+        title: "Hangman Lite",
+        description: "Guess dragon words letter by letter before the stickman goes limp.",
+        activePath: "/games/hangman-lite/",
+        landingHtml: `
+          <article class="game-landing prose reveal">
+            <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
+            <p class="pillar-eyebrow">Laughing Dragons Games</p>
+            <h1>Hangman Lite</h1>
+            <p class="page-lead">Classic hangman with dragon words - guess letters, fill the slots, and keep the stickman standing.</p>
+            <p>Pick letters from the A-Z pad or your keyboard. Correct guesses fill the word; wrong guesses draw the stickman. Miss them all and the figure goes limp - then a new random word appears.</p>
+            <h2>How to play</h2>
+            <ol>
+              <li>Choose Easy, Normal, or Hard.</li>
+              <li>Start a Word Run (5 solves) or Free Play.</li>
+              <li>Guess letters until the dragon word is complete.</li>
+            </ol>
+            <h2>Reward code</h2>
+            <p>Always open from the Games hub. Clearing a Word Run reveals code <strong>WHACK-GRID-10</strong> for Terminal Trainer.</p>
+            <p><a class="btn btn-primary" href="#game-play">Play now ↓</a></p>
+          </article>`,
+      });
+    </script>
+  </body>
+</html>

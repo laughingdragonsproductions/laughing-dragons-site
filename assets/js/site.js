@@ -76,28 +76,37 @@ function adSlotWrap(slotKey, wrapClass, unitClass = "ad-unit") {
   return inner ? `<div class="ad-slot ${wrapClass}">${inner}</div>` : "";
 }
 
+const ADSENSE_SLOT_FORMATS = {
+  header: { format: "auto", responsive: true },
+  footer: { format: "auto", responsive: true },
+  inContent: { format: "autorelaxed", responsive: false },
+};
+
 function renderAdSlot(key, className = "ad-unit") {
   const cfg = window.SITE_CONFIG?.adsense || {};
   const slot = cfg.slots?.[key];
   if (!cfg.publisherId) return "";
-  if (slot) {
-    return `<ins class="adsbygoogle ${className}"
-    style="display:block"
-    data-ad-client="${cfg.publisherId}"
-    data-ad-slot="${slot}"
-    data-ad-format="auto"
-    data-full-width-responsive="true"></ins>`;
-  }
-  return `<ins class="adsbygoogle ${className}"
-    style="display:block"
-    data-ad-client="${cfg.publisherId}"
-    data-ad-format="auto"
-    data-full-width-responsive="true"></ins>`;
+  const meta = ADSENSE_SLOT_FORMATS[key] || { format: "auto", responsive: true };
+  if (!slot && key === "inContent") return "";
+
+  const attrs = [
+    `class="adsbygoogle ${className}"`,
+    'style="display:block"',
+    `data-ad-client="${cfg.publisherId}"`,
+    `data-ad-format="${meta.format}"`,
+  ];
+  if (slot) attrs.push(`data-ad-slot="${slot}"`);
+  if (meta.responsive) attrs.push('data-full-width-responsive="true"');
+
+  return `<ins ${attrs.join("\n    ")}></ins>`;
 }
 
 function pushAds() {
   try {
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
+    const units = document.querySelectorAll("ins.adsbygoogle");
+    units.forEach(() => {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    });
   } catch (_) {
     /* AdSense not loaded yet */
   }
@@ -159,6 +168,18 @@ function initGameChrome({ title, description, activePath, landingHtml }) {
   const adBottom = document.getElementById("game-ad-bottom");
   if (monetize && adTop) adTop.innerHTML = adSlotWrap("header", "ad-top");
   if (monetize && adBottom) adBottom.innerHTML = adSlotWrap("footer", "ad-bottom");
+
+  if (monetize) {
+    const landingWrap = document.querySelector(".game-landing-wrap");
+    const inContentHtml = adSlotWrap("inContent", "ad-in-content");
+    if (landingWrap && inContentHtml && !document.getElementById("game-ad-in-content")) {
+      const mount = document.createElement("div");
+      mount.id = "game-ad-in-content";
+      mount.className = "container";
+      mount.innerHTML = inContentHtml;
+      landingWrap.insertAdjacentElement("afterend", mount);
+    }
+  }
 
   const footerMount = document.getElementById("game-footer-mount");
   if (footerMount) footerMount.innerHTML = renderFooter();
@@ -246,6 +267,7 @@ function initPage({ title, description, activePath, content, hero = false, media
     <main class="${hasFullBleedHero ? "page-main" : "container page-main page-inner"}">
       ${!hero && adSlots ? adSlotWrap("header", "ad-top") : ""}
       ${content}
+      ${adSlots ? adSlotWrap("inContent", "ad-in-content") : ""}
       ${adSlots ? adSlotWrap("footer", "ad-bottom") : ""}
     </main>
     ${renderFooter()}

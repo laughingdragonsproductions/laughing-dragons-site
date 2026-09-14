@@ -1,5 +1,7 @@
 # AdSense - manual steps for Brandon
 
+**Go-live checklist:** see [ADSENSE-GO-LIVE.md](ADSENSE-GO-LIVE.md) for the full step-by-step (deploy, slot IDs, CMP, Shopify, review).
+
 Games-first monetization is live in code. Complete these steps in **Google AdSense** (not in the repo):
 
 ## Compliance matrix (Aug 2026)
@@ -17,7 +19,7 @@ Games-first monetization is live in code. Complete these steps in **Google AdSen
 | Tools section monetized | **Ready** | Live `/tools/` pages eligible; `coming-soon` stub excluded |
 | Kids section ad-free | **Ready** | No script or units on `/kids/**` (child-directed Kids Show only) |
 | Publisher script on site | **Ready** | Homepage `<head>` + `site.js` on non-kids, non-WIP pages |
-| Ad units configured | **You** | Paste slot IDs in `config.js` after creating units |
+| Ad units configured | **Ready** | Multiplex `7102817128` in `config.js` → `inContent`; paste header/footer slot IDs when created |
 | Auto ads disabled | **You** | AdSense dashboard - prior policy flag from auto ads on thin pages |
 | EU consent (CMP) | **You** | AdSense → Privacy & messaging → European regulations |
 | Search Console | **Recommended** | Verify domain, submit sitemap |
@@ -49,26 +51,47 @@ Games are standalone studio products. They may share character art with the Kids
 
 5. View `/games/fruit-search/` - confirm landing guide + ad mount divs (`#game-ad-top`, `#game-ad-bottom`) are present.
 
-## 1. Create ad units (Games section only)
+## 1. Create ad units
 
-AdSense → **Ads** → **By ad unit** → **Display ads**
+AdSense → **Ads** → **By ad unit**
 
-| Unit name | Site |
-|-----------|------|
-| LD Games Header | laughing-dragons.com |
-| LD Games Footer | laughing-dragons.com |
+| Unit name | Format | Site | Config key |
+|-----------|--------|------|------------|
+| LD Multiplex | Multiplex ads | laughing-dragons.com | `inContent` → `7102817128` |
+| LD Games Header | Display ads | laughing-dragons.com | `header` |
+| LD Games Footer | Display ads | laughing-dragons.com | `footer` |
 
-Copy each **data-ad-slot** value into `assets/js/config.js`:
+Copy each **data-ad-slot** into `assets/js/config.js`:
 
 ```javascript
 adsense: {
   publisherId: "ca-pub-7048606415692002",
   slots: {
-    header: "YOUR_SLOT_ID",
-    footer: "YOUR_SLOT_ID",
-    inContent: "",
+    header: "YOUR_HEADER_SLOT",
+    footer: "YOUR_FOOTER_SLOT",
+    inContent: "7102817128",
   },
 },
+```
+
+**Placement on laughing-dragons.com**
+
+| Section | Header | Multiplex (in-content) | Footer |
+|---------|--------|------------------------|--------|
+| `/games/` hub + live game pages | top | between guide and play area | bottom |
+| `/tools/` hub + live tool pages | top | after tool content | bottom |
+| `/kids/` | — | — | — |
+
+**Shopify (laughingdragonsproductions.com)** — snippets in `desktop-agent/shopify-theme-ldp/snippets/`:
+
+- `ldp-adsense-multiplex.liquid` — multiplex unit (slot `7102817128`)
+- `ldp-adsense-display.liquid` — display unit; pass `slot_id` when header/footer units exist
+
+Example in a collection template section:
+
+```liquid
+{% render 'ldp-adsense-multiplex' %}
+{% render 'ldp-adsense-display', slot_id: 'YOUR_HEADER_SLOT' %}
 ```
 
 Push to GitHub after updating. The site loads the AdSense **publisher script** on all pages except `/kids/**` and `coming-soon` WIP paths. **Ad units** render on all finished `/games/` and live `/tools/` pages once slot IDs are filled.

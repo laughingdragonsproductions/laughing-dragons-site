@@ -11,11 +11,11 @@
 | dragon-vball | n/a (standalone) | done | Always playable at /games/dragon-vball/ - forest Pong vs AI |
 | fruit-search | ready S004 | done S005 | Playable v1 at /games/fruit-search/ |
 | alphabet-trace | ready S006 | blocked | Spec pack complete - Dave may scaffold |
-| typing-race | ready S006 | blocked | Spec pack complete - Dave may scaffold |
+| typing-race | ready S006 | done | Playable v1 at /games/typing-race/ |
 | color-match | ready S006 | blocked | Spec pack complete - Dave may scaffold |
-| count-the-dragons | ready S007 | blocked | Spec pack complete - Dave may scaffold |
+| count-the-dragons | ready S007 | done | Playable v1 at /games/count-the-dragons/ |
 | simon-says | ready S007 | blocked | Spec pack complete - Dave may scaffold |
-| hangman-lite | ready S007 | blocked | Spec pack complete - Dave may scaffold |
+| hangman-lite | ready S007 | done | Playable v1 at /games/hangman-lite/ - stickman + dragon words |
 | whack-a-fruit | ready S008 | blocked | Spec pack complete - Dave may scaffold |
 | pattern-builder | ready S008 | blocked | Spec pack complete - Dave may scaffold |
 | maze-generator | ready S008 | blocked | Spec pack complete - Dave may scaffold |
@@ -38,3 +38,6 @@
 | 2026-08-14 | Cursor | Pre-pipeline registration - sitemap, Facebook blurb, games-pipeline.md |
 | 2026-08-15 | Cursor | Knight AI aligned with CAT-AI.md - real-time 8-way BFS, cluster trap, batch convert, push chains |
 | 2026-08-14 | Cursor | The Sliding Scale v1 playable - standalone at /games/sliding-scale/, workshop/logo art |
+| 2026-09-10 | Cursor | Hangman Lite v1 - stickman limp-on-lose, dragon word pool, neon theme |
+| 2026-09-10 | Cursor | Typing Race v1 playable at /games/typing-race/ |
+| 2026-09-10 | Cursor | Count the Dragons v1 playable at /games/count-the-dragons/ |

@@ -19,7 +19,7 @@ window.SITE_CONFIG = {
     slots: {
       header: "",
       footer: "",
-      inContent: "",
+      inContent: "7102817128",
     },
   },
 };
