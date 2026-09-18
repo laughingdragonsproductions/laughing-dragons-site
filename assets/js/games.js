@@ -6,7 +6,7 @@ window.GAMES_DATA = {
     "Each game teaches something useful while feeling like a classic flash-era arcade experience: retro terminals, tile matching, hidden-object search, letter tracing, counting, sorting, and more. " +
     "Beat a game to earn an unlock code, then hack the next title open in Terminal Trainer with LOGIN. Progress saves in your browser - no account needed. " +
     "Live games include full how-to-play guides. Later titles stay Locked until you earn them; once unlocked, a game that is still being finished shows as In production until it ships. " +
-    "These are original Laughing Dragons studio products - separate from the Fruit Friends Kids Show under <a href=\"/kids/\">Kids Show</a>, which is ad-free. Games here ship with real written guides, tips, and walkthroughs alongside the play area. " +
+    "These are original Laughing Dragons studio products. Games here ship with real written guides, tips, and walkthroughs alongside the play area. " +
     "New games ship when they are complete, tested, and documented - not as empty stubs.",
 
   /** Shown first in the New games hub section (newest first). */
@@ -377,7 +377,6 @@ function renderGamesHub() {
       <p><strong>Terminal Trainer</strong> is open to everyone - and it is also the hack console for the whole catalog. Beat a game and its unlock code appears on that game’s Play now card. Open Terminal Trainer, type <strong>LOGIN</strong> followed by the code, and the next game opens.</p>
       <p>Example: beat Terminal Trainer and you earn <strong>FORGE-GATE-7</strong> (Memory Matching is also granted automatically). Beat Memory Matching at or under par and you earn <strong>FIND-WALDO-3</strong> for Fruit Search. Codes stay on cleared cards so returning players can look them up anytime.</p>
       <p>Progress and codes save in your browser - no account needed.</p>
-      <p>The Fruit Friends <a href="/kids/">Kids Show</a> - episodes, character sheets, and printable files - lives in a separate ad-free section. Games here are standalone Laughing Dragons products.</p>
     </div>`;
 }
 

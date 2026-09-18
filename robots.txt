@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /kids/
 
 Sitemap: https://laughing-dragons.com/sitemap.xml

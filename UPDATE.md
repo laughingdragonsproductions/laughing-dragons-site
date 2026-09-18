@@ -55,11 +55,7 @@ Options: `-HubOnly`, `-LitPrintzOnly`, `-ReptoolsOnly`, `-Them1947Only`, `-Assoc
 
 | What you want to add | File(s) to edit |
 |---------------------|-----------------|
-| **Kids Show episode on YouTube** | `assets/js/kids.js` - set `youtubeUrl` + `status: "published"` |
-| **Episode finished, premiere pending** | `assets/js/kids.js` - set `status: "premiere-soon"` (shows **Premiering soon** tag) |
-| **New Kids episode row** | `assets/js/kids.js` - add object to `episodes[]` |
-| **3D printable STL for a character** | `assets/js/kids.js` - add `printUrl` when ready (see comments in file) |
-| **Character images** | PNGs in `assets/kids/characters/` as `{letter}.png` (a.png-z.png) |
+| **News hub / TAG links** | `news/index.html`; URLs in `assets/js/config.js` → `links.associatedGuess*` |
 | **New free tool** | Copy a file in `tools/`, add to `assets/js/tools.js` `TOOLS`, add URL to `sitemap.xml` |
 | **Blog post** | New HTML under `blog/posts/`, link from `blog/index.html`, add to `sitemap.xml` |
 | **Shop / Etsy / Shopify URL** | `assets/js/config.js` → `links` |
@@ -71,14 +67,18 @@ Options: `-HubOnly`, `-LitPrintzOnly`, `-ReptoolsOnly`, `-Them1947Only`, `-Assoc
 | **New brand images** | `assets/brand/` |
 | **AdSense slot IDs** | `assets/js/config.js` → `adsense.slots` (script loads sitewide except `/kids/`; units only on `/games/`) |
 | **Home hero / pillar copy** | `index.html` |
-| **Home pillar photos (Kids / Tools)** | `assets/kids/best-shot.png`, `assets/tools/tools-pillar.png`; pass `image` in `index.html` `renderPillar()` |
-| **Kids game (coming soon)** | Add to `games[]` in `assets/js/kids.js`; link to `/kids/games/coming-soon/` until live |
-| **Character detail pages** | Run `python scripts/generate-character-pages.py` after template changes |
+| **Home pillar photos (Tools)** | `assets/tools/tools-pillar.png`; pass `image` in `index.html` `renderPillar()` |
 | **Tool coming soon stub** | Add to `TOOLS_COMING_SOON` in `assets/js/tools.js` → links to `tools/coming-soon.html` |
 
 ---
 
-## Kids Show - publish an episode
+## Kids Show - currently hidden
+
+The Kids Show (`/kids/`) is **fully hidden from public chrome** until release: removed from nav, home, about, media, sitemap, and disallowed in `robots.txt`. Files under `kids/` and `assets/js/kids.js` stay in the repo so you can turn it back on later.
+
+To restore: re-add `{ href: "/kids/", label: "Kids Show" }` to `NAV` in `site.js`, restore the home pillar, re-add sitemap URLs, remove the `Disallow: /kids/` line in `robots.txt`, and put Kids mentions back in About / Media copy.
+
+### Publish an episode (when ready)
 
 Edit `assets/js/kids.js`:
 

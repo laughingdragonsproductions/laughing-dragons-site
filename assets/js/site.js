@@ -1,11 +1,11 @@
 const NAV = [
   { href: "/games/", label: "Games" },
-  { href: "/kids/", label: "Kids Show" },
   { href: "/tools/", label: "Tools" },
   { href: "/shop/", label: "Shop" },
   { href: "/prints/", label: "Prints" },
   { href: "/laser/", label: "Laser" },
   { href: "/apps/", label: "Apps" },
+  { href: "/news/", label: "News" },
   { href: "/media/", label: "Media" },
   { href: "/about/", label: "About" },
 ];
@@ -28,8 +28,8 @@ function renderHeader(activePath) {
               (item.href === "/laser/" && (activePath === "/laser/" || (activePath && activePath.startsWith("/laser/")))) ||
               (item.href === "/games/" &&
                 (activePath === "/games/" || (activePath && activePath.startsWith("/games/")))) ||
-              (item.href === "/kids/" &&
-                (activePath === "/kids/" || (activePath && activePath.startsWith("/kids/"))));
+              (item.href === "/news/" &&
+                (activePath === "/news/" || (activePath && activePath.startsWith("/news/"))));
             return `<a href="${item.href}" class="nav-link${active ? " active" : ""}">${item.label}</a>`;
           }
         ).join("")}
@@ -197,10 +197,10 @@ function renderHero() {
     posterSrc: "/assets/brand/ldp-workroom-banner.png",
     eyebrow: "PRODUCTIONS",
     title: "Laughing Dragons",
-    subline: "Free browser games, the Fruit Friends Kids Show, learning tools, and maker gear from the workroom floor.",
+    subline: "Free browser games, studio news, learning tools, and maker gear from the workroom floor.",
     ctas: [
       { href: "/games/", label: "Play games", primary: true },
-      { href: "/kids/", label: "Kids Show", primary: true },
+      { href: "/news/", label: "News", primary: true },
       { href: "#explore", label: "Explore everything", ghost: true },
     ],
   });
@@ -249,6 +249,17 @@ function renderPillar({ id, eyebrow, title, body, href, cta, reverse = false, im
   </section>`;
 }
 
+function ensureNoIndexForHiddenKids(path) {
+  if (!path || !path.startsWith("/kids/")) return;
+  let robots = document.querySelector('meta[name="robots"]');
+  if (!robots) {
+    robots = document.createElement("meta");
+    robots.setAttribute("name", "robots");
+    document.head.appendChild(robots);
+  }
+  robots.setAttribute("content", "noindex, nofollow");
+}
+
 function initPage({ title, description, activePath, content, hero = false, mediaHero = null, adSlots = true }) {
   const cfg = window.SITE_CONFIG || {};
   const path = window.location.pathname || activePath || "";
@@ -256,6 +267,7 @@ function initPage({ title, description, activePath, content, hero = false, media
   document.title = title ? `${title} | ${cfg.name}` : cfg.name;
   const meta = document.querySelector('meta[name="description"]');
   if (meta && description) meta.content = description;
+  ensureNoIndexForHiddenKids(path);
 
   const root = document.getElementById("app");
   if (!root) return;

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Laughing Dragons news - The Associated Guess is our official news studio. Stories, newsroom coverage, and interview lives on YouTube." />
+    <title>News</title>
+    <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <link rel="canonical" href="https://laughing-dragons.com/news/" />
+</head>
+  <body>
+    <div id="app"></div>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/site.js"></script>
+    <script>
+      const links = window.SITE_CONFIG?.links || {};
+      initPage({
+        title: "News",
+        description: "Laughing Dragons news - The Associated Guess is our official news studio. Stories, newsroom coverage, and interview lives on YouTube.",
+        activePath: "/news/",
+        content: `
+          <header class="page-header reveal">
+            <p class="pillar-eyebrow">Official news studio</p>
+            <h1>News</h1>
+            <p>The Associated Guess is the news arm of Laughing Dragons Productions - written coverage lives there; interview lives and studio video land on YouTube.</p>
+          </header>
+          <section class="link-grid reveal">
+            <a class="link-card" href="${links.associatedGuess || "https://theassociatedguess.com"}" target="_blank" rel="noopener noreferrer">
+              <h2>The Associated Guess</h2>
+              <p>Open the paper - headlines, sections, and the full newsroom at theassociatedguess.com.</p>
+            </a>
+            <a class="link-card" href="${links.associatedGuessNewsroom || "https://theassociatedguess.com/newsroom.html"}" target="_blank" rel="noopener noreferrer">
+              <h2>Newsroom</h2>
+              <p>Editorial desk, standards, and how TAG covers the Laughing Dragons world.</p>
+            </a>
+            <a class="link-card" href="${links.youtube || "#"}" target="_blank" rel="noopener noreferrer">
+              <h2>Interview lives</h2>
+              <p>YouTube is where stills, interviews, and live news sessions go up when we record.</p>
+            </a>
+            <a class="link-card" href="${links.associatedGuessRss || "https://theassociatedguess.com/feed.xml"}" target="_blank" rel="noopener noreferrer">
+              <h2>RSS feed</h2>
+              <p>Subscribe to TAG’s feed for new stories as they publish.</p>
+            </a>
+          </section>
+        `,
+      });
+    </script>
+  </body>
+</html>

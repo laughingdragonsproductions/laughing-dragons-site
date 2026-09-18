@@ -2,7 +2,7 @@
 window.SITE_CONFIG = {
   name: "Laughing Dragons",
   legalName: "Laughing Dragons Productions",
-  tagline: "Inside the workroom - media, tools, prints, and maker gear.",
+  tagline: "Inside the workroom - games, news, tools, prints, and maker gear.",
   domain: "https://laughing-dragons.com",
   web3formsAccessKey: "0235bcac-35ff-4f1c-b17b-e08aaf3866e1",
   links: {
@@ -11,6 +11,9 @@ window.SITE_CONFIG = {
     shopifyFuture: "https://laughingdragonsproductions.com",
     youtube: "https://www.youtube.com/@laughingdragons3800",
     tiktok: "https://www.tiktok.com/@laughingdragonsprints",
+    associatedGuess: "https://theassociatedguess.com",
+    associatedGuessNewsroom: "https://theassociatedguess.com/newsroom.html",
+    associatedGuessRss: "https://theassociatedguess.com/feed.xml",
     privacyLegacy: "https://sparkster1010.github.io/LDPPP/privacy.html",
     tools: "https://laughing-dragons.com/tools/",
   },
