@@ -246,7 +246,7 @@ function renderKidsPrintables() {
         )
         .join("")}
     </div>
-    <p class="kids-note reveal">Physical prints and finished models are available in our <a href="/prints/">3D print catalog</a> and through the <a href="/shop/">shop</a> when listed.</p>
+    <p class="kids-note reveal">Physical prints and finished models are available at <a href="https://litprintz.com/collections/all" target="_blank" rel="noopener noreferrer">Lit Printz</a> and through our <a href="/shop/">shop hub</a>.</p>
   </section>`;
 }
 

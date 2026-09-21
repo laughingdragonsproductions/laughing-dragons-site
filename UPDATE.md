@@ -57,10 +57,10 @@ Options: `-HubOnly`, `-LitPrintzOnly`, `-ReptoolsOnly`, `-Them1947Only`, `-Assoc
 | **New free tool** | Copy a file in `tools/`, add to `assets/js/tools.js` `TOOLS`, add URL to `sitemap.xml` |
 | **Blog post** | New HTML under `blog/posts/`, link from `blog/index.html`, add to `sitemap.xml` |
 | **Shop / Lit Printz URL** | `assets/js/config.js` → `links.litPrintz` (also `links.shop` / legacy `etsy` + `shopify` keys) |
-| **Store Buy buttons** | `buyHref` in `assets/js/prints.js` → Lit Printz |
+| **Prints hub / Lit Printz collections** | `/prints/` → `assets/js/prints.js` + `config.js` → `litPrintzCollections`; old `/prints/all/` and `/prints/coolers/` redirect to litprintz.com via `_redirects` |
 | **Contact form / Web3Forms key** | `assets/js/config.js` → `web3formsAccessKey`; page copy in `contact/index.html`; thank-you page at `submissionsent/index.html`. Contact stays in footer Legal (not `NAV`) by design. |
 | **New top-level page** | Create `section/index.html`, add to `assets/js/site.js` `NAV`, add to `sitemap.xml` |
-| **New sellable 3D print (cooler)** | Add `.3mf` to source folder, run `python scripts/extract-cooler-images.py`, push |
+| **New sellable product on Lit Printz** | Add on Shopify at litprintz.com; re-run pull in `lit-printz-site` if mirroring catalog |
 | **Site size check before push** | `.\scripts\check-site-size.ps1` (warns at 80% of 1 GB) |
 | **New brand images** | `assets/brand/` |
 | **AdSense slot IDs** | `assets/js/config.js` → `adsense.slots` (script loads sitewide except `/kids/`; units only on `/games/`) |
