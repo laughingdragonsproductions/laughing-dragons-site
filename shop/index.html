@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Shop Laughing Dragons Productions - Etsy, Shopify apparel, 3D prints, digital files, and Printful-backed shipping." />
+    <meta name="description" content="Shop Laughing Dragons through Lit Printz - our full partner storefront for apparel, prints, and maker gear." />
     <title>Shop</title>
     <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
     <link rel="stylesheet" href="/assets/css/site.css" />
@@ -15,39 +15,48 @@
     <script src="/assets/js/site.js"></script>
     <script>
       const cfg = window.SITE_CONFIG;
+      const store = cfg.links.litPrintz || cfg.links.shop || "https://litprintz.com";
+      const mirror = (cfg.links.litPrintzMirror || "").replace(/\/$/, "");
+      const mirrorCard = mirror
+        ? `<a class="link-card" href="${mirror}/catalog/" target="_blank" rel="noopener noreferrer">
+              <h2>Catalog mirror preview</h2>
+              <p>Browse the Lit Printz static catalog mirror (checkout still runs on litprintz.com).</p>
+            </a>`
+        : "";
       initPage({
         title: "Shop",
-        description: "Shop Laughing Dragons Productions - Etsy, Shopify apparel, 3D prints, digital files, and Printful-backed shipping.",
+        description: "Shop Laughing Dragons through Lit Printz - our full partner storefront for apparel, prints, and maker gear.",
         activePath: "/shop/",
         content: `
           <header class="page-header reveal">
-            <p class="pillar-eyebrow">Inside the workroom</p>
-            <h1>Shop the floor</h1>
-            <p>3D prints, apparel, and maker gear from our floor to yours. Order through our storefronts - fulfillment and shipping handled by our production partners.</p>
+            <p class="pillar-eyebrow">Full partners</p>
+            <h1>Shop with Lit Printz</h1>
+            <p>Laughing Dragons and Lit Printz are full partners. Our entire storefront - including what used to live on Etsy and our Shopify shop - now runs through <strong>litprintz.com</strong>.</p>
           </header>
           <section class="link-grid reveal">
+            <a class="link-card" href="${cfg.links.litPrintzCatalog || store + 'collections/all'}" target="_blank" rel="noopener noreferrer">
+              <h2>Browse Lit Printz catalog</h2>
+              <p>Full product catalog on the live shop - coozies, trays, candle holders, and more at litprintz.com/collections/all.</p>
+            </a>
+            <a class="link-card" href="${store}" target="_blank" rel="noopener noreferrer">
+              <h2>Lit Printz checkout</h2>
+              <p>Buy Laughing Dragons apparel, prints, coolers, and maker gear at litprintz.com - the official checkout for this studio.</p>
+            </a>
             <a class="link-card" href="/prints/">
               <h2>3D Print Catalog</h2>
-              <p>Coolers, coozies, and sellable prints from the workroom - browse designs before you buy.</p>
+              <p>Browse coolers and sellable prints from the workroom - then check out through Lit Printz when you are ready to buy.</p>
             </a>
             <a class="link-card" href="/laser/">
               <h2>Laser Engraving</h2>
-              <p>Glowforge Pro HD cut and engraved signs, gifts, coasters, and personalized pieces from the floor.</p>
+              <p>Glowforge Pro HD signs, gifts, coasters, and personalized pieces. Live listings ship through the Lit Printz store.</p>
             </a>
-            <a class="link-card" href="${cfg.links.shopify}" target="_blank" rel="noopener">
-              <h2>Shopify Store</h2>
-              <p>Primary storefront for apparel, prints, and maker gear. Custom domain: laughingdragonsproductions.com when attached.</p>
-            </a>
-            <a class="link-card" href="${cfg.links.etsy}" target="_blank" rel="noopener">
-              <h2>Etsy - LaughingDragonsForge</h2>
-              <p>Handpicked merch and POD items on Etsy. Great for one-off gifts and maker favorites.</p>
-            </a>
+            ${mirrorCard}
           </section>
           <div class="prose reveal">
-            <h2>3D printing &amp; files</h2>
-            <p>Our workroom bench runs custom 3D prints and a Glowforge Pro HD for laser cut and engraved gifts. Browse the <a href="/prints/">print catalog</a> or <a href="/laser/">laser engraving</a> page, or order through our stores when live.</p>
+            <h2>Why Lit Printz</h2>
+            <p>One partner storefront keeps catalog, checkout, and shipping in one place. If you bookmarked our old Etsy shop or Shopify domain, use <a href="${store}" target="_blank" rel="noopener noreferrer">litprintz.com</a> instead - that is where new drops land.</p>
             <h2>Shipping</h2>
-            <p>Apparel and select merch ship through Printful with tracking. Custom 3D print orders ship from our workroom once production is complete. You'll receive updates by email after checkout.</p>
+            <p>Order details, tracking, and fulfillment follow Lit Printz checkout. For order help, use the contact path on your Lit Printz receipt or our <a href="/contact/">Contact Us</a> form.</p>
           </div>
         `,
       });

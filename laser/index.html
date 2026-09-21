@@ -85,7 +85,7 @@
           subline: "Our Glowforge Pro HD is live on the floor - custom cut and engraved wood, acrylic, leather, and more.",
           ctas: [
             { href: "#make", label: "What we make", primary: true },
-            { href: cfg.links.etsy, label: "Shop on Etsy", primary: true },
+            { href: cfg.links.litPrintz || cfg.links.shop, label: "Shop Lit Printz", primary: true },
           ],
         }),
         content: `
@@ -93,17 +93,16 @@
             <header class="page-header reveal">
               <p class="pillar-eyebrow">Glowforge Pro HD</p>
               <h2>Things we can make</h2>
-              <p>Every piece starts on the workroom floor. Browse the categories below - as we post new laser work, you'll find it in our storefronts.</p>
+              <p>Every piece starts on the workroom floor. Browse the categories below - live laser listings check out through Lit Printz.</p>
             </header>
             <div class="link-grid laser-grid reveal">
               ${categoryCards}
             </div>
             <section class="laser-store reveal">
               <h2>Shop the live store</h2>
-              <p>New laser pieces land in our Etsy and Shopify shops as they're ready. 3D prints from the bench stay on the <a href="/prints/">print catalog</a>.</p>
+              <p>Laughing Dragons and Lit Printz are full partners. New laser pieces land at <a href="${cfg.links.litPrintz || cfg.links.shop}" target="_blank" rel="noopener">litprintz.com</a>. 3D prints from the bench stay on the <a href="/prints/">print catalog</a>.</p>
               <div class="hero-cta">
-                <a class="btn btn-primary" href="${cfg.links.etsy}" target="_blank" rel="noopener">LaughingDragonsForge on Etsy</a>
-                <a class="btn btn-ghost" href="${cfg.links.shopify}" target="_blank" rel="noopener">Shopify storefront</a>
+                <a class="btn btn-primary" href="${cfg.links.litPrintz || cfg.links.shop}" target="_blank" rel="noopener">Shop Lit Printz</a>
                 <a class="btn btn-ghost" href="/shop/">Shop hub</a>
               </div>
             </section>

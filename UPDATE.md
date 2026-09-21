@@ -14,12 +14,10 @@ The site is **GitHub → Cloudflare Pages**. Every push to `main` triggers an au
 
 ```powershell
 cd G:\LocalAIagent\laughing-dragons-site
-python -m http.server 8080
+.\scripts\preview.ps1
 ```
 
-Or run `.\scripts\preview.ps1`
-
-Open `http://localhost:8080/` - hard refresh (Ctrl+F5) if CSS/JS looks stale.
+Default port **8081** (Lit Printz mirror uses **8080**). Open `http://127.0.0.1:8081/` - hard refresh (Ctrl+F5) if CSS/JS looks stale.
 
 ### 2. Commit and push
 
@@ -58,11 +56,11 @@ Options: `-HubOnly`, `-LitPrintzOnly`, `-ReptoolsOnly`, `-Them1947Only`, `-Assoc
 | **News hub / TAG links** | `news/index.html`; URLs in `assets/js/config.js` → `links.associatedGuess*` |
 | **New free tool** | Copy a file in `tools/`, add to `assets/js/tools.js` `TOOLS`, add URL to `sitemap.xml` |
 | **Blog post** | New HTML under `blog/posts/`, link from `blog/index.html`, add to `sitemap.xml` |
-| **Shop / Etsy / Shopify URL** | `assets/js/config.js` → `links` |
+| **Shop / Lit Printz URL** | `assets/js/config.js` → `links.litPrintz` (also `links.shop` / legacy `etsy` + `shopify` keys) |
+| **Store Buy buttons** | `buyHref` in `assets/js/prints.js` → Lit Printz |
 | **Contact form / Web3Forms key** | `assets/js/config.js` → `web3formsAccessKey`; page copy in `contact/index.html`; thank-you page at `submissionsent/index.html`. Contact stays in footer Legal (not `NAV`) by design. |
 | **New top-level page** | Create `section/index.html`, add to `assets/js/site.js` `NAV`, add to `sitemap.xml` |
 | **New sellable 3D print (cooler)** | Add `.3mf` to source folder, run `python scripts/extract-cooler-images.py`, push |
-| **Store goes live (Buy buttons)** | Change `buyHref` in `assets/js/prints.js` to Shopify URL |
 | **Site size check before push** | `.\scripts\check-site-size.ps1` (warns at 80% of 1 GB) |
 | **New brand images** | `assets/brand/` |
 | **AdSense slot IDs** | `assets/js/config.js` → `adsense.slots` (script loads sitewide except `/kids/`; units only on `/games/`) |
@@ -77,6 +75,21 @@ Options: `-HubOnly`, `-LitPrintzOnly`, `-ReptoolsOnly`, `-Them1947Only`, `-Assoc
 The Kids Show (`/kids/`) is **fully hidden from public chrome** until release: removed from nav, home, about, media, sitemap, and disallowed in `robots.txt`. Files under `kids/` and `assets/js/kids.js` stay in the repo so you can turn it back on later.
 
 To restore: re-add `{ href: "/kids/", label: "Kids Show" }` to `NAV` in `site.js`, restore the home pillar, re-add sitemap URLs, remove the `Disallow: /kids/` line in `robots.txt`, and put Kids mentions back in About / Media copy.
+
+## Apps - currently hidden
+
+The Apps hub (`/apps/`) is **hidden from public chrome** until release: removed from nav and sitemap, disallowed in `robots.txt`, and gets `noindex` via `site.js`. Files under `apps/` stay in the repo.
+
+To restore: re-add `{ href: "/apps/", label: "Apps" }` to `NAV`, re-add `/apps/` to `sitemap.xml`, remove `Disallow: /apps/` from `robots.txt`, and restore About / Blog mentions.
+
+## Lit Printz shop partnership
+
+Checkout and the full product catalog live at **litprintz.com**. LDP `/shop/` links to the partner store and catalog mirror.
+
+| What | File(s) |
+|------|---------|
+| **Lit Printz URLs** | `assets/js/config.js` → `links.litPrintz`, `links.litPrintzCatalog` |
+| **Shop hub copy** | `shop/index.html` |
 
 ### Publish an episode (when ready)
 

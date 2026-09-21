@@ -255,7 +255,7 @@
 
     getShopUrl() {
       const links = window.SITE_CONFIG?.links || {};
-      return links.shopify || links.etsy || this.terminalTrainer.shopHref;
+      return links.litPrintz || links.shop || links.shopify || links.etsy || this.terminalTrainer.shopHref;
     },
   };
 

@@ -11,7 +11,7 @@ window.PRINTS_DATA = {
 ],
   items: [],
   perPage: 60,
-  buyHref: "/shop/coming-soon/",
+  buyHref: "https://litprintz.com",
 };
 
 function humanizeCoolerName(filename) {
@@ -127,7 +127,7 @@ function ensurePrintLightbox() {
       <div class="print-lightbox-actions">
         <h2 id="print-lightbox-title" class="print-lightbox-title"></h2>
         <div class="print-lightbox-buttons">
-          <a class="btn btn-primary print-lightbox-buy" href="${window.PRINTS_DATA.buyHref || "/shop/coming-soon/"}">Buy</a>
+          <a class="btn btn-primary print-lightbox-buy" href="${window.PRINTS_DATA.buyHref || "https://litprintz.com"}" target="_blank" rel="noopener noreferrer">Buy</a>
           <button type="button" class="btn btn-ghost print-lightbox-dismiss">Close</button>
         </div>
       </div>
@@ -153,7 +153,9 @@ function openPrintLightbox(item) {
   img.src = item.image;
   img.alt = item.name;
   title.textContent = item.name;
-  buy.href = window.PRINTS_DATA.buyHref || "/shop/coming-soon/";
+  buy.href = window.PRINTS_DATA.buyHref || "https://litprintz.com";
+  buy.target = "_blank";
+  buy.rel = "noopener noreferrer";
   overlay.hidden = false;
   document.body.classList.add("print-lightbox-open");
   overlay.querySelector(".print-lightbox-close")?.focus();

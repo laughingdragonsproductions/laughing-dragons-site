@@ -4,7 +4,6 @@ const NAV = [
   { href: "/shop/", label: "Shop" },
   { href: "/prints/", label: "Prints" },
   { href: "/laser/", label: "Laser" },
-  { href: "/apps/", label: "Apps" },
   { href: "/news/", label: "News" },
   { href: "/media/", label: "Media" },
   { href: "/about/", label: "About" },
@@ -146,7 +145,7 @@ function loadAdSenseScript() {
 
 function resolveAdSlots(adSlots, activePath) {
   const path = window.location.pathname || activePath || "";
-  if (path.startsWith("/kids/")) return false;
+  if (path.startsWith("/kids/") || path.startsWith("/apps/")) return false;
   if (!isMonetizablePath(path)) return false;
   return adSlots;
 }
@@ -249,8 +248,10 @@ function renderPillar({ id, eyebrow, title, body, href, cta, reverse = false, im
   </section>`;
 }
 
-function ensureNoIndexForHiddenKids(path) {
-  if (!path || !path.startsWith("/kids/")) return;
+function ensureNoIndexForHiddenSections(path) {
+  if (!path) return;
+  const hidden = path.startsWith("/kids/") || path.startsWith("/apps/");
+  if (!hidden) return;
   let robots = document.querySelector('meta[name="robots"]');
   if (!robots) {
     robots = document.createElement("meta");
@@ -267,7 +268,7 @@ function initPage({ title, description, activePath, content, hero = false, media
   document.title = title ? `${title} | ${cfg.name}` : cfg.name;
   const meta = document.querySelector('meta[name="description"]');
   if (meta && description) meta.content = description;
-  ensureNoIndexForHiddenKids(path);
+  ensureNoIndexForHiddenSections(path);
 
   const root = document.getElementById("app");
   if (!root) return;
