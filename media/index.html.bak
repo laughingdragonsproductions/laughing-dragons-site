@@ -23,16 +23,16 @@
           <header class="page-header reveal">
             <p class="pillar-eyebrow">Watch &amp; follow</p>
             <h1>Media</h1>
-            <p>Short-form clips and long-form uploads from the Laughing Dragons studio.</p>
+            <p>Short-form clips and long-form uploads from the Laughing Dragons studio. Written news lives on our News hub.</p>
           </header>
           <section class="link-grid reveal">
-            <a class="link-card" href="/kids/#episodes">
-              <h2>Kids Show episodes</h2>
-              <p>Full letter episodes live on the <strong>Kids</strong> hub - YouTube links appear there as each episode publishes.</p>
+            <a class="link-card" href="/news/">
+              <h2>News</h2>
+              <p>The Associated Guess is our official news studio - stories, newsroom, and interview lives.</p>
             </a>
             <a class="link-card" href="${links.youtube || "#"}" target="_blank" rel="noopener noreferrer">
               <h2>YouTube</h2>
-              <p>Laughing Dragons Productions channel - uploads from our social pipeline as episodes and clips go live.</p>
+              <p>Laughing Dragons Productions channel - uploads, clips, and live sessions as they go up.</p>
             </a>
             <a class="link-card" href="${links.tiktok || "#"}" target="_blank" rel="noopener noreferrer">
               <h2>TikTok</h2>

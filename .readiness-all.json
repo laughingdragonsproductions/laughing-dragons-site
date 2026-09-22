@@ -1,0 +1,398 @@
+{
+  "updated_at": "2026-09-21T21:23:13.288054+00:00",
+  "publisher_id": "ca-pub-7048606415692002",
+  "sites": [
+    {
+      "key": "tag",
+      "label": "The Associated Guess",
+      "domain": "theassociatedguess.com",
+      "path": "G:\\LocalAIagent\\Theassociatedguess",
+      "checked_at": "2026-09-21T21:23:12.715404+00:00",
+      "completion_percent": 88,
+      "review_ready_code": false,
+      "content_approval_ready": false,
+      "console_pending": [],
+      "blockers": [
+        {
+          "id": "C6b",
+          "name": "Indexable article ratio (TAG)",
+          "detail": "10/82 indexable (12%); 18 thin (<200w)"
+        }
+      ],
+      "content_blockers": [
+        {
+          "id": "B1",
+          "name": "Provide enough unique content (G-UX)",
+          "detail": "10/82 indexable (12%); 18<200w; 72<300w; 72├ù1min"
+        },
+        {
+          "id": "D1",
+          "name": "No scaled/low-value page patterns (G-SPAM scaled content abuse)",
+          "detail": "18 thin; 72 one-min reads; 0 placeholder slug(s)"
+        },
+        {
+          "id": "E1",
+          "name": "Substantial unique value on indexable pages (rejection bar)",
+          "detail": "Target ΓëÑ85% indexable, Γëñ15% thin"
+        }
+      ],
+      "checks": [
+        {
+          "id": "T4",
+          "name": "Root ads.txt matches publisher ID",
+          "status": "done",
+          "detail": "Found pub-7048606415692002 in ads.txt"
+        },
+        {
+          "id": "T5",
+          "name": "robots.txt allows crawl + sitemap linked",
+          "status": "done",
+          "detail": "robots=ok; sitemap.xml=ok"
+        },
+        {
+          "id": "A1",
+          "name": "Publisher ID wired in config.js",
+          "status": "done",
+          "detail": "assets/js/config.js contains ca-pub-7048606415692002"
+        },
+        {
+          "id": "T6",
+          "name": "Ad unit slot IDs in config.js",
+          "status": "done",
+          "detail": "3 slot(s) filled"
+        },
+        {
+          "id": "T6b",
+          "name": "Hide empty ad placeholders when slots unset",
+          "status": "done",
+          "detail": "Empty slots removed/hidden"
+        },
+        {
+          "id": "T3",
+          "name": "AdSense script in page <head>",
+          "status": "done",
+          "detail": "All sampled pages include adsbygoogle.js"
+        },
+        {
+          "id": "P1",
+          "name": "Privacy: Google ads, cookies, opt-out",
+          "status": "done",
+          "detail": "Privacy page links Ads Settings + aboutads.info"
+        },
+        {
+          "id": "C2-C5",
+          "name": "About, Contact, Privacy, Terms pages present",
+          "status": "done",
+          "detail": "All required pages present"
+        },
+        {
+          "id": "C6",
+          "name": "Enough unique, valuable content",
+          "status": "done",
+          "detail": "85 article pages (target 30+)"
+        },
+        {
+          "id": "C6b",
+          "name": "Indexable article ratio (TAG)",
+          "status": "not",
+          "detail": "10/82 indexable (12%); 18 thin (<200w)"
+        },
+        {
+          "id": "P5",
+          "name": "No ad unit markup on legal/search pages",
+          "status": "done",
+          "detail": "Legal/search pages ad-free"
+        },
+        {
+          "id": "T5b",
+          "name": "Sitemap lists content URLs",
+          "status": "partial",
+          "detail": "10 content URL(s) in sitemap.xml"
+        },
+        {
+          "id": "B1",
+          "name": "Provide enough unique content (G-UX)",
+          "status": "not",
+          "detail": "10/82 indexable (12%); 18<200w; 72<300w; 72├ù1min"
+        },
+        {
+          "id": "B6",
+          "name": "No duplicate/scraped content (G-UX)",
+          "status": "partial",
+          "detail": "Manual: confirm no scraped bodies; automated title dup check only"
+        },
+        {
+          "id": "B7",
+          "name": "No duplicate titles across pages (G-UX)",
+          "status": "done",
+          "detail": "Unique titles in catalog"
+        },
+        {
+          "id": "D1",
+          "name": "No scaled/low-value page patterns (G-SPAM scaled content abuse)",
+          "status": "not",
+          "detail": "18 thin; 72 one-min reads; 0 placeholder slug(s)"
+        },
+        {
+          "id": "E1",
+          "name": "Substantial unique value on indexable pages (rejection bar)",
+          "status": "not",
+          "detail": "Target ΓëÑ85% indexable, Γëñ15% thin"
+        },
+        {
+          "id": "E5",
+          "name": "Ongoing curation visible (rejection bar)",
+          "status": "done",
+          "detail": "editorial-standards + corrections + newsroom"
+        },
+        {
+          "id": "T1",
+          "name": "Live custom domain + HTTPS",
+          "status": "done",
+          "detail": "https://theassociatedguess.com/ HTTP 200"
+        },
+        {
+          "id": "T4live",
+          "name": "Live ads.txt reachable",
+          "status": "done",
+          "detail": "https://theassociatedguess.com/ads.txt ΓåÆ OK"
+        }
+      ]
+    },
+    {
+      "key": "ld",
+      "label": "Laughing Dragons hub",
+      "domain": "laughing-dragons.com",
+      "path": "G:\\LocalAIagent\\laughing-dragons-site",
+      "checked_at": "2026-09-21T21:23:13.040278+00:00",
+      "completion_percent": 95,
+      "review_ready_code": true,
+      "content_approval_ready": false,
+      "console_pending": [],
+      "blockers": [],
+      "content_blockers": [],
+      "checks": [
+        {
+          "id": "T4",
+          "name": "Root ads.txt matches publisher ID",
+          "status": "done",
+          "detail": "Found pub-7048606415692002 in ads.txt"
+        },
+        {
+          "id": "T5",
+          "name": "robots.txt allows crawl + sitemap linked",
+          "status": "done",
+          "detail": "robots=ok; sitemap.xml=ok"
+        },
+        {
+          "id": "A1",
+          "name": "Publisher ID wired in config.js",
+          "status": "done",
+          "detail": "assets/js/config.js contains ca-pub-7048606415692002"
+        },
+        {
+          "id": "T6",
+          "name": "Ad unit slot IDs in config.js",
+          "status": "done",
+          "detail": "3 slot(s) filled"
+        },
+        {
+          "id": "T6b",
+          "name": "Hide empty ad placeholders when slots unset",
+          "status": "done",
+          "detail": "Empty slots removed/hidden"
+        },
+        {
+          "id": "T3",
+          "name": "AdSense script in page <head>",
+          "status": "done",
+          "detail": "All sampled pages include adsbygoogle.js"
+        },
+        {
+          "id": "P1",
+          "name": "Privacy: Google ads, cookies, opt-out",
+          "status": "done",
+          "detail": "Privacy page links Ads Settings + aboutads.info"
+        },
+        {
+          "id": "C2-C5",
+          "name": "About, Contact, Privacy, Terms pages present",
+          "status": "done",
+          "detail": "All required pages present"
+        },
+        {
+          "id": "C6",
+          "name": "Enough unique content",
+          "status": "partial",
+          "detail": "Manual review ΓÇö no article threshold for this site"
+        },
+        {
+          "id": "C6b",
+          "name": "Indexable article ratio (TAG)",
+          "status": "unknown",
+          "detail": "N/A for this site"
+        },
+        {
+          "id": "P5",
+          "name": "No ad unit markup on legal/search pages",
+          "status": "done",
+          "detail": "Legal/search pages ad-free"
+        },
+        {
+          "id": "T5b",
+          "name": "Sitemap lists content URLs",
+          "status": "done",
+          "detail": "35 content URL(s) in sitemap.xml"
+        },
+        {
+          "id": "B1",
+          "name": "Provide enough unique content (G-UX)",
+          "status": "done",
+          "detail": "10 game pages, 10 tool pages; thin HTML: none"
+        },
+        {
+          "id": "D4",
+          "name": "No doorway/stub pages in discovery (G-SPAM / G-THIN)",
+          "status": "done",
+          "detail": "No coming-soon in sitemap"
+        },
+        {
+          "id": "E4",
+          "name": "Authentic tools/services (rejection bar)",
+          "status": "partial",
+          "detail": "Verify each /games/ page has substantive JS-rendered guide (manual)"
+        },
+        {
+          "id": "T1",
+          "name": "Live custom domain + HTTPS",
+          "status": "done",
+          "detail": "https://laughing-dragons.com/ HTTP 200"
+        },
+        {
+          "id": "T4live",
+          "name": "Live ads.txt reachable",
+          "status": "done",
+          "detail": "https://laughing-dragons.com/ads.txt ΓåÆ OK"
+        }
+      ]
+    },
+    {
+      "key": "them1947",
+      "label": "THEM 1947",
+      "domain": "them1947.com",
+      "path": "G:\\LocalAIagent\\Them1947",
+      "checked_at": "2026-09-21T21:23:13.288033+00:00",
+      "completion_percent": 95,
+      "review_ready_code": true,
+      "content_approval_ready": false,
+      "console_pending": [],
+      "blockers": [],
+      "content_blockers": [],
+      "checks": [
+        {
+          "id": "T4",
+          "name": "Root ads.txt matches publisher ID",
+          "status": "done",
+          "detail": "Found pub-7048606415692002 in ads.txt"
+        },
+        {
+          "id": "T5",
+          "name": "robots.txt allows crawl + sitemap linked",
+          "status": "done",
+          "detail": "robots=ok; sitemap.xml=ok"
+        },
+        {
+          "id": "A1",
+          "name": "Publisher ID wired in config.js",
+          "status": "done",
+          "detail": "assets/js/config.js contains ca-pub-7048606415692002"
+        },
+        {
+          "id": "T6",
+          "name": "Ad unit slot IDs in config.js",
+          "status": "done",
+          "detail": "3 slot(s) filled"
+        },
+        {
+          "id": "T6b",
+          "name": "Hide empty ad placeholders when slots unset",
+          "status": "done",
+          "detail": "Empty slots removed/hidden"
+        },
+        {
+          "id": "T3",
+          "name": "AdSense script in page <head>",
+          "status": "done",
+          "detail": "All sampled pages include adsbygoogle.js"
+        },
+        {
+          "id": "P1",
+          "name": "Privacy: Google ads, cookies, opt-out",
+          "status": "done",
+          "detail": "Privacy page links Ads Settings + aboutads.info"
+        },
+        {
+          "id": "C2-C5",
+          "name": "About, Contact, Privacy, Terms pages present",
+          "status": "done",
+          "detail": "All required pages present"
+        },
+        {
+          "id": "C6",
+          "name": "Enough unique content",
+          "status": "partial",
+          "detail": "Manual review ΓÇö no article threshold for this site"
+        },
+        {
+          "id": "C6b",
+          "name": "Indexable article ratio (TAG)",
+          "status": "unknown",
+          "detail": "N/A for this site"
+        },
+        {
+          "id": "P5",
+          "name": "No ad unit markup on legal/search pages",
+          "status": "done",
+          "detail": "Legal/search pages ad-free"
+        },
+        {
+          "id": "T5b",
+          "name": "Sitemap lists content URLs",
+          "status": "done",
+          "detail": "33 content URL(s) in sitemap.xml"
+        },
+        {
+          "id": "B1",
+          "name": "Provide enough unique content (G-UX)",
+          "status": "done",
+          "detail": "28 archive pages; 0 under 150w: []"
+        },
+        {
+          "id": "D3",
+          "name": "No thin affiliate/catalog copy (G-SPAM thin affiliation)",
+          "status": "done",
+          "detail": "Unique essay per SKU page required"
+        },
+        {
+          "id": "E1",
+          "name": "Substantial unique value (rejection bar)",
+          "status": "done",
+          "detail": "0 thin archive page(s)"
+        },
+        {
+          "id": "T1",
+          "name": "Live custom domain + HTTPS",
+          "status": "done",
+          "detail": "https://them1947.com/ HTTP 200"
+        },
+        {
+          "id": "T4live",
+          "name": "Live ads.txt reachable",
+          "status": "done",
+          "detail": "https://them1947.com/ads.txt ΓåÆ OK"
+        }
+      ]
+    }
+  ],
+  "state_path": "G:\\openclaw\\business\\jarvis\\state\\adsense-readiness.json"
+}

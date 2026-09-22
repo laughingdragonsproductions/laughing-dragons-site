@@ -18,7 +18,16 @@
   <body class="terminal-page game-page">
     <div id="game-header-mount"></div>
     <div class="container game-landing-wrap">
-      <div id="game-landing-mount"></div>
+      <div id="game-landing-mount">
+      <article class="game-landing prose reveal">
+  <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
+  <p class="pillar-eyebrow">Laughing Dragons Games</p>
+  <h1>Terminal Trainer</h1>
+  <p class="page-lead">Retro DOS commands on a workroom CRT — HELP, DIR, CD, TYPE, and LOGIN across three levels.</p>
+  <p>Terminal Trainer puts you at a glowing CRT on the Laughing Dragons desk. Type real command-line basics across three hacking-themed levels. Beat Level 3 to unlock Memory Matching and earn FORGE-GATE-7 plus DragonForge15.</p>
+  <p><a class="btn btn-primary" href="#game-play">Play now ↓</a> · <a href="#game-guide">Full guide ↓</a></p>
+</article>
+    </div>
       <div id="game-ad-top" class="container"></div>
     </div>
 
@@ -141,7 +150,17 @@
       </div>
     </div>
 
-    <div class="container" id="game-ad-bottom"></div>
+    
+    <section class="container game-full-guide prose" id="game-guide" aria-label="Full game guide">
+      <h2>Complete guide: Terminal Trainer</h2>
+      <p>Terminal Trainer is Laughing Dragons love letter to the A:\&gt; era. An intro video sets the scene — you are at a workroom desk facing a humming CRT — then the prompt awaits your input. Type commands exactly as you would on a classic DOS shell: HELP lists available tools, DIR shows folder contents, CD moves between directories, TYPE reads text files, and LOGIN attempts passwords or game unlock codes. Tab autocompletes commands; a sidebar offers hints when you are stuck. Three levels escalate from discovery to vault cracking, teaching real navigation skills wrapped in playful hacking fiction.</p>
+      <p>Level one teaches exploration: scan SYSTEM folders, read NOTES files for clues, and learn how paths nest. Level two opens hidden MISSIONS with password-protected directories — combine clues from earlier reads to know what to TYPE and where to CD next. Level three is the true ending: finish the final objective with ECHO LAUGHING-DRAGONS and the monitor flashes YOU WIN. That moment triggers the reward flow that gates much of the Kids catalog.</p>
+      <p>Victory grants two prizes: unlock code FORGE-GATE-7 for Memory Matching Game and store coupon DragonForge15 — fifteen percent off anything in the Laughing Dragons shop. Memory Matching unlocks automatically in local browser storage the instant Level 3 completes; you do not need to re-type the code unless you want practice. The win banner displays both rewards; the games hub card for Memory Matching flips from locked to playable on your next visit. Progress saves under ldp-terminal-trainer-v2 in localStorage, including levels beaten and commands discovered.</p>
+      <p>LOGIN is the master key for the wider game chain. Any reward code earned from other Laughing Dragons titles works here — type LOGIN FORGE-GATE-7 after beating Terminal, or LOGIN FIND-WALDO-3 from Memory Matching, or codes from Count the Dragons, Typing Race, Hangman Lite, and Fruit Search. The terminal validates codes against the studio registry and grants hub unlocks without forcing you to replay games on a new browser. Cleared game cards also display codes for lookup.</p>
+      <p>Difficulty is cognitive, not arcade: read carefully, take notes on paper if needed, and expect backtracking through directories. Younger players may need a co-pilot for spelling long filenames; older kids often speed-run once they internalize DIR and CD. There is no game-over timer on Level one; later levels add pressure through mission structure rather than countdown clocks. Mistyped commands simply return an error — experiment safely.</p>
+      <p>Tips: read every file you TYPE; clues hide in plain text. Use DIR before CD so you know exact folder names — capitalization matters. When LOGIN prompts appear, remember codes use ALL-CAPS with hyphens, like FORGE-GATE-7. After winning, visit Memory Matching from the hub; your DragonForge15 coupon link resolves to the live shop. Terminal Trainer is the spine of the Laughing Dragons unlock tree — master it first, then fan out through matching, search, and typing adventures.</p>
+    </section>
+<div class="container" id="game-ad-bottom"></div>
     <div id="game-footer-mount"></div>
 
     <script src="/assets/js/config.js?v=20260809"></script>
@@ -154,7 +173,16 @@
         title: "Terminal Trainer",
         description: "Retro DOS-style terminal game - learn HELP, DIR, CD, and more.",
         activePath: "/games/terminal/",
-        landingHtml: renderTerminalLanding(),
+        landingHtml: `
+<article class="game-landing prose reveal">
+  <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
+  <p class="pillar-eyebrow">Laughing Dragons Games</p>
+  <h1>Terminal Trainer</h1>
+  <p class="page-lead">Retro DOS commands on a workroom CRT — HELP, DIR, CD, TYPE, and LOGIN across three levels.</p>
+  <p>Terminal Trainer puts you at a glowing CRT on the Laughing Dragons desk. Type real command-line basics across three hacking-themed levels. Beat Level 3 to unlock Memory Matching and earn FORGE-GATE-7 plus DragonForge15.</p>
+  <p><a class="btn btn-primary" href="#game-play">Play now ↓</a> · <a href="#game-guide">Full guide ↓</a></p>
+</article>
+        `,
       });
     </script>
   </body>

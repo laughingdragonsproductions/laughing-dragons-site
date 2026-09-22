@@ -24,6 +24,11 @@ Standalone arcade titles - **outside** the Terminal unlock chain. Listed first i
 | flappy-dragon | `/games/flappy-dragon/` | **live** | Tap-to-fly; dragon skin unlocks |
 | dragon-vball | `/games/dragon-vball/` | **live** | Forest Pong vs AI; first to 3 |
 | dragos-revenge | `/games/dragos-revenge/` | **live** | Rodent's Revenge clone; Drago + 8 levels (S010/S011) |
+| hangman-lite | `/games/hangman-lite/` | **live** | Dragon hangman; stickman limp-on-lose; optional reward WHACK-GRID-10 |
+| typing-race | `/games/typing-race/` | **live** | Letter heat loop; optional reward SORT-COLOR-6 |
+| count-the-dragons | `/games/count-the-dragons/` | **live** | Fruit Search crowd scenes; optional reward SIMON-GLOW-8 |
+
+Hub: listed in `GAMES_DATA.newGameIds` (New games section) + Facebook post blurbs.
 
 ## Unlock chain (canonical)
 
@@ -32,16 +37,15 @@ Standalone arcade titles - **outside** the Terminal unlock chain. Listed first i
 | 1 | terminal | FORGE-GATE-7 | memory-matching | `/games/terminal/` **live** |
 | 2 | memory-matching | FIND-WALDO-3 | fruit-search | `/games/memory-matching/` **live** |
 | 3 | fruit-search | TRACE-A-Z-4 | alphabet-trace | `/games/fruit-search/` **in progress** |
-| 4 | alphabet-trace | TYPE-FAST-5 | typing-race | `/games/alphabet-trace/` |
-| 5 | typing-race | SORT-COLOR-6 | color-match | `/games/typing-race/` |
-| 6 | color-match | COUNT-DRAG-7 | count-the-dragons | `/games/color-match/` |
-| 7 | count-the-dragons | SIMON-GLOW-8 | simon-says | `/games/count-the-dragons/` |
-| 8 | simon-says | HANG-FRUIT-9 | hangman-lite | `/games/simon-says/` |
-| 9 | hangman-lite | WHACK-GRID-10 | whack-a-fruit | `/games/hangman-lite/` |
-| 10 | whack-a-fruit | PATTERN-AB-11 | pattern-builder | `/games/whack-a-fruit/` |
-| 11 | pattern-builder | MAZE-PATH-12 | maze-generator | `/games/pattern-builder/` |
-| 12 | maze-generator | COLOR-SVG-13 | coloring-viewer | `/games/maze-generator/` |
-| 13 | coloring-viewer | - | - | `/games/coloring-viewer/` |
+| 4 | alphabet-trace | TYPE-FAST-5 | color-match (via typing clear) | `/games/alphabet-trace/` |
+| 5 | color-match | COUNT-DRAG-7 | simon-says (via count clear) | `/games/color-match/` |
+| 6 | simon-says | HANG-FRUIT-9 | whack-a-fruit (via hangman clear) | `/games/simon-says/` |
+| 7 | whack-a-fruit | PATTERN-AB-11 | pattern-builder | `/games/whack-a-fruit/` |
+| 8 | pattern-builder | MAZE-PATH-12 | maze-generator | `/games/pattern-builder/` |
+| 9 | maze-generator | COLOR-SVG-13 | coloring-viewer | `/games/maze-generator/` |
+| 10 | coloring-viewer | - | - | `/games/coloring-viewer/` |
+
+**Always open (pre-pipeline):** hangman-lite, typing-race, count-the-dragons still grant reward codes on clear (WHACK-GRID-10, SORT-COLOR-6, SIMON-GLOW-8) for Terminal LOGIN - they do not require an unlock to play.
 
 Registry source of truth: `assets/js/kids-unlocks.js` (`UNLOCK_CODES`, `REWARD_CODES_BY_GAME`).
 

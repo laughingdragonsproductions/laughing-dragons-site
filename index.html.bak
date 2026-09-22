@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Laughing Dragons Productions - free browser games, Fruit Friends Kids Show, learning tools, shop, 3D prints, and maker gear from the workroom." />
+    <meta name="description" content="Laughing Dragons Productions - free browser games, studio news, learning tools, shop, 3D prints, and maker gear from the workroom." />
     <title>Laughing Dragons Productions</title>
     <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
     <link rel="stylesheet" href="/assets/css/site.css" />
@@ -18,7 +18,7 @@
     <script>
       initPage({
         title: "Laughing Dragons Productions",
-        description: "Free browser games, Fruit Friends Kids Show, learning tools, shop, and maker gear from Laughing Dragons Productions.",
+        description: "Free browser games, studio news, learning tools, shop, and maker gear from Laughing Dragons Productions.",
         activePath: "/",
         hero: true,
         adSlots: false,
@@ -28,20 +28,19 @@
               id: "games",
               eyebrow: "Free games",
               title: "Play in your browser",
-              body: "Terminal Trainer teaches DOS-style commands on a retro workroom desk. Memory Matching flips dragon tiles on scenic maps. No download, no account - start playing on our Games hub.",
+              body: "New: Count the Dragons, Typing Race, and Hangman Lite - always open in your browser. Plus Terminal Trainer, Memory Matching, and more on the Games hub. No download, no account.",
               href: "/games/",
               cta: "Play games",
               image: "/assets/kids/games/terminal/desk-monitor-frame.png",
             })}
             ${renderPillar({
-              id: "kids",
-              eyebrow: "Kids Show",
-              title: "ABCs with Fruit Friends",
-              body: "The Laughing Dragons Kids Show teaches letters through colorful fruit characters. Watch episodes on YouTube, meet the full A-Z cast, and download 3D printable files as they drop.",
-              href: "/kids/",
-              cta: "Go to Kids Show",
+              id: "news",
+              eyebrow: "News studio",
+              title: "The Associated Guess",
+              body: "TAG is the official news arm of Laughing Dragons Productions - written stories, newsroom coverage, and interview lives that land on YouTube.",
+              href: "/news/",
+              cta: "Open News",
               reverse: true,
-              image: "/assets/kids/best-shot.png",
             })}
             ${renderPillar({
               id: "tools",
@@ -54,19 +53,19 @@
             ${renderPillar({
               id: "shop",
               eyebrow: "Shop",
-              title: "Apparel, prints, and maker gear",
-              body: "From the workroom floor to your door - shop our Shopify store and Etsy shop for apparel, 3D prints, and maker gear. Printful-backed shipping on merch.",
+              title: "Buy at Lit Printz",
+              body: "Laughing Dragons and Lit Printz are full partners. Browse the full catalog and check out at litprintz.com - one storefront for the whole shop.",
               href: "/shop/",
-              cta: "Visit the shop",
+              cta: "Shop Lit Printz",
               reverse: true,
             })}
             ${renderPillar({
               id: "prints",
               eyebrow: "3D & Shipping",
-              title: "Prints, files, and fulfillment",
-              body: "Custom 3D prints from our bench, digital files where offered, and reliable shipping through our POD partners. Made in the Laughing Dragons workroom.",
+              title: "Prints on Lit Printz",
+              body: "Coozies, candle holders, rolling trays, and digital 3MF files from the workroom - browse collections on Lit Printz and check out at litprintz.com.",
               href: "/prints/",
-              cta: "Browse 3D prints",
+              cta: "Browse collections",
             })}
             ${renderPillar({
               id: "laser",

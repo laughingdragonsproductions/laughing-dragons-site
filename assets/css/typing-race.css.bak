@@ -1,0 +1,241 @@
+/* Typing Race - neon workroom heat */
+.typing-race-page.game-page {
+  --tr-neon: #39ff14;
+  --tr-gold: #e8b84a;
+  --tr-muted: #9bb88a;
+  --tr-panel: #121212;
+  --tr-surface: #181818;
+  --tr-bad: #ff6b6b;
+  color: var(--text, #f2f2f2);
+}
+
+.typing-race-root {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 1rem 1rem 2.5rem;
+}
+
+.tr-menu,
+.tr-play {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+  border-radius: 14px;
+  background: var(--tr-panel);
+  border: 1px solid rgba(57, 255, 20, 0.22);
+}
+
+.tr-menu[hidden],
+.tr-play[hidden],
+.tr-win[hidden] {
+  display: none !important;
+}
+
+.tr-eyebrow {
+  margin: 0;
+  color: var(--tr-neon);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tr-menu h2 {
+  margin: 0;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.tr-menu p {
+  margin: 0;
+  color: var(--tr-muted);
+  line-height: 1.45;
+}
+
+.tr-difficulty {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tr-difficulty legend {
+  width: 100%;
+  margin-bottom: 0.35rem;
+  color: var(--tr-muted);
+  font-size: 0.9rem;
+}
+
+.tr-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(168, 168, 168, 0.35);
+  background: var(--tr-surface);
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.tr-radio:has(input:checked) {
+  border-color: var(--tr-neon);
+  box-shadow: 0 0 0 1px rgba(57, 255, 20, 0.35);
+}
+
+.tr-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.tr-hud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tr-hud p {
+  margin: 0;
+  color: var(--tr-muted);
+}
+
+.tr-hud strong {
+  color: var(--tr-gold);
+}
+
+.tr-stage {
+  display: grid;
+  place-items: center;
+  min-height: 180px;
+  border-radius: 12px;
+  background: var(--tr-surface);
+  border: 1px solid rgba(168, 168, 168, 0.2);
+  position: relative;
+}
+
+.tr-letter {
+  margin: 0;
+  font-size: clamp(4rem, 18vw, 6.5rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--tr-neon);
+  text-shadow: 0 0 24px rgba(57, 255, 20, 0.35);
+  transition: transform 0.12s ease, color 0.12s ease;
+}
+
+.tr-letter.is-miss {
+  color: var(--tr-bad);
+  transform: scale(0.92);
+}
+
+.tr-letter.is-hit {
+  transform: scale(1.08);
+}
+
+.tr-timer-wrap {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.tr-timer-bar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--tr-neon), var(--tr-gold));
+  transform-origin: left center;
+  transition: background 0.15s ease;
+}
+
+.tr-timer-bar.is-low {
+  background: var(--tr-bad);
+}
+
+.tr-feedback {
+  margin: 0;
+  min-height: 1.35em;
+  text-align: center;
+  color: var(--tr-muted);
+}
+
+.tr-osk {
+  display: none;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+
+.tr-osk.is-visible {
+  display: grid;
+}
+
+.tr-osk-key {
+  min-height: 44px;
+  border-radius: 8px;
+  border: 1px solid rgba(168, 168, 168, 0.35);
+  background: var(--tr-surface);
+  color: var(--text, #f2f2f2);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tr-osk-key:hover {
+  border-color: var(--tr-neon);
+}
+
+.tr-win {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.72);
+}
+
+.tr-win-card {
+  width: min(420px, 100%);
+  padding: 1.5rem;
+  border-radius: 14px;
+  background: #121212;
+  border: 1px solid rgba(57, 255, 20, 0.35);
+  text-align: center;
+}
+
+.tr-win-card h2 {
+  margin: 0 0 0.5rem;
+}
+
+.tr-win-card p {
+  margin: 0 0 0.75rem;
+  color: var(--tr-muted);
+  line-height: 1.45;
+}
+
+.tr-win-code {
+  display: inline-block;
+  margin: 0.35rem 0 0.85rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 8px;
+  background: rgba(57, 255, 20, 0.12);
+  border: 1px solid rgba(57, 255, 20, 0.4);
+  color: var(--tr-neon);
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+}
+
+.tr-win-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .tr-osk.is-tablet {
+    display: grid;
+  }
+}

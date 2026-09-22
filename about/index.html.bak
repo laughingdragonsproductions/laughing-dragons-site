@@ -3,12 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="About Laughing Dragons Productions - the workroom behind our kids show, apps, tools, and maker shop." />
+    <meta name="description" content="About Laughing Dragons Productions - the workroom behind our games, news studio, tools, and maker shop." />
     <title>About</title>
     <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
     <link rel="stylesheet" href="/assets/css/site.css" />
     <link rel="canonical" href="https://laughing-dragons.com/about/" />
-</head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7048606415692002"
+     crossorigin="anonymous"></script>
+  </head>
   <body>
     <div id="app"></div>
     <script src="/assets/js/config.js"></script>
@@ -17,7 +19,7 @@
       const cfg = window.SITE_CONFIG;
       initPage({
         title: "About",
-        description: "About Laughing Dragons Productions - the workroom behind our kids show, apps, tools, and maker shop.",
+        description: "About Laughing Dragons Productions - the workroom behind our games, news studio, tools, and maker shop.",
         activePath: "/about/",
         content: `
           <header class="page-header reveal">
@@ -27,20 +29,20 @@
           </header>
           <div class="prose reveal">
             <p><strong>Laughing Dragons Productions</strong> is an independent studio that makes things for families, makers, and curious learners. laughing-dragons.com is our home base - every project we ship links back here so you can see the full picture in one place.</p>
-            <p>We run a kids show built around Fruit Friends and the A-Z alphabet, ship privacy-first apps, publish free browser tools for learning, and sell apparel, prints, and custom maker work through our shop partners.</p>
+            <p>We ship free browser games, publish news through The Associated Guess, offer free browser tools for learning, and sell apparel, prints, and custom maker work through our shop partners.</p>
 
             <h2>What we do</h2>
             <ul>
-              <li><strong>Kids Show</strong> - episodes, characters, and printable files at <a href="/kids/">/kids/</a></li>
+              <li><strong>Games</strong> - free browser games at <a href="/games/">/games/</a></li>
+              <li><strong>News</strong> - The Associated Guess is our official news studio at <a href="/news/">/news/</a></li>
               <li><strong>Free tools</strong> - converters, formatters, and calculators at <a href="/tools/">/tools/</a></li>
-              <li><strong>Apps</strong> - DRI, Dragon Gems, Loquora, and more</li>
-              <li><strong>Shop</strong> - <a href="${cfg.links.etsy}" target="_blank" rel="noopener">Etsy (LaughingDragonsForge)</a>, <a href="${cfg.links.shopify}" target="_blank" rel="noopener">Shopify</a>, and <a href="/prints/">3D prints</a></li>
+              <li><strong>Shop</strong> - full partner storefront at <a href="${cfg.links.litPrintz || cfg.links.shop}" target="_blank" rel="noopener">Lit Printz (litprintz.com)</a>; browse the <a href="${cfg.links.litPrintzCatalog || cfg.links.litPrintz + '/collections/all'}" target="_blank" rel="noopener">Lit Printz catalog</a> or our <a href="/prints/">prints hub</a> (collection links to the live shop)</li>
               <li><strong>Laser engraving</strong> - custom Glowforge work at <a href="/laser/">/laser/</a></li>
             </ul>
 
             <h2>Contact</h2>
             <p>Email: <a href="mailto:laughingdragonsproductions@gmail.com">laughingdragonsproductions@gmail.com</a></p>
-            <p>Orders, collaborations, or questions about the kids show? Use our <a href="/contact/">Contact Us</a> form - we read every message.</p>
+            <p>Orders, collaborations, or press questions? Use our <a href="/contact/">Contact Us</a> form - we read every message.</p>
           </div>
         `,
       });

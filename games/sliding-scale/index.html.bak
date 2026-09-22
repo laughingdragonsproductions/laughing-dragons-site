@@ -20,7 +20,16 @@
 
     <div id="game-header-mount"></div>
     <div class="container game-landing-wrap">
-      <div id="game-landing-mount"></div>
+      <div id="game-landing-mount">
+      <article class="game-landing prose reveal">
+  <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
+  <p class="pillar-eyebrow">Laughing Dragons Games</p>
+  <h1>The Sliding Scale</h1>
+  <p class="page-lead">Slide tiles on the workroom floor to rebuild workshop photos and Laughing Dragons brand art.</p>
+  <p>The Sliding Scale is a classic sliding-tile puzzle on the Laughing Dragons workroom floor. Choose 3×3, 4×4, or 5×5 grids, shuffle, and rebuild the picture. Always open — no code required.</p>
+  <p><a class="btn btn-primary" href="#game-play">Play now ↓</a> · <a href="#game-guide">Full guide ↓</a></p>
+</article>
+    </div>
       <div id="game-ad-top" class="container"></div>
     </div>
 
@@ -30,7 +39,17 @@
       </div>
     </div>
 
-    <div class="container" id="game-ad-bottom"></div>
+    
+    <section class="container game-full-guide prose" id="game-guide" aria-label="Full game guide">
+      <h2>Complete guide: The Sliding Scale</h2>
+      <p>The Sliding Scale revives the timeless sliding-tile puzzle with Laughing Dragons workshop flair. One square is always empty; every other tile shows a slice of a larger image — workshop photos, the workroom banner, or the studio logo. Click or tap a tile in the same row or column as the empty gap and the whole line slides toward the hole. Tap farther from the gap to move multiple tiles in one motion. Arrow keys on desktop nudge one tile at a time for precision fans. When every fragment lands in order, the full picture snaps together and you win.</p>
+      <p>Pick your grid before shuffling: Easy uses a 3×3 board (eight tiles plus the gap), Med stretches to 4×4, and Hard expands to 5×5 for a serious scramble. Each size swaps in different source art so repeats feel fresh. Hit Shuffle anytime for a new random configuration of the same image — no two solves play identically even on the same difficulty. The game is always open from the hub; no Terminal Trainer LOGIN required.</p>
+      <p>Progress saves locally in your browser: last chosen difficulty, selected artwork, and move counts where implemented persist between sessions. No account, no download — pure browser play like the rest of the Laughing Dragons catalog. Touch screens work well; fat fingers may prefer arrow-key nudges on Bluetooth keyboards for 5×5 precision. There is no unlock code chain for Sliding Scale; it is a standalone zen break between code-hunting adventures.</p>
+      <p>Beginner tip: solve the top row first, then the left column, then work inward — classic sliding-puzzle strategy still applies on dragon art. Keep the empty tile in a corner while you line up edge pieces. On 5×5, plan three moves ahead; reckless sliding creates parity traps that need extra shuffles to fix. If you feel stuck, Shuffle is not cheating — it is a fresh start with the same photo.</p>
+      <p>Difficulty is entirely your grid choice. 3×3 clears in minutes for younger players; 5×5 can absorb a lunch break. There is no timer and no life counter — only the quiet satisfaction of tiles clicking home. Med mode is the sweet spot for family co-op: one person calls directions, another taps. Laughing Dragons hid familiar brand imagery in the tile sets so finishing a puzzle feels like tidying the actual workroom.</p>
+      <p>Unlike chain-gated titles, Sliding Scale never asks for FORGE-GATE-7 or FIND-WALDO-3. Open the Games hub, pick The Sliding Scale, choose a size, shuffle, and slide. Return anytime your brain wants spatial logic instead of typing or hidden-object scans. Local saves mean your preferred difficulty waits exactly where you left it — the digital equivalent of a puzzle book bookmarked on the studio desk.</p>
+    </section>
+<div class="container" id="game-ad-bottom"></div>
 
     <div id="game-footer-mount"></div>
 
@@ -45,13 +64,15 @@
           "The Sliding Scale - slide tiles on the workroom floor to rebuild workshop photos and Laughing Dragons brand art. Easy 3×3, Med 4×4, or Hard 5×5.",
         activePath: "/games/sliding-scale/",
         landingHtml: `
-          <article class="game-landing prose reveal">
-            <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
-            <p class="pillar-eyebrow">Laughing Dragons Games</p>
-            <h1>The Sliding Scale</h1>
-            <p class="page-lead">A workroom slider puzzle - rebuild workshop photos and brand art tile by tile.</p>
-            <p>Always playable - no unlock code needed. Click tiles in the same row or column as the empty square, or use arrow keys.</p>
-          </article>`,
+<article class="game-landing prose reveal">
+  <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
+  <p class="pillar-eyebrow">Laughing Dragons Games</p>
+  <h1>The Sliding Scale</h1>
+  <p class="page-lead">Slide tiles on the workroom floor to rebuild workshop photos and Laughing Dragons brand art.</p>
+  <p>The Sliding Scale is a classic sliding-tile puzzle on the Laughing Dragons workroom floor. Choose 3×3, 4×4, or 5×5 grids, shuffle, and rebuild the picture. Always open — no code required.</p>
+  <p><a class="btn btn-primary" href="#game-play">Play now ↓</a> · <a href="#game-guide">Full guide ↓</a></p>
+</article>
+        `,
       });
       initSlidingScale();
     </script>

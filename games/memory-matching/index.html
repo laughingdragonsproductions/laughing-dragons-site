@@ -28,24 +28,13 @@
     <div class="container game-landing-wrap">
       <div id="game-landing-mount">
       <article class="game-landing prose reveal">
-      <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
-      <p class="pillar-eyebrow">Live game</p>
-      <h1>Memory Matching Game</h1>
-      <p class="page-lead">Flip laughing dragon tiles on scenic maps, match every pair, and chase par for a better rating.</p>
-      <p>Memory Matching is a classic concentration game built for quick sessions. Tiles hide dragon art from the Laughing Dragons universe; your job is to remember locations and clear the board in as few moves as possible. The game runs entirely in your browser - scores save locally so you can beat your own best runs.</p>
-      <h2>How to play</h2>
-      <ol>
-        <li>Tap a tile to flip it and reveal a dragon.</li>
-        <li>Tap a second tile - if they match, both stay up until the pair clears.</li>
-        <li>If they do not match, both flip back. Remember where each dragon was.</li>
-        <li>Clear every pair to win. Fewer total moves means a better star rating.</li>
-      </ol>
-      <h2>Difficulty and par</h2>
-      <p><strong>Easy</strong> uses 4 pairs (8 tiles). Par is 8 moves. <strong>Hard</strong> uses 8 pairs (16 tiles). Par is 16 moves. Ratings above par earn better stars; beating par unlocks Fruit Search and reveals code <strong>FIND-WALDO-3</strong> for Terminal Trainer.</p>
-      <h2>Unlock requirement</h2>
-      <p>Complete Terminal Trainer first - finish all three levels and reach the true ending. Your browser stores the unlock; then Memory Matching opens from the <a href="/games/">Games hub</a>.</p>
-      <p><a class="btn btn-primary" href="#game-play">Play now ↓</a></p>
-    </article>
+  <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
+  <p class="pillar-eyebrow">Laughing Dragons Games</p>
+  <h1>Memory Matching Game</h1>
+  <p class="page-lead">Flip dragon tiles on scenic maps, match every pair, and beat par for a better star rating.</p>
+  <p>Memory Matching is concentration on Laughing Dragons map art. Flip two tiles per turn, clear the board, and finish at or under par to unlock Fruit Search. Requires beating Terminal Trainer first.</p>
+  <p><a class="btn btn-primary" href="#game-play">Play now ↓</a> · <a href="#game-guide">Full guide ↓</a></p>
+</article>
     </div>
       <div id="game-ad-top" class="container"></div>
     </div>
@@ -179,7 +168,17 @@
       <div class="sr-announce" id="sr-announce" aria-live="assertive"></div>
     </div>
 
-    <div class="container" id="game-ad-bottom"></div>
+    
+    <section class="container game-full-guide prose" id="game-guide" aria-label="Full game guide">
+      <h2>Complete guide: Memory Matching Game</h2>
+      <p>Memory Matching Game brings classic concentration to Laughing Dragons scenic map backgrounds. Tiles start face-down showing dragon card backs; each turn you flip two. Matching pair IDs stay revealed with a satisfying lock; mismatches flip back after a brief delay so you must remember positions. Clear every pair to win. The board uses laughing dragon tile art drawn from the same family as Drago&#x27;s Revenge pickups — cohesive studio visuals across games.</p>
+      <p>Choose Easy or Hard before dealing: Easy lays out four pairs — eight tiles on a compact grid — with par set at eight moves. Hard doubles to eight pairs — sixteen tiles — with par at sixteen moves. Finish at or under par for Standard rating or better and you earn stars plus the right to advance in the unlock chain. Beat par comfortably for higher star tiers. Move counts display live so you always know whether Fruit Search is within reach.</p>
+      <p>Gating matters: Memory Matching stays locked until you complete all three levels of Terminal Trainer. Finish the true ending — ECHO LAUGHING-DRAGONS — and FORGE-GATE-7 grants access automatically via localStorage. You can also type LOGIN FORGE-GATE-7 in Terminal on a fresh browser if you already know the code. Without that unlock flag, the hub card shows locked with a link back to Terminal.</p>
+      <p>Win at or under par and the victory overlay reveals FIND-WALDO-3. Take that code to Terminal Trainer with LOGIN FIND-WALDO-3 to unlock Fruit Search, or rely on the automatic hub grant when the game registers your par clear. The code persists on your cleared Memory Matching card for later lookup. Best scores and star ratings save locally in your browser — no account required.</p>
+      <p>Strategy: on your first pass, flip tiles systematically to map the board without worrying about pairs — even failed mismatches teach locations. Once you see a pair member, prioritize finding its twin before exploring new tiles. On Hard, anchor corners first; edge tiles have fewer neighbors and are easier to track. Avoid random flipping when you already know two locations — deliberate moves beat par more reliably than luck.</p>
+      <p>Difficulty splits cleanly between Easy and Hard pair counts; there is no timer pressure. Younger players can ignore par and simply enjoy clearing boards; par exists for unlock progression and replay challenge. Laughing Dragons designed Memory Matching as the bridge between Terminal&#x27;s text puzzles and Fruit Search&#x27;s visual scanning — success here proves you can hold spatial memory long enough for crowded I-Spy maps. Play again to chase three-star clears even after Fruit Search unlocks; local saves keep your best runs on the leaderboard of one.</p>
+    </section>
+<div class="container" id="game-ad-bottom"></div>
     <div id="game-footer-mount"></div>
 
     <script src="/assets/js/games.js?v=20260809"></script>
@@ -190,7 +189,16 @@
         title: "Memory Matching Game",
         description: "Flip dragon tiles, match pairs, and beat par on scenic maps.",
         activePath: "/games/memory-matching/",
-        landingHtml: renderMemoryLanding(),
+        landingHtml: `
+<article class="game-landing prose reveal">
+  <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
+  <p class="pillar-eyebrow">Laughing Dragons Games</p>
+  <h1>Memory Matching Game</h1>
+  <p class="page-lead">Flip dragon tiles on scenic maps, match every pair, and beat par for a better star rating.</p>
+  <p>Memory Matching is concentration on Laughing Dragons map art. Flip two tiles per turn, clear the board, and finish at or under par to unlock Fruit Search. Requires beating Terminal Trainer first.</p>
+  <p><a class="btn btn-primary" href="#game-play">Play now ↓</a> · <a href="#game-guide">Full guide ↓</a></p>
+</article>
+        `,
       });
     </script>
   </body>

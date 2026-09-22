@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Contact Laughing Dragons Productions - questions about orders, the kids show, apps, or collaborations." />
+    <meta name="description" content="Contact Laughing Dragons Productions - questions about orders, games, news, apps, or collaborations." />
     <title>Contact Us</title>
     <link rel="icon" href="/assets/brand/ldp-logo.png" type="image/png" />
     <link rel="stylesheet" href="/assets/css/site.css" />
@@ -16,16 +16,16 @@
     <script>
       initPage({
         title: "Contact Us",
-        description: "Contact Laughing Dragons Productions - questions about orders, the kids show, apps, or collaborations.",
+        description: "Contact Laughing Dragons Productions - questions about orders, games, news, apps, or collaborations.",
         activePath: "/contact/",
         content: `
           <header class="page-header reveal">
             <p class="pillar-eyebrow">Get in touch</p>
             <h1>Contact Us</h1>
-            <p class="page-lead">Questions about orders, the kids show, apps, or collaborations - use the form below.</p>
+            <p class="page-lead">Questions about orders, games, news, apps, or collaborations - use the form below.</p>
           </header>
           ${renderContactForm({
-            intro: "For order-specific help, use the contact email on your Etsy or Shopify receipt.",
+            intro: "For order-specific help, use the contact path on your Lit Printz receipt.",
           })}
         `,
       });

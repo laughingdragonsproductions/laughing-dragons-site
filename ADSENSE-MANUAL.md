@@ -1,10 +1,13 @@
 # AdSense - manual steps for Brandon
 
-**Go-live checklist:** see [ADSENSE-GO-LIVE.md](ADSENSE-GO-LIVE.md) for the full step-by-step (deploy, slot IDs, CMP, Shopify, review).
+**Authoritative matrix (Google-aligned):** [ADSENSE-REQUIREMENTS-MATRIX.md](ADSENSE-REQUIREMENTS-MATRIX.md) — use this before any resubmit.  
+**Go-live steps:** [ADSENSE-GO-LIVE.md](ADSENSE-GO-LIVE.md)
 
-Games-first monetization is live in code. Complete these steps in **Google AdSense** (not in the repo):
+> **Sep 2026:** All three portfolio sites failed review with **Low value content** (not a technical/ads.txt issue). Technical wiring can be 100% while content still fails.
 
-## Compliance matrix (Aug 2026)
+Games-first monetization is live in code. Complete console steps in **Google AdSense** after content tier passes in the matrix.
+
+## Legacy technical matrix (Aug 2026)
 
 | Requirement | Status | Notes |
 |-------------|--------|-------|
@@ -20,8 +23,9 @@ Games-first monetization is live in code. Complete these steps in **Google AdSen
 | Kids section ad-free | **Ready** | No script or units on `/kids/**` (child-directed Kids Show only) |
 | Publisher script on site | **Ready** | Homepage `<head>` + `site.js` on non-kids, non-WIP pages |
 | Ad units configured | **Ready** | Multiplex `7102817128` in `config.js` → `inContent`; paste header/footer slot IDs when created |
-| Auto ads disabled | **You** | AdSense dashboard - prior policy flag from auto ads on thin pages |
-| EU consent (CMP) | **You** | AdSense → Privacy & messaging → European regulations |
+| Auto ads disabled | **Done** | Disabled in AdSense dashboard (manual units only) |
+| EU consent (CMP) | **Done** | Published in AdSense → Privacy & messaging |
+| Site logo | **Done** | `assets/brand/ldp-logo-adsense.jpg` uploaded (≤148 KB) |
 | Search Console | **Recommended** | Verify domain, submit sitemap |
 | Request review | **You** | After checklist above |
 

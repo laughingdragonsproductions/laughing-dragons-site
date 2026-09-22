@@ -1,0 +1,10 @@
+﻿python : usage: python.exe -m integrations.adsense_readiness [-h]
+At C:\Users\David\AppData\Local\Temp\ps-script-35ed7033-2c10-442a-a812-9356a61d5970.ps1:98 char:32
++ ... ING='utf-8'; python -m integrations.adsense_readiness ld 2>&1 | Out-F ...
++                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (usage: python.e..._readiness [-h]:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+                                                    [--site {ld,tag,them1947}]
+                                                    [--offline] [--json]
+python.exe -m integrations.adsense_readiness: error: unrecognized arguments: ld

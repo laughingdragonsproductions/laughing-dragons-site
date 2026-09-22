@@ -383,51 +383,23 @@ function renderGamesHub() {
 function renderTerminalLanding() {
   return `
     <article class="game-landing prose reveal">
-      <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
-      <p class="pillar-eyebrow">Live game</p>
-      <h1>Terminal Trainer</h1>
-      <p class="page-lead">A retro DOS-style terminal on the Laughing Dragons workroom desk. Learn real command-line basics while playing through three hacking-themed levels.</p>
-      <p>Terminal Trainer teaches how computers organize files and folders using text commands - the same ideas behind every modern operating system. You sit at a CRT monitor, type at an A:\\> prompt, and explore an in-memory filesystem. No mouse required: discovery, reading clue files, and typing the right command at the right time is the whole game.</p>
-      <h2>What you will learn</h2>
-      <ul>
-        <li><strong>HELP</strong> - list available programs in the current directory</li>
-        <li><strong>DIR</strong> - see files and folders; use <strong>DIR /W</strong> for a wide list</li>
-        <li><strong>CD</strong> - change directory; <strong>CD ..</strong> goes up one level</li>
-        <li><strong>TYPE</strong> or <strong>READ</strong> - display text file contents</li>
-        <li><strong>CLS</strong> - clear the screen; <strong>ECHO</strong> - print text</li>
-        <li><strong>LOGIN</strong> - authenticate with passwords and game unlock codes</li>
-      </ul>
-      <h2>Level overview</h2>
-      <p><strong>Level 1 - First Contact:</strong> Explore A:\\, find SYSTEM tools, read WELCOME.TXT in NOTES, and learn that directories hold executable programs. A fake ending teases completion - keep digging for hidden folders.</p>
-      <p><strong>Level 2 - The Vault:</strong> MISSIONS opens after the secret unlock. Follow LEVEL2.TXT into VAULT, find the password FRUIT-42, and breach the vault with LOGIN.</p>
-      <p><strong>Level 3 - True ending:</strong> Read FINAL\\CLUE.TXT for passphrase LAUGHING-DRAGONS, finish the last LOGIN, and win. Rewards include Memory Matching unlock plus shop coupon code DragonForge15.</p>
-      <h2>Game unlock codes</h2>
-      <p>After you beat other Laughing Dragons games, their unlock codes work here too. Type <strong>LOGIN</strong> followed by any code you earned - for example <strong>LOGIN FORGE-GATE-7</strong> opens Memory Matching.</p>
-      <h2>Tips</h2>
-      <p>Press <kbd>↑</kbd> to recall your last command. Press <kbd>Tab</kbd> to autocomplete command and folder names. Open the Hints panel on mobile for the current walkthrough step. Skip or replay the intro video anytime.</p>
-      <p><a class="btn btn-primary" href="#game-play">Play now ↓</a></p>
-    </article>`;
+  <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
+  <p class="pillar-eyebrow">Laughing Dragons Games</p>
+  <h1>Terminal Trainer</h1>
+  <p class="page-lead">Retro DOS commands on a workroom CRT — HELP, DIR, CD, TYPE, and LOGIN across three levels.</p>
+  <p>Terminal Trainer puts you at a glowing CRT on the Laughing Dragons desk. Type real command-line basics across three hacking-themed levels. Beat Level 3 to unlock Memory Matching and earn FORGE-GATE-7 plus DragonForge15.</p>
+  <p><a class="btn btn-primary" href="#game-play">Play now ↓</a> · <a href="#game-guide">Full guide ↓</a></p>
+</article>`;
 }
 
 function renderMemoryLanding() {
   return `
     <article class="game-landing prose reveal">
-      <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
-      <p class="pillar-eyebrow">Live game</p>
-      <h1>Memory Matching Game</h1>
-      <p class="page-lead">Flip laughing dragon tiles on scenic maps, match every pair, and chase par for a better rating.</p>
-      <p>Memory Matching is a classic concentration game built for quick sessions. Tiles hide dragon art from the Laughing Dragons universe; your job is to remember locations and clear the board in as few moves as possible. The game runs entirely in your browser - scores save locally so you can beat your own best runs.</p>
-      <h2>How to play</h2>
-      <ol>
-        <li>Tap a tile to flip it and reveal a dragon.</li>
-        <li>Tap a second tile - if they match, both stay up until the pair clears.</li>
-        <li>If they do not match, both flip back. Remember where each dragon was.</li>
-        <li>Clear every pair to win. Fewer total moves means a better star rating.</li>
-      </ol>
-      <h2>Difficulty and par</h2>
-      <p><strong>Easy</strong> uses 4 pairs (8 tiles). Par is 8 moves. <strong>Hard</strong> uses 8 pairs (16 tiles). Par is 16 moves. Ratings above par earn better stars; beating par unlocks Fruit Search and reveals code <strong>FIND-WALDO-3</strong> for Terminal Trainer.</p>
-      <h2>Unlock requirement</h2>
-      <p>Complete Terminal Trainer first - finish all three levels and reach the true ending. Your browser stores the unlock; then Memory Matching opens from the <a href="/games/">Games hub</a>.</p>
-      <p><a class="btn btn-primary" href="#game-play">Play now ↓</a></p>
-    </article>`;
+  <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
+  <p class="pillar-eyebrow">Laughing Dragons Games</p>
+  <h1>Memory Matching Game</h1>
+  <p class="page-lead">Flip dragon tiles on scenic maps, match every pair, and beat par for a better star rating.</p>
+  <p>Memory Matching is concentration on Laughing Dragons map art. Flip two tiles per turn, clear the board, and finish at or under par to unlock Fruit Search. Requires beating Terminal Trainer first.</p>
+  <p><a class="btn btn-primary" href="#game-play">Play now ↓</a> · <a href="#game-guide">Full guide ↓</a></p>
+</article>`;
 }

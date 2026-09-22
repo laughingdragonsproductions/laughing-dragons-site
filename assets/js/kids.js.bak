@@ -246,7 +246,7 @@ function renderKidsPrintables() {
         )
         .join("")}
     </div>
-    <p class="kids-note reveal">Physical prints and finished models are available in our <a href="/prints/">3D print catalog</a> and through the <a href="/shop/">shop</a> when listed.</p>
+    <p class="kids-note reveal">Physical prints and finished models are available at <a href="https://litprintz.com/collections/all" target="_blank" rel="noopener noreferrer">Lit Printz</a> and through our <a href="/shop/">shop hub</a>.</p>
   </section>`;
 }
 
@@ -254,16 +254,49 @@ function renderKidsHub() {
   const data = window.KIDS_DATA || {};
   return `
     <header class="kids-hero reveal">
-      <p class="pillar-eyebrow">${data.tagline || "Kids Show"}</p>
+      <p class="pillar-eyebrow">Coming soon</p>
       <h1>${data.showTitle || "Kids Show"}</h1>
-      <p>Episodes, Fruit Friends A-Z, and 3D printable files - the home for the Laughing Dragons Kids Show.</p>
+      <p>${data.tagline || "ABCs with Fruit Friends!"} A family learning program from Laughing Dragons Productions - in the works now, rolling out as episodes, characters, and maker files are ready.</p>
     </header>
-    ${renderKidsSubnav("episodes")}
-    ${renderKidsEpisodes()}
-    ${renderKidsCharacters()}
-    ${renderKidsPrintables()}
+    <div class="prose reveal">
+      <h2>What we are building</h2>
+      <p>The <strong>Laughing Dragons Kids Show</strong> is our upcoming Fruit Friends program: twenty-six colorful characters, one for every letter of the alphabet, teaching ABCs through stories, songs, and simple play. Each letter gets its own episode world - friendly faces, clear letter sounds, and enough dragon energy to keep young viewers leaning in.</p>
+      <p>This page is the home for that program. We are not shipping a finished season yet. We are building the cast, filming and editing letter episodes, and preparing printable files so families can bring Fruit Friends off the screen and onto the workroom bench.</p>
+
+      <h2>What the program will include</h2>
+      <ul>
+        <li><strong>Letter episodes</strong> - A through Z on YouTube, with links posted here as each episode premieres</li>
+        <li><strong>Fruit Friends A-Z</strong> - character sheets and bios for the full alphabet cast</li>
+        <li><strong>Maker corner</strong> - 3D printable character files as STLs are finished</li>
+        <li><strong>Short clips</strong> - behind-the-scenes and sneak peeks on <a href="/media/">Media</a></li>
+      </ul>
+
+      <h2>Where things stand</h2>
+      <p>Early characters and first letter episodes are already in motion. Adam the Apple, Benjamin the Banana, Cheri the Cherry, Drago the Dragon Fruit, and more of the cast are taking shape. Status tags will move from in production to premiering soon to published as YouTube uploads go live.</p>
+      <p>This section stays <strong>ad-free</strong>. Free browser games live in a separate <a href="/games/">Games</a> hub - those are standalone Laughing Dragons products, not part of the Kids Show.</p>
+
+      <h2>Follow along</h2>
+      <p>Want premiere news, collaboration questions, or a note for the Fruit Friends crew? Reach us through <a href="/contact/">Contact Us</a>. Cast pages will expand here as the program grows - start with the early character sheets below when you want a closer look.</p>
+    </div>
+    <section class="link-grid reveal" style="margin-top:2.5rem">
+      <a class="link-card" href="/kids/characters/a/">
+        <h2>Adam the Apple</h2>
+        <p>Letter A - the first friend most kids will meet when the show rolls out.</p>
+      </a>
+      <a class="link-card" href="/kids/characters/d/">
+        <h2>Drago the Dragon Fruit</h2>
+        <p>Letter D - the wise guide connecting Fruit Friends to Laughing Dragons adventure.</p>
+      </a>
+      <a class="link-card" href="/media/">
+        <h2>Media</h2>
+        <p>Short clips and channel links while full episodes are still in production.</p>
+      </a>
+      <a class="link-card" href="/contact/">
+        <h2>Contact Us</h2>
+        <p>Questions about the kids program, partnerships, or premiere timing.</p>
+      </a>
+    </section>
     <div class="prose reveal kids-credits">
-      <p>Play free browser games in our separate <a href="/games/">Games</a> section - Terminal Trainer, Memory Matching, and more.</p>
       <p>Created by Brandon Sparks. Voice character and principal photography by Vinny Vincent.</p>
       <p>&copy; Laughing Dragons Productions</p>
     </div>

@@ -1336,6 +1336,17 @@ body.print-lightbox-open {
   padding-bottom: 0.5rem;
 }
 
+.game-full-guide {
+  margin: 2.5rem auto 3rem;
+  max-width: 42rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.game-full-guide h2 {
+  margin-top: 0;
+}
+
 .game-landing {
   max-width: 48rem;
   margin: 0 auto 1.5rem;

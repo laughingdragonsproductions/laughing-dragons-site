@@ -1,0 +1,130 @@
+{
+  "updated_at": "2026-09-21T20:53:25.031329+00:00",
+  "publisher_id": "ca-pub-7048606415692002",
+  "sites": [
+    {
+      "key": "ld",
+      "label": "Laughing Dragons hub",
+      "domain": "laughing-dragons.com",
+      "path": "G:\\LocalAIagent\\laughing-dragons-site",
+      "checked_at": "2026-09-21T20:53:25.031307+00:00",
+      "completion_percent": 86,
+      "review_ready_code": true,
+      "content_approval_ready": false,
+      "console_pending": [
+        {
+          "id": "T6",
+          "name": "Ad unit slot IDs in config.js",
+          "detail": "1 slot(s) filled"
+        }
+      ],
+      "blockers": [],
+      "content_blockers": [],
+      "checks": [
+        {
+          "id": "T4",
+          "name": "Root ads.txt matches publisher ID",
+          "status": "done",
+          "detail": "Found pub-7048606415692002 in ads.txt"
+        },
+        {
+          "id": "T5",
+          "name": "robots.txt allows crawl + sitemap linked",
+          "status": "done",
+          "detail": "robots=ok; sitemap.xml=ok"
+        },
+        {
+          "id": "A1",
+          "name": "Publisher ID wired in config.js",
+          "status": "done",
+          "detail": "assets/js/config.js contains ca-pub-7048606415692002"
+        },
+        {
+          "id": "T6",
+          "name": "Ad unit slot IDs in config.js",
+          "status": "partial",
+          "detail": "1 slot(s) filled"
+        },
+        {
+          "id": "T6b",
+          "name": "Hide empty ad placeholders when slots unset",
+          "status": "done",
+          "detail": "Empty slots removed/hidden"
+        },
+        {
+          "id": "T3",
+          "name": "AdSense script in page <head>",
+          "status": "partial",
+          "detail": "Missing on: about/index.html"
+        },
+        {
+          "id": "P1",
+          "name": "Privacy: Google ads, cookies, opt-out",
+          "status": "done",
+          "detail": "Privacy page links Ads Settings + aboutads.info"
+        },
+        {
+          "id": "C2-C5",
+          "name": "About, Contact, Privacy, Terms pages present",
+          "status": "done",
+          "detail": "All required pages present"
+        },
+        {
+          "id": "C6",
+          "name": "Enough unique content",
+          "status": "partial",
+          "detail": "Manual review ΓÇö no article threshold for this site"
+        },
+        {
+          "id": "C6b",
+          "name": "Indexable article ratio (TAG)",
+          "status": "unknown",
+          "detail": "N/A for this site"
+        },
+        {
+          "id": "P5",
+          "name": "No ad unit markup on legal/search pages",
+          "status": "done",
+          "detail": "Legal/search pages ad-free"
+        },
+        {
+          "id": "T5b",
+          "name": "Sitemap lists content URLs",
+          "status": "done",
+          "detail": "35 content URL(s) in sitemap.xml"
+        },
+        {
+          "id": "B1",
+          "name": "Provide enough unique content (G-UX)",
+          "status": "partial",
+          "detail": "10 game pages, 10 tool pages; thin HTML: ['count-the-dragons', 'flappy-dragon', 'hangman-lite', 'sliding-scale', 'typing-race']"
+        },
+        {
+          "id": "D4",
+          "name": "No doorway/stub pages in discovery (G-SPAM / G-THIN)",
+          "status": "done",
+          "detail": "No coming-soon in sitemap"
+        },
+        {
+          "id": "E4",
+          "name": "Authentic tools/services (rejection bar)",
+          "status": "partial",
+          "detail": "Verify each /games/ page has substantive JS-rendered guide (manual)"
+        },
+        {
+          "id": "T1",
+          "name": "Live custom domain + HTTPS",
+          "status": "done",
+          "detail": "https://laughing-dragons.com/ HTTP 200"
+        },
+        {
+          "id": "T4live",
+          "name": "Live ads.txt reachable",
+          "status": "done",
+          "detail": "https://laughing-dragons.com/ads.txt ΓåÆ OK"
+        }
+      ]
+    }
+  ],
+  "state_path": "G:\\openclaw\\business\\jarvis\\state\\adsense-readiness.json"
+}

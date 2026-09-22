@@ -502,6 +502,10 @@ a:hover {
   margin: 1.5rem 0;
 }
 
+.ad-slot.ad-in-content {
+  margin: 2rem 0;
+}
+
 .ad-placeholder {
   min-height: 90px;
   display: grid;
@@ -895,6 +899,12 @@ a:hover {
 .status-published {
   border-color: rgba(57, 255, 20, 0.45);
   color: var(--neon);
+}
+
+.status-new {
+  border-color: rgba(232, 184, 74, 0.55);
+  color: #e8b84a;
+  background: rgba(232, 184, 74, 0.1);
 }
 
 .status-in-production {
@@ -1324,6 +1334,17 @@ body.print-lightbox-open {
 .game-landing-wrap {
   padding-top: 1rem;
   padding-bottom: 0.5rem;
+}
+
+.game-full-guide {
+  margin: 2.5rem auto 3rem;
+  max-width: 42rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.game-full-guide h2 {
+  margin-top: 0;
 }
 
 .game-landing {

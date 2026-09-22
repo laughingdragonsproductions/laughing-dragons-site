@@ -20,7 +20,16 @@
 
     <div id="game-header-mount"></div>
     <div class="container game-landing-wrap">
-      <div id="game-landing-mount"></div>
+      <div id="game-landing-mount">
+      <article class="game-landing prose reveal">
+  <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
+  <p class="pillar-eyebrow">Laughing Dragons Games</p>
+  <h1>Drago&#x27;s Revenge</h1>
+  <p class="page-lead">Push blocks, trap knights, and collect dragon tiles as Drago the Dragon Fruit.</p>
+  <p>Drago&#x27;s Revenge is a Rodent&#x27;s Revenge-style grid puzzle starring Drago the Dragon Fruit. Push green blocks to trap knights, grab pickups, and clear eight levels. Always open.</p>
+  <p><a class="btn btn-primary" href="#game-play">Play now ↓</a> · <a href="#game-guide">Full guide ↓</a></p>
+</article>
+    </div>
       <div id="game-ad-top" class="container"></div>
     </div>
 
@@ -124,7 +133,17 @@
       <div class="sr-announce" id="dr-sr-announce" aria-live="assertive"></div>
     </div>
 
-    <div class="container" id="game-ad-bottom"></div>
+    
+    <section class="container game-full-guide prose" id="game-guide" aria-label="Full game guide">
+      <h2>Complete guide: Drago&#x27;s Revenge</h2>
+      <p>Drago&#x27;s Revenge resurrects the classic push-blocks-trap-hunters formula with Fruit Friends charm. You are Drago the Dragon Fruit — not a generic tile — sliding one cell at a time across an olive game board with pink leaf walls. Green slidables sit in your path; push them into knights to pin those hunters against walls or other blocks. Trap every knight on a level and they convert into laughing-dragon tile pickups you can collect by walking over them. Clear all collectables to finish the stage and advance. Eight hand-built levels await, each with tighter knight patrols and trickier block geometry.</p>
+      <p>Knights move on their own timer, independent of your steps, using eight-way pursuit paths — diagonals included — so they feel alive rather than turn-based statues. A block can shove an adjacent knight if the tile behind the knight is empty, enabling chain traps that would make Rodent&#x27;s Revenge fans grin. You have three lives per run; lose them all and the run resets, though best scores persist locally. A countdown timer adds urgency on each level — plan fast, but think before you push.</p>
+      <p>Pick Easy or Hard before starting: Easy slows knights to roughly three-quarters of a second per tile and grants thirty bonus seconds on the clock. Hard cranks knight speed to about a third of a second per tile with the standard timer — the authentic retro challenge. The game is always open from the Games hub; no Terminal LOGIN required and no unlock codes feed the wider chain. Standalone puzzle glory, Laughing Dragons style.</p>
+      <p>Tactical tips: never push a block into a corner you still need unless a knight is pinned there. Lure knights into narrow corridors before sliding the killing block. Because knights move while you think, bait them toward a wall, step aside, then push from the flank. Cluster trapping converts multiple knights simultaneously when the geometry aligns — watch for those batch conversions to save timer seconds. Collect every dragon tile before exiting; leftover pickups mean the level is not actually clear.</p>
+      <p>Difficulty climbs through level layout, knight count, and mode choice rather than procedural generation — each stage is authored. Early levels teach push mechanics with one or two hunters; later ones demand multi-block setups and diagonal awareness. Three lives mean reckless pushes hurt, but the game is generous about letting you learn patterns on repeat attempts. Scores and best runs save in browser localStorage.</p>
+      <p>Drago&#x27;s Revenge targets retro puzzle fans and parents who remember Windows 3.x grid games. Art pulls from the studio Drago sprite set: green slidables, olive floors, memory-matching dragon tiles as collectables. No online leaderboard — compete with household high scores on the same machine. When the eighth level falls, celebrate Drago&#x27;s victory lap and shuffle back to level one for a faster clear time. Always open, always local, always one more knight to trap.</p>
+    </section>
+<div class="container" id="game-ad-bottom"></div>
 
     <div id="game-footer-mount"></div>
 
@@ -138,13 +157,15 @@
         description: "Push blocks, trap chattering teeth, collect dragon tiles - Drago the Dragon Fruit in a Rodent's Revenge-style grid puzzle.",
         activePath: "/games/dragos-revenge/",
         landingHtml: `
-          <article class="game-landing prose reveal">
-            <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
-            <p class="pillar-eyebrow">Laughing Dragons Games</p>
-            <h1>Drago's Revenge</h1>
-            <p class="page-lead">Push green blocks, trap the chattering teeth, and collect laughing-dragon tiles.</p>
-            <p>Always playable - no unlock code needed. Arrow keys on desktop; D-pad on mobile.</p>
-          </article>`,
+<article class="game-landing prose reveal">
+  <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
+  <p class="pillar-eyebrow">Laughing Dragons Games</p>
+  <h1>Drago&#x27;s Revenge</h1>
+  <p class="page-lead">Push blocks, trap knights, and collect dragon tiles as Drago the Dragon Fruit.</p>
+  <p>Drago&#x27;s Revenge is a Rodent&#x27;s Revenge-style grid puzzle starring Drago the Dragon Fruit. Push green blocks to trap knights, grab pickups, and clear eight levels. Always open.</p>
+  <p><a class="btn btn-primary" href="#game-play">Play now ↓</a> · <a href="#game-guide">Full guide ↓</a></p>
+</article>
+        `,
       });
       initDragosRevenge();
     </script>

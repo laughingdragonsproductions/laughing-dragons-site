@@ -25,11 +25,9 @@
   <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
   <p class="pillar-eyebrow">Laughing Dragons Games</p>
   <h1>Flappy Dragon</h1>
-  <p class="page-lead">Flappy Dragon is a classic tap-to-fly arcade game set against a scrolling Laughing Dragons sky. Tap, click, or press Space to flap upward, thread gaps between stone pillars, and ch</p>
-  <p>Flappy Dragon is a classic tap-to-fly arcade game set against a scrolling Laughing Dragons sky. Tap, click, or press Space to flap upward, thread gaps between stone pillars, and chase a higher score each run. Pick Easy for 15% lighter gravity and jump for more forgiving falls, or Hard for the standard challenge. The game speeds up as you climb. Start with the green dragon and unlock red, blue, purple, orange, pink, teal, and charcoal skins by beating score milestones - progress saves in your browser. Always open from the Games hub; no Terminal Trainer code required.</p>
-  <h2>Play in your browser</h2>
-  <p>This is a finished Laughing Dragons studio game with a written guide, tips, and a playable build on this page. Progress saves locally in your browser — no account or install required.</p>
-  <p><a class="btn btn-primary" href="#game-play">Play now ↓</a></p>
+  <p class="page-lead">Tap to flap through stone pillars — chase high scores and unlock all eight dragon colors.</p>
+  <p>Flappy Dragon is tap-to-fly arcade action against a scrolling Laughing Dragons sky. Thread gaps between pillars, pick Easy or Hard gravity, and unlock eight dragon skins. Always open.</p>
+  <p><a class="btn btn-primary" href="#game-play">Play now ↓</a> · <a href="#game-guide">Full guide ↓</a></p>
 </article>
     </div>
       <div id="game-ad-top" class="container"></div>
@@ -110,7 +108,17 @@
       <div class="sr-announce" id="flappy-sr-announce" aria-live="assertive"></div>
     </div>
 
-    <div class="container" id="game-ad-bottom"></div>
+    
+    <section class="container game-full-guide prose" id="game-guide" aria-label="Full game guide">
+      <h2>Complete guide: Flappy Dragon</h2>
+      <p>Flappy Dragon sends your laughing dragon soaring through a side-scrolling sky filled with stone pillars. Tap the screen, click the mouse, or press Space to flap upward; release and gravity pulls you down. Each pillar pair leaves a gap — thread it cleanly to keep flying and rack up score. Hit a pillar or the ground and the run ends, but restart is instant. The vibe is classic flash-era arcade: one more try, one more gap, one more point. Laughing Dragons wrapped the mechanic in eight collectible dragon color skins instead of generic birds.</p>
+      <p>Choose gravity before you launch: Easy mode applies fifteen percent lighter gravity and a gentler jump arc, perfect for younger fliers or first-time players. Hard mode uses standard physics for the full arcade challenge. The game also speeds up slightly as your score climbs, so late-run gaps demand tighter timing even on Easy. Always open from the Games hub — no Terminal code, no unlock chain. Just flap.</p>
+      <p>Dragon colors unlock through score milestones. You start with green; beat threshold scores to reveal red, blue, purple, orange, pink, teal, and charcoal skins. Unlocked colors persist in local browser storage, so your wardrobe survives tab closes and computer restarts without an account. Pick your favorite from the selector before each run — showing off teal at score fifty is half the fun.</p>
+      <p>Control tips: short taps beat holding — Flappy Dragon rewards rhythmic micro-flaps, not constant mashing. Aim for the vertical center of each gap; corrections are cheaper when you enter level. On mobile, play in portrait so your thumb naturally taps the lower third without blocking the view. Watch the next pillar early; panic flapping near the ground causes most crashes.</p>
+      <p>Difficulty layers stack: Easy versus Hard gravity, accelerating scroll speed, and narrower effective gaps at high scores. There is no story mode or level map — pure endless runner until you misjudge a pillar. Laughing Dragons treats high scores as the progression system; screenshot your personal best and challenge siblings on the same machine. Local saves track unlocked colors only — each run starts at zero score by design.</p>
+      <p>Flappy Dragon sits beside Dragon-Ball V and Drago&#x27;s Revenge in the always-open arcade tier. No reward codes feed Terminal Trainer here; the prize is cosmetic dragon pride and bragging rights. Sessions stay under a minute unless you are deep into a legendary streak — ideal for queue waiting or quick breaks. Fire it up, pick Hard when Easy feels tame, and paint the sky every color the studio forged.</p>
+    </section>
+<div class="container" id="game-ad-bottom"></div>
 
     <div id="game-footer-mount"></div>
 
@@ -123,13 +131,15 @@
         description: "Tap to fly your laughing dragon through stone pillars - unlock all eight colors as your score climbs.",
         activePath: "/games/flappy-dragon/",
         landingHtml: `
-          <article class="game-landing prose reveal">
-            <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
-            <p class="pillar-eyebrow">Laughing Dragons Games</p>
-            <h1>Flappy Dragon</h1>
-            <p class="page-lead">Tap to fly. Dodge the pillars. Unlock every colored dragon.</p>
-            <p>Always playable - no unlock code needed. Start with the green dragon and earn new colors by beating score milestones.</p>
-          </article>`,
+<article class="game-landing prose reveal">
+  <p class="game-landing-back"><a href="/games/">&larr; All games</a></p>
+  <p class="pillar-eyebrow">Laughing Dragons Games</p>
+  <h1>Flappy Dragon</h1>
+  <p class="page-lead">Tap to flap through stone pillars — chase high scores and unlock all eight dragon colors.</p>
+  <p>Flappy Dragon is tap-to-fly arcade action against a scrolling Laughing Dragons sky. Thread gaps between pillars, pick Easy or Hard gravity, and unlock eight dragon skins. Always open.</p>
+  <p><a class="btn btn-primary" href="#game-play">Play now ↓</a> · <a href="#game-guide">Full guide ↓</a></p>
+</article>
+        `,
       });
       initFlappyDragon();
     </script>
